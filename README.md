@@ -1,5 +1,3 @@
-Actual repo https://gitlab.transmit.im/dialog/bots/dialog-stress-bots
-
 Required params:
 ```
   -server string
