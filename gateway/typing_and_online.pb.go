@@ -46,7 +46,7 @@ func (x TypingType) String() string {
 	return proto.EnumName(TypingType_name, int32(x))
 }
 func (TypingType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{0}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{0}
 }
 
 type DeviceType int32
@@ -90,13 +90,13 @@ func (x DeviceType) String() string {
 	return proto.EnumName(DeviceType_name, int32(x))
 }
 func (DeviceType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{1}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{1}
 }
 
 // Sending typing notification
 type RequestTyping struct {
-	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	TypingType           TypingType `protobuf:"varint,3,opt,name=typing_type,json=typingType,enum=dialog.TypingType" json:"typing_type,omitempty"`
+	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	TypingType           TypingType `protobuf:"varint,3,opt,name=typing_type,json=typingType,proto3,enum=dialog.TypingType" json:"typing_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -106,7 +106,7 @@ func (m *RequestTyping) Reset()         { *m = RequestTyping{} }
 func (m *RequestTyping) String() string { return proto.CompactTextString(m) }
 func (*RequestTyping) ProtoMessage()    {}
 func (*RequestTyping) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{0}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{0}
 }
 func (m *RequestTyping) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestTyping.Unmarshal(m, b)
@@ -142,8 +142,8 @@ func (m *RequestTyping) GetTypingType() TypingType {
 
 // Stop typing
 type RequestStopTyping struct {
-	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	TypingType           TypingType `protobuf:"varint,2,opt,name=typing_type,json=typingType,enum=dialog.TypingType" json:"typing_type,omitempty"`
+	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	TypingType           TypingType `protobuf:"varint,2,opt,name=typing_type,json=typingType,proto3,enum=dialog.TypingType" json:"typing_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -153,7 +153,7 @@ func (m *RequestStopTyping) Reset()         { *m = RequestStopTyping{} }
 func (m *RequestStopTyping) String() string { return proto.CompactTextString(m) }
 func (*RequestStopTyping) ProtoMessage()    {}
 func (*RequestStopTyping) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{1}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{1}
 }
 func (m *RequestStopTyping) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestStopTyping.Unmarshal(m, b)
@@ -189,10 +189,10 @@ func (m *RequestStopTyping) GetTypingType() TypingType {
 
 // Sending online state
 type RequestSetOnline struct {
-	IsOnline             bool                  `protobuf:"varint,1,opt,name=is_online,json=isOnline" json:"is_online,omitempty"`
-	Timeout              int64                 `protobuf:"varint,2,opt,name=timeout" json:"timeout,omitempty"`
-	DeviceType           DeviceType            `protobuf:"varint,3,opt,name=device_type,json=deviceType,enum=dialog.DeviceType" json:"device_type,omitempty"`
-	DeviceCategory       *wrappers.StringValue `protobuf:"bytes,4,opt,name=device_category,json=deviceCategory" json:"device_category,omitempty"`
+	IsOnline             bool                  `protobuf:"varint,1,opt,name=is_online,json=isOnline,proto3" json:"is_online,omitempty"`
+	Timeout              int64                 `protobuf:"varint,2,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	DeviceType           DeviceType            `protobuf:"varint,3,opt,name=device_type,json=deviceType,proto3,enum=dialog.DeviceType" json:"device_type,omitempty"`
+	DeviceCategory       *wrappers.StringValue `protobuf:"bytes,4,opt,name=device_category,json=deviceCategory,proto3" json:"device_category,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -202,7 +202,7 @@ func (m *RequestSetOnline) Reset()         { *m = RequestSetOnline{} }
 func (m *RequestSetOnline) String() string { return proto.CompactTextString(m) }
 func (*RequestSetOnline) ProtoMessage()    {}
 func (*RequestSetOnline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{2}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{2}
 }
 func (m *RequestSetOnline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSetOnline.Unmarshal(m, b)
@@ -252,7 +252,7 @@ func (m *RequestSetOnline) GetDeviceCategory() *wrappers.StringValue {
 
 // Update about pausing notifications
 type UpdatePauseNotifications struct {
-	Timeout              int32    `protobuf:"varint,1,opt,name=timeout" json:"timeout,omitempty"`
+	Timeout              int32    `protobuf:"varint,1,opt,name=timeout,proto3" json:"timeout,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -262,7 +262,7 @@ func (m *UpdatePauseNotifications) Reset()         { *m = UpdatePauseNotificatio
 func (m *UpdatePauseNotifications) String() string { return proto.CompactTextString(m) }
 func (*UpdatePauseNotifications) ProtoMessage()    {}
 func (*UpdatePauseNotifications) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{3}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{3}
 }
 func (m *UpdatePauseNotifications) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePauseNotifications.Unmarshal(m, b)
@@ -300,7 +300,7 @@ func (m *UpdateRestoreNotifications) Reset()         { *m = UpdateRestoreNotific
 func (m *UpdateRestoreNotifications) String() string { return proto.CompactTextString(m) }
 func (*UpdateRestoreNotifications) ProtoMessage()    {}
 func (*UpdateRestoreNotifications) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{4}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{4}
 }
 func (m *UpdateRestoreNotifications) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateRestoreNotifications.Unmarshal(m, b)
@@ -322,7 +322,7 @@ var xxx_messageInfo_UpdateRestoreNotifications proto.InternalMessageInfo
 
 // Pause notifications
 type RequestPauseNotifications struct {
-	Timeout              int32    `protobuf:"varint,1,opt,name=timeout" json:"timeout,omitempty"`
+	Timeout              int32    `protobuf:"varint,1,opt,name=timeout,proto3" json:"timeout,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -332,7 +332,7 @@ func (m *RequestPauseNotifications) Reset()         { *m = RequestPauseNotificat
 func (m *RequestPauseNotifications) String() string { return proto.CompactTextString(m) }
 func (*RequestPauseNotifications) ProtoMessage()    {}
 func (*RequestPauseNotifications) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{5}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{5}
 }
 func (m *RequestPauseNotifications) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestPauseNotifications.Unmarshal(m, b)
@@ -370,7 +370,7 @@ func (m *RequestRestoreNotifications) Reset()         { *m = RequestRestoreNotif
 func (m *RequestRestoreNotifications) String() string { return proto.CompactTextString(m) }
 func (*RequestRestoreNotifications) ProtoMessage()    {}
 func (*RequestRestoreNotifications) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{6}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{6}
 }
 func (m *RequestRestoreNotifications) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRestoreNotifications.Unmarshal(m, b)
@@ -392,9 +392,9 @@ var xxx_messageInfo_RequestRestoreNotifications proto.InternalMessageInfo
 
 // Update about user's typing
 type UpdateTyping struct {
-	Peer                 *Peer      `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Uid                  int32      `protobuf:"varint,2,opt,name=uid" json:"uid,omitempty"`
-	TypingType           TypingType `protobuf:"varint,3,opt,name=typing_type,json=typingType,enum=dialog.TypingType" json:"typing_type,omitempty"`
+	Peer                 *Peer      `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Uid                  int32      `protobuf:"varint,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	TypingType           TypingType `protobuf:"varint,3,opt,name=typing_type,json=typingType,proto3,enum=dialog.TypingType" json:"typing_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -404,7 +404,7 @@ func (m *UpdateTyping) Reset()         { *m = UpdateTyping{} }
 func (m *UpdateTyping) String() string { return proto.CompactTextString(m) }
 func (*UpdateTyping) ProtoMessage()    {}
 func (*UpdateTyping) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{7}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{7}
 }
 func (m *UpdateTyping) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateTyping.Unmarshal(m, b)
@@ -447,9 +447,9 @@ func (m *UpdateTyping) GetTypingType() TypingType {
 
 // Update about user's typing stop
 type UpdateTypingStop struct {
-	Peer                 *Peer      `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Uid                  int32      `protobuf:"varint,2,opt,name=uid" json:"uid,omitempty"`
-	TypingType           TypingType `protobuf:"varint,3,opt,name=typing_type,json=typingType,enum=dialog.TypingType" json:"typing_type,omitempty"`
+	Peer                 *Peer      `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Uid                  int32      `protobuf:"varint,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	TypingType           TypingType `protobuf:"varint,3,opt,name=typing_type,json=typingType,proto3,enum=dialog.TypingType" json:"typing_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -459,7 +459,7 @@ func (m *UpdateTypingStop) Reset()         { *m = UpdateTypingStop{} }
 func (m *UpdateTypingStop) String() string { return proto.CompactTextString(m) }
 func (*UpdateTypingStop) ProtoMessage()    {}
 func (*UpdateTypingStop) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{8}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{8}
 }
 func (m *UpdateTypingStop) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateTypingStop.Unmarshal(m, b)
@@ -502,9 +502,9 @@ func (m *UpdateTypingStop) GetTypingType() TypingType {
 
 // Update about user became online
 type UpdateUserOnline struct {
-	Uid                  int32                 `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	DeviceType           DeviceType            `protobuf:"varint,2,opt,name=device_type,json=deviceType,enum=dialog.DeviceType" json:"device_type,omitempty"`
-	DeviceCategory       *wrappers.StringValue `protobuf:"bytes,3,opt,name=device_category,json=deviceCategory" json:"device_category,omitempty"`
+	Uid                  int32                 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	DeviceType           DeviceType            `protobuf:"varint,2,opt,name=device_type,json=deviceType,proto3,enum=dialog.DeviceType" json:"device_type,omitempty"`
+	DeviceCategory       *wrappers.StringValue `protobuf:"bytes,3,opt,name=device_category,json=deviceCategory,proto3" json:"device_category,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -514,7 +514,7 @@ func (m *UpdateUserOnline) Reset()         { *m = UpdateUserOnline{} }
 func (m *UpdateUserOnline) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserOnline) ProtoMessage()    {}
 func (*UpdateUserOnline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{9}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{9}
 }
 func (m *UpdateUserOnline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserOnline.Unmarshal(m, b)
@@ -557,9 +557,9 @@ func (m *UpdateUserOnline) GetDeviceCategory() *wrappers.StringValue {
 
 // Update about user became offline
 type UpdateUserOffline struct {
-	Uid                  int32                 `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	DeviceType           DeviceType            `protobuf:"varint,2,opt,name=device_type,json=deviceType,enum=dialog.DeviceType" json:"device_type,omitempty"`
-	DeviceCategory       *wrappers.StringValue `protobuf:"bytes,3,opt,name=device_category,json=deviceCategory" json:"device_category,omitempty"`
+	Uid                  int32                 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	DeviceType           DeviceType            `protobuf:"varint,2,opt,name=device_type,json=deviceType,proto3,enum=dialog.DeviceType" json:"device_type,omitempty"`
+	DeviceCategory       *wrappers.StringValue `protobuf:"bytes,3,opt,name=device_category,json=deviceCategory,proto3" json:"device_category,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -569,7 +569,7 @@ func (m *UpdateUserOffline) Reset()         { *m = UpdateUserOffline{} }
 func (m *UpdateUserOffline) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserOffline) ProtoMessage()    {}
 func (*UpdateUserOffline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{10}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{10}
 }
 func (m *UpdateUserOffline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserOffline.Unmarshal(m, b)
@@ -612,10 +612,10 @@ func (m *UpdateUserOffline) GetDeviceCategory() *wrappers.StringValue {
 
 // Update about user's last seen state
 type UpdateUserLastSeen struct {
-	Uid                  int32                 `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	Date                 int64                 `protobuf:"varint,2,opt,name=date" json:"date,omitempty"`
-	DeviceType           DeviceType            `protobuf:"varint,3,opt,name=device_type,json=deviceType,enum=dialog.DeviceType" json:"device_type,omitempty"`
-	DeviceCategory       *wrappers.StringValue `protobuf:"bytes,4,opt,name=device_category,json=deviceCategory" json:"device_category,omitempty"`
+	Uid                  int32                 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Date                 int64                 `protobuf:"varint,2,opt,name=date,proto3" json:"date,omitempty"`
+	DeviceType           DeviceType            `protobuf:"varint,3,opt,name=device_type,json=deviceType,proto3,enum=dialog.DeviceType" json:"device_type,omitempty"`
+	DeviceCategory       *wrappers.StringValue `protobuf:"bytes,4,opt,name=device_category,json=deviceCategory,proto3" json:"device_category,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -625,7 +625,7 @@ func (m *UpdateUserLastSeen) Reset()         { *m = UpdateUserLastSeen{} }
 func (m *UpdateUserLastSeen) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserLastSeen) ProtoMessage()    {}
 func (*UpdateUserLastSeen) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{11}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{11}
 }
 func (m *UpdateUserLastSeen) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserLastSeen.Unmarshal(m, b)
@@ -675,8 +675,9 @@ func (m *UpdateUserLastSeen) GetDeviceCategory() *wrappers.StringValue {
 
 // Update about group online change
 type UpdateGroupOnline struct {
-	GroupId              int32    `protobuf:"varint,1,opt,name=group_id,json=groupId" json:"group_id,omitempty"`
-	Count                int32    `protobuf:"varint,2,opt,name=count" json:"count,omitempty"`
+	GroupId int32 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	// / amount of online users
+	Count                int32    `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -686,7 +687,7 @@ func (m *UpdateGroupOnline) Reset()         { *m = UpdateGroupOnline{} }
 func (m *UpdateGroupOnline) String() string { return proto.CompactTextString(m) }
 func (*UpdateGroupOnline) ProtoMessage()    {}
 func (*UpdateGroupOnline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_typing_and_online_d7e6b7ed5df8d58b, []int{12}
+	return fileDescriptor_typing_and_online_2cac0071ed1897a7, []int{12}
 }
 func (m *UpdateGroupOnline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateGroupOnline.Unmarshal(m, b)
@@ -943,10 +944,10 @@ var _TypingAndOnline_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("typing_and_online.proto", fileDescriptor_typing_and_online_d7e6b7ed5df8d58b)
+	proto.RegisterFile("typing_and_online.proto", fileDescriptor_typing_and_online_2cac0071ed1897a7)
 }
 
-var fileDescriptor_typing_and_online_d7e6b7ed5df8d58b = []byte{
+var fileDescriptor_typing_and_online_2cac0071ed1897a7 = []byte{
 	// 937 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x56, 0x4f, 0x6f, 0xe3, 0x44,
 	0x14, 0xc7, 0x49, 0x9a, 0xa6, 0xaf, 0xff, 0x9c, 0xd9, 0x76, 0x37, 0x2d, 0x15, 0xbb, 0xeb, 0x22,

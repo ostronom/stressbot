@@ -52,15 +52,13 @@ func (x Colors) String() string {
 	return proto.EnumName(Colors_name, int32(x))
 }
 func (Colors) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{0}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{0}
 }
 
 // Location of file on server
-// fileId Unique Id of file
-// accessHash Access hash of file
 type FileLocation struct {
-	FileId               int64    `protobuf:"varint,1,opt,name=file_id,json=fileId" json:"file_id,omitempty"`
-	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash" json:"access_hash,omitempty"`
+	FileId               int64    `protobuf:"varint,1,opt,name=file_id,json=fileId,proto3" json:"file_id,omitempty"`
+	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -70,7 +68,7 @@ func (m *FileLocation) Reset()         { *m = FileLocation{} }
 func (m *FileLocation) String() string { return proto.CompactTextString(m) }
 func (*FileLocation) ProtoMessage()    {}
 func (*FileLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{0}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{0}
 }
 func (m *FileLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileLocation.Unmarshal(m, b)
@@ -105,15 +103,11 @@ func (m *FileLocation) GetAccessHash() int64 {
 }
 
 // Image location
-// fileLocation Location of file
-// width Width of avatar image
-// height Height of avatar image
-// fileSize Size of file
 type ImageLocation struct {
-	FileLocation         *FileLocation `protobuf:"bytes,1,opt,name=file_location,json=fileLocation" json:"file_location,omitempty"`
-	Width                int32         `protobuf:"varint,2,opt,name=width" json:"width,omitempty"`
-	Height               int32         `protobuf:"varint,3,opt,name=height" json:"height,omitempty"`
-	FileSize             int32         `protobuf:"varint,4,opt,name=file_size,json=fileSize" json:"file_size,omitempty"`
+	FileLocation         *FileLocation `protobuf:"bytes,1,opt,name=file_location,json=fileLocation,proto3" json:"file_location,omitempty"`
+	Width                int32         `protobuf:"varint,2,opt,name=width,proto3" json:"width,omitempty"`
+	Height               int32         `protobuf:"varint,3,opt,name=height,proto3" json:"height,omitempty"`
+	FileSize             int32         `protobuf:"varint,4,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -123,7 +117,7 @@ func (m *ImageLocation) Reset()         { *m = ImageLocation{} }
 func (m *ImageLocation) String() string { return proto.CompactTextString(m) }
 func (*ImageLocation) ProtoMessage()    {}
 func (*ImageLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{1}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{1}
 }
 func (m *ImageLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageLocation.Unmarshal(m, b)
@@ -172,15 +166,11 @@ func (m *ImageLocation) GetFileSize() int32 {
 }
 
 // Audio location
-// fileLocation File location
-// duration audio duration in seconds
-// mimeType mime type
-// fileSize file size
 type AudioLocation struct {
-	FileLocation         *FileLocation `protobuf:"bytes,1,opt,name=file_location,json=fileLocation" json:"file_location,omitempty"`
-	Duration             int32         `protobuf:"varint,2,opt,name=duration" json:"duration,omitempty"`
-	MimeType             string        `protobuf:"bytes,3,opt,name=mime_type,json=mimeType" json:"mime_type,omitempty"`
-	FileSize             int32         `protobuf:"varint,4,opt,name=file_size,json=fileSize" json:"file_size,omitempty"`
+	FileLocation         *FileLocation `protobuf:"bytes,1,opt,name=file_location,json=fileLocation,proto3" json:"file_location,omitempty"`
+	Duration             int32         `protobuf:"varint,2,opt,name=duration,proto3" json:"duration,omitempty"`
+	MimeType             string        `protobuf:"bytes,3,opt,name=mime_type,json=mimeType,proto3" json:"mime_type,omitempty"`
+	FileSize             int32         `protobuf:"varint,4,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -190,7 +180,7 @@ func (m *AudioLocation) Reset()         { *m = AudioLocation{} }
 func (m *AudioLocation) String() string { return proto.CompactTextString(m) }
 func (*AudioLocation) ProtoMessage()    {}
 func (*AudioLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{2}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{2}
 }
 func (m *AudioLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioLocation.Unmarshal(m, b)
@@ -239,15 +229,11 @@ func (m *AudioLocation) GetFileSize() int32 {
 }
 
 // Avatar Image
-// fileLocation Location of file
-// width Width of avatar image
-// height Height of avatar image
-// fileSize Size of file
 type AvatarImage struct {
-	FileLocation         *FileLocation `protobuf:"bytes,1,opt,name=file_location,json=fileLocation" json:"file_location,omitempty"`
-	Width                int32         `protobuf:"varint,2,opt,name=width" json:"width,omitempty"`
-	Height               int32         `protobuf:"varint,3,opt,name=height" json:"height,omitempty"`
-	FileSize             int32         `protobuf:"varint,4,opt,name=file_size,json=fileSize" json:"file_size,omitempty"`
+	FileLocation         *FileLocation `protobuf:"bytes,1,opt,name=file_location,json=fileLocation,proto3" json:"file_location,omitempty"`
+	Width                int32         `protobuf:"varint,2,opt,name=width,proto3" json:"width,omitempty"`
+	Height               int32         `protobuf:"varint,3,opt,name=height,proto3" json:"height,omitempty"`
+	FileSize             int32         `protobuf:"varint,4,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -257,7 +243,7 @@ func (m *AvatarImage) Reset()         { *m = AvatarImage{} }
 func (m *AvatarImage) String() string { return proto.CompactTextString(m) }
 func (*AvatarImage) ProtoMessage()    {}
 func (*AvatarImage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{3}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{3}
 }
 func (m *AvatarImage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AvatarImage.Unmarshal(m, b)
@@ -306,13 +292,13 @@ func (m *AvatarImage) GetFileSize() int32 {
 }
 
 // Avatar of User or Group
-// smallImage Optional small image of avatar box in 100x100
-// largeImage Optional large image of avatar box in 200x200
-// fullImage Optional full screen image of avatar
 type Avatar struct {
-	SmallImage           *AvatarImage `protobuf:"bytes,1,opt,name=small_image,json=smallImage" json:"small_image,omitempty"`
-	LargeImage           *AvatarImage `protobuf:"bytes,2,opt,name=large_image,json=largeImage" json:"large_image,omitempty"`
-	FullImage            *AvatarImage `protobuf:"bytes,3,opt,name=full_image,json=fullImage" json:"full_image,omitempty"`
+	// / Optional small image of avatar box in 100x100
+	SmallImage *AvatarImage `protobuf:"bytes,1,opt,name=small_image,json=smallImage,proto3" json:"small_image,omitempty"`
+	// / Optional large image of avatar box in 200x200
+	LargeImage *AvatarImage `protobuf:"bytes,2,opt,name=large_image,json=largeImage,proto3" json:"large_image,omitempty"`
+	// / Optional full screen image of avatar
+	FullImage            *AvatarImage `protobuf:"bytes,3,opt,name=full_image,json=fullImage,proto3" json:"full_image,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -322,7 +308,7 @@ func (m *Avatar) Reset()         { *m = Avatar{} }
 func (m *Avatar) String() string { return proto.CompactTextString(m) }
 func (*Avatar) ProtoMessage()    {}
 func (*Avatar) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{4}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{4}
 }
 func (m *Avatar) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Avatar.Unmarshal(m, b)
@@ -364,12 +350,9 @@ func (m *Avatar) GetFullImage() *AvatarImage {
 }
 
 // Fast thumb of media messages. Less than 90x90 and compressed by JPEG with low quality
-// w Width of thumb
-// h Height of thump
-// thumb compressed image data
 type FastThumb struct {
-	W                    int32    `protobuf:"varint,1,opt,name=w" json:"w,omitempty"`
-	H                    int32    `protobuf:"varint,2,opt,name=h" json:"h,omitempty"`
+	W                    int32    `protobuf:"varint,1,opt,name=w,proto3" json:"w,omitempty"`
+	H                    int32    `protobuf:"varint,2,opt,name=h,proto3" json:"h,omitempty"`
 	Thumb                []byte   `protobuf:"bytes,3,opt,name=thumb,proto3" json:"thumb,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -380,7 +363,7 @@ func (m *FastThumb) Reset()         { *m = FastThumb{} }
 func (m *FastThumb) String() string { return proto.CompactTextString(m) }
 func (*FastThumb) ProtoMessage()    {}
 func (*FastThumb) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{5}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{5}
 }
 func (m *FastThumb) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FastThumb.Unmarshal(m, b)
@@ -435,7 +418,7 @@ func (m *Color) Reset()         { *m = Color{} }
 func (m *Color) String() string { return proto.CompactTextString(m) }
 func (*Color) ProtoMessage()    {}
 func (*Color) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{6}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{6}
 }
 func (m *Color) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Color.Unmarshal(m, b)
@@ -460,13 +443,15 @@ type isColor_Body interface {
 }
 
 type Color_Rgb struct {
-	Rgb *RgbColor `protobuf:"bytes,1,opt,name=rgb,oneof"`
-}
-type Color_Predefined struct {
-	Predefined *PredefinedColor `protobuf:"bytes,2,opt,name=predefined,oneof"`
+	Rgb *RgbColor `protobuf:"bytes,1,opt,name=rgb,proto3,oneof"`
 }
 
-func (*Color_Rgb) isColor_Body()        {}
+type Color_Predefined struct {
+	Predefined *PredefinedColor `protobuf:"bytes,2,opt,name=predefined,proto3,oneof"`
+}
+
+func (*Color_Rgb) isColor_Body() {}
+
 func (*Color_Predefined) isColor_Body() {}
 
 func (m *Color) GetBody() isColor_Body {
@@ -565,9 +550,8 @@ func _Color_OneofSizer(msg proto.Message) (n int) {
 }
 
 // RGB Color
-// rgb RGB color value
 type RgbColor struct {
-	Rgb                  int32    `protobuf:"varint,1,opt,name=rgb" json:"rgb,omitempty"`
+	Rgb                  int32    `protobuf:"varint,1,opt,name=rgb,proto3" json:"rgb,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -577,7 +561,7 @@ func (m *RgbColor) Reset()         { *m = RgbColor{} }
 func (m *RgbColor) String() string { return proto.CompactTextString(m) }
 func (*RgbColor) ProtoMessage()    {}
 func (*RgbColor) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{7}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{7}
 }
 func (m *RgbColor) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RgbColor.Unmarshal(m, b)
@@ -605,9 +589,8 @@ func (m *RgbColor) GetRgb() int32 {
 }
 
 // Predefined color
-// color Predefined color value
 type PredefinedColor struct {
-	Color                Colors   `protobuf:"varint,1,opt,name=color,enum=dialog.Colors" json:"color,omitempty"`
+	Color                Colors   `protobuf:"varint,1,opt,name=color,proto3,enum=dialog.Colors" json:"color,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -617,7 +600,7 @@ func (m *PredefinedColor) Reset()         { *m = PredefinedColor{} }
 func (m *PredefinedColor) String() string { return proto.CompactTextString(m) }
 func (*PredefinedColor) ProtoMessage()    {}
 func (*PredefinedColor) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{8}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{8}
 }
 func (m *PredefinedColor) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PredefinedColor.Unmarshal(m, b)
@@ -645,11 +628,9 @@ func (m *PredefinedColor) GetColor() Colors {
 }
 
 // HTTP Header record
-// key HTTP Header name
-// value HTTP Header value
 type HTTPHeader struct {
-	Key                  string   `protobuf:"bytes,1,opt,name=key" json:"key,omitempty"`
-	Value                string   `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
+	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value                string   `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -659,7 +640,7 @@ func (m *HTTPHeader) Reset()         { *m = HTTPHeader{} }
 func (m *HTTPHeader) String() string { return proto.CompactTextString(m) }
 func (*HTTPHeader) ProtoMessage()    {}
 func (*HTTPHeader) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{9}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{9}
 }
 func (m *HTTPHeader) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HTTPHeader.Unmarshal(m, b)
@@ -694,27 +675,24 @@ func (m *HTTPHeader) GetValue() string {
 }
 
 // File url description
-// fileId File id of url
-// url Url for downloading
-// timeout Timeout of url
-// unsignedUrl Unsigned URL (used to honor web caches)
-// unsignedUrlHeaders Headers that is required to download files with unsigned url
 type FileUrlDescription struct {
-	FileId               int64                 `protobuf:"varint,1,opt,name=file_id,json=fileId" json:"file_id,omitempty"`
-	Url                  string                `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
-	Timeout              int32                 `protobuf:"varint,3,opt,name=timeout" json:"timeout,omitempty"`
-	UnsignedUrl          *wrappers.StringValue `protobuf:"bytes,4,opt,name=unsigned_url,json=unsignedUrl" json:"unsigned_url,omitempty"`
-	UnsignedUrlHeaders   []*HTTPHeader         `protobuf:"bytes,5,rep,name=unsigned_url_headers,json=unsignedUrlHeaders" json:"unsigned_url_headers,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	FileId  int64  `protobuf:"varint,1,opt,name=file_id,json=fileId,proto3" json:"file_id,omitempty"`
+	Url     string `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
+	Timeout int32  `protobuf:"varint,3,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	// / Unsigned URL (used to honor web caches)
+	UnsignedUrl *wrappers.StringValue `protobuf:"bytes,4,opt,name=unsigned_url,json=unsignedUrl,proto3" json:"unsigned_url,omitempty"`
+	// / Headers that is required to download files with unsigned url
+	UnsignedUrlHeaders   []*HTTPHeader `protobuf:"bytes,5,rep,name=unsigned_url_headers,json=unsignedUrlHeaders,proto3" json:"unsigned_url_headers,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
 func (m *FileUrlDescription) Reset()         { *m = FileUrlDescription{} }
 func (m *FileUrlDescription) String() string { return proto.CompactTextString(m) }
 func (*FileUrlDescription) ProtoMessage()    {}
 func (*FileUrlDescription) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{10}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{10}
 }
 func (m *FileUrlDescription) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileUrlDescription.Unmarshal(m, b)
@@ -771,7 +749,7 @@ func (m *FileUrlDescription) GetUnsignedUrlHeaders() []*HTTPHeader {
 
 // Requesting file URL for downloading
 type RequestGetFileUrl struct {
-	File                 *FileLocation `protobuf:"bytes,1,opt,name=file" json:"file,omitempty"`
+	File                 *FileLocation `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -781,7 +759,7 @@ func (m *RequestGetFileUrl) Reset()         { *m = RequestGetFileUrl{} }
 func (m *RequestGetFileUrl) String() string { return proto.CompactTextString(m) }
 func (*RequestGetFileUrl) ProtoMessage()    {}
 func (*RequestGetFileUrl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{11}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{11}
 }
 func (m *RequestGetFileUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetFileUrl.Unmarshal(m, b)
@@ -809,10 +787,10 @@ func (m *RequestGetFileUrl) GetFile() *FileLocation {
 }
 
 type ResponseGetFileUrl struct {
-	Url                  string                `protobuf:"bytes,1,opt,name=url" json:"url,omitempty"`
-	Timeout              int32                 `protobuf:"varint,2,opt,name=timeout" json:"timeout,omitempty"`
-	UnsignedUrl          *wrappers.StringValue `protobuf:"bytes,3,opt,name=unsigned_url,json=unsignedUrl" json:"unsigned_url,omitempty"`
-	UnsignedUrlHeaders   []*HTTPHeader         `protobuf:"bytes,4,rep,name=unsigned_url_headers,json=unsignedUrlHeaders" json:"unsigned_url_headers,omitempty"`
+	Url                  string                `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	Timeout              int32                 `protobuf:"varint,2,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	UnsignedUrl          *wrappers.StringValue `protobuf:"bytes,3,opt,name=unsigned_url,json=unsignedUrl,proto3" json:"unsigned_url,omitempty"`
+	UnsignedUrlHeaders   []*HTTPHeader         `protobuf:"bytes,4,rep,name=unsigned_url_headers,json=unsignedUrlHeaders,proto3" json:"unsigned_url_headers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -822,7 +800,7 @@ func (m *ResponseGetFileUrl) Reset()         { *m = ResponseGetFileUrl{} }
 func (m *ResponseGetFileUrl) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetFileUrl) ProtoMessage()    {}
 func (*ResponseGetFileUrl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{12}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{12}
 }
 func (m *ResponseGetFileUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetFileUrl.Unmarshal(m, b)
@@ -872,7 +850,7 @@ func (m *ResponseGetFileUrl) GetUnsignedUrlHeaders() []*HTTPHeader {
 
 // Requesting multiple fle URL for downloading
 type RequestGetFileUrls struct {
-	Files                []*FileLocation `protobuf:"bytes,1,rep,name=files" json:"files,omitempty"`
+	Files                []*FileLocation `protobuf:"bytes,1,rep,name=files,proto3" json:"files,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -882,7 +860,7 @@ func (m *RequestGetFileUrls) Reset()         { *m = RequestGetFileUrls{} }
 func (m *RequestGetFileUrls) String() string { return proto.CompactTextString(m) }
 func (*RequestGetFileUrls) ProtoMessage()    {}
 func (*RequestGetFileUrls) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{13}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{13}
 }
 func (m *RequestGetFileUrls) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetFileUrls.Unmarshal(m, b)
@@ -910,7 +888,7 @@ func (m *RequestGetFileUrls) GetFiles() []*FileLocation {
 }
 
 type ResponseGetFileUrls struct {
-	FileUrls             []*FileUrlDescription `protobuf:"bytes,1,rep,name=file_urls,json=fileUrls" json:"file_urls,omitempty"`
+	FileUrls             []*FileUrlDescription `protobuf:"bytes,1,rep,name=file_urls,json=fileUrls,proto3" json:"file_urls,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -920,7 +898,7 @@ func (m *ResponseGetFileUrls) Reset()         { *m = ResponseGetFileUrls{} }
 func (m *ResponseGetFileUrls) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetFileUrls) ProtoMessage()    {}
 func (*ResponseGetFileUrls) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{14}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{14}
 }
 func (m *ResponseGetFileUrls) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetFileUrls.Unmarshal(m, b)
@@ -949,7 +927,7 @@ func (m *ResponseGetFileUrls) GetFileUrls() []*FileUrlDescription {
 
 // Get File URL Builder that allows to build file urls from client side
 type RequestGetFileUrlBuilder struct {
-	SupportedSignatureAlgorithms []string `protobuf:"bytes,1,rep,name=supported_signature_algorithms,json=supportedSignatureAlgorithms" json:"supported_signature_algorithms,omitempty"`
+	SupportedSignatureAlgorithms []string `protobuf:"bytes,1,rep,name=supported_signature_algorithms,json=supportedSignatureAlgorithms,proto3" json:"supported_signature_algorithms,omitempty"`
 	XXX_NoUnkeyedLiteral         struct{} `json:"-"`
 	XXX_unrecognized             []byte   `json:"-"`
 	XXX_sizecache                int32    `json:"-"`
@@ -959,7 +937,7 @@ func (m *RequestGetFileUrlBuilder) Reset()         { *m = RequestGetFileUrlBuild
 func (m *RequestGetFileUrlBuilder) String() string { return proto.CompactTextString(m) }
 func (*RequestGetFileUrlBuilder) ProtoMessage()    {}
 func (*RequestGetFileUrlBuilder) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{15}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{15}
 }
 func (m *RequestGetFileUrlBuilder) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetFileUrlBuilder.Unmarshal(m, b)
@@ -987,11 +965,11 @@ func (m *RequestGetFileUrlBuilder) GetSupportedSignatureAlgorithms() []string {
 }
 
 type ResponseGetFileUrlBuilder struct {
-	BaseUrl              string   `protobuf:"bytes,1,opt,name=base_url,json=baseUrl" json:"base_url,omitempty"`
-	Algo                 string   `protobuf:"bytes,2,opt,name=algo" json:"algo,omitempty"`
-	Seed                 string   `protobuf:"bytes,5,opt,name=seed" json:"seed,omitempty"`
+	BaseUrl              string   `protobuf:"bytes,1,opt,name=base_url,json=baseUrl,proto3" json:"base_url,omitempty"`
+	Algo                 string   `protobuf:"bytes,2,opt,name=algo,proto3" json:"algo,omitempty"`
+	Seed                 string   `protobuf:"bytes,5,opt,name=seed,proto3" json:"seed,omitempty"`
 	SignatureSecret      []byte   `protobuf:"bytes,3,opt,name=signature_secret,json=signatureSecret,proto3" json:"signature_secret,omitempty"`
-	Timeout              int32    `protobuf:"varint,4,opt,name=timeout" json:"timeout,omitempty"`
+	Timeout              int32    `protobuf:"varint,4,opt,name=timeout,proto3" json:"timeout,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1001,7 +979,7 @@ func (m *ResponseGetFileUrlBuilder) Reset()         { *m = ResponseGetFileUrlBui
 func (m *ResponseGetFileUrlBuilder) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetFileUrlBuilder) ProtoMessage()    {}
 func (*ResponseGetFileUrlBuilder) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{16}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{16}
 }
 func (m *ResponseGetFileUrlBuilder) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetFileUrlBuilder.Unmarshal(m, b)
@@ -1058,7 +1036,7 @@ func (m *ResponseGetFileUrlBuilder) GetTimeout() int32 {
 
 // Requesting pload url
 type RequestGetFileUploadUrl struct {
-	ExpectedSize         int32    `protobuf:"varint,1,opt,name=expected_size,json=expectedSize" json:"expected_size,omitempty"`
+	ExpectedSize         int32    `protobuf:"varint,1,opt,name=expected_size,json=expectedSize,proto3" json:"expected_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1068,7 +1046,7 @@ func (m *RequestGetFileUploadUrl) Reset()         { *m = RequestGetFileUploadUrl
 func (m *RequestGetFileUploadUrl) String() string { return proto.CompactTextString(m) }
 func (*RequestGetFileUploadUrl) ProtoMessage()    {}
 func (*RequestGetFileUploadUrl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{17}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{17}
 }
 func (m *RequestGetFileUploadUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetFileUploadUrl.Unmarshal(m, b)
@@ -1096,7 +1074,7 @@ func (m *RequestGetFileUploadUrl) GetExpectedSize() int32 {
 }
 
 type ResponseGetFileUploadUrl struct {
-	Url                  string   `protobuf:"bytes,1,opt,name=url" json:"url,omitempty"`
+	Url                  string   `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
 	UploadKey            []byte   `protobuf:"bytes,2,opt,name=upload_key,json=uploadKey,proto3" json:"upload_key,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1107,7 +1085,7 @@ func (m *ResponseGetFileUploadUrl) Reset()         { *m = ResponseGetFileUploadU
 func (m *ResponseGetFileUploadUrl) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetFileUploadUrl) ProtoMessage()    {}
 func (*ResponseGetFileUploadUrl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{18}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{18}
 }
 func (m *ResponseGetFileUploadUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetFileUploadUrl.Unmarshal(m, b)
@@ -1144,7 +1122,7 @@ func (m *ResponseGetFileUploadUrl) GetUploadKey() []byte {
 // Comminting uploaded file to storage
 type RequestCommitFileUpload struct {
 	UploadKey            []byte   `protobuf:"bytes,1,opt,name=upload_key,json=uploadKey,proto3" json:"upload_key,omitempty"`
-	FileName             string   `protobuf:"bytes,2,opt,name=file_name,json=fileName" json:"file_name,omitempty"`
+	FileName             string   `protobuf:"bytes,2,opt,name=file_name,json=fileName,proto3" json:"file_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1154,7 +1132,7 @@ func (m *RequestCommitFileUpload) Reset()         { *m = RequestCommitFileUpload
 func (m *RequestCommitFileUpload) String() string { return proto.CompactTextString(m) }
 func (*RequestCommitFileUpload) ProtoMessage()    {}
 func (*RequestCommitFileUpload) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{19}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{19}
 }
 func (m *RequestCommitFileUpload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestCommitFileUpload.Unmarshal(m, b)
@@ -1189,7 +1167,7 @@ func (m *RequestCommitFileUpload) GetFileName() string {
 }
 
 type ResponseCommitFileUpload struct {
-	UploadedFileLocation *FileLocation `protobuf:"bytes,1,opt,name=uploaded_file_location,json=uploadedFileLocation" json:"uploaded_file_location,omitempty"`
+	UploadedFileLocation *FileLocation `protobuf:"bytes,1,opt,name=uploaded_file_location,json=uploadedFileLocation,proto3" json:"uploaded_file_location,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -1199,7 +1177,7 @@ func (m *ResponseCommitFileUpload) Reset()         { *m = ResponseCommitFileUplo
 func (m *ResponseCommitFileUpload) String() string { return proto.CompactTextString(m) }
 func (*ResponseCommitFileUpload) ProtoMessage()    {}
 func (*ResponseCommitFileUpload) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{20}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{20}
 }
 func (m *ResponseCommitFileUpload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseCommitFileUpload.Unmarshal(m, b)
@@ -1228,8 +1206,8 @@ func (m *ResponseCommitFileUpload) GetUploadedFileLocation() *FileLocation {
 
 // Upload file part
 type RequestGetFileUploadPartUrl struct {
-	PartNumber           int32    `protobuf:"varint,1,opt,name=part_number,json=partNumber" json:"part_number,omitempty"`
-	PartSize             int32    `protobuf:"varint,2,opt,name=part_size,json=partSize" json:"part_size,omitempty"`
+	PartNumber           int32    `protobuf:"varint,1,opt,name=part_number,json=partNumber,proto3" json:"part_number,omitempty"`
+	PartSize             int32    `protobuf:"varint,2,opt,name=part_size,json=partSize,proto3" json:"part_size,omitempty"`
 	UploadKey            []byte   `protobuf:"bytes,3,opt,name=upload_key,json=uploadKey,proto3" json:"upload_key,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1240,7 +1218,7 @@ func (m *RequestGetFileUploadPartUrl) Reset()         { *m = RequestGetFileUploa
 func (m *RequestGetFileUploadPartUrl) String() string { return proto.CompactTextString(m) }
 func (*RequestGetFileUploadPartUrl) ProtoMessage()    {}
 func (*RequestGetFileUploadPartUrl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{21}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{21}
 }
 func (m *RequestGetFileUploadPartUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetFileUploadPartUrl.Unmarshal(m, b)
@@ -1282,7 +1260,7 @@ func (m *RequestGetFileUploadPartUrl) GetUploadKey() []byte {
 }
 
 type ResponseGetFileUploadPartUrl struct {
-	Url                  string   `protobuf:"bytes,1,opt,name=url" json:"url,omitempty"`
+	Url                  string   `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1292,7 +1270,7 @@ func (m *ResponseGetFileUploadPartUrl) Reset()         { *m = ResponseGetFileUpl
 func (m *ResponseGetFileUploadPartUrl) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetFileUploadPartUrl) ProtoMessage()    {}
 func (*ResponseGetFileUploadPartUrl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_and_files_3d9715011b02b000, []int{22}
+	return fileDescriptor_media_and_files_331b5212434ad10e, []int{22}
 }
 func (m *ResponseGetFileUploadPartUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetFileUploadPartUrl.Unmarshal(m, b)
@@ -1358,11 +1336,17 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MediaAndFilesClient interface {
+	// / Get link to file for downloading
 	GetFileUrl(ctx context.Context, in *RequestGetFileUrl, opts ...grpc.CallOption) (*ResponseGetFileUrl, error)
+	// / Get link to files for downloading
 	GetFileUrls(ctx context.Context, in *RequestGetFileUrls, opts ...grpc.CallOption) (*ResponseGetFileUrls, error)
+	// / Create builder for file url
 	GetFileUrlBuilder(ctx context.Context, in *RequestGetFileUrlBuilder, opts ...grpc.CallOption) (*ResponseGetFileUrlBuilder, error)
+	// / Get url for uploading
 	GetFileUploadUrl(ctx context.Context, in *RequestGetFileUploadUrl, opts ...grpc.CallOption) (*ResponseGetFileUploadUrl, error)
+	// / Finish uploading a file
 	CommitFileUpload(ctx context.Context, in *RequestCommitFileUpload, opts ...grpc.CallOption) (*ResponseCommitFileUpload, error)
+	// / Get url for uploading chunk of file
 	GetFileUploadPartUrl(ctx context.Context, in *RequestGetFileUploadPartUrl, opts ...grpc.CallOption) (*ResponseGetFileUploadPartUrl, error)
 }
 
@@ -1430,11 +1414,17 @@ func (c *mediaAndFilesClient) GetFileUploadPartUrl(ctx context.Context, in *Requ
 
 // MediaAndFilesServer is the server API for MediaAndFiles service.
 type MediaAndFilesServer interface {
+	// / Get link to file for downloading
 	GetFileUrl(context.Context, *RequestGetFileUrl) (*ResponseGetFileUrl, error)
+	// / Get link to files for downloading
 	GetFileUrls(context.Context, *RequestGetFileUrls) (*ResponseGetFileUrls, error)
+	// / Create builder for file url
 	GetFileUrlBuilder(context.Context, *RequestGetFileUrlBuilder) (*ResponseGetFileUrlBuilder, error)
+	// / Get url for uploading
 	GetFileUploadUrl(context.Context, *RequestGetFileUploadUrl) (*ResponseGetFileUploadUrl, error)
+	// / Finish uploading a file
 	CommitFileUpload(context.Context, *RequestCommitFileUpload) (*ResponseCommitFileUpload, error)
+	// / Get url for uploading chunk of file
 	GetFileUploadPartUrl(context.Context, *RequestGetFileUploadPartUrl) (*ResponseGetFileUploadPartUrl, error)
 }
 
@@ -1584,10 +1574,10 @@ var _MediaAndFiles_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("media_and_files.proto", fileDescriptor_media_and_files_3d9715011b02b000)
+	proto.RegisterFile("media_and_files.proto", fileDescriptor_media_and_files_331b5212434ad10e)
 }
 
-var fileDescriptor_media_and_files_3d9715011b02b000 = []byte{
+var fileDescriptor_media_and_files_331b5212434ad10e = []byte{
 	// 1423 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x57, 0x4d, 0x73, 0xd3, 0xc6,
 	0x1b, 0x47, 0x71, 0xec, 0xc4, 0x8f, 0xed, 0xe0, 0x2c, 0x01, 0x1c, 0x27, 0x90, 0x20, 0xf8, 0xf3,

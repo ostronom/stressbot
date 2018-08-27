@@ -22,11 +22,9 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Unread dialogs
-// peer dialog peer
-// counter unread messages count
 type UnreadDialog struct {
-	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Counter              int32    `protobuf:"varint,2,opt,name=counter" json:"counter,omitempty"`
+	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Counter              int32    `protobuf:"varint,2,opt,name=counter,proto3" json:"counter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -36,7 +34,7 @@ func (m *UnreadDialog) Reset()         { *m = UnreadDialog{} }
 func (m *UnreadDialog) String() string { return proto.CompactTextString(m) }
 func (*UnreadDialog) ProtoMessage()    {}
 func (*UnreadDialog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_counters_2765e6e243a9c3fe, []int{0}
+	return fileDescriptor_counters_a4829752edd590e0, []int{0}
 }
 func (m *UnreadDialog) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UnreadDialog.Unmarshal(m, b)
@@ -70,24 +68,23 @@ func (m *UnreadDialog) GetCounter() int32 {
 	return 0
 }
 
-// Application counters
-// globalCounter Global unread counter
-// globalDialogsCounter Global count of dialogs with positive counter values
-// unreadDialogs map of chat peer id to unread to counters
 type AppCounters struct {
-	GlobalCounter        *wrappers.Int32Value `protobuf:"bytes,1,opt,name=global_counter,json=globalCounter" json:"global_counter,omitempty"`
-	GlobalDialogsCounter *wrappers.Int32Value `protobuf:"bytes,2,opt,name=global_dialogs_counter,json=globalDialogsCounter" json:"global_dialogs_counter,omitempty"`
-	UnreadDialogs        []*UnreadDialog      `protobuf:"bytes,3,rep,name=unread_dialogs,json=unreadDialogs" json:"unread_dialogs,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	// / Global unread counter
+	GlobalCounter *wrappers.Int32Value `protobuf:"bytes,1,opt,name=global_counter,json=globalCounter,proto3" json:"global_counter,omitempty"`
+	// / Global count of dialogs with positive counter values
+	GlobalDialogsCounter *wrappers.Int32Value `protobuf:"bytes,2,opt,name=global_dialogs_counter,json=globalDialogsCounter,proto3" json:"global_dialogs_counter,omitempty"`
+	// / map of chat peer id to unread to counters
+	UnreadDialogs        []*UnreadDialog `protobuf:"bytes,3,rep,name=unread_dialogs,json=unreadDialogs,proto3" json:"unread_dialogs,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *AppCounters) Reset()         { *m = AppCounters{} }
 func (m *AppCounters) String() string { return proto.CompactTextString(m) }
 func (*AppCounters) ProtoMessage()    {}
 func (*AppCounters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_counters_2765e6e243a9c3fe, []int{1}
+	return fileDescriptor_counters_a4829752edd590e0, []int{1}
 }
 func (m *AppCounters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppCounters.Unmarshal(m, b)
@@ -128,10 +125,10 @@ func (m *AppCounters) GetUnreadDialogs() []*UnreadDialog {
 	return nil
 }
 
-// Update about counters changed
+// / deprecated
 type UpdateCountersChanged struct {
-	Counters             *AppCounters         `protobuf:"bytes,1,opt,name=counters" json:"counters,omitempty"`
-	Ts                   *wrappers.Int64Value `protobuf:"bytes,2,opt,name=ts" json:"ts,omitempty"`
+	Counters             *AppCounters         `protobuf:"bytes,1,opt,name=counters,proto3" json:"counters,omitempty"`
+	Ts                   *wrappers.Int64Value `protobuf:"bytes,2,opt,name=ts,proto3" json:"ts,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -141,7 +138,7 @@ func (m *UpdateCountersChanged) Reset()         { *m = UpdateCountersChanged{} }
 func (m *UpdateCountersChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateCountersChanged) ProtoMessage()    {}
 func (*UpdateCountersChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_counters_2765e6e243a9c3fe, []int{2}
+	return fileDescriptor_counters_a4829752edd590e0, []int{2}
 }
 func (m *UpdateCountersChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateCountersChanged.Unmarshal(m, b)
@@ -181,9 +178,9 @@ func init() {
 	proto.RegisterType((*UpdateCountersChanged)(nil), "dialog.UpdateCountersChanged")
 }
 
-func init() { proto.RegisterFile("counters.proto", fileDescriptor_counters_2765e6e243a9c3fe) }
+func init() { proto.RegisterFile("counters.proto", fileDescriptor_counters_a4829752edd590e0) }
 
-var fileDescriptor_counters_2765e6e243a9c3fe = []byte{
+var fileDescriptor_counters_a4829752edd590e0 = []byte{
 	// 364 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x92, 0xcf, 0x4e, 0x2a, 0x31,
 	0x18, 0xc5, 0x33, 0xc3, 0xbd, 0x70, 0x6f, 0x07, 0x48, 0x1c, 0x81, 0x20, 0x1a, 0x43, 0xd8, 0xc8,

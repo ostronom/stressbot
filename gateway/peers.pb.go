@@ -50,17 +50,14 @@ func (x PeerType) String() string {
 	return proto.EnumName(PeerType_name, int32(x))
 }
 func (PeerType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_peers_ad714e189330b159, []int{0}
+	return fileDescriptor_peers_5039c8940357dcd7, []int{0}
 }
 
 // Peer
-// type Peer Type
-// id Peer Id
-// strId String id
 type Peer struct {
-	Type                 PeerType              `protobuf:"varint,1,opt,name=type,enum=dialog.PeerType" json:"type,omitempty"`
-	Id                   int32                 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	StrId                *wrappers.StringValue `protobuf:"bytes,3,opt,name=str_id,json=strId" json:"str_id,omitempty"`
+	Type                 PeerType              `protobuf:"varint,1,opt,name=type,proto3,enum=dialog.PeerType" json:"type,omitempty"`
+	Id                   int32                 `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
+	StrId                *wrappers.StringValue `protobuf:"bytes,3,opt,name=str_id,json=strId,proto3" json:"str_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -70,7 +67,7 @@ func (m *Peer) Reset()         { *m = Peer{} }
 func (m *Peer) String() string { return proto.CompactTextString(m) }
 func (*Peer) ProtoMessage()    {}
 func (*Peer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_peers_ad714e189330b159, []int{0}
+	return fileDescriptor_peers_5039c8940357dcd7, []int{0}
 }
 func (m *Peer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Peer.Unmarshal(m, b)
@@ -112,15 +109,11 @@ func (m *Peer) GetStrId() *wrappers.StringValue {
 }
 
 // Out peer with access hash
-// type Peer Type
-// id Peer Id
-// accessHash Peer access hash
-// strId String id
 type OutPeer struct {
-	Type                 PeerType              `protobuf:"varint,1,opt,name=type,enum=dialog.PeerType" json:"type,omitempty"`
-	Id                   int32                 `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	AccessHash           int64                 `protobuf:"varint,3,opt,name=access_hash,json=accessHash" json:"access_hash,omitempty"`
-	StrId                *wrappers.StringValue `protobuf:"bytes,4,opt,name=str_id,json=strId" json:"str_id,omitempty"`
+	Type                 PeerType              `protobuf:"varint,1,opt,name=type,proto3,enum=dialog.PeerType" json:"type,omitempty"`
+	Id                   int32                 `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
+	AccessHash           int64                 `protobuf:"varint,3,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
+	StrId                *wrappers.StringValue `protobuf:"bytes,4,opt,name=str_id,json=strId,proto3" json:"str_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -130,7 +123,7 @@ func (m *OutPeer) Reset()         { *m = OutPeer{} }
 func (m *OutPeer) String() string { return proto.CompactTextString(m) }
 func (*OutPeer) ProtoMessage()    {}
 func (*OutPeer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_peers_ad714e189330b159, []int{1}
+	return fileDescriptor_peers_5039c8940357dcd7, []int{1}
 }
 func (m *OutPeer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutPeer.Unmarshal(m, b)
@@ -179,11 +172,9 @@ func (m *OutPeer) GetStrId() *wrappers.StringValue {
 }
 
 // User's out peer
-// uid User's id
-// accessHash User's access hash
 type UserOutPeer struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash" json:"access_hash,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -193,7 +184,7 @@ func (m *UserOutPeer) Reset()         { *m = UserOutPeer{} }
 func (m *UserOutPeer) String() string { return proto.CompactTextString(m) }
 func (*UserOutPeer) ProtoMessage()    {}
 func (*UserOutPeer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_peers_ad714e189330b159, []int{2}
+	return fileDescriptor_peers_5039c8940357dcd7, []int{2}
 }
 func (m *UserOutPeer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UserOutPeer.Unmarshal(m, b)
@@ -228,11 +219,9 @@ func (m *UserOutPeer) GetAccessHash() int64 {
 }
 
 // Group's out peer
-// groupId Group's Id
-// accessHash Group's access hash
 type GroupOutPeer struct {
-	GroupId              int32    `protobuf:"varint,1,opt,name=group_id,json=groupId" json:"group_id,omitempty"`
-	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash" json:"access_hash,omitempty"`
+	GroupId              int32    `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -242,7 +231,7 @@ func (m *GroupOutPeer) Reset()         { *m = GroupOutPeer{} }
 func (m *GroupOutPeer) String() string { return proto.CompactTextString(m) }
 func (*GroupOutPeer) ProtoMessage()    {}
 func (*GroupOutPeer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_peers_ad714e189330b159, []int{3}
+	return fileDescriptor_peers_5039c8940357dcd7, []int{3}
 }
 func (m *GroupOutPeer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GroupOutPeer.Unmarshal(m, b)
@@ -284,9 +273,9 @@ func init() {
 	proto.RegisterEnum("dialog.PeerType", PeerType_name, PeerType_value)
 }
 
-func init() { proto.RegisterFile("peers.proto", fileDescriptor_peers_ad714e189330b159) }
+func init() { proto.RegisterFile("peers.proto", fileDescriptor_peers_5039c8940357dcd7) }
 
-var fileDescriptor_peers_ad714e189330b159 = []byte{
+var fileDescriptor_peers_5039c8940357dcd7 = []byte{
 	// 432 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x91, 0xd1, 0x6a, 0xdb, 0x30,
 	0x18, 0x85, 0x67, 0x27, 0x4d, 0xb2, 0x3f, 0x59, 0xf1, 0x44, 0x37, 0xd2, 0xd2, 0x6e, 0x21, 0x57,

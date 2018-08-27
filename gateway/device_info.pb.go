@@ -58,13 +58,15 @@ func (x PlatformType) String() string {
 	return proto.EnumName(PlatformType_name, int32(x))
 }
 func (PlatformType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_device_info_65d3de86c760987b, []int{0}
+	return fileDescriptor_device_info_3c2541cc36fecf04, []int{0}
 }
 
 // Notifying about device information
 type RequestNotifyAboutDeviceInfo struct {
-	PreferredLanguages   []string              `protobuf:"bytes,1,rep,name=preferred_languages,json=preferredLanguages" json:"preferred_languages,omitempty"`
-	TimeZone             *wrappers.StringValue `protobuf:"bytes,2,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
+	// * First language from this array will be used for some notifications from server *
+	PreferredLanguages []string `protobuf:"bytes,1,rep,name=preferred_languages,json=preferredLanguages,proto3" json:"preferred_languages,omitempty"`
+	// * Your timezone *
+	TimeZone             *wrappers.StringValue `protobuf:"bytes,2,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -74,7 +76,7 @@ func (m *RequestNotifyAboutDeviceInfo) Reset()         { *m = RequestNotifyAbout
 func (m *RequestNotifyAboutDeviceInfo) String() string { return proto.CompactTextString(m) }
 func (*RequestNotifyAboutDeviceInfo) ProtoMessage()    {}
 func (*RequestNotifyAboutDeviceInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_info_65d3de86c760987b, []int{0}
+	return fileDescriptor_device_info_3c2541cc36fecf04, []int{0}
 }
 func (m *RequestNotifyAboutDeviceInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestNotifyAboutDeviceInfo.Unmarshal(m, b)
@@ -109,21 +111,21 @@ func (m *RequestNotifyAboutDeviceInfo) GetTimeZone() *wrappers.StringValue {
 }
 
 // Generic client info, containing information about platform type, version, sdk etc
-// platform The platform enum. Can be either Android, Web or iOS
-// deviceName For android: vendor and model; For iOS: model; For Web: platform and user agent
-// appName Optional application name
-// appVersion Application version
-// sdkVersion Optional SDK version
-// preferredLanguages Optional ISO-639 language code and ISO-3166 country code: ru-RU
-// timeZone Optional TimeZone id
 type ClientInfo struct {
-	Platform             PlatformType          `protobuf:"varint,1,opt,name=platform,enum=dialog.PlatformType" json:"platform,omitempty"`
-	DeviceName           string                `protobuf:"bytes,2,opt,name=device_name,json=deviceName" json:"device_name,omitempty"`
-	AppName              string                `protobuf:"bytes,3,opt,name=app_name,json=appName" json:"app_name,omitempty"`
-	AppVersion           *wrappers.StringValue `protobuf:"bytes,4,opt,name=app_version,json=appVersion" json:"app_version,omitempty"`
-	SdkVersion           *wrappers.StringValue `protobuf:"bytes,5,opt,name=sdk_version,json=sdkVersion" json:"sdk_version,omitempty"`
-	PreferredLanguages   []string              `protobuf:"bytes,6,rep,name=preferred_languages,json=preferredLanguages" json:"preferred_languages,omitempty"`
-	TimeZone             *wrappers.StringValue `protobuf:"bytes,7,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
+	// / The platform enum. Can be either Android, Web or iOS
+	Platform PlatformType `protobuf:"varint,1,opt,name=platform,proto3,enum=dialog.PlatformType" json:"platform,omitempty"`
+	// / For android: vendor and model; For iOS: model; For Web: platform and user agent
+	DeviceName string `protobuf:"bytes,2,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
+	// / Optional application name
+	AppName string `protobuf:"bytes,3,opt,name=app_name,json=appName,proto3" json:"app_name,omitempty"`
+	// / Application version
+	AppVersion *wrappers.StringValue `protobuf:"bytes,4,opt,name=app_version,json=appVersion,proto3" json:"app_version,omitempty"`
+	// / Optional SDK version
+	SdkVersion *wrappers.StringValue `protobuf:"bytes,5,opt,name=sdk_version,json=sdkVersion,proto3" json:"sdk_version,omitempty"`
+	// / Optional ISO-639 language code and ISO-3166 country code: ru-RU
+	PreferredLanguages []string `protobuf:"bytes,6,rep,name=preferred_languages,json=preferredLanguages,proto3" json:"preferred_languages,omitempty"`
+	// / Optional TimeZone id
+	TimeZone             *wrappers.StringValue `protobuf:"bytes,7,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -133,7 +135,7 @@ func (m *ClientInfo) Reset()         { *m = ClientInfo{} }
 func (m *ClientInfo) String() string { return proto.CompactTextString(m) }
 func (*ClientInfo) ProtoMessage()    {}
 func (*ClientInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_info_65d3de86c760987b, []int{1}
+	return fileDescriptor_device_info_3c2541cc36fecf04, []int{1}
 }
 func (m *ClientInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClientInfo.Unmarshal(m, b)
@@ -220,6 +222,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DeviceInfoClient interface {
+	// / Set info about current device
 	NotifyAboutDeviceInfo(ctx context.Context, in *RequestNotifyAboutDeviceInfo, opts ...grpc.CallOption) (*ResponseVoid, error)
 }
 
@@ -242,6 +245,7 @@ func (c *deviceInfoClient) NotifyAboutDeviceInfo(ctx context.Context, in *Reques
 
 // DeviceInfoServer is the server API for DeviceInfo service.
 type DeviceInfoServer interface {
+	// / Set info about current device
 	NotifyAboutDeviceInfo(context.Context, *RequestNotifyAboutDeviceInfo) (*ResponseVoid, error)
 }
 
@@ -280,9 +284,9 @@ var _DeviceInfo_serviceDesc = grpc.ServiceDesc{
 	Metadata: "device_info.proto",
 }
 
-func init() { proto.RegisterFile("device_info.proto", fileDescriptor_device_info_65d3de86c760987b) }
+func init() { proto.RegisterFile("device_info.proto", fileDescriptor_device_info_3c2541cc36fecf04) }
 
-var fileDescriptor_device_info_65d3de86c760987b = []byte{
+var fileDescriptor_device_info_3c2541cc36fecf04 = []byte{
 	// 558 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x93, 0x4f, 0x8f, 0xd2, 0x40,
 	0x18, 0xc6, 0x2d, 0xac, 0xfc, 0x19, 0xd4, 0x74, 0xbb, 0xec, 0xca, 0x12, 0x62, 0x08, 0xf1, 0x80,

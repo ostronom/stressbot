@@ -27,8 +27,8 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Joining Event Bus
 type RequestJoinEventBus struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	Timeout              int64    `protobuf:"varint,2,opt,name=timeout" json:"timeout,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Timeout              int64    `protobuf:"varint,2,opt,name=timeout,proto3" json:"timeout,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -38,7 +38,7 @@ func (m *RequestJoinEventBus) Reset()         { *m = RequestJoinEventBus{} }
 func (m *RequestJoinEventBus) String() string { return proto.CompactTextString(m) }
 func (*RequestJoinEventBus) ProtoMessage()    {}
 func (*RequestJoinEventBus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_bus_54923dcadc77a630, []int{0}
+	return fileDescriptor_event_bus_63d33c5e2fc54386, []int{0}
 }
 func (m *RequestJoinEventBus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestJoinEventBus.Unmarshal(m, b)
@@ -73,7 +73,7 @@ func (m *RequestJoinEventBus) GetTimeout() int64 {
 }
 
 type ResponseJoinEventBus struct {
-	DeviceId             int64    `protobuf:"varint,1,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
+	DeviceId             int64    `protobuf:"varint,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -83,7 +83,7 @@ func (m *ResponseJoinEventBus) Reset()         { *m = ResponseJoinEventBus{} }
 func (m *ResponseJoinEventBus) String() string { return proto.CompactTextString(m) }
 func (*ResponseJoinEventBus) ProtoMessage()    {}
 func (*ResponseJoinEventBus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_bus_54923dcadc77a630, []int{1}
+	return fileDescriptor_event_bus_63d33c5e2fc54386, []int{1}
 }
 func (m *ResponseJoinEventBus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseJoinEventBus.Unmarshal(m, b)
@@ -112,8 +112,8 @@ func (m *ResponseJoinEventBus) GetDeviceId() int64 {
 
 // Keep Alive Event Bus
 type RequestKeepAliveEventBus struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	Timeout              int64    `protobuf:"varint,2,opt,name=timeout" json:"timeout,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Timeout              int64    `protobuf:"varint,2,opt,name=timeout,proto3" json:"timeout,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -123,7 +123,7 @@ func (m *RequestKeepAliveEventBus) Reset()         { *m = RequestKeepAliveEventB
 func (m *RequestKeepAliveEventBus) String() string { return proto.CompactTextString(m) }
 func (*RequestKeepAliveEventBus) ProtoMessage()    {}
 func (*RequestKeepAliveEventBus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_bus_54923dcadc77a630, []int{2}
+	return fileDescriptor_event_bus_63d33c5e2fc54386, []int{2}
 }
 func (m *RequestKeepAliveEventBus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestKeepAliveEventBus.Unmarshal(m, b)
@@ -159,8 +159,10 @@ func (m *RequestKeepAliveEventBus) GetTimeout() int64 {
 
 // Event Bus Destination
 type RequestPostToEventBus struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	Destinations         []int64  `protobuf:"varint,2,rep,packed,name=destinations" json:"destinations,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// / Destination device ids
+	Destinations []int64 `protobuf:"varint,2,rep,packed,name=destinations,proto3" json:"destinations,omitempty"`
+	// / Message to send
 	Message              []byte   `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -171,7 +173,7 @@ func (m *RequestPostToEventBus) Reset()         { *m = RequestPostToEventBus{} }
 func (m *RequestPostToEventBus) String() string { return proto.CompactTextString(m) }
 func (*RequestPostToEventBus) ProtoMessage()    {}
 func (*RequestPostToEventBus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_bus_54923dcadc77a630, []int{3}
+	return fileDescriptor_event_bus_63d33c5e2fc54386, []int{3}
 }
 func (m *RequestPostToEventBus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestPostToEventBus.Unmarshal(m, b)
@@ -214,10 +216,10 @@ func (m *RequestPostToEventBus) GetMessage() []byte {
 
 // Update about pubsub device connected
 type UpdateEventBusDeviceConnected struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	UserId               int32    `protobuf:"varint,2,opt,name=user_id,json=userId" json:"user_id,omitempty"`
-	DeviceId             int64    `protobuf:"varint,3,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
-	Peer                 *Peer    `protobuf:"bytes,4,opt,name=peer" json:"peer,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId               int32    `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	DeviceId             int64    `protobuf:"varint,3,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+	Peer                 *Peer    `protobuf:"bytes,4,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -227,7 +229,7 @@ func (m *UpdateEventBusDeviceConnected) Reset()         { *m = UpdateEventBusDev
 func (m *UpdateEventBusDeviceConnected) String() string { return proto.CompactTextString(m) }
 func (*UpdateEventBusDeviceConnected) ProtoMessage()    {}
 func (*UpdateEventBusDeviceConnected) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_bus_54923dcadc77a630, []int{4}
+	return fileDescriptor_event_bus_63d33c5e2fc54386, []int{4}
 }
 func (m *UpdateEventBusDeviceConnected) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateEventBusDeviceConnected.Unmarshal(m, b)
@@ -277,10 +279,10 @@ func (m *UpdateEventBusDeviceConnected) GetPeer() *Peer {
 
 // Update about device disconnected
 type UpdateEventBusDeviceDisconnected struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	UserId               int32    `protobuf:"varint,2,opt,name=user_id,json=userId" json:"user_id,omitempty"`
-	DeviceId             int64    `protobuf:"varint,3,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
-	Peer                 *Peer    `protobuf:"bytes,4,opt,name=peer" json:"peer,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId               int32    `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	DeviceId             int64    `protobuf:"varint,3,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+	Peer                 *Peer    `protobuf:"bytes,4,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -290,7 +292,7 @@ func (m *UpdateEventBusDeviceDisconnected) Reset()         { *m = UpdateEventBus
 func (m *UpdateEventBusDeviceDisconnected) String() string { return proto.CompactTextString(m) }
 func (*UpdateEventBusDeviceDisconnected) ProtoMessage()    {}
 func (*UpdateEventBusDeviceDisconnected) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_bus_54923dcadc77a630, []int{5}
+	return fileDescriptor_event_bus_63d33c5e2fc54386, []int{5}
 }
 func (m *UpdateEventBusDeviceDisconnected) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateEventBusDeviceDisconnected.Unmarshal(m, b)
@@ -340,9 +342,9 @@ func (m *UpdateEventBusDeviceDisconnected) GetPeer() *Peer {
 
 // Event Bus Message
 type UpdateEventBusMessage struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	SenderId             int32    `protobuf:"varint,2,opt,name=sender_id,json=senderId" json:"sender_id,omitempty"`
-	SenderDeviceId       int64    `protobuf:"varint,3,opt,name=sender_device_id,json=senderDeviceId" json:"sender_device_id,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	SenderId             int32    `protobuf:"varint,2,opt,name=sender_id,json=senderId,proto3" json:"sender_id,omitempty"`
+	SenderDeviceId       int64    `protobuf:"varint,3,opt,name=sender_device_id,json=senderDeviceId,proto3" json:"sender_device_id,omitempty"`
 	Message              []byte   `protobuf:"bytes,4,opt,name=message,proto3" json:"message,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -353,7 +355,7 @@ func (m *UpdateEventBusMessage) Reset()         { *m = UpdateEventBusMessage{} }
 func (m *UpdateEventBusMessage) String() string { return proto.CompactTextString(m) }
 func (*UpdateEventBusMessage) ProtoMessage()    {}
 func (*UpdateEventBusMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_bus_54923dcadc77a630, []int{6}
+	return fileDescriptor_event_bus_63d33c5e2fc54386, []int{6}
 }
 func (m *UpdateEventBusMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateEventBusMessage.Unmarshal(m, b)
@@ -403,7 +405,7 @@ func (m *UpdateEventBusMessage) GetMessage() []byte {
 
 // Event Bus dispose
 type UpdateEventBusDisposed struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -413,7 +415,7 @@ func (m *UpdateEventBusDisposed) Reset()         { *m = UpdateEventBusDisposed{}
 func (m *UpdateEventBusDisposed) String() string { return proto.CompactTextString(m) }
 func (*UpdateEventBusDisposed) ProtoMessage()    {}
 func (*UpdateEventBusDisposed) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_bus_54923dcadc77a630, []int{7}
+	return fileDescriptor_event_bus_63d33c5e2fc54386, []int{7}
 }
 func (m *UpdateEventBusDisposed) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateEventBusDisposed.Unmarshal(m, b)
@@ -589,9 +591,9 @@ var _EventBus_serviceDesc = grpc.ServiceDesc{
 	Metadata: "event_bus.proto",
 }
 
-func init() { proto.RegisterFile("event_bus.proto", fileDescriptor_event_bus_54923dcadc77a630) }
+func init() { proto.RegisterFile("event_bus.proto", fileDescriptor_event_bus_63d33c5e2fc54386) }
 
-var fileDescriptor_event_bus_54923dcadc77a630 = []byte{
+var fileDescriptor_event_bus_63d33c5e2fc54386 = []byte{
 	// 611 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x55, 0xcd, 0x6e, 0xd3, 0x4c,
 	0x14, 0xd5, 0x24, 0xfd, 0xf2, 0x73, 0x9b, 0xaf, 0x50, 0xf7, 0x07, 0x37, 0xb4, 0xc8, 0x72, 0x45,

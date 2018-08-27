@@ -22,9 +22,9 @@ import (
 )
 
 func CreateBot(phone int64, conn *grpc.ClientConn) (*Bot, error) {
-	auth := pb.NewAuthenticationClient(conn)
+	reg := pb.NewRegistrationClient(conn)
 
-	res, err := auth.RegisterDevice(context.Background(), &pb.RequestRegisterDevice{
+	res, err := reg.RegisterDevice(context.Background(), &pb.RequestRegisterDevice{
 		AppId:    125,
 		AppTitle: "blabla",
 	})
@@ -35,6 +35,8 @@ func CreateBot(phone int64, conn *grpc.ClientConn) (*Bot, error) {
 	log.Printf("Register response: %d, %s", res.GetAuthId(), res.GetToken())
 
 	ctx := metadata.AppendToOutgoingContext(context.Background(), "x-auth-ticket", res.GetToken())
+
+	auth := pb.NewAuthenticationClient(conn)
 
 	resAuth, errAuth := auth.StartPhoneAuth(ctx, &pb.RequestStartPhoneAuth{
 		PhoneNumber: phone,
@@ -431,13 +433,9 @@ func (bot *Bot) seqUpdatesReceive(seqUpdates *pb.SequenceAndUpdates_SeqUpdatesCl
 			continue
 		}
 
-		if supd.UpdateHeader == 55 {
-			message := &pb.UpdateMessage{}
+		if supd.GetUpdateMessage() != nil {
 
-			if err := message.XXX_Unmarshal(supd.Update); err != nil {
-				log.Errorf("Error while parse update message: %v", err)
-				continue
-			}
+			message := supd.GetUpdateMessage()
 			log.Debugf("Receive UpdateMessage: %d, %d, %d", message.Peer.Id, message.SenderUid, message.Date)
 
 			bot.lock.Lock()

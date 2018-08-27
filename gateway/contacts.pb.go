@@ -27,11 +27,11 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Phone for import
-// phoneNumber phone number for import in international format
-// name optional name for contact
 type PhoneToImport struct {
-	PhoneNumber          int64                 `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber" json:"phone_number,omitempty"`
-	Name                 *wrappers.StringValue `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// / phone number for import in international format
+	PhoneNumber int64 `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	// / optional name for contact
+	Name                 *wrappers.StringValue `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -41,7 +41,7 @@ func (m *PhoneToImport) Reset()         { *m = PhoneToImport{} }
 func (m *PhoneToImport) String() string { return proto.CompactTextString(m) }
 func (*PhoneToImport) ProtoMessage()    {}
 func (*PhoneToImport) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{0}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{0}
 }
 func (m *PhoneToImport) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PhoneToImport.Unmarshal(m, b)
@@ -76,11 +76,11 @@ func (m *PhoneToImport) GetName() *wrappers.StringValue {
 }
 
 // Email for import
-// email email for importing
-// name optional name for contact
 type EmailToImport struct {
-	Email                string                `protobuf:"bytes,1,opt,name=email" json:"email,omitempty"`
-	Name                 *wrappers.StringValue `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	// / email for importing
+	Email string `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	// / optional name for contact
+	Name                 *wrappers.StringValue `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -90,7 +90,7 @@ func (m *EmailToImport) Reset()         { *m = EmailToImport{} }
 func (m *EmailToImport) String() string { return proto.CompactTextString(m) }
 func (*EmailToImport) ProtoMessage()    {}
 func (*EmailToImport) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{1}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{1}
 }
 func (m *EmailToImport) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EmailToImport.Unmarshal(m, b)
@@ -127,9 +127,10 @@ func (m *EmailToImport) GetName() *wrappers.StringValue {
 // Importing phones and emails for building contact list
 // Maximum amount of items for import per method call equals to 100.
 type RequestImportContacts struct {
-	Phones               []*PhoneToImport     `protobuf:"bytes,1,rep,name=phones" json:"phones,omitempty"`
-	Emails               []*EmailToImport     `protobuf:"bytes,2,rep,name=emails" json:"emails,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,3,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Phones []*PhoneToImport `protobuf:"bytes,1,rep,name=phones,proto3" json:"phones,omitempty"`
+	Emails []*EmailToImport `protobuf:"bytes,2,rep,name=emails,proto3" json:"emails,omitempty"`
+	// / Optimizations drops some info from response to decrease traffic and latency
+	Optimizations        []UpdateOptimization `protobuf:"varint,3,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -139,7 +140,7 @@ func (m *RequestImportContacts) Reset()         { *m = RequestImportContacts{} }
 func (m *RequestImportContacts) String() string { return proto.CompactTextString(m) }
 func (*RequestImportContacts) ProtoMessage()    {}
 func (*RequestImportContacts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{2}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{2}
 }
 func (m *RequestImportContacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestImportContacts.Unmarshal(m, b)
@@ -181,10 +182,13 @@ func (m *RequestImportContacts) GetOptimizations() []UpdateOptimization {
 }
 
 type ResponseImportContacts struct {
-	Users                []*User        `protobuf:"bytes,1,rep,name=users" json:"users,omitempty"`
-	Seq                  int32          `protobuf:"varint,2,opt,name=seq" json:"seq,omitempty"`
-	State                []byte         `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
-	UserPeers            []*UserOutPeer `protobuf:"bytes,4,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
+	// / Registered contacts
+	Users []*User `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	Seq   int32   `protobuf:"varint,2,opt,name=seq,proto3" json:"seq,omitempty"`
+	// / Server state related to current client, used by server only
+	State []byte `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
+	// / Optimizations drops some info from response to decrease traffic and latency
+	UserPeers            []*UserOutPeer `protobuf:"bytes,4,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -194,7 +198,7 @@ func (m *ResponseImportContacts) Reset()         { *m = ResponseImportContacts{}
 func (m *ResponseImportContacts) String() string { return proto.CompactTextString(m) }
 func (*ResponseImportContacts) ProtoMessage()    {}
 func (*ResponseImportContacts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{3}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{3}
 }
 func (m *ResponseImportContacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseImportContacts.Unmarshal(m, b)
@@ -246,8 +250,8 @@ func (m *ResponseImportContacts) GetUserPeers() []*UserOutPeer {
 // Import evaluated lazily, response does not contain any info
 // Maximum amount of items for import per method call equals to 100.
 type RequestDeferredImportContacts struct {
-	Phones               []*PhoneToImport `protobuf:"bytes,1,rep,name=phones" json:"phones,omitempty"`
-	Emails               []*EmailToImport `protobuf:"bytes,2,rep,name=emails" json:"emails,omitempty"`
+	Phones               []*PhoneToImport `protobuf:"bytes,1,rep,name=phones,proto3" json:"phones,omitempty"`
+	Emails               []*EmailToImport `protobuf:"bytes,2,rep,name=emails,proto3" json:"emails,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -257,7 +261,7 @@ func (m *RequestDeferredImportContacts) Reset()         { *m = RequestDeferredIm
 func (m *RequestDeferredImportContacts) String() string { return proto.CompactTextString(m) }
 func (*RequestDeferredImportContacts) ProtoMessage()    {}
 func (*RequestDeferredImportContacts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{4}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{4}
 }
 func (m *RequestDeferredImportContacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestDeferredImportContacts.Unmarshal(m, b)
@@ -292,7 +296,7 @@ func (m *RequestDeferredImportContacts) GetEmails() []*EmailToImport {
 }
 
 type ResponseDeferredImportContacts struct {
-	TaskId               string   `protobuf:"bytes,1,opt,name=task_id,json=taskId" json:"task_id,omitempty"`
+	TaskId               string   `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -302,7 +306,7 @@ func (m *ResponseDeferredImportContacts) Reset()         { *m = ResponseDeferred
 func (m *ResponseDeferredImportContacts) String() string { return proto.CompactTextString(m) }
 func (*ResponseDeferredImportContacts) ProtoMessage()    {}
 func (*ResponseDeferredImportContacts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{5}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{5}
 }
 func (m *ResponseDeferredImportContacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseDeferredImportContacts.Unmarshal(m, b)
@@ -334,8 +338,8 @@ func (m *ResponseDeferredImportContacts) GetTaskId() string {
 // order may be passed in contactsHash parameter.
 // If the contact list was not changed, isNotChanged will be true.
 type RequestGetContacts struct {
-	ContactsHash         string               `protobuf:"bytes,1,opt,name=contacts_hash,json=contactsHash" json:"contacts_hash,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	ContactsHash         string               `protobuf:"bytes,1,opt,name=contacts_hash,json=contactsHash,proto3" json:"contacts_hash,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -345,7 +349,7 @@ func (m *RequestGetContacts) Reset()         { *m = RequestGetContacts{} }
 func (m *RequestGetContacts) String() string { return proto.CompactTextString(m) }
 func (*RequestGetContacts) ProtoMessage()    {}
 func (*RequestGetContacts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{6}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{6}
 }
 func (m *RequestGetContacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetContacts.Unmarshal(m, b)
@@ -380,9 +384,9 @@ func (m *RequestGetContacts) GetOptimizations() []UpdateOptimization {
 }
 
 type ResponseGetContacts struct {
-	Users                []*User        `protobuf:"bytes,1,rep,name=users" json:"users,omitempty"`
-	IsNotChanged         bool           `protobuf:"varint,2,opt,name=is_not_changed,json=isNotChanged" json:"is_not_changed,omitempty"`
-	UserPeers            []*UserOutPeer `protobuf:"bytes,3,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
+	Users                []*User        `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	IsNotChanged         bool           `protobuf:"varint,2,opt,name=is_not_changed,json=isNotChanged,proto3" json:"is_not_changed,omitempty"`
+	UserPeers            []*UserOutPeer `protobuf:"bytes,3,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -392,7 +396,7 @@ func (m *ResponseGetContacts) Reset()         { *m = ResponseGetContacts{} }
 func (m *ResponseGetContacts) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetContacts) ProtoMessage()    {}
 func (*ResponseGetContacts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{7}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{7}
 }
 func (m *ResponseGetContacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetContacts.Unmarshal(m, b)
@@ -435,8 +439,8 @@ func (m *ResponseGetContacts) GetUserPeers() []*UserOutPeer {
 
 // Removing contact from contact list
 type RequestRemoveContact struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash" json:"access_hash,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -446,7 +450,7 @@ func (m *RequestRemoveContact) Reset()         { *m = RequestRemoveContact{} }
 func (m *RequestRemoveContact) String() string { return proto.CompactTextString(m) }
 func (*RequestRemoveContact) ProtoMessage()    {}
 func (*RequestRemoveContact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{8}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{8}
 }
 func (m *RequestRemoveContact) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRemoveContact.Unmarshal(m, b)
@@ -482,8 +486,8 @@ func (m *RequestRemoveContact) GetAccessHash() int64 {
 
 // Adding contact to contact list
 type RequestAddContact struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash" json:"access_hash,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -493,7 +497,7 @@ func (m *RequestAddContact) Reset()         { *m = RequestAddContact{} }
 func (m *RequestAddContact) String() string { return proto.CompactTextString(m) }
 func (*RequestAddContact) ProtoMessage()    {}
 func (*RequestAddContact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{9}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{9}
 }
 func (m *RequestAddContact) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestAddContact.Unmarshal(m, b)
@@ -529,8 +533,8 @@ func (m *RequestAddContact) GetAccessHash() int64 {
 
 // Searching contacts by user's query
 type RequestSearchContacts struct {
-	Request              string               `protobuf:"bytes,1,opt,name=request" json:"request,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Request              string               `protobuf:"bytes,1,opt,name=request,proto3" json:"request,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -540,7 +544,7 @@ func (m *RequestSearchContacts) Reset()         { *m = RequestSearchContacts{} }
 func (m *RequestSearchContacts) String() string { return proto.CompactTextString(m) }
 func (*RequestSearchContacts) ProtoMessage()    {}
 func (*RequestSearchContacts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{10}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{10}
 }
 func (m *RequestSearchContacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSearchContacts.Unmarshal(m, b)
@@ -575,8 +579,8 @@ func (m *RequestSearchContacts) GetOptimizations() []UpdateOptimization {
 }
 
 type ResponseSearchContacts struct {
-	Users                []*User        `protobuf:"bytes,1,rep,name=users" json:"users,omitempty"`
-	UserPeers            []*UserOutPeer `protobuf:"bytes,2,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
+	Users                []*User        `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	UserPeers            []*UserOutPeer `protobuf:"bytes,2,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -586,7 +590,7 @@ func (m *ResponseSearchContacts) Reset()         { *m = ResponseSearchContacts{}
 func (m *ResponseSearchContacts) String() string { return proto.CompactTextString(m) }
 func (*ResponseSearchContacts) ProtoMessage()    {}
 func (*ResponseSearchContacts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{11}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{11}
 }
 func (m *ResponseSearchContacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseSearchContacts.Unmarshal(m, b)
@@ -622,10 +626,10 @@ func (m *ResponseSearchContacts) GetUserPeers() []*UserOutPeer {
 
 // Update about contact registration
 type UpdateContactRegistered struct {
-	Uid                  int32      `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	IsSilent             bool       `protobuf:"varint,2,opt,name=is_silent,json=isSilent" json:"is_silent,omitempty"`
-	Date                 int64      `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
-	Mid                  *UUIDValue `protobuf:"bytes,5,opt,name=mid" json:"mid,omitempty"`
+	Uid                  int32      `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	IsSilent             bool       `protobuf:"varint,2,opt,name=is_silent,json=isSilent,proto3" json:"is_silent,omitempty"`
+	Date                 int64      `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
+	Mid                  *UUIDValue `protobuf:"bytes,5,opt,name=mid,proto3" json:"mid,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -635,7 +639,7 @@ func (m *UpdateContactRegistered) Reset()         { *m = UpdateContactRegistered
 func (m *UpdateContactRegistered) String() string { return proto.CompactTextString(m) }
 func (*UpdateContactRegistered) ProtoMessage()    {}
 func (*UpdateContactRegistered) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{12}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{12}
 }
 func (m *UpdateContactRegistered) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateContactRegistered.Unmarshal(m, b)
@@ -685,8 +689,10 @@ func (m *UpdateContactRegistered) GetMid() *UUIDValue {
 
 // Update about contacts added
 type UpdateContactsAdded struct {
-	Uids                 []int32               `protobuf:"varint,1,rep,packed,name=uids" json:"uids,omitempty"`
-	TaskId               *wrappers.StringValue `protobuf:"bytes,4,opt,name=task_id,json=taskId" json:"task_id,omitempty"`
+	// / User ids of the registered contacts
+	Uids []int32 `protobuf:"varint,1,rep,packed,name=uids,proto3" json:"uids,omitempty"`
+	// / Id of the task that finished
+	TaskId               *wrappers.StringValue `protobuf:"bytes,4,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -696,7 +702,7 @@ func (m *UpdateContactsAdded) Reset()         { *m = UpdateContactsAdded{} }
 func (m *UpdateContactsAdded) String() string { return proto.CompactTextString(m) }
 func (*UpdateContactsAdded) ProtoMessage()    {}
 func (*UpdateContactsAdded) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{13}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{13}
 }
 func (m *UpdateContactsAdded) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateContactsAdded.Unmarshal(m, b)
@@ -730,9 +736,9 @@ func (m *UpdateContactsAdded) GetTaskId() *wrappers.StringValue {
 	return nil
 }
 
-// Update about contacts added
+// Update about suspending task - normally it should be ignored
 type UpdateContactsAddTaskSuspended struct {
-	TaskId               string   `protobuf:"bytes,1,opt,name=task_id,json=taskId" json:"task_id,omitempty"`
+	TaskId               string   `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -742,7 +748,7 @@ func (m *UpdateContactsAddTaskSuspended) Reset()         { *m = UpdateContactsAd
 func (m *UpdateContactsAddTaskSuspended) String() string { return proto.CompactTextString(m) }
 func (*UpdateContactsAddTaskSuspended) ProtoMessage()    {}
 func (*UpdateContactsAddTaskSuspended) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{14}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{14}
 }
 func (m *UpdateContactsAddTaskSuspended) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateContactsAddTaskSuspended.Unmarshal(m, b)
@@ -771,7 +777,7 @@ func (m *UpdateContactsAddTaskSuspended) GetTaskId() string {
 
 // Update about contacts removed
 type UpdateContactsRemoved struct {
-	Uids                 []int32  `protobuf:"varint,1,rep,packed,name=uids" json:"uids,omitempty"`
+	Uids                 []int32  `protobuf:"varint,1,rep,packed,name=uids,proto3" json:"uids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -781,7 +787,7 @@ func (m *UpdateContactsRemoved) Reset()         { *m = UpdateContactsRemoved{} }
 func (m *UpdateContactsRemoved) String() string { return proto.CompactTextString(m) }
 func (*UpdateContactsRemoved) ProtoMessage()    {}
 func (*UpdateContactsRemoved) Descriptor() ([]byte, []int) {
-	return fileDescriptor_contacts_b575a05a5d2790d3, []int{15}
+	return fileDescriptor_contacts_2f83b47c8282a2f0, []int{15}
 }
 func (m *UpdateContactsRemoved) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateContactsRemoved.Unmarshal(m, b)
@@ -839,11 +845,14 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ContactsClient interface {
+	// / Import contacts and wait while query is not finished
 	ImportContacts(ctx context.Context, in *RequestImportContacts, opts ...grpc.CallOption) (*ResponseImportContacts, error)
+	// / Same as above, but without waiting response
 	DeferredImportContacts(ctx context.Context, in *RequestDeferredImportContacts, opts ...grpc.CallOption) (*ResponseDeferredImportContacts, error)
 	GetContacts(ctx context.Context, in *RequestGetContacts, opts ...grpc.CallOption) (*ResponseGetContacts, error)
 	RemoveContact(ctx context.Context, in *RequestRemoveContact, opts ...grpc.CallOption) (*ResponseSeq, error)
 	AddContact(ctx context.Context, in *RequestAddContact, opts ...grpc.CallOption) (*ResponseSeq, error)
+	// / Search contacts by query string
 	SearchContacts(ctx context.Context, in *RequestSearchContacts, opts ...grpc.CallOption) (*ResponseSearchContacts, error)
 }
 
@@ -911,11 +920,14 @@ func (c *contactsClient) SearchContacts(ctx context.Context, in *RequestSearchCo
 
 // ContactsServer is the server API for Contacts service.
 type ContactsServer interface {
+	// / Import contacts and wait while query is not finished
 	ImportContacts(context.Context, *RequestImportContacts) (*ResponseImportContacts, error)
+	// / Same as above, but without waiting response
 	DeferredImportContacts(context.Context, *RequestDeferredImportContacts) (*ResponseDeferredImportContacts, error)
 	GetContacts(context.Context, *RequestGetContacts) (*ResponseGetContacts, error)
 	RemoveContact(context.Context, *RequestRemoveContact) (*ResponseSeq, error)
 	AddContact(context.Context, *RequestAddContact) (*ResponseSeq, error)
+	// / Search contacts by query string
 	SearchContacts(context.Context, *RequestSearchContacts) (*ResponseSearchContacts, error)
 }
 
@@ -1064,9 +1076,9 @@ var _Contacts_serviceDesc = grpc.ServiceDesc{
 	Metadata: "contacts.proto",
 }
 
-func init() { proto.RegisterFile("contacts.proto", fileDescriptor_contacts_b575a05a5d2790d3) }
+func init() { proto.RegisterFile("contacts.proto", fileDescriptor_contacts_2f83b47c8282a2f0) }
 
-var fileDescriptor_contacts_b575a05a5d2790d3 = []byte{
+var fileDescriptor_contacts_2f83b47c8282a2f0 = []byte{
 	// 1043 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x56, 0xcb, 0x6e, 0xdb, 0x46,
 	0x14, 0x05, 0x25, 0xcb, 0x8f, 0x2b, 0xc9, 0xa8, 0x29, 0x3f, 0x64, 0x55, 0x76, 0x14, 0x36, 0x0f,

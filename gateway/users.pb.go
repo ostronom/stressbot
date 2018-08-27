@@ -49,7 +49,7 @@ func (x Sex) String() string {
 	return proto.EnumName(Sex_name, int32(x))
 }
 func (Sex) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{0}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{0}
 }
 
 type ContactType int32
@@ -81,7 +81,7 @@ func (x ContactType) String() string {
 	return proto.EnumName(ContactType_name, int32(x))
 }
 func (ContactType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{1}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{1}
 }
 
 type UserStatusType int32
@@ -113,23 +113,21 @@ func (x UserStatusType) String() string {
 	return proto.EnumName(UserStatusType_name, int32(x))
 }
 func (UserStatusType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{2}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{2}
 }
 
 // Contact information record
-// type Record type
-// typeSpec Value for specification type of contact, for example 'mobile/standalone/office' for phones or 'vk/fb/telegram' for extenrnal networks.
-// stringValue String value of record
-// longValue Long value of record
-// title Title of record
-// subtitle Subtitle of record
 type ContactRecord struct {
-	Type                 ContactType           `protobuf:"varint,1,opt,name=type,enum=dialog.ContactType" json:"type,omitempty"`
-	TypeSpec             *wrappers.StringValue `protobuf:"bytes,6,opt,name=type_spec,json=typeSpec" json:"type_spec,omitempty"`
-	StringValue          *wrappers.StringValue `protobuf:"bytes,2,opt,name=string_value,json=stringValue" json:"string_value,omitempty"`
-	LongValue            *wrappers.Int64Value  `protobuf:"bytes,3,opt,name=long_value,json=longValue" json:"long_value,omitempty"`
-	Title                *wrappers.StringValue `protobuf:"bytes,4,opt,name=title" json:"title,omitempty"`
-	Subtitle             *wrappers.StringValue `protobuf:"bytes,5,opt,name=subtitle" json:"subtitle,omitempty"`
+	Type ContactType `protobuf:"varint,1,opt,name=type,proto3,enum=dialog.ContactType" json:"type,omitempty"`
+	// *
+	// Value for specification type of contact,
+	// for example 'mobile/standalone/office' for phones or 'vk/fb/telegram'
+	// for extenrnal networks.
+	TypeSpec             *wrappers.StringValue `protobuf:"bytes,6,opt,name=type_spec,json=typeSpec,proto3" json:"type_spec,omitempty"`
+	StringValue          *wrappers.StringValue `protobuf:"bytes,2,opt,name=string_value,json=stringValue,proto3" json:"string_value,omitempty"`
+	LongValue            *wrappers.Int64Value  `protobuf:"bytes,3,opt,name=long_value,json=longValue,proto3" json:"long_value,omitempty"`
+	Title                *wrappers.StringValue `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
+	Subtitle             *wrappers.StringValue `protobuf:"bytes,5,opt,name=subtitle,proto3" json:"subtitle,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -139,7 +137,7 @@ func (m *ContactRecord) Reset()         { *m = ContactRecord{} }
 func (m *ContactRecord) String() string { return proto.CompactTextString(m) }
 func (*ContactRecord) ProtoMessage()    {}
 func (*ContactRecord) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{0}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{0}
 }
 func (m *ContactRecord) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ContactRecord.Unmarshal(m, b)
@@ -202,11 +200,10 @@ func (m *ContactRecord) GetSubtitle() *wrappers.StringValue {
 }
 
 // User's status
-// type User's status type
-// text Text supplied by user
 type UserStatus struct {
-	Type                 UserStatusType        `protobuf:"varint,1,opt,name=type,enum=dialog.UserStatusType" json:"type,omitempty"`
-	Text                 *wrappers.StringValue `protobuf:"bytes,2,opt,name=text" json:"text,omitempty"`
+	Type UserStatusType `protobuf:"varint,1,opt,name=type,proto3,enum=dialog.UserStatusType" json:"type,omitempty"`
+	// / Text supplied by user
+	Text                 *wrappers.StringValue `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -216,7 +213,7 @@ func (m *UserStatus) Reset()         { *m = UserStatus{} }
 func (m *UserStatus) String() string { return proto.CompactTextString(m) }
 func (*UserStatus) ProtoMessage()    {}
 func (*UserStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{1}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{1}
 }
 func (m *UserStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UserStatus.Unmarshal(m, b)
@@ -251,29 +248,15 @@ func (m *UserStatus) GetText() *wrappers.StringValue {
 }
 
 // Main user object
-// id uid
-// accessHash user's access hash
-// name user's name
-// localName user's local name
-// nick User's nickname
-// sex optional sex of user
-// avatar avatar of user
-// isBot Is user actually bot. By default is false.
-// ext Extension values
-// about [DEPRECATED] User's about information
-// contactInfo [DEPRECATED] Contact information of user
-// preferredLanguages [DEPRECATED] Preferred user languages
-// timeZone [DEPRECATED] Time Zone of user in TZ format
-// botCommands [DEPRECATED] Available Bot Commands
 type User struct {
-	Id                   int32                 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	AccessHash           int64                 `protobuf:"varint,2,opt,name=access_hash,json=accessHash" json:"access_hash,omitempty"`
-	Name                 string                `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
-	LocalName            *wrappers.StringValue `protobuf:"bytes,4,opt,name=local_name,json=localName" json:"local_name,omitempty"`
-	Nick                 *wrappers.StringValue `protobuf:"bytes,13,opt,name=nick" json:"nick,omitempty"`
-	Sex                  Sex                   `protobuf:"varint,5,opt,name=sex,enum=dialog.Sex" json:"sex,omitempty"`
-	Avatar               *Avatar               `protobuf:"bytes,8,opt,name=avatar" json:"avatar,omitempty"`
-	IsBot                *wrappers.BoolValue   `protobuf:"bytes,11,opt,name=is_bot,json=isBot" json:"is_bot,omitempty"`
+	Id                   int32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	AccessHash           int64                 `protobuf:"varint,2,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
+	Name                 string                `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	LocalName            *wrappers.StringValue `protobuf:"bytes,4,opt,name=local_name,json=localName,proto3" json:"local_name,omitempty"`
+	Nick                 *wrappers.StringValue `protobuf:"bytes,13,opt,name=nick,proto3" json:"nick,omitempty"`
+	Sex                  Sex                   `protobuf:"varint,5,opt,name=sex,proto3,enum=dialog.Sex" json:"sex,omitempty"`
+	Avatar               *Avatar               `protobuf:"bytes,8,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	IsBot                *wrappers.BoolValue   `protobuf:"bytes,11,opt,name=is_bot,json=isBot,proto3" json:"is_bot,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -283,7 +266,7 @@ func (m *User) Reset()         { *m = User{} }
 func (m *User) String() string { return proto.CompactTextString(m) }
 func (*User) ProtoMessage()    {}
 func (*User) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{2}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{2}
 }
 func (m *User) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_User.Unmarshal(m, b)
@@ -359,27 +342,20 @@ func (m *User) GetIsBot() *wrappers.BoolValue {
 	return nil
 }
 
-// Full User representation
-// id User's Id
-// contactInfo User's contact information
-// about User's about information
-// preferredLanguages Preferred user languages
-// timeZone Time Zone of user in TZ format
-// botCommands Available Commands for Bot
-// ext Extension values. NOTE: This values are not related to ext field in User object.
-// isBlocked Is user blocked. Default is false.
-// status User's status
+// Full User representation - deprecated
 type FullUser struct {
-	Id                   int32                 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	ContactInfo          []*ContactRecord      `protobuf:"bytes,2,rep,name=contact_info,json=contactInfo" json:"contact_info,omitempty"`
-	About                *wrappers.StringValue `protobuf:"bytes,3,opt,name=about" json:"about,omitempty"`
-	PreferredLanguages   []string              `protobuf:"bytes,4,rep,name=preferred_languages,json=preferredLanguages" json:"preferred_languages,omitempty"`
-	TimeZone             *wrappers.StringValue `protobuf:"bytes,5,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
-	BotCommands          []*BotCommand         `protobuf:"bytes,6,rep,name=bot_commands,json=botCommands" json:"bot_commands,omitempty"`
-	IsBlocked            *wrappers.BoolValue   `protobuf:"bytes,8,opt,name=is_blocked,json=isBlocked" json:"is_blocked,omitempty"`
-	CustomProfile        string                `protobuf:"bytes,9,opt,name=custom_profile,json=customProfile" json:"custom_profile,omitempty"`
-	IntegrationToken     *wrappers.StringValue `protobuf:"bytes,10,opt,name=integration_token,json=integrationToken" json:"integration_token,omitempty"`
-	Status               *UserStatus           `protobuf:"bytes,11,opt,name=status" json:"status,omitempty"`
+	Id                 int32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	ContactInfo        []*ContactRecord      `protobuf:"bytes,2,rep,name=contact_info,json=contactInfo,proto3" json:"contact_info,omitempty"`
+	About              *wrappers.StringValue `protobuf:"bytes,3,opt,name=about,proto3" json:"about,omitempty"`
+	PreferredLanguages []string              `protobuf:"bytes,4,rep,name=preferred_languages,json=preferredLanguages,proto3" json:"preferred_languages,omitempty"`
+	// / Time Zone of user in TZ format
+	TimeZone    *wrappers.StringValue `protobuf:"bytes,5,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
+	BotCommands []*BotCommand         `protobuf:"bytes,6,rep,name=bot_commands,json=botCommands,proto3" json:"bot_commands,omitempty"`
+	IsBlocked   *wrappers.BoolValue   `protobuf:"bytes,8,opt,name=is_blocked,json=isBlocked,proto3" json:"is_blocked,omitempty"`
+	// / custom user profile info in JSON format
+	CustomProfile        string                `protobuf:"bytes,9,opt,name=custom_profile,json=customProfile,proto3" json:"custom_profile,omitempty"`
+	IntegrationToken     *wrappers.StringValue `protobuf:"bytes,10,opt,name=integration_token,json=integrationToken,proto3" json:"integration_token,omitempty"`
+	Status               *UserStatus           `protobuf:"bytes,11,opt,name=status,proto3" json:"status,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -389,7 +365,7 @@ func (m *FullUser) Reset()         { *m = FullUser{} }
 func (m *FullUser) String() string { return proto.CompactTextString(m) }
 func (*FullUser) ProtoMessage()    {}
 func (*FullUser) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{3}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{3}
 }
 func (m *FullUser) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FullUser.Unmarshal(m, b)
@@ -480,13 +456,13 @@ func (m *FullUser) GetStatus() *UserStatus {
 }
 
 // Available bot commands
-// slashCommand Slash command name (wihtout slash)
-// description Slash command description
-// locKey Optional Localization Key for i18n
 type BotCommand struct {
-	SlashCommand         string                `protobuf:"bytes,1,opt,name=slash_command,json=slashCommand" json:"slash_command,omitempty"`
-	Description          string                `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	LocKey               *wrappers.StringValue `protobuf:"bytes,3,opt,name=loc_key,json=locKey" json:"loc_key,omitempty"`
+	// / Slash command name (wihtout slash)
+	SlashCommand string `protobuf:"bytes,1,opt,name=slash_command,json=slashCommand,proto3" json:"slash_command,omitempty"`
+	// / Slash command description
+	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	// / Optional Localization Key for i18n
+	LocKey               *wrappers.StringValue `protobuf:"bytes,3,opt,name=loc_key,json=locKey,proto3" json:"loc_key,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -496,7 +472,7 @@ func (m *BotCommand) Reset()         { *m = BotCommand{} }
 func (m *BotCommand) String() string { return proto.CompactTextString(m) }
 func (*BotCommand) ProtoMessage()    {}
 func (*BotCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{4}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{4}
 }
 func (m *BotCommand) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BotCommand.Unmarshal(m, b)
@@ -539,9 +515,9 @@ func (m *BotCommand) GetLocKey() *wrappers.StringValue {
 
 // Renaming of user's visible name
 type RequestEditUserLocalName struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash" json:"access_hash,omitempty"`
-	Name                 string   `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	AccessHash           int64    `protobuf:"varint,2,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
+	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -551,7 +527,7 @@ func (m *RequestEditUserLocalName) Reset()         { *m = RequestEditUserLocalNa
 func (m *RequestEditUserLocalName) String() string { return proto.CompactTextString(m) }
 func (*RequestEditUserLocalName) ProtoMessage()    {}
 func (*RequestEditUserLocalName) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{5}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{5}
 }
 func (m *RequestEditUserLocalName) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestEditUserLocalName.Unmarshal(m, b)
@@ -594,8 +570,8 @@ func (m *RequestEditUserLocalName) GetName() string {
 
 // Update about avatar changed
 type UpdateUserAvatarChanged struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	Avatar               *Avatar  `protobuf:"bytes,2,opt,name=avatar" json:"avatar,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Avatar               *Avatar  `protobuf:"bytes,2,opt,name=avatar,proto3" json:"avatar,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -605,7 +581,7 @@ func (m *UpdateUserAvatarChanged) Reset()         { *m = UpdateUserAvatarChanged
 func (m *UpdateUserAvatarChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserAvatarChanged) ProtoMessage()    {}
 func (*UpdateUserAvatarChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{6}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{6}
 }
 func (m *UpdateUserAvatarChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserAvatarChanged.Unmarshal(m, b)
@@ -641,8 +617,8 @@ func (m *UpdateUserAvatarChanged) GetAvatar() *Avatar {
 
 // Update about name changed
 type UpdateUserNameChanged struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	Name                 string   `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -652,7 +628,7 @@ func (m *UpdateUserNameChanged) Reset()         { *m = UpdateUserNameChanged{} }
 func (m *UpdateUserNameChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserNameChanged) ProtoMessage()    {}
 func (*UpdateUserNameChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{7}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{7}
 }
 func (m *UpdateUserNameChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserNameChanged.Unmarshal(m, b)
@@ -688,8 +664,8 @@ func (m *UpdateUserNameChanged) GetName() string {
 
 // Update about local name changed
 type UpdateUserLocalNameChanged struct {
-	Uid                  int32                 `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	LocalName            *wrappers.StringValue `protobuf:"bytes,2,opt,name=local_name,json=localName" json:"local_name,omitempty"`
+	Uid                  int32                 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	LocalName            *wrappers.StringValue `protobuf:"bytes,2,opt,name=local_name,json=localName,proto3" json:"local_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -699,7 +675,7 @@ func (m *UpdateUserLocalNameChanged) Reset()         { *m = UpdateUserLocalNameC
 func (m *UpdateUserLocalNameChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserLocalNameChanged) ProtoMessage()    {}
 func (*UpdateUserLocalNameChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{8}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{8}
 }
 func (m *UpdateUserLocalNameChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserLocalNameChanged.Unmarshal(m, b)
@@ -735,8 +711,8 @@ func (m *UpdateUserLocalNameChanged) GetLocalName() *wrappers.StringValue {
 
 // Update about contact information change
 type UpdateUserContactsChanged struct {
-	Uid                  int32            `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	ContactRecords       []*ContactRecord `protobuf:"bytes,4,rep,name=contact_records,json=contactRecords" json:"contact_records,omitempty"`
+	Uid                  int32            `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	ContactRecords       []*ContactRecord `protobuf:"bytes,4,rep,name=contact_records,json=contactRecords,proto3" json:"contact_records,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -746,7 +722,7 @@ func (m *UpdateUserContactsChanged) Reset()         { *m = UpdateUserContactsCha
 func (m *UpdateUserContactsChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserContactsChanged) ProtoMessage()    {}
 func (*UpdateUserContactsChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{9}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{9}
 }
 func (m *UpdateUserContactsChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserContactsChanged.Unmarshal(m, b)
@@ -782,8 +758,8 @@ func (m *UpdateUserContactsChanged) GetContactRecords() []*ContactRecord {
 
 // Update about nick changed
 type UpdateUserNickChanged struct {
-	Uid                  int32                 `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	Nickname             *wrappers.StringValue `protobuf:"bytes,2,opt,name=nickname" json:"nickname,omitempty"`
+	Uid                  int32                 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Nickname             *wrappers.StringValue `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -793,7 +769,7 @@ func (m *UpdateUserNickChanged) Reset()         { *m = UpdateUserNickChanged{} }
 func (m *UpdateUserNickChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserNickChanged) ProtoMessage()    {}
 func (*UpdateUserNickChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{10}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{10}
 }
 func (m *UpdateUserNickChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserNickChanged.Unmarshal(m, b)
@@ -829,8 +805,8 @@ func (m *UpdateUserNickChanged) GetNickname() *wrappers.StringValue {
 
 // Update about user's about changed
 type UpdateUserAboutChanged struct {
-	Uid                  int32                 `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	About                *wrappers.StringValue `protobuf:"bytes,2,opt,name=about" json:"about,omitempty"`
+	Uid                  int32                 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	About                *wrappers.StringValue `protobuf:"bytes,2,opt,name=about,proto3" json:"about,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -840,7 +816,7 @@ func (m *UpdateUserAboutChanged) Reset()         { *m = UpdateUserAboutChanged{}
 func (m *UpdateUserAboutChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserAboutChanged) ProtoMessage()    {}
 func (*UpdateUserAboutChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{11}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{11}
 }
 func (m *UpdateUserAboutChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserAboutChanged.Unmarshal(m, b)
@@ -876,8 +852,8 @@ func (m *UpdateUserAboutChanged) GetAbout() *wrappers.StringValue {
 
 // Update about user's preferred languages
 type UpdateUserPreferredLanguagesChanged struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	PreferredLanguages   []string `protobuf:"bytes,2,rep,name=preferred_languages,json=preferredLanguages" json:"preferred_languages,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	PreferredLanguages   []string `protobuf:"bytes,2,rep,name=preferred_languages,json=preferredLanguages,proto3" json:"preferred_languages,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -887,7 +863,7 @@ func (m *UpdateUserPreferredLanguagesChanged) Reset()         { *m = UpdateUserP
 func (m *UpdateUserPreferredLanguagesChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserPreferredLanguagesChanged) ProtoMessage()    {}
 func (*UpdateUserPreferredLanguagesChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{12}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{12}
 }
 func (m *UpdateUserPreferredLanguagesChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserPreferredLanguagesChanged.Unmarshal(m, b)
@@ -923,8 +899,8 @@ func (m *UpdateUserPreferredLanguagesChanged) GetPreferredLanguages() []string {
 
 // User TimeZone changed
 type UpdateUserTimeZoneChanged struct {
-	Uid                  int32                 `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	TimeZone             *wrappers.StringValue `protobuf:"bytes,2,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
+	Uid                  int32                 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	TimeZone             *wrappers.StringValue `protobuf:"bytes,2,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -934,7 +910,7 @@ func (m *UpdateUserTimeZoneChanged) Reset()         { *m = UpdateUserTimeZoneCha
 func (m *UpdateUserTimeZoneChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserTimeZoneChanged) ProtoMessage()    {}
 func (*UpdateUserTimeZoneChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{13}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{13}
 }
 func (m *UpdateUserTimeZoneChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserTimeZoneChanged.Unmarshal(m, b)
@@ -970,8 +946,8 @@ func (m *UpdateUserTimeZoneChanged) GetTimeZone() *wrappers.StringValue {
 
 // Update about bot commands changed
 type UpdateUserBotCommandsChanged struct {
-	Uid                  int32         `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	Commands             []*BotCommand `protobuf:"bytes,2,rep,name=commands" json:"commands,omitempty"`
+	Uid                  int32         `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Commands             []*BotCommand `protobuf:"bytes,2,rep,name=commands,proto3" json:"commands,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -981,7 +957,7 @@ func (m *UpdateUserBotCommandsChanged) Reset()         { *m = UpdateUserBotComma
 func (m *UpdateUserBotCommandsChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserBotCommandsChanged) ProtoMessage()    {}
 func (*UpdateUserBotCommandsChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{14}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{14}
 }
 func (m *UpdateUserBotCommandsChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserBotCommandsChanged.Unmarshal(m, b)
@@ -1017,8 +993,8 @@ func (m *UpdateUserBotCommandsChanged) GetCommands() []*BotCommand {
 
 // Update about user sex changed
 type UpdateUserSexChanged struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	Sex                  Sex      `protobuf:"varint,2,opt,name=sex,enum=dialog.Sex" json:"sex,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Sex                  Sex      `protobuf:"varint,2,opt,name=sex,proto3,enum=dialog.Sex" json:"sex,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1028,7 +1004,7 @@ func (m *UpdateUserSexChanged) Reset()         { *m = UpdateUserSexChanged{} }
 func (m *UpdateUserSexChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserSexChanged) ProtoMessage()    {}
 func (*UpdateUserSexChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{15}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{15}
 }
 func (m *UpdateUserSexChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserSexChanged.Unmarshal(m, b)
@@ -1064,8 +1040,9 @@ func (m *UpdateUserSexChanged) GetSex() Sex {
 
 // Update about user custom profile changed
 type UpdateUserCustomProfileChanged struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	CustomProfile        string   `protobuf:"bytes,2,opt,name=custom_profile,json=customProfile" json:"custom_profile,omitempty"`
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	// / custom user profile info in JSON format
+	CustomProfile        string   `protobuf:"bytes,2,opt,name=custom_profile,json=customProfile,proto3" json:"custom_profile,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1075,7 +1052,7 @@ func (m *UpdateUserCustomProfileChanged) Reset()         { *m = UpdateUserCustom
 func (m *UpdateUserCustomProfileChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserCustomProfileChanged) ProtoMessage()    {}
 func (*UpdateUserCustomProfileChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{16}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{16}
 }
 func (m *UpdateUserCustomProfileChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserCustomProfileChanged.Unmarshal(m, b)
@@ -1111,8 +1088,8 @@ func (m *UpdateUserCustomProfileChanged) GetCustomProfile() string {
 
 // Update about user status change
 type UpdateUserStatusChanged struct {
-	Uid                  int32       `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	Status               *UserStatus `protobuf:"bytes,2,opt,name=status" json:"status,omitempty"`
+	Uid                  int32       `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Status               *UserStatus `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
 	XXX_unrecognized     []byte      `json:"-"`
 	XXX_sizecache        int32       `json:"-"`
@@ -1122,7 +1099,7 @@ func (m *UpdateUserStatusChanged) Reset()         { *m = UpdateUserStatusChanged
 func (m *UpdateUserStatusChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserStatusChanged) ProtoMessage()    {}
 func (*UpdateUserStatusChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{17}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{17}
 }
 func (m *UpdateUserStatusChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserStatusChanged.Unmarshal(m, b)
@@ -1157,8 +1134,8 @@ func (m *UpdateUserStatusChanged) GetStatus() *UserStatus {
 }
 
 type UpdateUserExtChanged struct {
-	Uid                  int32              `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	Ext                  *RecursiveMapValue `protobuf:"bytes,2,opt,name=ext" json:"ext,omitempty"`
+	Uid                  int32              `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Ext                  *RecursiveMapValue `protobuf:"bytes,2,opt,name=ext,proto3" json:"ext,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -1168,7 +1145,7 @@ func (m *UpdateUserExtChanged) Reset()         { *m = UpdateUserExtChanged{} }
 func (m *UpdateUserExtChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserExtChanged) ProtoMessage()    {}
 func (*UpdateUserExtChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{18}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{18}
 }
 func (m *UpdateUserExtChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserExtChanged.Unmarshal(m, b)
@@ -1203,8 +1180,8 @@ func (m *UpdateUserExtChanged) GetExt() *RecursiveMapValue {
 }
 
 type UpdateUserFullExtChanged struct {
-	Uid                  int32              `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
-	Ext                  *RecursiveMapValue `protobuf:"bytes,2,opt,name=ext" json:"ext,omitempty"`
+	Uid                  int32              `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Ext                  *RecursiveMapValue `protobuf:"bytes,2,opt,name=ext,proto3" json:"ext,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -1214,7 +1191,7 @@ func (m *UpdateUserFullExtChanged) Reset()         { *m = UpdateUserFullExtChang
 func (m *UpdateUserFullExtChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserFullExtChanged) ProtoMessage()    {}
 func (*UpdateUserFullExtChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{19}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{19}
 }
 func (m *UpdateUserFullExtChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserFullExtChanged.Unmarshal(m, b)
@@ -1250,7 +1227,7 @@ func (m *UpdateUserFullExtChanged) GetExt() *RecursiveMapValue {
 
 // Loading Full User information
 type RequestLoadFullUsers struct {
-	UserPeers            []*UserOutPeer `protobuf:"bytes,1,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
+	UserPeers            []*UserOutPeer `protobuf:"bytes,1,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -1260,7 +1237,7 @@ func (m *RequestLoadFullUsers) Reset()         { *m = RequestLoadFullUsers{} }
 func (m *RequestLoadFullUsers) String() string { return proto.CompactTextString(m) }
 func (*RequestLoadFullUsers) ProtoMessage()    {}
 func (*RequestLoadFullUsers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{20}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{20}
 }
 func (m *RequestLoadFullUsers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestLoadFullUsers.Unmarshal(m, b)
@@ -1288,7 +1265,7 @@ func (m *RequestLoadFullUsers) GetUserPeers() []*UserOutPeer {
 }
 
 type ResponseLoadFullUsers struct {
-	FullUsers            []*FullUser `protobuf:"bytes,1,rep,name=full_users,json=fullUsers" json:"full_users,omitempty"`
+	FullUsers            []*FullUser `protobuf:"bytes,1,rep,name=full_users,json=fullUsers,proto3" json:"full_users,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
 	XXX_unrecognized     []byte      `json:"-"`
 	XXX_sizecache        int32       `json:"-"`
@@ -1298,7 +1275,7 @@ func (m *ResponseLoadFullUsers) Reset()         { *m = ResponseLoadFullUsers{} }
 func (m *ResponseLoadFullUsers) String() string { return proto.CompactTextString(m) }
 func (*ResponseLoadFullUsers) ProtoMessage()    {}
 func (*ResponseLoadFullUsers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_users_82ad5913d808759e, []int{21}
+	return fileDescriptor_users_619f712a2aeb2ae5, []int{21}
 }
 func (m *ResponseLoadFullUsers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseLoadFullUsers.Unmarshal(m, b)
@@ -1366,6 +1343,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type UsersClient interface {
 	EditUserLocalName(ctx context.Context, in *RequestEditUserLocalName, opts ...grpc.CallOption) (*ResponseSeq, error)
+	// / Deprecated
 	LoadFullUsers(ctx context.Context, in *RequestLoadFullUsers, opts ...grpc.CallOption) (*ResponseLoadFullUsers, error)
 }
 
@@ -1398,6 +1376,7 @@ func (c *usersClient) LoadFullUsers(ctx context.Context, in *RequestLoadFullUser
 // UsersServer is the server API for Users service.
 type UsersServer interface {
 	EditUserLocalName(context.Context, *RequestEditUserLocalName) (*ResponseSeq, error)
+	// / Deprecated
 	LoadFullUsers(context.Context, *RequestLoadFullUsers) (*ResponseLoadFullUsers, error)
 }
 
@@ -1458,9 +1437,9 @@ var _Users_serviceDesc = grpc.ServiceDesc{
 	Metadata: "users.proto",
 }
 
-func init() { proto.RegisterFile("users.proto", fileDescriptor_users_82ad5913d808759e) }
+func init() { proto.RegisterFile("users.proto", fileDescriptor_users_619f712a2aeb2ae5) }
 
-var fileDescriptor_users_82ad5913d808759e = []byte{
+var fileDescriptor_users_619f712a2aeb2ae5 = []byte{
 	// 1506 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x57, 0xcd, 0x6e, 0xdb, 0xc6,
 	0x13, 0xff, 0x93, 0x92, 0x15, 0x69, 0x64, 0x3b, 0xf2, 0xfa, 0x23, 0xb4, 0xe2, 0x24, 0xfe, 0xb3,

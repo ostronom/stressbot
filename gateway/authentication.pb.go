@@ -49,7 +49,7 @@ func (x PhoneActivationType) String() string {
 	return proto.EnumName(PhoneActivationType_name, int32(x))
 }
 func (PhoneActivationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{0}
+	return fileDescriptor_authentication_69023681e9436a86, []int{0}
 }
 
 type EmailActivationType int32
@@ -78,9 +78,10 @@ func (x EmailActivationType) String() string {
 	return proto.EnumName(EmailActivationType_name, int32(x))
 }
 func (EmailActivationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{1}
+	return fileDescriptor_authentication_69023681e9436a86, []int{1}
 }
 
+// / Holder of session
 type AuthHolder int32
 
 const (
@@ -104,28 +105,34 @@ func (x AuthHolder) String() string {
 	return proto.EnumName(AuthHolder_name, int32(x))
 }
 func (AuthHolder) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{2}
+	return fileDescriptor_authentication_69023681e9436a86, []int{2}
 }
 
 // Start Phone Activation
 type RequestStartPhoneAuth struct {
-	PhoneNumber          int64                 `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber" json:"phone_number,omitempty"`
-	AppId                int32                 `protobuf:"varint,2,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	ApiKey               string                `protobuf:"bytes,3,opt,name=api_key,json=apiKey" json:"api_key,omitempty"`
-	DeviceHash           []byte                `protobuf:"bytes,4,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
-	DeviceTitle          string                `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle" json:"device_title,omitempty"`
-	TimeZone             *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
-	PreferredLanguages   []string              `protobuf:"bytes,7,rep,name=preferred_languages,json=preferredLanguages" json:"preferred_languages,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	PhoneNumber int64 `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	// * Application id, choose it by yourself and hold during authorization process *
+	AppId int32 `protobuf:"varint,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	// * Deprecated field - keep it empty *
+	ApiKey string `protobuf:"bytes,3,opt,name=api_key,json=apiKey,proto3" json:"api_key,omitempty"`
+	// * Deprecated field - keep it empty *
+	DeviceHash []byte `protobuf:"bytes,4,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
+	// * Some title, choose it by yourself and hold during authorization process *
+	DeviceTitle string `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle,proto3" json:"device_title,omitempty"`
+	// * Your timezone *
+	TimeZone *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
+	// * First language from this array will be used for some notifications from server *
+	PreferredLanguages   []string `protobuf:"bytes,7,rep,name=preferred_languages,json=preferredLanguages,proto3" json:"preferred_languages,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *RequestStartPhoneAuth) Reset()         { *m = RequestStartPhoneAuth{} }
 func (m *RequestStartPhoneAuth) String() string { return proto.CompactTextString(m) }
 func (*RequestStartPhoneAuth) ProtoMessage()    {}
 func (*RequestStartPhoneAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{0}
+	return fileDescriptor_authentication_69023681e9436a86, []int{0}
 }
 func (m *RequestStartPhoneAuth) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestStartPhoneAuth.Unmarshal(m, b)
@@ -195,9 +202,11 @@ func (m *RequestStartPhoneAuth) GetPreferredLanguages() []string {
 }
 
 type ResponseStartPhoneAuth struct {
-	TransactionHash      string              `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash" json:"transaction_hash,omitempty"`
-	IsRegistered         bool                `protobuf:"varint,2,opt,name=is_registered,json=isRegistered" json:"is_registered,omitempty"`
-	ActivationType       PhoneActivationType `protobuf:"varint,3,opt,name=activation_type,json=activationType,enum=dialog.PhoneActivationType" json:"activation_type,omitempty"`
+	// * Hash of authorization transaction *
+	TransactionHash string `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash,proto3" json:"transaction_hash,omitempty"`
+	IsRegistered    bool   `protobuf:"varint,2,opt,name=is_registered,json=isRegistered,proto3" json:"is_registered,omitempty"`
+	// * Code or password - call ValidateCode if code *
+	ActivationType       PhoneActivationType `protobuf:"varint,3,opt,name=activation_type,json=activationType,proto3,enum=dialog.PhoneActivationType" json:"activation_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -207,7 +216,7 @@ func (m *ResponseStartPhoneAuth) Reset()         { *m = ResponseStartPhoneAuth{}
 func (m *ResponseStartPhoneAuth) String() string { return proto.CompactTextString(m) }
 func (*ResponseStartPhoneAuth) ProtoMessage()    {}
 func (*ResponseStartPhoneAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{1}
+	return fileDescriptor_authentication_69023681e9436a86, []int{1}
 }
 func (m *ResponseStartPhoneAuth) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseStartPhoneAuth.Unmarshal(m, b)
@@ -250,7 +259,8 @@ func (m *ResponseStartPhoneAuth) GetActivationType() PhoneActivationType {
 
 // Dial phone and dictate auth code
 type RequestSendCodeByPhoneCall struct {
-	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash" json:"transaction_hash,omitempty"`
+	// / Hash from ResponseStartPhoneAuth
+	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash,proto3" json:"transaction_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -260,7 +270,7 @@ func (m *RequestSendCodeByPhoneCall) Reset()         { *m = RequestSendCodeByPho
 func (m *RequestSendCodeByPhoneCall) String() string { return proto.CompactTextString(m) }
 func (*RequestSendCodeByPhoneCall) ProtoMessage()    {}
 func (*RequestSendCodeByPhoneCall) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{2}
+	return fileDescriptor_authentication_69023681e9436a86, []int{2}
 }
 func (m *RequestSendCodeByPhoneCall) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSendCodeByPhoneCall.Unmarshal(m, b)
@@ -289,23 +299,29 @@ func (m *RequestSendCodeByPhoneCall) GetTransactionHash() string {
 
 // Start EMail Activation
 type RequestStartEmailAuth struct {
-	Email                string                `protobuf:"bytes,1,opt,name=email" json:"email,omitempty"`
-	AppId                int32                 `protobuf:"varint,2,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	ApiKey               string                `protobuf:"bytes,3,opt,name=api_key,json=apiKey" json:"api_key,omitempty"`
-	DeviceHash           []byte                `protobuf:"bytes,4,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
-	DeviceTitle          string                `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle" json:"device_title,omitempty"`
-	TimeZone             *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
-	PreferredLanguages   []string              `protobuf:"bytes,7,rep,name=preferred_languages,json=preferredLanguages" json:"preferred_languages,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	Email string `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	// * Application id, choose it by yourself and hold during authorization process *
+	AppId int32 `protobuf:"varint,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	// * Deprecated field - keep it empty *
+	ApiKey string `protobuf:"bytes,3,opt,name=api_key,json=apiKey,proto3" json:"api_key,omitempty"`
+	// * Deprecated field - keep it empty *
+	DeviceHash []byte `protobuf:"bytes,4,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
+	// * Some title, choose it by yourself and hold during authorization process *
+	DeviceTitle string `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle,proto3" json:"device_title,omitempty"`
+	// * Your timezone *
+	TimeZone *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
+	// * First language from this array will be used for some notifications from server *
+	PreferredLanguages   []string `protobuf:"bytes,7,rep,name=preferred_languages,json=preferredLanguages,proto3" json:"preferred_languages,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *RequestStartEmailAuth) Reset()         { *m = RequestStartEmailAuth{} }
 func (m *RequestStartEmailAuth) String() string { return proto.CompactTextString(m) }
 func (*RequestStartEmailAuth) ProtoMessage()    {}
 func (*RequestStartEmailAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{3}
+	return fileDescriptor_authentication_69023681e9436a86, []int{3}
 }
 func (m *RequestStartEmailAuth) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestStartEmailAuth.Unmarshal(m, b)
@@ -375,9 +391,11 @@ func (m *RequestStartEmailAuth) GetPreferredLanguages() []string {
 }
 
 type ResponseStartEmailAuth struct {
-	TransactionHash      string              `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash" json:"transaction_hash,omitempty"`
-	IsRegistered         bool                `protobuf:"varint,2,opt,name=is_registered,json=isRegistered" json:"is_registered,omitempty"`
-	ActivationType       EmailActivationType `protobuf:"varint,3,opt,name=activation_type,json=activationType,enum=dialog.EmailActivationType" json:"activation_type,omitempty"`
+	// * Hash of authorization transaction *
+	TransactionHash string `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash,proto3" json:"transaction_hash,omitempty"`
+	IsRegistered    bool   `protobuf:"varint,2,opt,name=is_registered,json=isRegistered,proto3" json:"is_registered,omitempty"`
+	// * Code or password - call ValidateCode if code *
+	ActivationType       EmailActivationType `protobuf:"varint,3,opt,name=activation_type,json=activationType,proto3,enum=dialog.EmailActivationType" json:"activation_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -387,7 +405,7 @@ func (m *ResponseStartEmailAuth) Reset()         { *m = ResponseStartEmailAuth{}
 func (m *ResponseStartEmailAuth) String() string { return proto.CompactTextString(m) }
 func (*ResponseStartEmailAuth) ProtoMessage()    {}
 func (*ResponseStartEmailAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{4}
+	return fileDescriptor_authentication_69023681e9436a86, []int{4}
 }
 func (m *ResponseStartEmailAuth) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseStartEmailAuth.Unmarshal(m, b)
@@ -428,15 +446,15 @@ func (m *ResponseStartEmailAuth) GetActivationType() EmailActivationType {
 	return EmailActivationType_EMAILACTIVATIONTYPE_UNKNOWN
 }
 
-// Starting Anonymous login
+// Starting Anonymous login - deprecated
 type RequestStartAnonymousAuth struct {
-	Name                 string                `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	AppId                int32                 `protobuf:"varint,2,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	ApiKey               string                `protobuf:"bytes,3,opt,name=api_key,json=apiKey" json:"api_key,omitempty"`
+	Name                 string                `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	AppId                int32                 `protobuf:"varint,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	ApiKey               string                `protobuf:"bytes,3,opt,name=api_key,json=apiKey,proto3" json:"api_key,omitempty"`
 	DeviceHash           []byte                `protobuf:"bytes,4,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
-	DeviceTitle          string                `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle" json:"device_title,omitempty"`
-	TimeZone             *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
-	PreferredLanguages   []string              `protobuf:"bytes,7,rep,name=preferred_languages,json=preferredLanguages" json:"preferred_languages,omitempty"`
+	DeviceTitle          string                `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle,proto3" json:"device_title,omitempty"`
+	TimeZone             *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
+	PreferredLanguages   []string              `protobuf:"bytes,7,rep,name=preferred_languages,json=preferredLanguages,proto3" json:"preferred_languages,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -446,7 +464,7 @@ func (m *RequestStartAnonymousAuth) Reset()         { *m = RequestStartAnonymous
 func (m *RequestStartAnonymousAuth) String() string { return proto.CompactTextString(m) }
 func (*RequestStartAnonymousAuth) ProtoMessage()    {}
 func (*RequestStartAnonymousAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{5}
+	return fileDescriptor_authentication_69023681e9436a86, []int{5}
 }
 func (m *RequestStartAnonymousAuth) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestStartAnonymousAuth.Unmarshal(m, b)
@@ -515,25 +533,32 @@ func (m *RequestStartAnonymousAuth) GetPreferredLanguages() []string {
 	return nil
 }
 
-// Starting token-based login
+// Starting token-based login - to authorize bot
 type RequestStartTokenAuth struct {
-	Token                string                `protobuf:"bytes,1,opt,name=token" json:"token,omitempty"`
-	AppId                int32                 `protobuf:"varint,2,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	ApiKey               string                `protobuf:"bytes,3,opt,name=api_key,json=apiKey" json:"api_key,omitempty"`
-	DeviceHash           []byte                `protobuf:"bytes,4,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
-	DeviceTitle          string                `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle" json:"device_title,omitempty"`
-	TimeZone             *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
-	PreferredLanguages   []string              `protobuf:"bytes,7,rep,name=preferred_languages,json=preferredLanguages" json:"preferred_languages,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	// * Token received from BotFather *
+	Token string `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	// * Application id, choose it by yourself and hold during authorization process *
+	AppId int32 `protobuf:"varint,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	// * Deprecated field - keep it empty *
+	ApiKey string `protobuf:"bytes,3,opt,name=api_key,json=apiKey,proto3" json:"api_key,omitempty"`
+	// * Deprecated field - keep it empty *
+	DeviceHash []byte `protobuf:"bytes,4,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
+	// * Some title, choose it by yourself and hold during authorization process *
+	DeviceTitle string `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle,proto3" json:"device_title,omitempty"`
+	// * Your timezone *
+	TimeZone *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
+	// * First language from this array will be used for some notifications from server *
+	PreferredLanguages   []string `protobuf:"bytes,7,rep,name=preferred_languages,json=preferredLanguages,proto3" json:"preferred_languages,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *RequestStartTokenAuth) Reset()         { *m = RequestStartTokenAuth{} }
 func (m *RequestStartTokenAuth) String() string { return proto.CompactTextString(m) }
 func (*RequestStartTokenAuth) ProtoMessage()    {}
 func (*RequestStartTokenAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{6}
+	return fileDescriptor_authentication_69023681e9436a86, []int{6}
 }
 func (m *RequestStartTokenAuth) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestStartTokenAuth.Unmarshal(m, b)
@@ -604,23 +629,28 @@ func (m *RequestStartTokenAuth) GetPreferredLanguages() []string {
 
 // Starting Login Authentication
 type RequestStartUsernameAuth struct {
-	Username             string                `protobuf:"bytes,1,opt,name=username" json:"username,omitempty"`
-	AppId                int32                 `protobuf:"varint,2,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	ApiKey               string                `protobuf:"bytes,3,opt,name=api_key,json=apiKey" json:"api_key,omitempty"`
-	DeviceHash           []byte                `protobuf:"bytes,4,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
-	DeviceTitle          string                `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle" json:"device_title,omitempty"`
-	TimeZone             *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
-	PreferredLanguages   []string              `protobuf:"bytes,7,rep,name=preferred_languages,json=preferredLanguages" json:"preferred_languages,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	Username string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	// * Application id, choose it by yourself and hold during authorization process *
+	AppId int32 `protobuf:"varint,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	// * Deprecated field - keep it empty *
+	ApiKey string `protobuf:"bytes,3,opt,name=api_key,json=apiKey,proto3" json:"api_key,omitempty"`
+	// * Deprecated field - keep it empty *
+	DeviceHash []byte `protobuf:"bytes,4,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
+	// * Some title, choose it by yourself and hold during authorization process *
+	DeviceTitle string                `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle,proto3" json:"device_title,omitempty"`
+	TimeZone    *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
+	// * First language from this array will be used for some notifications from server *
+	PreferredLanguages   []string `protobuf:"bytes,7,rep,name=preferred_languages,json=preferredLanguages,proto3" json:"preferred_languages,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *RequestStartUsernameAuth) Reset()         { *m = RequestStartUsernameAuth{} }
 func (m *RequestStartUsernameAuth) String() string { return proto.CompactTextString(m) }
 func (*RequestStartUsernameAuth) ProtoMessage()    {}
 func (*RequestStartUsernameAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{7}
+	return fileDescriptor_authentication_69023681e9436a86, []int{7}
 }
 func (m *RequestStartUsernameAuth) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestStartUsernameAuth.Unmarshal(m, b)
@@ -690,8 +720,9 @@ func (m *RequestStartUsernameAuth) GetPreferredLanguages() []string {
 }
 
 type ResponseStartUsernameAuth struct {
-	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash" json:"transaction_hash,omitempty"`
-	IsRegistered         bool     `protobuf:"varint,2,opt,name=is_registered,json=isRegistered" json:"is_registered,omitempty"`
+	// * Hash of authorization transaction *
+	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash,proto3" json:"transaction_hash,omitempty"`
+	IsRegistered         bool     `protobuf:"varint,2,opt,name=is_registered,json=isRegistered,proto3" json:"is_registered,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -701,7 +732,7 @@ func (m *ResponseStartUsernameAuth) Reset()         { *m = ResponseStartUsername
 func (m *ResponseStartUsernameAuth) String() string { return proto.CompactTextString(m) }
 func (*ResponseStartUsernameAuth) ProtoMessage()    {}
 func (*ResponseStartUsernameAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{8}
+	return fileDescriptor_authentication_69023681e9436a86, []int{8}
 }
 func (m *ResponseStartUsernameAuth) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseStartUsernameAuth.Unmarshal(m, b)
@@ -737,8 +768,9 @@ func (m *ResponseStartUsernameAuth) GetIsRegistered() bool {
 
 // Performing user sign in.
 type RequestValidateCode struct {
-	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash" json:"transaction_hash,omitempty"`
-	Code                 string   `protobuf:"bytes,2,opt,name=code" json:"code,omitempty"`
+	// * Hash of the authorization transaction *
+	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash,proto3" json:"transaction_hash,omitempty"`
+	Code                 string   `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -748,7 +780,7 @@ func (m *RequestValidateCode) Reset()         { *m = RequestValidateCode{} }
 func (m *RequestValidateCode) String() string { return proto.CompactTextString(m) }
 func (*RequestValidateCode) ProtoMessage()    {}
 func (*RequestValidateCode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{9}
+	return fileDescriptor_authentication_69023681e9436a86, []int{9}
 }
 func (m *RequestValidateCode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestValidateCode.Unmarshal(m, b)
@@ -784,7 +816,8 @@ func (m *RequestValidateCode) GetCode() string {
 
 // Performs code resend
 type RequestResendCode struct {
-	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash" json:"transaction_hash,omitempty"`
+	// * Hash of the authorization transaction *
+	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash,proto3" json:"transaction_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -794,7 +827,7 @@ func (m *RequestResendCode) Reset()         { *m = RequestResendCode{} }
 func (m *RequestResendCode) String() string { return proto.CompactTextString(m) }
 func (*RequestResendCode) ProtoMessage()    {}
 func (*RequestResendCode) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{10}
+	return fileDescriptor_authentication_69023681e9436a86, []int{10}
 }
 func (m *RequestResendCode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestResendCode.Unmarshal(m, b)
@@ -823,8 +856,9 @@ func (m *RequestResendCode) GetTransactionHash() string {
 
 // Validation of account password
 type RequestValidatePassword struct {
-	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash" json:"transaction_hash,omitempty"`
-	Password             string   `protobuf:"bytes,2,opt,name=password" json:"password,omitempty"`
+	// * Hash of the authorization transaction *
+	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash,proto3" json:"transaction_hash,omitempty"`
+	Password             string   `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -834,7 +868,7 @@ func (m *RequestValidatePassword) Reset()         { *m = RequestValidatePassword
 func (m *RequestValidatePassword) String() string { return proto.CompactTextString(m) }
 func (*RequestValidatePassword) ProtoMessage()    {}
 func (*RequestValidatePassword) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{11}
+	return fileDescriptor_authentication_69023681e9436a86, []int{11}
 }
 func (m *RequestValidatePassword) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestValidatePassword.Unmarshal(m, b)
@@ -868,10 +902,10 @@ func (m *RequestValidatePassword) GetPassword() string {
 	return ""
 }
 
-// Loading OAuth2 Parameters
+// Loading OAuth2 Parameters - deprecated
 type RequestGetOAuth2Params struct {
-	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash" json:"transaction_hash,omitempty"`
-	RedirectUrl          string   `protobuf:"bytes,2,opt,name=redirect_url,json=redirectUrl" json:"redirect_url,omitempty"`
+	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash,proto3" json:"transaction_hash,omitempty"`
+	RedirectUrl          string   `protobuf:"bytes,2,opt,name=redirect_url,json=redirectUrl,proto3" json:"redirect_url,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -881,7 +915,7 @@ func (m *RequestGetOAuth2Params) Reset()         { *m = RequestGetOAuth2Params{}
 func (m *RequestGetOAuth2Params) String() string { return proto.CompactTextString(m) }
 func (*RequestGetOAuth2Params) ProtoMessage()    {}
 func (*RequestGetOAuth2Params) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{12}
+	return fileDescriptor_authentication_69023681e9436a86, []int{12}
 }
 func (m *RequestGetOAuth2Params) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetOAuth2Params.Unmarshal(m, b)
@@ -915,8 +949,9 @@ func (m *RequestGetOAuth2Params) GetRedirectUrl() string {
 	return ""
 }
 
+// / Deprecated
 type ResponseGetOAuth2Params struct {
-	AuthUrl              string   `protobuf:"bytes,1,opt,name=auth_url,json=authUrl" json:"auth_url,omitempty"`
+	AuthUrl              string   `protobuf:"bytes,1,opt,name=auth_url,json=authUrl,proto3" json:"auth_url,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -926,7 +961,7 @@ func (m *ResponseGetOAuth2Params) Reset()         { *m = ResponseGetOAuth2Params
 func (m *ResponseGetOAuth2Params) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetOAuth2Params) ProtoMessage()    {}
 func (*ResponseGetOAuth2Params) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{13}
+	return fileDescriptor_authentication_69023681e9436a86, []int{13}
 }
 func (m *ResponseGetOAuth2Params) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetOAuth2Params.Unmarshal(m, b)
@@ -953,10 +988,10 @@ func (m *ResponseGetOAuth2Params) GetAuthUrl() string {
 	return ""
 }
 
-// Complete OAuth2 Authentication
+// Complete OAuth2 Authentication - deprecated
 type RequestCompleteOAuth2 struct {
-	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash" json:"transaction_hash,omitempty"`
-	Code                 string   `protobuf:"bytes,2,opt,name=code" json:"code,omitempty"`
+	TransactionHash      string   `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash,proto3" json:"transaction_hash,omitempty"`
+	Code                 string   `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -966,7 +1001,7 @@ func (m *RequestCompleteOAuth2) Reset()         { *m = RequestCompleteOAuth2{} }
 func (m *RequestCompleteOAuth2) String() string { return proto.CompactTextString(m) }
 func (*RequestCompleteOAuth2) ProtoMessage()    {}
 func (*RequestCompleteOAuth2) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{14}
+	return fileDescriptor_authentication_69023681e9436a86, []int{14}
 }
 func (m *RequestCompleteOAuth2) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestCompleteOAuth2.Unmarshal(m, b)
@@ -1002,10 +1037,13 @@ func (m *RequestCompleteOAuth2) GetCode() string {
 
 // Perform user SignUp
 type RequestSignUp struct {
-	TransactionHash      string                `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash" json:"transaction_hash,omitempty"`
-	Name                 string                `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	Sex                  Sex                   `protobuf:"varint,3,opt,name=sex,enum=dialog.Sex" json:"sex,omitempty"`
-	Password             *wrappers.StringValue `protobuf:"bytes,4,opt,name=password" json:"password,omitempty"`
+	// * Hash of the authorization transaction *
+	TransactionHash string `protobuf:"bytes,1,opt,name=transaction_hash,json=transactionHash,proto3" json:"transaction_hash,omitempty"`
+	// Your name
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// / Use it in case of anonymous authorization (deprecated)
+	Sex                  Sex                   `protobuf:"varint,3,opt,name=sex,proto3,enum=dialog.Sex" json:"sex,omitempty"`
+	Password             *wrappers.StringValue `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -1015,7 +1053,7 @@ func (m *RequestSignUp) Reset()         { *m = RequestSignUp{} }
 func (m *RequestSignUp) String() string { return proto.CompactTextString(m) }
 func (*RequestSignUp) ProtoMessage()    {}
 func (*RequestSignUp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{15}
+	return fileDescriptor_authentication_69023681e9436a86, []int{15}
 }
 func (m *RequestSignUp) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSignUp.Unmarshal(m, b)
@@ -1065,9 +1103,12 @@ func (m *RequestSignUp) GetPassword() *wrappers.StringValue {
 
 // Authentication result
 type ResponseAuth struct {
-	User                 *User                `protobuf:"bytes,2,opt,name=user" json:"user,omitempty"`
-	Config               *Config              `protobuf:"bytes,3,opt,name=config" json:"config,omitempty"`
-	ConfigHash           *wrappers.Int64Value `protobuf:"bytes,4,opt,name=config_hash,json=configHash" json:"config_hash,omitempty"`
+	// / Registered/authorized user
+	User *User `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
+	// / Config for that user
+	Config *Config `protobuf:"bytes,3,opt,name=config,proto3" json:"config,omitempty"`
+	// / Hash of config to later usage
+	ConfigHash           *wrappers.Int64Value `protobuf:"bytes,4,opt,name=config_hash,json=configHash,proto3" json:"config_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1077,7 +1118,7 @@ func (m *ResponseAuth) Reset()         { *m = ResponseAuth{} }
 func (m *ResponseAuth) String() string { return proto.CompactTextString(m) }
 func (*ResponseAuth) ProtoMessage()    {}
 func (*ResponseAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{16}
+	return fileDescriptor_authentication_69023681e9436a86, []int{16}
 }
 func (m *ResponseAuth) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseAuth.Unmarshal(m, b)
@@ -1119,25 +1160,20 @@ func (m *ResponseAuth) GetConfigHash() *wrappers.Int64Value {
 }
 
 // Authentication session
-// id Unuque ID of session
-// authHolder holder of session. 0 - this device, 1 - other.
-// appId Application Id (user in SignIn/SignUp)
-// appTitle Title of application
-// deviceTitle Title of device
-// authTime Time of session creating
-// authLocation two-letter country code of session create
-// latitude optional latitude of auth if available
-// longitude optional longitude of auth if available
 type AuthSession struct {
-	Id                   int32                 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	AuthHolder           AuthHolder            `protobuf:"varint,2,opt,name=auth_holder,json=authHolder,enum=dialog.AuthHolder" json:"auth_holder,omitempty"`
-	AppId                int32                 `protobuf:"varint,3,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	AppTitle             string                `protobuf:"bytes,4,opt,name=app_title,json=appTitle" json:"app_title,omitempty"`
-	DeviceTitle          string                `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle" json:"device_title,omitempty"`
-	AuthTime             int32                 `protobuf:"varint,6,opt,name=auth_time,json=authTime" json:"auth_time,omitempty"`
-	AuthLocation         string                `protobuf:"bytes,7,opt,name=auth_location,json=authLocation" json:"auth_location,omitempty"`
-	Latitude             *wrappers.DoubleValue `protobuf:"bytes,8,opt,name=latitude" json:"latitude,omitempty"`
-	Longitude            *wrappers.DoubleValue `protobuf:"bytes,9,opt,name=longitude" json:"longitude,omitempty"`
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	// / holder of session. 1 - this device, 2 - other.
+	AuthHolder AuthHolder `protobuf:"varint,2,opt,name=auth_holder,json=authHolder,proto3,enum=dialog.AuthHolder" json:"auth_holder,omitempty"`
+	// / Application Id that you set during authorization
+	AppId       int32  `protobuf:"varint,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	AppTitle    string `protobuf:"bytes,4,opt,name=app_title,json=appTitle,proto3" json:"app_title,omitempty"`
+	DeviceTitle string `protobuf:"bytes,5,opt,name=device_title,json=deviceTitle,proto3" json:"device_title,omitempty"`
+	// / Time of session creating
+	AuthTime int32 `protobuf:"varint,6,opt,name=auth_time,json=authTime,proto3" json:"auth_time,omitempty"`
+	// / Two-letter country code of session create
+	AuthLocation         string                `protobuf:"bytes,7,opt,name=auth_location,json=authLocation,proto3" json:"auth_location,omitempty"`
+	Latitude             *wrappers.DoubleValue `protobuf:"bytes,8,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	Longitude            *wrappers.DoubleValue `protobuf:"bytes,9,opt,name=longitude,proto3" json:"longitude,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -1147,7 +1183,7 @@ func (m *AuthSession) Reset()         { *m = AuthSession{} }
 func (m *AuthSession) String() string { return proto.CompactTextString(m) }
 func (*AuthSession) ProtoMessage()    {}
 func (*AuthSession) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{17}
+	return fileDescriptor_authentication_69023681e9436a86, []int{17}
 }
 func (m *AuthSession) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthSession.Unmarshal(m, b)
@@ -1241,7 +1277,7 @@ func (m *RequestGetAuthSessions) Reset()         { *m = RequestGetAuthSessions{}
 func (m *RequestGetAuthSessions) String() string { return proto.CompactTextString(m) }
 func (*RequestGetAuthSessions) ProtoMessage()    {}
 func (*RequestGetAuthSessions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{18}
+	return fileDescriptor_authentication_69023681e9436a86, []int{18}
 }
 func (m *RequestGetAuthSessions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetAuthSessions.Unmarshal(m, b)
@@ -1262,7 +1298,7 @@ func (m *RequestGetAuthSessions) XXX_DiscardUnknown() {
 var xxx_messageInfo_RequestGetAuthSessions proto.InternalMessageInfo
 
 type ResponseGetAuthSessions struct {
-	UserAuths            []*AuthSession `protobuf:"bytes,1,rep,name=user_auths,json=userAuths" json:"user_auths,omitempty"`
+	UserAuths            []*AuthSession `protobuf:"bytes,1,rep,name=user_auths,json=userAuths,proto3" json:"user_auths,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -1272,7 +1308,7 @@ func (m *ResponseGetAuthSessions) Reset()         { *m = ResponseGetAuthSessions
 func (m *ResponseGetAuthSessions) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetAuthSessions) ProtoMessage()    {}
 func (*ResponseGetAuthSessions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{19}
+	return fileDescriptor_authentication_69023681e9436a86, []int{19}
 }
 func (m *ResponseGetAuthSessions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetAuthSessions.Unmarshal(m, b)
@@ -1301,7 +1337,7 @@ func (m *ResponseGetAuthSessions) GetUserAuths() []*AuthSession {
 
 // SignOut on specified user's session
 type RequestTerminateSession struct {
-	Id                   int32    `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1311,7 +1347,7 @@ func (m *RequestTerminateSession) Reset()         { *m = RequestTerminateSession
 func (m *RequestTerminateSession) String() string { return proto.CompactTextString(m) }
 func (*RequestTerminateSession) ProtoMessage()    {}
 func (*RequestTerminateSession) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{20}
+	return fileDescriptor_authentication_69023681e9436a86, []int{20}
 }
 func (m *RequestTerminateSession) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestTerminateSession.Unmarshal(m, b)
@@ -1349,7 +1385,7 @@ func (m *RequestTerminateAllSessions) Reset()         { *m = RequestTerminateAll
 func (m *RequestTerminateAllSessions) String() string { return proto.CompactTextString(m) }
 func (*RequestTerminateAllSessions) ProtoMessage()    {}
 func (*RequestTerminateAllSessions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{21}
+	return fileDescriptor_authentication_69023681e9436a86, []int{21}
 }
 func (m *RequestTerminateAllSessions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestTerminateAllSessions.Unmarshal(m, b)
@@ -1380,7 +1416,7 @@ func (m *RequestSignOut) Reset()         { *m = RequestSignOut{} }
 func (m *RequestSignOut) String() string { return proto.CompactTextString(m) }
 func (*RequestSignOut) ProtoMessage()    {}
 func (*RequestSignOut) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{22}
+	return fileDescriptor_authentication_69023681e9436a86, []int{22}
 }
 func (m *RequestSignOut) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSignOut.Unmarshal(m, b)
@@ -1400,6 +1436,9 @@ func (m *RequestSignOut) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RequestSignOut proto.InternalMessageInfo
 
+// *
+// Notification to force client to reload some entities from server
+// Just for old clients. Should be ignore.
 type ForceReloadField struct {
 	// Types that are valid to be assigned to Body:
 	//	*ForceReloadField_ForceReloadDialogs
@@ -1415,7 +1454,7 @@ func (m *ForceReloadField) Reset()         { *m = ForceReloadField{} }
 func (m *ForceReloadField) String() string { return proto.CompactTextString(m) }
 func (*ForceReloadField) ProtoMessage()    {}
 func (*ForceReloadField) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{23}
+	return fileDescriptor_authentication_69023681e9436a86, []int{23}
 }
 func (m *ForceReloadField) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForceReloadField.Unmarshal(m, b)
@@ -1440,18 +1479,22 @@ type isForceReloadField_Body interface {
 }
 
 type ForceReloadField_ForceReloadDialogs struct {
-	ForceReloadDialogs *ForceReloadDialogs `protobuf:"bytes,1,opt,name=forceReloadDialogs,oneof"`
-}
-type ForceReloadField_ForceReloadContacts struct {
-	ForceReloadContacts *ForceReloadContacts `protobuf:"bytes,2,opt,name=forceReloadContacts,oneof"`
-}
-type ForceReloadField_ForceReloadHistory struct {
-	ForceReloadHistory *ForceReloadHistory `protobuf:"bytes,3,opt,name=forceReloadHistory,oneof"`
+	ForceReloadDialogs *ForceReloadDialogs `protobuf:"bytes,1,opt,name=forceReloadDialogs,proto3,oneof"`
 }
 
-func (*ForceReloadField_ForceReloadDialogs) isForceReloadField_Body()  {}
+type ForceReloadField_ForceReloadContacts struct {
+	ForceReloadContacts *ForceReloadContacts `protobuf:"bytes,2,opt,name=forceReloadContacts,proto3,oneof"`
+}
+
+type ForceReloadField_ForceReloadHistory struct {
+	ForceReloadHistory *ForceReloadHistory `protobuf:"bytes,3,opt,name=forceReloadHistory,proto3,oneof"`
+}
+
+func (*ForceReloadField_ForceReloadDialogs) isForceReloadField_Body() {}
+
 func (*ForceReloadField_ForceReloadContacts) isForceReloadField_Body() {}
-func (*ForceReloadField_ForceReloadHistory) isForceReloadField_Body()  {}
+
+func (*ForceReloadField_ForceReloadHistory) isForceReloadField_Body() {}
 
 func (m *ForceReloadField) GetBody() isForceReloadField_Body {
 	if m != nil {
@@ -1585,7 +1628,7 @@ func (m *ForceReloadDialogs) Reset()         { *m = ForceReloadDialogs{} }
 func (m *ForceReloadDialogs) String() string { return proto.CompactTextString(m) }
 func (*ForceReloadDialogs) ProtoMessage()    {}
 func (*ForceReloadDialogs) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{24}
+	return fileDescriptor_authentication_69023681e9436a86, []int{24}
 }
 func (m *ForceReloadDialogs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForceReloadDialogs.Unmarshal(m, b)
@@ -1616,7 +1659,7 @@ func (m *ForceReloadContacts) Reset()         { *m = ForceReloadContacts{} }
 func (m *ForceReloadContacts) String() string { return proto.CompactTextString(m) }
 func (*ForceReloadContacts) ProtoMessage()    {}
 func (*ForceReloadContacts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{25}
+	return fileDescriptor_authentication_69023681e9436a86, []int{25}
 }
 func (m *ForceReloadContacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForceReloadContacts.Unmarshal(m, b)
@@ -1639,7 +1682,7 @@ var xxx_messageInfo_ForceReloadContacts proto.InternalMessageInfo
 // Tells the client to clear the specified conversation and load it again
 // peer the peer whose history should be reloaded
 type ForceReloadHistory struct {
-	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1649,7 +1692,7 @@ func (m *ForceReloadHistory) Reset()         { *m = ForceReloadHistory{} }
 func (m *ForceReloadHistory) String() string { return proto.CompactTextString(m) }
 func (*ForceReloadHistory) ProtoMessage()    {}
 func (*ForceReloadHistory) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{26}
+	return fileDescriptor_authentication_69023681e9436a86, []int{26}
 }
 func (m *ForceReloadHistory) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForceReloadHistory.Unmarshal(m, b)
@@ -1678,7 +1721,7 @@ func (m *ForceReloadHistory) GetPeer() *Peer {
 
 // This update is sent by the server to force a client to reload its data
 type UpdateForceReloadState struct {
-	Fields               []*ForceReloadField `protobuf:"bytes,1,rep,name=fields" json:"fields,omitempty"`
+	Fields               []*ForceReloadField `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -1688,7 +1731,7 @@ func (m *UpdateForceReloadState) Reset()         { *m = UpdateForceReloadState{}
 func (m *UpdateForceReloadState) String() string { return proto.CompactTextString(m) }
 func (*UpdateForceReloadState) ProtoMessage()    {}
 func (*UpdateForceReloadState) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{27}
+	return fileDescriptor_authentication_69023681e9436a86, []int{27}
 }
 func (m *UpdateForceReloadState) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateForceReloadState.Unmarshal(m, b)
@@ -1715,15 +1758,15 @@ func (m *UpdateForceReloadState) GetFields() []*ForceReloadField {
 	return nil
 }
 
-// Performing user signin
+// Performing user signin - deprecated
 type RequestSignInObsolete struct {
-	PhoneNumber          int64    `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber" json:"phone_number,omitempty"`
-	SmsHash              string   `protobuf:"bytes,2,opt,name=sms_hash,json=smsHash" json:"sms_hash,omitempty"`
-	SmsCode              string   `protobuf:"bytes,3,opt,name=sms_code,json=smsCode" json:"sms_code,omitempty"`
+	PhoneNumber          int64    `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	SmsHash              string   `protobuf:"bytes,2,opt,name=sms_hash,json=smsHash,proto3" json:"sms_hash,omitempty"`
+	SmsCode              string   `protobuf:"bytes,3,opt,name=sms_code,json=smsCode,proto3" json:"sms_code,omitempty"`
 	DeviceHash           []byte   `protobuf:"bytes,5,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
-	DeviceTitle          string   `protobuf:"bytes,6,opt,name=device_title,json=deviceTitle" json:"device_title,omitempty"`
-	AppId                int32    `protobuf:"varint,7,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	AppKey               string   `protobuf:"bytes,8,opt,name=app_key,json=appKey" json:"app_key,omitempty"`
+	DeviceTitle          string   `protobuf:"bytes,6,opt,name=device_title,json=deviceTitle,proto3" json:"device_title,omitempty"`
+	AppId                int32    `protobuf:"varint,7,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	AppKey               string   `protobuf:"bytes,8,opt,name=app_key,json=appKey,proto3" json:"app_key,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1733,7 +1776,7 @@ func (m *RequestSignInObsolete) Reset()         { *m = RequestSignInObsolete{} }
 func (m *RequestSignInObsolete) String() string { return proto.CompactTextString(m) }
 func (*RequestSignInObsolete) ProtoMessage()    {}
 func (*RequestSignInObsolete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{28}
+	return fileDescriptor_authentication_69023681e9436a86, []int{28}
 }
 func (m *RequestSignInObsolete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSignInObsolete.Unmarshal(m, b)
@@ -1805,15 +1848,15 @@ func (m *RequestSignInObsolete) GetAppKey() string {
 // Performing user signup. If user perform signup on already registered user it just override previous
 // profile information
 type RequestSignUpObsolete struct {
-	PhoneNumber          int64    `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber" json:"phone_number,omitempty"`
-	SmsHash              string   `protobuf:"bytes,2,opt,name=sms_hash,json=smsHash" json:"sms_hash,omitempty"`
-	SmsCode              string   `protobuf:"bytes,3,opt,name=sms_code,json=smsCode" json:"sms_code,omitempty"`
-	Name                 string   `protobuf:"bytes,4,opt,name=name" json:"name,omitempty"`
+	PhoneNumber          int64    `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	SmsHash              string   `protobuf:"bytes,2,opt,name=sms_hash,json=smsHash,proto3" json:"sms_hash,omitempty"`
+	SmsCode              string   `protobuf:"bytes,3,opt,name=sms_code,json=smsCode,proto3" json:"sms_code,omitempty"`
+	Name                 string   `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	DeviceHash           []byte   `protobuf:"bytes,7,opt,name=device_hash,json=deviceHash,proto3" json:"device_hash,omitempty"`
-	DeviceTitle          string   `protobuf:"bytes,8,opt,name=device_title,json=deviceTitle" json:"device_title,omitempty"`
-	AppId                int32    `protobuf:"varint,9,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	AppKey               string   `protobuf:"bytes,10,opt,name=app_key,json=appKey" json:"app_key,omitempty"`
-	IsSilent             bool     `protobuf:"varint,11,opt,name=is_silent,json=isSilent" json:"is_silent,omitempty"`
+	DeviceTitle          string   `protobuf:"bytes,8,opt,name=device_title,json=deviceTitle,proto3" json:"device_title,omitempty"`
+	AppId                int32    `protobuf:"varint,9,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	AppKey               string   `protobuf:"bytes,10,opt,name=app_key,json=appKey,proto3" json:"app_key,omitempty"`
+	IsSilent             bool     `protobuf:"varint,11,opt,name=is_silent,json=isSilent,proto3" json:"is_silent,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1823,7 +1866,7 @@ func (m *RequestSignUpObsolete) Reset()         { *m = RequestSignUpObsolete{} }
 func (m *RequestSignUpObsolete) String() string { return proto.CompactTextString(m) }
 func (*RequestSignUpObsolete) ProtoMessage()    {}
 func (*RequestSignUpObsolete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{29}
+	return fileDescriptor_authentication_69023681e9436a86, []int{29}
 }
 func (m *RequestSignUpObsolete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSignUpObsolete.Unmarshal(m, b)
@@ -1908,9 +1951,9 @@ func (m *RequestSignUpObsolete) GetIsSilent() bool {
 
 // Sending SMS with activation code
 type RequestSendAuthCodeObsolete struct {
-	PhoneNumber          int64    `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber" json:"phone_number,omitempty"`
-	AppId                int32    `protobuf:"varint,2,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	ApiKey               string   `protobuf:"bytes,3,opt,name=api_key,json=apiKey" json:"api_key,omitempty"`
+	PhoneNumber          int64    `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	AppId                int32    `protobuf:"varint,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	ApiKey               string   `protobuf:"bytes,3,opt,name=api_key,json=apiKey,proto3" json:"api_key,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1920,7 +1963,7 @@ func (m *RequestSendAuthCodeObsolete) Reset()         { *m = RequestSendAuthCode
 func (m *RequestSendAuthCodeObsolete) String() string { return proto.CompactTextString(m) }
 func (*RequestSendAuthCodeObsolete) ProtoMessage()    {}
 func (*RequestSendAuthCodeObsolete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{30}
+	return fileDescriptor_authentication_69023681e9436a86, []int{30}
 }
 func (m *RequestSendAuthCodeObsolete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSendAuthCodeObsolete.Unmarshal(m, b)
@@ -1962,8 +2005,8 @@ func (m *RequestSendAuthCodeObsolete) GetApiKey() string {
 }
 
 type ResponseSendAuthCodeObsolete struct {
-	SmsHash              string   `protobuf:"bytes,1,opt,name=sms_hash,json=smsHash" json:"sms_hash,omitempty"`
-	IsRegistered         bool     `protobuf:"varint,2,opt,name=is_registered,json=isRegistered" json:"is_registered,omitempty"`
+	SmsHash              string   `protobuf:"bytes,1,opt,name=sms_hash,json=smsHash,proto3" json:"sms_hash,omitempty"`
+	IsRegistered         bool     `protobuf:"varint,2,opt,name=is_registered,json=isRegistered,proto3" json:"is_registered,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1973,7 +2016,7 @@ func (m *ResponseSendAuthCodeObsolete) Reset()         { *m = ResponseSendAuthCo
 func (m *ResponseSendAuthCodeObsolete) String() string { return proto.CompactTextString(m) }
 func (*ResponseSendAuthCodeObsolete) ProtoMessage()    {}
 func (*ResponseSendAuthCodeObsolete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{31}
+	return fileDescriptor_authentication_69023681e9436a86, []int{31}
 }
 func (m *ResponseSendAuthCodeObsolete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseSendAuthCodeObsolete.Unmarshal(m, b)
@@ -2009,10 +2052,10 @@ func (m *ResponseSendAuthCodeObsolete) GetIsRegistered() bool {
 
 // Requesting Phone activation
 type RequestSendAuthCallObsolete struct {
-	PhoneNumber          int64    `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber" json:"phone_number,omitempty"`
-	SmsHash              string   `protobuf:"bytes,2,opt,name=sms_hash,json=smsHash" json:"sms_hash,omitempty"`
-	AppId                int32    `protobuf:"varint,3,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	ApiKey               string   `protobuf:"bytes,4,opt,name=api_key,json=apiKey" json:"api_key,omitempty"`
+	PhoneNumber          int64    `protobuf:"varint,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	SmsHash              string   `protobuf:"bytes,2,opt,name=sms_hash,json=smsHash,proto3" json:"sms_hash,omitempty"`
+	AppId                int32    `protobuf:"varint,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	ApiKey               string   `protobuf:"bytes,4,opt,name=api_key,json=apiKey,proto3" json:"api_key,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2022,7 +2065,7 @@ func (m *RequestSendAuthCallObsolete) Reset()         { *m = RequestSendAuthCall
 func (m *RequestSendAuthCallObsolete) String() string { return proto.CompactTextString(m) }
 func (*RequestSendAuthCallObsolete) ProtoMessage()    {}
 func (*RequestSendAuthCallObsolete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{32}
+	return fileDescriptor_authentication_69023681e9436a86, []int{32}
 }
 func (m *RequestSendAuthCallObsolete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSendAuthCallObsolete.Unmarshal(m, b)
@@ -2070,190 +2113,6 @@ func (m *RequestSendAuthCallObsolete) GetApiKey() string {
 	return ""
 }
 
-type RequestRegisterDevice struct {
-	ClientPk             []byte   `protobuf:"bytes,1,opt,name=client_pk,json=clientPk,proto3" json:"client_pk,omitempty"`
-	AppId                int32    `protobuf:"varint,2,opt,name=app_id,json=appId" json:"app_id,omitempty"`
-	AppTitle             string   `protobuf:"bytes,3,opt,name=app_title,json=appTitle" json:"app_title,omitempty"`
-	DeviceTitle          string   `protobuf:"bytes,4,opt,name=device_title,json=deviceTitle" json:"device_title,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *RequestRegisterDevice) Reset()         { *m = RequestRegisterDevice{} }
-func (m *RequestRegisterDevice) String() string { return proto.CompactTextString(m) }
-func (*RequestRegisterDevice) ProtoMessage()    {}
-func (*RequestRegisterDevice) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{33}
-}
-func (m *RequestRegisterDevice) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RequestRegisterDevice.Unmarshal(m, b)
-}
-func (m *RequestRegisterDevice) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RequestRegisterDevice.Marshal(b, m, deterministic)
-}
-func (dst *RequestRegisterDevice) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RequestRegisterDevice.Merge(dst, src)
-}
-func (m *RequestRegisterDevice) XXX_Size() int {
-	return xxx_messageInfo_RequestRegisterDevice.Size(m)
-}
-func (m *RequestRegisterDevice) XXX_DiscardUnknown() {
-	xxx_messageInfo_RequestRegisterDevice.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RequestRegisterDevice proto.InternalMessageInfo
-
-func (m *RequestRegisterDevice) GetClientPk() []byte {
-	if m != nil {
-		return m.ClientPk
-	}
-	return nil
-}
-
-func (m *RequestRegisterDevice) GetAppId() int32 {
-	if m != nil {
-		return m.AppId
-	}
-	return 0
-}
-
-func (m *RequestRegisterDevice) GetAppTitle() string {
-	if m != nil {
-		return m.AppTitle
-	}
-	return ""
-}
-
-func (m *RequestRegisterDevice) GetDeviceTitle() string {
-	if m != nil {
-		return m.DeviceTitle
-	}
-	return ""
-}
-
-type ResponseDeviceRequest struct {
-	ServerPk             []byte   `protobuf:"bytes,1,opt,name=server_pk,json=serverPk,proto3" json:"server_pk,omitempty"`
-	AuthId               int64    `protobuf:"varint,2,opt,name=auth_id,json=authId" json:"auth_id,omitempty"`
-	Token                string   `protobuf:"bytes,3,opt,name=token" json:"token,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ResponseDeviceRequest) Reset()         { *m = ResponseDeviceRequest{} }
-func (m *ResponseDeviceRequest) String() string { return proto.CompactTextString(m) }
-func (*ResponseDeviceRequest) ProtoMessage()    {}
-func (*ResponseDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{34}
-}
-func (m *ResponseDeviceRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ResponseDeviceRequest.Unmarshal(m, b)
-}
-func (m *ResponseDeviceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ResponseDeviceRequest.Marshal(b, m, deterministic)
-}
-func (dst *ResponseDeviceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ResponseDeviceRequest.Merge(dst, src)
-}
-func (m *ResponseDeviceRequest) XXX_Size() int {
-	return xxx_messageInfo_ResponseDeviceRequest.Size(m)
-}
-func (m *ResponseDeviceRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ResponseDeviceRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ResponseDeviceRequest proto.InternalMessageInfo
-
-func (m *ResponseDeviceRequest) GetServerPk() []byte {
-	if m != nil {
-		return m.ServerPk
-	}
-	return nil
-}
-
-func (m *ResponseDeviceRequest) GetAuthId() int64 {
-	if m != nil {
-		return m.AuthId
-	}
-	return 0
-}
-
-func (m *ResponseDeviceRequest) GetToken() string {
-	if m != nil {
-		return m.Token
-	}
-	return ""
-}
-
-type RegisterDeprecatedDeviceRequest struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *RegisterDeprecatedDeviceRequest) Reset()         { *m = RegisterDeprecatedDeviceRequest{} }
-func (m *RegisterDeprecatedDeviceRequest) String() string { return proto.CompactTextString(m) }
-func (*RegisterDeprecatedDeviceRequest) ProtoMessage()    {}
-func (*RegisterDeprecatedDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{35}
-}
-func (m *RegisterDeprecatedDeviceRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RegisterDeprecatedDeviceRequest.Unmarshal(m, b)
-}
-func (m *RegisterDeprecatedDeviceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RegisterDeprecatedDeviceRequest.Marshal(b, m, deterministic)
-}
-func (dst *RegisterDeprecatedDeviceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RegisterDeprecatedDeviceRequest.Merge(dst, src)
-}
-func (m *RegisterDeprecatedDeviceRequest) XXX_Size() int {
-	return xxx_messageInfo_RegisterDeprecatedDeviceRequest.Size(m)
-}
-func (m *RegisterDeprecatedDeviceRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_RegisterDeprecatedDeviceRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RegisterDeprecatedDeviceRequest proto.InternalMessageInfo
-
-type RequestExchangeAuthIdForToken struct {
-	SignedAuthId         []byte   `protobuf:"bytes,1,opt,name=signed_auth_id,json=signedAuthId,proto3" json:"signed_auth_id,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *RequestExchangeAuthIdForToken) Reset()         { *m = RequestExchangeAuthIdForToken{} }
-func (m *RequestExchangeAuthIdForToken) String() string { return proto.CompactTextString(m) }
-func (*RequestExchangeAuthIdForToken) ProtoMessage()    {}
-func (*RequestExchangeAuthIdForToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_4f9f2e670045d585, []int{36}
-}
-func (m *RequestExchangeAuthIdForToken) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RequestExchangeAuthIdForToken.Unmarshal(m, b)
-}
-func (m *RequestExchangeAuthIdForToken) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RequestExchangeAuthIdForToken.Marshal(b, m, deterministic)
-}
-func (dst *RequestExchangeAuthIdForToken) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RequestExchangeAuthIdForToken.Merge(dst, src)
-}
-func (m *RequestExchangeAuthIdForToken) XXX_Size() int {
-	return xxx_messageInfo_RequestExchangeAuthIdForToken.Size(m)
-}
-func (m *RequestExchangeAuthIdForToken) XXX_DiscardUnknown() {
-	xxx_messageInfo_RequestExchangeAuthIdForToken.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RequestExchangeAuthIdForToken proto.InternalMessageInfo
-
-func (m *RequestExchangeAuthIdForToken) GetSignedAuthId() []byte {
-	if m != nil {
-		return m.SignedAuthId
-	}
-	return nil
-}
-
 func init() {
 	proto.RegisterType((*RequestStartPhoneAuth)(nil), "dialog.RequestStartPhoneAuth")
 	proto.RegisterType((*ResponseStartPhoneAuth)(nil), "dialog.ResponseStartPhoneAuth")
@@ -2288,10 +2147,6 @@ func init() {
 	proto.RegisterType((*RequestSendAuthCodeObsolete)(nil), "dialog.RequestSendAuthCodeObsolete")
 	proto.RegisterType((*ResponseSendAuthCodeObsolete)(nil), "dialog.ResponseSendAuthCodeObsolete")
 	proto.RegisterType((*RequestSendAuthCallObsolete)(nil), "dialog.RequestSendAuthCallObsolete")
-	proto.RegisterType((*RequestRegisterDevice)(nil), "dialog.RequestRegisterDevice")
-	proto.RegisterType((*ResponseDeviceRequest)(nil), "dialog.ResponseDeviceRequest")
-	proto.RegisterType((*RegisterDeprecatedDeviceRequest)(nil), "dialog.RegisterDeprecatedDeviceRequest")
-	proto.RegisterType((*RequestExchangeAuthIdForToken)(nil), "dialog.RequestExchangeAuthIdForToken")
 	proto.RegisterEnum("dialog.PhoneActivationType", PhoneActivationType_name, PhoneActivationType_value)
 	proto.RegisterEnum("dialog.EmailActivationType", EmailActivationType_name, EmailActivationType_value)
 	proto.RegisterEnum("dialog.AuthHolder", AuthHolder_name, AuthHolder_value)
@@ -2309,28 +2164,46 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type AuthenticationClient interface {
-	ExchangeAuthIdForToken(ctx context.Context, in *RequestExchangeAuthIdForToken, opts ...grpc.CallOption) (*ResponseDeviceRequest, error)
-	RegisterDevice(ctx context.Context, in *RequestRegisterDevice, opts ...grpc.CallOption) (*ResponseDeviceRequest, error)
-	RegisterDeprecatedDevice(ctx context.Context, in *RegisterDeprecatedDeviceRequest, opts ...grpc.CallOption) (*ResponseDeviceRequest, error)
+	// / Start authorization by phone
 	StartPhoneAuth(ctx context.Context, in *RequestStartPhoneAuth, opts ...grpc.CallOption) (*ResponseStartPhoneAuth, error)
+	// / Resend code by transaction hash
 	SendCodeByPhoneCall(ctx context.Context, in *RequestSendCodeByPhoneCall, opts ...grpc.CallOption) (*ResponseVoid, error)
+	// / Start email authorization process
 	StartEmailAuth(ctx context.Context, in *RequestStartEmailAuth, opts ...grpc.CallOption) (*ResponseStartEmailAuth, error)
+	// / Deprecated
 	StartAnonymousAuth(ctx context.Context, in *RequestStartAnonymousAuth, opts ...grpc.CallOption) (*ResponseAuth, error)
+	// / Start token auth authorization (actual for bots)
 	StartTokenAuth(ctx context.Context, in *RequestStartTokenAuth, opts ...grpc.CallOption) (*ResponseAuth, error)
+	// / Start login/password authorization process
 	StartUsernameAuth(ctx context.Context, in *RequestStartUsernameAuth, opts ...grpc.CallOption) (*ResponseStartUsernameAuth, error)
+	// * Validate code received by phone or email
+	//  Returns error if user does not exist
 	ValidateCode(ctx context.Context, in *RequestValidateCode, opts ...grpc.CallOption) (*ResponseAuth, error)
+	// / Resend code if you don't receive it with first attempt
 	ResendCode(ctx context.Context, in *RequestResendCode, opts ...grpc.CallOption) (*ResponseVoid, error)
+	// / Validate your passwword
 	ValidatePassword(ctx context.Context, in *RequestValidatePassword, opts ...grpc.CallOption) (*ResponseAuth, error)
+	// / Deprecated
 	GetOAuth2Params(ctx context.Context, in *RequestGetOAuth2Params, opts ...grpc.CallOption) (*ResponseGetOAuth2Params, error)
+	// / Deprecated
 	CompleteOAuth2(ctx context.Context, in *RequestCompleteOAuth2, opts ...grpc.CallOption) (*ResponseAuth, error)
+	// / Sign up existed user
 	SignUp(ctx context.Context, in *RequestSignUp, opts ...grpc.CallOption) (*ResponseAuth, error)
+	// / Returns all authorized user's sessions
 	GetAuthSessions(ctx context.Context, in *RequestGetAuthSessions, opts ...grpc.CallOption) (*ResponseGetAuthSessions, error)
+	// / Deprecated. Does not produce any effect.
 	TerminateSession(ctx context.Context, in *RequestTerminateSession, opts ...grpc.CallOption) (*ResponseVoid, error)
+	// / Log out user
 	TerminateAllSessions(ctx context.Context, in *RequestTerminateAllSessions, opts ...grpc.CallOption) (*ResponseVoid, error)
+	// / Log out current session
 	SignOut(ctx context.Context, in *RequestSignOut, opts ...grpc.CallOption) (*ResponseVoid, error)
+	// / Deprecated
 	SignInObsolete(ctx context.Context, in *RequestSignInObsolete, opts ...grpc.CallOption) (*ResponseAuth, error)
+	// / Deprecated
 	SignUpObsolete(ctx context.Context, in *RequestSignUpObsolete, opts ...grpc.CallOption) (*ResponseAuth, error)
+	// / Deprecated
 	SendAuthCodeObsolete(ctx context.Context, in *RequestSendAuthCodeObsolete, opts ...grpc.CallOption) (*ResponseSendAuthCodeObsolete, error)
+	// / Deprecated
 	SendAuthCallObsolete(ctx context.Context, in *RequestSendAuthCallObsolete, opts ...grpc.CallOption) (*ResponseVoid, error)
 }
 
@@ -2340,33 +2213,6 @@ type authenticationClient struct {
 
 func NewAuthenticationClient(cc *grpc.ClientConn) AuthenticationClient {
 	return &authenticationClient{cc}
-}
-
-func (c *authenticationClient) ExchangeAuthIdForToken(ctx context.Context, in *RequestExchangeAuthIdForToken, opts ...grpc.CallOption) (*ResponseDeviceRequest, error) {
-	out := new(ResponseDeviceRequest)
-	err := c.cc.Invoke(ctx, "/dialog.Authentication/ExchangeAuthIdForToken", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authenticationClient) RegisterDevice(ctx context.Context, in *RequestRegisterDevice, opts ...grpc.CallOption) (*ResponseDeviceRequest, error) {
-	out := new(ResponseDeviceRequest)
-	err := c.cc.Invoke(ctx, "/dialog.Authentication/RegisterDevice", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authenticationClient) RegisterDeprecatedDevice(ctx context.Context, in *RegisterDeprecatedDeviceRequest, opts ...grpc.CallOption) (*ResponseDeviceRequest, error) {
-	out := new(ResponseDeviceRequest)
-	err := c.cc.Invoke(ctx, "/dialog.Authentication/RegisterDeprecatedDevice", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *authenticationClient) StartPhoneAuth(ctx context.Context, in *RequestStartPhoneAuth, opts ...grpc.CallOption) (*ResponseStartPhoneAuth, error) {
@@ -2551,87 +2397,51 @@ func (c *authenticationClient) SendAuthCallObsolete(ctx context.Context, in *Req
 
 // AuthenticationServer is the server API for Authentication service.
 type AuthenticationServer interface {
-	ExchangeAuthIdForToken(context.Context, *RequestExchangeAuthIdForToken) (*ResponseDeviceRequest, error)
-	RegisterDevice(context.Context, *RequestRegisterDevice) (*ResponseDeviceRequest, error)
-	RegisterDeprecatedDevice(context.Context, *RegisterDeprecatedDeviceRequest) (*ResponseDeviceRequest, error)
+	// / Start authorization by phone
 	StartPhoneAuth(context.Context, *RequestStartPhoneAuth) (*ResponseStartPhoneAuth, error)
+	// / Resend code by transaction hash
 	SendCodeByPhoneCall(context.Context, *RequestSendCodeByPhoneCall) (*ResponseVoid, error)
+	// / Start email authorization process
 	StartEmailAuth(context.Context, *RequestStartEmailAuth) (*ResponseStartEmailAuth, error)
+	// / Deprecated
 	StartAnonymousAuth(context.Context, *RequestStartAnonymousAuth) (*ResponseAuth, error)
+	// / Start token auth authorization (actual for bots)
 	StartTokenAuth(context.Context, *RequestStartTokenAuth) (*ResponseAuth, error)
+	// / Start login/password authorization process
 	StartUsernameAuth(context.Context, *RequestStartUsernameAuth) (*ResponseStartUsernameAuth, error)
+	// * Validate code received by phone or email
+	//  Returns error if user does not exist
 	ValidateCode(context.Context, *RequestValidateCode) (*ResponseAuth, error)
+	// / Resend code if you don't receive it with first attempt
 	ResendCode(context.Context, *RequestResendCode) (*ResponseVoid, error)
+	// / Validate your passwword
 	ValidatePassword(context.Context, *RequestValidatePassword) (*ResponseAuth, error)
+	// / Deprecated
 	GetOAuth2Params(context.Context, *RequestGetOAuth2Params) (*ResponseGetOAuth2Params, error)
+	// / Deprecated
 	CompleteOAuth2(context.Context, *RequestCompleteOAuth2) (*ResponseAuth, error)
+	// / Sign up existed user
 	SignUp(context.Context, *RequestSignUp) (*ResponseAuth, error)
+	// / Returns all authorized user's sessions
 	GetAuthSessions(context.Context, *RequestGetAuthSessions) (*ResponseGetAuthSessions, error)
+	// / Deprecated. Does not produce any effect.
 	TerminateSession(context.Context, *RequestTerminateSession) (*ResponseVoid, error)
+	// / Log out user
 	TerminateAllSessions(context.Context, *RequestTerminateAllSessions) (*ResponseVoid, error)
+	// / Log out current session
 	SignOut(context.Context, *RequestSignOut) (*ResponseVoid, error)
+	// / Deprecated
 	SignInObsolete(context.Context, *RequestSignInObsolete) (*ResponseAuth, error)
+	// / Deprecated
 	SignUpObsolete(context.Context, *RequestSignUpObsolete) (*ResponseAuth, error)
+	// / Deprecated
 	SendAuthCodeObsolete(context.Context, *RequestSendAuthCodeObsolete) (*ResponseSendAuthCodeObsolete, error)
+	// / Deprecated
 	SendAuthCallObsolete(context.Context, *RequestSendAuthCallObsolete) (*ResponseVoid, error)
 }
 
 func RegisterAuthenticationServer(s *grpc.Server, srv AuthenticationServer) {
 	s.RegisterService(&_Authentication_serviceDesc, srv)
-}
-
-func _Authentication_ExchangeAuthIdForToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestExchangeAuthIdForToken)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthenticationServer).ExchangeAuthIdForToken(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/dialog.Authentication/ExchangeAuthIdForToken",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthenticationServer).ExchangeAuthIdForToken(ctx, req.(*RequestExchangeAuthIdForToken))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Authentication_RegisterDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestRegisterDevice)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthenticationServer).RegisterDevice(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/dialog.Authentication/RegisterDevice",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthenticationServer).RegisterDevice(ctx, req.(*RequestRegisterDevice))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Authentication_RegisterDeprecatedDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterDeprecatedDeviceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthenticationServer).RegisterDeprecatedDevice(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/dialog.Authentication/RegisterDeprecatedDevice",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthenticationServer).RegisterDeprecatedDevice(ctx, req.(*RegisterDeprecatedDeviceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _Authentication_StartPhoneAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -2999,18 +2809,6 @@ var _Authentication_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*AuthenticationServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ExchangeAuthIdForToken",
-			Handler:    _Authentication_ExchangeAuthIdForToken_Handler,
-		},
-		{
-			MethodName: "RegisterDevice",
-			Handler:    _Authentication_RegisterDevice_Handler,
-		},
-		{
-			MethodName: "RegisterDeprecatedDevice",
-			Handler:    _Authentication_RegisterDeprecatedDevice_Handler,
-		},
-		{
 			MethodName: "StartPhoneAuth",
 			Handler:    _Authentication_StartPhoneAuth_Handler,
 		},
@@ -3096,162 +2894,148 @@ var _Authentication_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("authentication.proto", fileDescriptor_authentication_4f9f2e670045d585)
+	proto.RegisterFile("authentication.proto", fileDescriptor_authentication_69023681e9436a86)
 }
 
-var fileDescriptor_authentication_4f9f2e670045d585 = []byte{
-	// 2434 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x59, 0x4f, 0x6f, 0x1b, 0xc7,
-	0x15, 0xcf, 0x8a, 0x12, 0x45, 0x3d, 0xd2, 0x8a, 0x32, 0xfa, 0x63, 0x8a, 0x92, 0x6c, 0x79, 0xe5,
-	0xd4, 0xb2, 0xe2, 0x90, 0x32, 0x1d, 0x3b, 0xa8, 0x03, 0xd4, 0xd0, 0x1f, 0x3a, 0x14, 0xec, 0x8a,
-	0x02, 0x49, 0x29, 0x48, 0x7b, 0x60, 0x57, 0xdc, 0x11, 0x35, 0xf5, 0x72, 0x77, 0xbb, 0xb3, 0x54,
-	0xac, 0x02, 0x2d, 0x50, 0xa3, 0x68, 0x00, 0x1f, 0x82, 0xa2, 0x2d, 0x0a, 0x34, 0x3d, 0x04, 0xbd,
-	0x14, 0xe8, 0x47, 0xe8, 0x87, 0xe8, 0xa9, 0x97, 0x9e, 0x8d, 0xb6, 0x87, 0x7c, 0x89, 0x16, 0x33,
-	0xbb, 0x4b, 0xee, 0x0e, 0x67, 0xb5, 0xb2, 0x62, 0xa7, 0x3d, 0xf8, 0x24, 0xed, 0xbc, 0x37, 0xef,
-	0xfd, 0xe6, 0xbd, 0xdf, 0xbc, 0x99, 0x79, 0x84, 0x19, 0xad, 0xe7, 0x1e, 0x63, 0xd3, 0x25, 0x6d,
-	0xcd, 0x25, 0x96, 0x59, 0xb4, 0x1d, 0xcb, 0xb5, 0x50, 0x5a, 0x27, 0x9a, 0x61, 0x75, 0x0a, 0x57,
-	0x3a, 0x96, 0xd5, 0x31, 0x70, 0x89, 0x8f, 0x1e, 0xf6, 0x8e, 0x4a, 0x9f, 0x39, 0x9a, 0x6d, 0x63,
-	0x87, 0x7a, 0x7a, 0x85, 0x45, 0x5f, 0xae, 0xd9, 0xa4, 0xa4, 0x99, 0xa6, 0xe5, 0x72, 0x23, 0x81,
-	0xf4, 0x1d, 0x1d, 0x1f, 0x11, 0x93, 0x84, 0x87, 0xa6, 0xbb, 0x84, 0xb6, 0xb1, 0x61, 0x68, 0x26,
-	0xb6, 0x7a, 0xc1, 0x60, 0xd6, 0xc6, 0x03, 0x93, 0xd9, 0x1e, 0x1d, 0x7c, 0xcc, 0xd2, 0xb6, 0x66,
-	0x68, 0xf6, 0x61, 0xc9, 0xff, 0xeb, 0x0d, 0xab, 0x5f, 0xa5, 0x60, 0xb6, 0x8e, 0x7f, 0xd2, 0xc3,
-	0xd4, 0x6d, 0xb8, 0x9a, 0xe3, 0xee, 0x1d, 0x5b, 0x26, 0xde, 0xe8, 0xb9, 0xc7, 0x68, 0x1d, 0x72,
-	0x36, 0xfb, 0x68, 0x99, 0xbd, 0xee, 0x21, 0x76, 0xf2, 0xca, 0xb2, 0xb2, 0x9a, 0xda, 0xbc, 0xf4,
-	0xfc, 0xeb, 0xf5, 0x09, 0x18, 0x3f, 0x21, 0x94, 0x1c, 0x1a, 0xb8, 0x9e, 0xe5, 0x2a, 0xbb, 0x5c,
-	0x03, 0xad, 0x40, 0x5a, 0xb3, 0xed, 0x16, 0xd1, 0xf3, 0x23, 0xcb, 0xca, 0xea, 0xd8, 0x66, 0xee,
-	0xf9, 0xd7, 0xeb, 0x19, 0x48, 0x1f, 0x13, 0x5d, 0xc7, 0x66, 0x7d, 0x4c, 0xb3, 0xed, 0x1d, 0x1d,
-	0xbd, 0x0b, 0xe3, 0x9a, 0x4d, 0x5a, 0x4f, 0xf0, 0x69, 0x3e, 0xb5, 0xac, 0xac, 0x4e, 0x08, 0x5a,
-	0x69, 0xcd, 0x26, 0x8f, 0xf0, 0x29, 0x2a, 0x42, 0x56, 0xc7, 0x27, 0xa4, 0x8d, 0x5b, 0xc7, 0x1a,
-	0x3d, 0xce, 0x8f, 0x2e, 0x2b, 0xab, 0x39, 0xd1, 0x39, 0x78, 0x1a, 0x55, 0x8d, 0x72, 0xb4, 0xbe,
-	0xbe, 0x4b, 0x5c, 0x03, 0xe7, 0xc7, 0xb8, 0x6d, 0x11, 0xad, 0xa7, 0xd2, 0x64, 0x1a, 0xa8, 0x0a,
-	0x13, 0x2e, 0xe9, 0xe2, 0xd6, 0x4f, 0x2d, 0x13, 0xe7, 0xd3, 0xcb, 0xca, 0x6a, 0xb6, 0xbc, 0x58,
-	0xf4, 0x92, 0x50, 0x0c, 0x92, 0x54, 0x6c, 0xb8, 0x0e, 0x31, 0x3b, 0x07, 0x9a, 0xd1, 0xc3, 0xa2,
-	0xb1, 0x0c, 0x9b, 0xfd, 0x03, 0xcb, 0xc4, 0xe8, 0x7b, 0x30, 0x6d, 0x3b, 0xf8, 0x08, 0x3b, 0x0e,
-	0xd6, 0x5b, 0x86, 0x66, 0x76, 0x7a, 0x5a, 0x07, 0xd3, 0xfc, 0xf8, 0x72, 0x6a, 0x18, 0x02, 0xea,
-	0x6b, 0x3e, 0x0e, 0x14, 0xef, 0x2f, 0xbe, 0x78, 0x30, 0x0f, 0x97, 0x49, 0xb7, 0xa8, 0x1b, 0x9d,
-	0x62, 0xc7, 0xb1, 0xdb, 0xc5, 0x8f, 0x1d, 0xbb, 0xed, 0x67, 0x45, 0xfd, 0x9b, 0x02, 0x73, 0x75,
-	0x4c, 0x6d, 0xcb, 0xa4, 0x58, 0x48, 0xd1, 0x4d, 0x98, 0x72, 0x1d, 0xcd, 0xa4, 0x5a, 0x9b, 0x11,
-	0xc3, 0x8b, 0x14, 0x4b, 0xd3, 0x44, 0xfd, 0xed, 0xd0, 0x38, 0x8f, 0xcf, 0x0a, 0x5c, 0x22, 0xb4,
-	0xe5, 0xe0, 0x0e, 0xa1, 0x2e, 0x76, 0xb0, 0x97, 0xa2, 0x4c, 0x3d, 0x47, 0x68, 0xbd, 0x3f, 0x86,
-	0xb6, 0xe1, 0x6d, 0x36, 0xe5, 0x84, 0x53, 0xaf, 0xe5, 0x9e, 0xda, 0x98, 0xe7, 0x68, 0xb2, 0xbc,
-	0x50, 0xf4, 0x58, 0x5c, 0xf4, 0x7c, 0xf7, 0x75, 0x9a, 0xa7, 0x36, 0xae, 0x4f, 0x6a, 0x91, 0xef,
-	0xfb, 0x4b, 0x2f, 0x1e, 0x14, 0x20, 0x3f, 0xbc, 0x1c, 0x6f, 0x09, 0x2a, 0x85, 0x42, 0x40, 0x38,
-	0x6c, 0xea, 0x5b, 0x96, 0x8e, 0x37, 0x4f, 0xb9, 0xd9, 0x2d, 0xcd, 0x30, 0xd0, 0x87, 0x71, 0x4b,
-	0x0a, 0x78, 0xa2, 0x6b, 0x66, 0x07, 0x3b, 0x43, 0x0b, 0x4c, 0x08, 0xe2, 0x6f, 0x04, 0x9a, 0x57,
-	0xba, 0x1a, 0x31, 0x78, 0x0c, 0x57, 0x60, 0x0c, 0xb3, 0x0f, 0xdf, 0x8b, 0x90, 0x2e, 0x4f, 0xf6,
-	0x86, 0xd9, 0xdf, 0x0e, 0xb3, 0x07, 0x59, 0xf9, 0xf6, 0x99, 0xed, 0xf9, 0xfe, 0x46, 0xcc, 0xfe,
-	0x5d, 0x0a, 0xe6, 0xc3, 0x24, 0xdb, 0x30, 0x2d, 0xf3, 0xb4, 0x6b, 0xf5, 0x28, 0x5f, 0xd2, 0x35,
-	0x18, 0x35, 0xb5, 0x2e, 0x96, 0xf3, 0x8c, 0x8b, 0xde, 0xd0, 0xec, 0xb5, 0xd0, 0x4c, 0xdc, 0xfb,
-	0x4d, 0xeb, 0x09, 0x36, 0x83, 0xbd, 0xef, 0xb2, 0x8f, 0x98, 0xbd, 0xcf, 0x65, 0x6f, 0x92, 0xf2,
-	0x5a, 0x92, 0xf2, 0xc7, 0x14, 0xe4, 0xc3, 0x49, 0xd9, 0xa7, 0xd8, 0x61, 0x7b, 0xc0, 0xdf, 0xfd,
-	0x99, 0x9e, 0xff, 0x2d, 0x4f, 0x4d, 0x5f, 0xfc, 0x26, 0x3b, 0xaf, 0x25, 0x3b, 0xcf, 0x15, 0x56,
-	0xc9, 0x42, 0x95, 0x59, 0x48, 0xcf, 0x2b, 0x2d, 0xce, 0x49, 0x65, 0xf5, 0x0b, 0x05, 0xa6, 0x7d,
-	0x60, 0x07, 0x9a, 0x41, 0x74, 0xcd, 0xc5, 0xec, 0xd6, 0x70, 0xe1, 0xab, 0x02, 0x5a, 0x86, 0xd1,
-	0xb6, 0xa5, 0x63, 0x8e, 0x45, 0xe4, 0x02, 0x97, 0x24, 0x44, 0xe7, 0xc7, 0xf0, 0x8e, 0xff, 0x6f,
-	0x1d, 0x53, 0xff, 0x0e, 0xf3, 0xba, 0x2e, 0x2e, 0x5f, 0x2a, 0x70, 0x59, 0x58, 0xfc, 0x9e, 0x46,
-	0xe9, 0x67, 0x96, 0xa3, 0x5f, 0x3c, 0x00, 0xab, 0x90, 0xb1, 0x7d, 0x23, 0xd1, 0x20, 0xf8, 0x13,
-	0xfa, 0xd2, 0x04, 0x70, 0x7f, 0xe2, 0x07, 0x38, 0xff, 0xff, 0x63, 0xec, 0xd6, 0x18, 0x39, 0xca,
-	0x7b, 0x9a, 0xa3, 0x75, 0xe9, 0xc5, 0xb1, 0xad, 0x43, 0xce, 0xc1, 0x3a, 0x71, 0x70, 0xdb, 0x6d,
-	0xf5, 0x1c, 0xc3, 0xc7, 0x27, 0x6e, 0xaa, 0x40, 0x65, 0xdf, 0x31, 0x12, 0x30, 0x36, 0x58, 0xfc,
-	0x3c, 0x26, 0x89, 0x18, 0xe7, 0x21, 0xc3, 0x9e, 0x6c, 0xdc, 0x8d, 0xc7, 0xdf, 0x71, 0xf6, 0xcd,
-	0x6c, 0x26, 0x50, 0xf2, 0xd7, 0x4a, 0xff, 0x48, 0xd9, 0xb2, 0xba, 0xb6, 0x81, 0x5d, 0xec, 0x59,
-	0x7e, 0xc5, 0xa4, 0xf4, 0x95, 0xcf, 0x43, 0xca, 0xff, 0x28, 0x70, 0x29, 0x28, 0xa8, 0xa4, 0x63,
-	0xee, 0xdb, 0x17, 0x87, 0x12, 0xdc, 0x54, 0x46, 0xe2, 0x6f, 0x2a, 0xb7, 0x20, 0x45, 0xf1, 0x53,
-	0xff, 0x0e, 0x95, 0x0d, 0xee, 0x50, 0x0d, 0xfc, 0x54, 0x54, 0x67, 0x6a, 0xe8, 0x61, 0x88, 0x6f,
-	0xa3, 0xe7, 0xa8, 0x7a, 0xd1, 0x2d, 0x79, 0x5e, 0x36, 0xbe, 0x50, 0x20, 0x17, 0x64, 0x88, 0xd7,
-	0xa9, 0x12, 0x8c, 0xb2, 0x73, 0x82, 0xaf, 0x23, 0x5b, 0xce, 0x05, 0x28, 0x59, 0x2d, 0x0b, 0x60,
-	0xb6, 0xad, 0xae, 0xad, 0xb5, 0xdd, 0x3a, 0x57, 0x44, 0x77, 0x21, 0xdd, 0xb6, 0xcc, 0x23, 0xd2,
-	0xe1, 0x0b, 0xcb, 0x96, 0x27, 0x83, 0x29, 0x5b, 0x7c, 0x54, 0x5c, 0x9b, 0xaf, 0x8c, 0x1e, 0x41,
-	0xd6, 0xfb, 0x6f, 0x70, 0x6e, 0x64, 0xcb, 0x0b, 0x43, 0x2b, 0xdc, 0x31, 0xdd, 0x7b, 0x1f, 0x48,
-	0xcb, 0x3a, 0x78, 0xd3, 0x79, 0x39, 0x48, 0x60, 0xde, 0xbf, 0x52, 0x90, 0x65, 0x8b, 0x6b, 0x60,
-	0x4a, 0x89, 0x65, 0xa2, 0x25, 0x18, 0x21, 0x3a, 0x4f, 0xeb, 0x98, 0x68, 0x75, 0x84, 0xe8, 0x68,
-	0x13, 0xb2, 0x9c, 0xe2, 0xc7, 0x96, 0xa1, 0xfb, 0x91, 0x98, 0x2c, 0xa3, 0x60, 0x59, 0xcc, 0x50,
-	0x95, 0x4b, 0x86, 0x10, 0x69, 0x7d, 0x11, 0xba, 0xde, 0x3f, 0x62, 0x53, 0x32, 0x37, 0xfe, 0x19,
-	0xbb, 0x06, 0x13, 0x4c, 0xcb, 0x3b, 0x09, 0x47, 0xa5, 0x87, 0xb6, 0x66, 0xdb, 0xde, 0x31, 0xf8,
-	0xf2, 0x07, 0x27, 0xb3, 0xce, 0xd6, 0xc1, 0xce, 0x3f, 0x7e, 0x70, 0x8e, 0x0d, 0x5b, 0xef, 0xb9,
-	0xc7, 0x4d, 0xd2, 0xc5, 0xe8, 0x36, 0x5c, 0xe2, 0xba, 0x86, 0xe5, 0x35, 0x62, 0xf2, 0xe3, 0x92,
-	0x3a, 0x9f, 0x63, 0x2a, 0x8f, 0x7d, 0x0d, 0x46, 0x50, 0x43, 0x73, 0x89, 0xdb, 0xd3, 0x71, 0x3e,
-	0x13, 0x43, 0xd0, 0x6d, 0xab, 0x77, 0x68, 0x60, 0x29, 0x41, 0x83, 0xb9, 0xec, 0x7c, 0x37, 0x2c,
-	0xb3, 0xe3, 0x19, 0x9a, 0x78, 0x69, 0x43, 0x83, 0xc9, 0xea, 0xbd, 0x70, 0x65, 0x0d, 0x25, 0x3c,
-	0xe9, 0xe4, 0x36, 0x22, 0xe5, 0x2e, 0x3c, 0x11, 0x95, 0x01, 0x18, 0xcb, 0x5b, 0x6c, 0xe5, 0x34,
-	0xaf, 0x2c, 0xa7, 0x56, 0xb3, 0xe5, 0xe9, 0x30, 0x15, 0x7c, 0xcd, 0xfa, 0x04, 0x53, 0x63, 0x03,
-	0x34, 0x89, 0x8d, 0x07, 0xfd, 0xc3, 0xa9, 0x89, 0x9d, 0x2e, 0x31, 0x35, 0x17, 0x9f, 0x8f, 0x98,
-	0x09, 0xab, 0xf8, 0x08, 0x16, 0x44, 0xbb, 0x1b, 0x86, 0x71, 0xce, 0x10, 0x14, 0x61, 0x32, 0x54,
-	0x08, 0x6b, 0x3d, 0x37, 0x41, 0xff, 0xf3, 0x11, 0x98, 0x7a, 0x68, 0x39, 0x6d, 0x5c, 0xc7, 0x86,
-	0xa5, 0xe9, 0x0f, 0x09, 0x36, 0x74, 0xf4, 0x18, 0xd0, 0xd1, 0x60, 0x6c, 0x9b, 0x07, 0x89, 0xf2,
-	0xe5, 0x64, 0xcb, 0x85, 0x20, 0x68, 0x0f, 0x87, 0x34, 0xaa, 0x6f, 0xd5, 0x25, 0xf3, 0x50, 0x0d,
-	0xa6, 0x43, 0xa3, 0x5b, 0x96, 0xe9, 0x6a, 0x6d, 0x97, 0xfa, 0x85, 0x69, 0x41, 0x62, 0x2e, 0x50,
-	0xa9, 0xbe, 0x55, 0x97, 0xcd, 0x14, 0xe0, 0x55, 0x09, 0x75, 0x2d, 0xe7, 0xd4, 0xaf, 0x5a, 0x32,
-	0x78, 0xbe, 0x86, 0x00, 0xcf, 0x1f, 0xdd, 0x4c, 0xc3, 0xe8, 0xa1, 0xa5, 0x9f, 0xaa, 0x33, 0x80,
-	0x86, 0x97, 0xa4, 0xce, 0xc2, 0xb4, 0x04, 0x99, 0x5a, 0x89, 0x28, 0xfb, 0xa6, 0x58, 0xcd, 0xb5,
-	0xb1, 0xdf, 0x2d, 0x0c, 0xd5, 0xdc, 0x3d, 0x3c, 0x5c, 0x63, 0xb8, 0xa2, 0xfa, 0x29, 0xcc, 0xed,
-	0xdb, 0xec, 0x5a, 0x13, 0x32, 0xd6, 0x70, 0x35, 0x17, 0xa3, 0x07, 0x90, 0x3e, 0x62, 0xb9, 0x08,
-	0xb8, 0x9a, 0x97, 0xac, 0x8b, 0x27, 0x6b, 0xa8, 0x2e, 0x7b, 0xd3, 0xd4, 0x7f, 0x8f, 0x0c, 0x1e,
-	0x7e, 0xa4, 0x63, 0xee, 0x98, 0xb5, 0x43, 0x6a, 0xb1, 0xb3, 0x1a, 0x95, 0xa4, 0xbd, 0xcd, 0xe8,
-	0xb1, 0x18, 0x69, 0x6d, 0xde, 0x80, 0x0c, 0xed, 0x52, 0xaf, 0xbe, 0xcb, 0x4e, 0xe8, 0x71, 0xda,
-	0xa5, 0xfc, 0xec, 0xf4, 0x15, 0xf9, 0x51, 0x9e, 0x8a, 0x51, 0xe4, 0xf7, 0x45, 0xe1, 0xb1, 0x31,
-	0xf6, 0xb2, 0x8f, 0x8d, 0x74, 0x62, 0xcd, 0x1c, 0x3c, 0x8d, 0xc6, 0x13, 0x9e, 0x46, 0x36, 0x7f,
-	0x1a, 0x65, 0xe4, 0x4f, 0x23, 0xfb, 0x11, 0x3e, 0x4d, 0xd8, 0x41, 0x7f, 0x4e, 0x45, 0x02, 0xbd,
-	0x6f, 0xff, 0x3f, 0x05, 0x3a, 0xb8, 0xcd, 0x8c, 0xc6, 0xdf, 0x66, 0x84, 0x5c, 0x8c, 0xbf, 0x6c,
-	0x2e, 0x32, 0x2f, 0x91, 0x8b, 0x89, 0x73, 0xe5, 0x02, 0xe2, 0x73, 0x81, 0x16, 0x60, 0x82, 0xd0,
-	0x16, 0x25, 0x06, 0x36, 0xdd, 0x7c, 0x96, 0xbf, 0xa7, 0x32, 0x84, 0x36, 0xf8, 0x77, 0x42, 0xa2,
-	0xfe, 0xaa, 0xf4, 0x0b, 0x6b, 0x03, 0x9b, 0x3a, 0xab, 0xf1, 0x2c, 0x46, 0xfd, 0x74, 0xfd, 0x4f,
-	0x7b, 0xfe, 0x09, 0xd8, 0x7f, 0x06, 0x8b, 0xfd, 0x27, 0xa9, 0x0c, 0xfb, 0x7c, 0x88, 0x39, 0xfe,
-	0x6d, 0x3e, 0xe0, 0xca, 0xab, 0x78, 0x85, 0xbe, 0x90, 0x84, 0x4e, 0x33, 0x8c, 0x6f, 0x10, 0xba,
-	0x73, 0x53, 0x7d, 0x45, 0xb8, 0x80, 0x25, 0xc5, 0x78, 0xf4, 0xc2, 0x31, 0xfe, 0xcb, 0xe0, 0x5d,
-	0x13, 0x44, 0x66, 0x9b, 0xb3, 0x98, 0x91, 0xae, 0x6d, 0x10, 0x6c, 0xba, 0x2d, 0xfb, 0x09, 0x5f,
-	0x5b, 0xae, 0x9e, 0xf1, 0x06, 0xf6, 0x9e, 0xa0, 0xd9, 0x28, 0x09, 0x02, 0x48, 0x0b, 0xe1, 0x2b,
-	0x21, 0x4f, 0x7c, 0xe8, 0x0e, 0x78, 0x4d, 0xd8, 0x43, 0x1c, 0x74, 0x64, 0xd3, 0x24, 0x60, 0x7d,
-	0xc6, 0xb1, 0x7a, 0xd9, 0xf1, 0x40, 0xfa, 0x12, 0xe6, 0x97, 0x62, 0xe7, 0x04, 0x3b, 0x21, 0xac,
-	0xde, 0xc0, 0xde, 0x13, 0x74, 0x19, 0xf8, 0x23, 0x2f, 0x00, 0x9b, 0xaa, 0xa7, 0xd9, 0xe7, 0x8e,
-	0x8e, 0x66, 0x82, 0x66, 0xa0, 0x87, 0xd4, 0xfb, 0x48, 0x62, 0xc5, 0x35, 0xb8, 0x3a, 0x08, 0x94,
-	0xed, 0xe0, 0xb6, 0xe6, 0x62, 0x3d, 0x82, 0x46, 0xad, 0xc0, 0x92, 0xff, 0x6f, 0xe5, 0x69, 0xfb,
-	0x98, 0xa5, 0x76, 0x83, 0x3b, 0x7c, 0x68, 0x39, 0xbc, 0x13, 0x89, 0xae, 0xc3, 0x24, 0x25, 0x1d,
-	0x13, 0xeb, 0xad, 0x00, 0x98, 0x87, 0x39, 0xe7, 0x8d, 0x7a, 0xda, 0x6b, 0x27, 0x30, 0x2d, 0xf9,
-	0xf1, 0x05, 0x5d, 0x85, 0x85, 0xbd, 0x6a, 0x6d, 0xb7, 0xb2, 0xb1, 0xd5, 0xdc, 0x39, 0xd8, 0x68,
-	0xee, 0xd4, 0x76, 0x9b, 0x9f, 0xee, 0x55, 0x5a, 0xfb, 0xbb, 0x8f, 0x76, 0x6b, 0x9f, 0xec, 0x4e,
-	0xbd, 0x85, 0x16, 0x21, 0x2f, 0x53, 0xd8, 0xaa, 0x6d, 0x57, 0xa6, 0x14, 0xb4, 0x0c, 0x8b, 0x32,
-	0xe9, 0xde, 0x46, 0xa3, 0xf1, 0x49, 0xad, 0xbe, 0x3d, 0x35, 0xb2, 0xf6, 0x7b, 0x05, 0xa6, 0x25,
-	0xbd, 0x71, 0xe6, 0xb8, 0xf2, 0xfd, 0x8d, 0x9d, 0xc7, 0x67, 0x39, 0x96, 0x29, 0xf8, 0x8e, 0xaf,
-	0x40, 0x41, 0x26, 0xad, 0x6d, 0xec, 0x37, 0xab, 0xe5, 0xa9, 0x11, 0x06, 0x4c, 0x26, 0xef, 0x03,
-	0x4b, 0xad, 0xfd, 0x10, 0x60, 0xf0, 0x7e, 0x41, 0x73, 0x80, 0xd8, 0xd4, 0x6a, 0xed, 0xf1, 0x76,
-	0xa5, 0x1e, 0x42, 0x31, 0x0f, 0xb3, 0xa1, 0xf1, 0x66, 0x75, 0xa7, 0xb1, 0x5d, 0x39, 0xd8, 0xd9,
-	0x62, 0x10, 0x0a, 0x30, 0x17, 0x12, 0xd5, 0x9a, 0xd5, 0x4a, 0xdd, 0x97, 0x8d, 0x94, 0xff, 0x71,
-	0x19, 0x26, 0x37, 0x22, 0x3f, 0xe7, 0xa2, 0x3f, 0x28, 0x30, 0x17, 0x93, 0xc1, 0x77, 0x83, 0x9b,
-	0xc9, 0x99, 0x89, 0x2e, 0x2c, 0x0d, 0xd4, 0x24, 0xb4, 0x55, 0xbf, 0xfb, 0xec, 0xef, 0xff, 0xfc,
-	0xed, 0xc8, 0x1d, 0xb5, 0x58, 0x3a, 0xb9, 0x5d, 0x62, 0x54, 0x2b, 0x45, 0x11, 0x94, 0xe4, 0x66,
-	0xef, 0x2b, 0x6b, 0xe8, 0x17, 0x0a, 0xbb, 0xf3, 0x46, 0x36, 0xec, 0x92, 0x80, 0x29, 0x2a, 0x4e,
-	0xc2, 0x72, 0x9b, 0x63, 0x79, 0x4f, 0xfd, 0x4e, 0x1c, 0x96, 0xa8, 0x39, 0x86, 0xe1, 0x2b, 0x05,
-	0xf2, 0x71, 0x7b, 0x01, 0xdd, 0x18, 0xb8, 0x3b, 0x73, 0xb7, 0x24, 0xe1, 0xfa, 0x88, 0xe3, 0xba,
-	0xab, 0xae, 0x27, 0xe3, 0x8a, 0xda, 0x67, 0x08, 0x9f, 0x29, 0x30, 0x29, 0xfc, 0x82, 0x2a, 0x46,
-	0x29, 0x2a, 0x2e, 0x5c, 0x11, 0xd1, 0x44, 0xe5, 0xc9, 0x61, 0x8a, 0xea, 0x33, 0x10, 0x9f, 0x2b,
-	0x30, 0x2d, 0xfb, 0xe1, 0x53, 0x15, 0x91, 0x0c, 0xeb, 0x14, 0x66, 0x44, 0x38, 0x07, 0x16, 0xd1,
-	0xd5, 0x7b, 0x1c, 0xc4, 0xba, 0xfa, 0x5e, 0x2c, 0x88, 0x61, 0x53, 0x91, 0x70, 0x0c, 0x7e, 0x76,
-	0x93, 0x86, 0xa3, 0x2f, 0x8e, 0x09, 0x47, 0x5f, 0x7e, 0xce, 0x70, 0xf4, 0xf5, 0x19, 0x88, 0x5f,
-	0x2a, 0x80, 0x64, 0x3f, 0x96, 0xc9, 0x80, 0x44, 0x54, 0x86, 0x83, 0xc1, 0x21, 0xdc, 0xe5, 0x10,
-	0x4a, 0xea, 0xda, 0x99, 0x10, 0x22, 0x96, 0x18, 0x8c, 0xa7, 0x7e, 0x28, 0x06, 0xbf, 0x0d, 0x49,
-	0x43, 0xd1, 0x17, 0xc7, 0x78, 0x3f, 0x5f, 0x00, 0xfa, 0x56, 0x98, 0xe7, 0x2f, 0x14, 0x78, 0x67,
-	0xb8, 0xc5, 0xbe, 0x2c, 0xf3, 0x1e, 0xd6, 0x28, 0x5c, 0x93, 0xe6, 0x22, 0xac, 0xa2, 0x7e, 0xc0,
-	0xd1, 0x14, 0xd5, 0x9b, 0x67, 0xa2, 0x09, 0x4f, 0x61, 0x80, 0x1c, 0xc8, 0x45, 0xda, 0xec, 0x0b,
-	0x02, 0x94, 0xb0, 0x30, 0x26, 0x0c, 0x25, 0xee, 0xf8, 0xa6, 0x7a, 0x3d, 0xce, 0x71, 0xd8, 0x06,
-	0xf3, 0x69, 0x00, 0x84, 0x5a, 0xe9, 0xf3, 0x43, 0xa5, 0x2b, 0x10, 0xc5, 0xec, 0x80, 0xf7, 0xb9,
-	0xbf, 0x1b, 0xaa, 0x1a, 0x5f, 0x15, 0x02, 0x0b, 0xcc, 0xdb, 0xcf, 0x61, 0x6a, 0xa8, 0x97, 0x7e,
-	0x35, 0x66, 0x95, 0x81, 0x42, 0xcc, 0x4a, 0xef, 0x70, 0xcf, 0xef, 0xab, 0xab, 0x49, 0x2b, 0x0d,
-	0xec, 0x30, 0xff, 0xbf, 0x52, 0xe0, 0x6d, 0xb1, 0x17, 0x7d, 0x45, 0xf0, 0x2f, 0xc8, 0x0b, 0x57,
-	0x45, 0xf7, 0x82, 0x82, 0x5a, 0xe6, 0x48, 0x6e, 0xa9, 0x37, 0xe2, 0x90, 0x08, 0x13, 0x7c, 0xd6,
-	0x0b, 0xed, 0x6b, 0x91, 0xf5, 0x51, 0xf1, 0x45, 0x59, 0x1f, 0xb5, 0xc2, 0x3c, 0xff, 0x08, 0xd2,
-	0x7e, 0x97, 0x7a, 0x56, 0x64, 0x3a, 0x1f, 0x8e, 0xf1, 0x74, 0x93, 0x7b, 0x5a, 0x51, 0xaf, 0xc4,
-	0x32, 0x9a, 0xcf, 0x0e, 0x05, 0x39, 0xd2, 0x01, 0x93, 0x04, 0x39, 0x2c, 0x97, 0x06, 0x39, 0xac,
-	0x70, 0xae, 0x20, 0x47, 0x9a, 0x75, 0x1e, 0xdb, 0x86, 0x9a, 0x63, 0x22, 0xdb, 0x44, 0x85, 0x18,
-	0x9e, 0x27, 0xb2, 0x4d, 0xb4, 0xc3, 0xfc, 0x3f, 0x57, 0x60, 0x46, 0xd6, 0x45, 0x43, 0x2b, 0x71,
-	0x20, 0x42, 0x4a, 0x31, 0x40, 0x3e, 0xe4, 0x40, 0x6e, 0xab, 0xb7, 0x12, 0x81, 0x84, 0xdb, 0x76,
-	0xca, 0x1a, 0x6a, 0xc3, 0xb8, 0xdf, 0x94, 0x43, 0x73, 0x92, 0xc4, 0xd7, 0x7a, 0x6e, 0x8c, 0xc7,
-	0x35, 0xee, 0xf1, 0xba, 0x7a, 0xf5, 0xac, 0xcc, 0xd7, 0x7a, 0x6e, 0x50, 0xcc, 0xa3, 0xfd, 0x9e,
-	0x25, 0x89, 0xaf, 0x81, 0xf8, 0xc2, 0xc5, 0x3c, 0x62, 0x25, 0xe4, 0x39, 0xd4, 0x00, 0x59, 0x92,
-	0xd2, 0xfb, 0x55, 0x78, 0x1e, 0x58, 0x61, 0x9e, 0xbf, 0x54, 0x60, 0x46, 0xfa, 0x2c, 0x5e, 0x91,
-	0xdc, 0x2b, 0x44, 0xa5, 0xc2, 0xf5, 0xa1, 0xc3, 0x44, 0xa2, 0x95, 0x9c, 0x75, 0xd9, 0xac, 0x80,
-	0x82, 0xd2, 0x47, 0x73, 0x2c, 0xb8, 0x90, 0xd2, 0x45, 0x29, 0x28, 0xb3, 0x75, 0x5f, 0x59, 0xdb,
-	0x9c, 0x7f, 0xf1, 0x60, 0x0e, 0x66, 0xc2, 0x2f, 0x3a, 0xf6, 0x36, 0x24, 0x6d, 0x4c, 0x0f, 0xd3,
-	0xbc, 0x47, 0x7f, 0xe7, 0xbf, 0x01, 0x00, 0x00, 0xff, 0xff, 0xba, 0x71, 0x99, 0x67, 0xca, 0x29,
-	0x00, 0x00,
+var fileDescriptor_authentication_69023681e9436a86 = []byte{
+	// 2212 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x59, 0x4f, 0x73, 0xdb, 0xc6,
+	0x15, 0x37, 0x48, 0x89, 0xa2, 0x1e, 0x65, 0x59, 0x86, 0x64, 0x85, 0xa2, 0x64, 0x99, 0x81, 0xdc,
+	0x5a, 0x56, 0x1c, 0x52, 0x66, 0x12, 0x67, 0xc6, 0x9d, 0xa9, 0x47, 0xff, 0x1c, 0x6a, 0xac, 0x8a,
+	0x1a, 0x92, 0x52, 0x26, 0xed, 0x81, 0x5d, 0x11, 0x2b, 0x6a, 0x1b, 0x10, 0x40, 0xb1, 0xa0, 0x62,
+	0x75, 0xa6, 0x3d, 0x64, 0x3a, 0xcd, 0x8c, 0x0f, 0x99, 0x4e, 0xdb, 0xc9, 0x21, 0x3d, 0x74, 0x7a,
+	0xe9, 0x77, 0xe8, 0x87, 0xe8, 0xa9, 0xdf, 0x40, 0xd3, 0xf6, 0x90, 0x2f, 0xd1, 0xce, 0x2e, 0x00,
+	0x12, 0x58, 0x2e, 0x0c, 0x4a, 0xb1, 0xd3, 0x1c, 0x7c, 0x92, 0x80, 0xf7, 0xdb, 0xf7, 0x7e, 0xfb,
+	0xde, 0x0f, 0x6f, 0xff, 0x10, 0xe6, 0x50, 0xcf, 0x3d, 0xc5, 0xa6, 0x4b, 0xda, 0xc8, 0x25, 0x96,
+	0x59, 0xb2, 0x1d, 0xcb, 0xb5, 0xd4, 0x8c, 0x4e, 0x90, 0x61, 0x75, 0x0a, 0xcb, 0x1d, 0xcb, 0xea,
+	0x18, 0xb8, 0xcc, 0xdf, 0x1e, 0xf7, 0x4e, 0xca, 0x9f, 0x39, 0xc8, 0xb6, 0xb1, 0x43, 0x3d, 0x5c,
+	0x61, 0xc9, 0xb7, 0x23, 0x9b, 0x94, 0x91, 0x69, 0x5a, 0x2e, 0x77, 0x12, 0x58, 0x6f, 0xea, 0xf8,
+	0x84, 0x98, 0x24, 0xfc, 0x6a, 0xb6, 0x4b, 0x68, 0x1b, 0x1b, 0x06, 0x32, 0xb1, 0xd5, 0x0b, 0x5e,
+	0xe6, 0x6c, 0x3c, 0x70, 0x99, 0xeb, 0xd1, 0xc1, 0xc3, 0x2d, 0xda, 0x46, 0x06, 0xb2, 0x8f, 0xcb,
+	0xfe, 0x5f, 0xef, 0xb5, 0xf6, 0x97, 0x34, 0xdc, 0xaa, 0xe3, 0x5f, 0xf6, 0x30, 0x75, 0x1b, 0x2e,
+	0x72, 0xdc, 0x83, 0x53, 0xcb, 0xc4, 0x1b, 0x3d, 0xf7, 0x54, 0x5d, 0x87, 0x29, 0x9b, 0x3d, 0xb4,
+	0xcc, 0x5e, 0xf7, 0x18, 0x3b, 0x79, 0xa5, 0xa8, 0xac, 0xa6, 0x37, 0xaf, 0xbf, 0xf8, 0x66, 0x7d,
+	0x12, 0x26, 0xce, 0x08, 0x25, 0xc7, 0x06, 0xae, 0xe7, 0x38, 0x64, 0x9f, 0x23, 0xd4, 0x15, 0xc8,
+	0x20, 0xdb, 0x6e, 0x11, 0x3d, 0x9f, 0x2a, 0x2a, 0xab, 0xe3, 0x9b, 0x53, 0x2f, 0xbe, 0x59, 0xcf,
+	0x42, 0xe6, 0x94, 0xe8, 0x3a, 0x36, 0xeb, 0xe3, 0xc8, 0xb6, 0x77, 0x75, 0xf5, 0x07, 0x30, 0x81,
+	0x6c, 0xd2, 0xfa, 0x14, 0x9f, 0xe7, 0xd3, 0x45, 0x65, 0x75, 0x52, 0x40, 0x65, 0x90, 0x4d, 0x9e,
+	0xe1, 0x73, 0xb5, 0x04, 0x39, 0x1d, 0x9f, 0x91, 0x36, 0x6e, 0x9d, 0x22, 0x7a, 0x9a, 0x1f, 0x2b,
+	0x2a, 0xab, 0x53, 0x62, 0x70, 0xf0, 0x10, 0x55, 0x44, 0x39, 0x5b, 0x1f, 0xef, 0x12, 0xd7, 0xc0,
+	0xf9, 0x71, 0xee, 0x5b, 0x64, 0xeb, 0x41, 0x9a, 0x0c, 0xa1, 0x56, 0x61, 0xd2, 0x25, 0x5d, 0xdc,
+	0xfa, 0x95, 0x65, 0xe2, 0x7c, 0xa6, 0xa8, 0xac, 0xe6, 0x2a, 0x4b, 0x25, 0xaf, 0x08, 0xa5, 0xa0,
+	0x48, 0xa5, 0x86, 0xeb, 0x10, 0xb3, 0x73, 0x84, 0x8c, 0x1e, 0x16, 0x9d, 0x65, 0xd9, 0xe8, 0x9f,
+	0x5a, 0x26, 0x56, 0x7f, 0x0c, 0xb3, 0xb6, 0x83, 0x4f, 0xb0, 0xe3, 0x60, 0xbd, 0x65, 0x20, 0xb3,
+	0xd3, 0x43, 0x1d, 0x4c, 0xf3, 0x13, 0xc5, 0xf4, 0x30, 0x05, 0xb5, 0x8f, 0xdc, 0x0b, 0x80, 0x8f,
+	0x97, 0x2e, 0x9e, 0x2c, 0xc0, 0x5b, 0xa4, 0x5b, 0xd2, 0x8d, 0x4e, 0xa9, 0xe3, 0xd8, 0xed, 0xd2,
+	0x47, 0x8e, 0xdd, 0xf6, 0xab, 0xa2, 0xfd, 0x43, 0x81, 0xf9, 0x3a, 0xa6, 0xb6, 0x65, 0x52, 0x2c,
+	0x94, 0xe8, 0x3e, 0xcc, 0xb8, 0x0e, 0x32, 0x29, 0x6a, 0x33, 0x61, 0x78, 0x99, 0x62, 0x65, 0x9a,
+	0xac, 0xdf, 0x08, 0xbd, 0xe7, 0xf9, 0x59, 0x81, 0xeb, 0x84, 0xb6, 0x1c, 0xdc, 0x21, 0xd4, 0xc5,
+	0x0e, 0xf6, 0x4a, 0x94, 0xad, 0x4f, 0x11, 0x5a, 0xef, 0xbf, 0x53, 0xb7, 0xe1, 0x06, 0x1b, 0x72,
+	0xc6, 0xa5, 0xd7, 0x72, 0xcf, 0x6d, 0xcc, 0x6b, 0x34, 0x5d, 0x59, 0x2c, 0x79, 0x2a, 0x2e, 0x79,
+	0xb1, 0xfb, 0x98, 0xe6, 0xb9, 0x8d, 0xeb, 0xd3, 0x28, 0xf2, 0xfc, 0xf8, 0xf6, 0xc5, 0x93, 0x02,
+	0xe4, 0x87, 0xa7, 0xe3, 0x4d, 0x41, 0xa3, 0x50, 0x08, 0x04, 0x87, 0x4d, 0x7d, 0xcb, 0xd2, 0xf1,
+	0xe6, 0x39, 0x77, 0xbb, 0x85, 0x0c, 0x43, 0xfd, 0x30, 0x6e, 0x4a, 0x81, 0x4e, 0x74, 0x64, 0x76,
+	0xb0, 0x33, 0x34, 0xc1, 0x84, 0x24, 0xfe, 0x41, 0x90, 0xf9, 0x4e, 0x17, 0x11, 0x83, 0xe7, 0x70,
+	0x05, 0xc6, 0x31, 0x7b, 0xf0, 0xa3, 0x08, 0xe5, 0xf2, 0x6c, 0x6f, 0x94, 0xfd, 0xdd, 0x28, 0x7b,
+	0x50, 0x95, 0xef, 0x5e, 0xd9, 0x5e, 0xec, 0x6f, 0xa5, 0xec, 0x3f, 0xa5, 0x61, 0x21, 0x2c, 0xb2,
+	0x0d, 0xd3, 0x32, 0xcf, 0xbb, 0x56, 0x8f, 0xf2, 0x29, 0xbd, 0x0d, 0x63, 0x26, 0xea, 0x62, 0xb9,
+	0xce, 0xb8, 0xe9, 0x8d, 0xcc, 0x5e, 0x8b, 0xcc, 0xc4, 0x6f, 0xbf, 0x69, 0x7d, 0x8a, 0xcd, 0xe0,
+	0xdb, 0x77, 0xd9, 0x43, 0xcc, 0xb7, 0xcf, 0x6d, 0x6f, 0x8a, 0xf2, 0x5a, 0x8a, 0xf2, 0xe7, 0x34,
+	0xe4, 0xc3, 0x45, 0x39, 0xa4, 0xd8, 0x61, 0xdf, 0x80, 0xff, 0xf5, 0x67, 0x7b, 0xfe, 0xb3, 0xbc,
+	0x34, 0x7d, 0xf3, 0x9b, 0xea, 0xbc, 0x96, 0xea, 0xbc, 0x50, 0x58, 0x27, 0x0b, 0x75, 0x66, 0xa1,
+	0x3c, 0xaf, 0xb4, 0x39, 0x27, 0xb5, 0xd5, 0x2f, 0x15, 0x98, 0xf5, 0x89, 0x1d, 0x21, 0x83, 0xe8,
+	0xc8, 0xc5, 0x6c, 0xd7, 0x70, 0xe5, 0xad, 0x82, 0x5a, 0x84, 0xb1, 0xb6, 0xa5, 0x63, 0xce, 0x45,
+	0xd4, 0x02, 0xb7, 0x24, 0x64, 0xe7, 0x17, 0x70, 0xd3, 0xff, 0xb7, 0x8e, 0xa9, 0xbf, 0x87, 0x79,
+	0x5d, 0x1b, 0x97, 0xaf, 0x15, 0x78, 0x4b, 0x98, 0xfc, 0x01, 0xa2, 0xf4, 0x33, 0xcb, 0xd1, 0xaf,
+	0x9e, 0x80, 0x55, 0xc8, 0xda, 0xbe, 0x93, 0x68, 0x12, 0xfc, 0x01, 0x7d, 0x6b, 0x02, 0xb9, 0xbf,
+	0xf2, 0x05, 0x9c, 0xff, 0xff, 0x11, 0x76, 0x6b, 0x4c, 0x1c, 0x95, 0x03, 0xe4, 0xa0, 0x2e, 0xbd,
+	0x3a, 0xb7, 0x75, 0x98, 0x72, 0xb0, 0x4e, 0x1c, 0xdc, 0x76, 0x5b, 0x3d, 0xc7, 0xf0, 0xf9, 0x89,
+	0x1f, 0x55, 0x00, 0x39, 0x74, 0x8c, 0x04, 0x8e, 0x0d, 0x96, 0x3f, 0x4f, 0x49, 0x22, 0xc7, 0x05,
+	0xc8, 0xb2, 0x23, 0x1b, 0x0f, 0xe3, 0xe9, 0x77, 0x82, 0x3d, 0x33, 0x9f, 0x09, 0x92, 0xfc, 0xbd,
+	0xd2, 0x5f, 0x52, 0xb6, 0xac, 0xae, 0x6d, 0x60, 0x17, 0x7b, 0x9e, 0x5f, 0xb1, 0x28, 0x7d, 0xf0,
+	0x28, 0xa2, 0xfc, 0xaf, 0x02, 0xd7, 0x83, 0x86, 0x4a, 0x3a, 0xe6, 0xa1, 0x7d, 0x75, 0x2a, 0xc1,
+	0x4e, 0x25, 0x15, 0xbf, 0x53, 0x79, 0x00, 0x69, 0x8a, 0x9f, 0xfb, 0x7b, 0xa8, 0x5c, 0xb0, 0x87,
+	0x6a, 0xe0, 0xe7, 0x22, 0x9c, 0xc1, 0xd4, 0xa7, 0x21, 0xbd, 0x8d, 0x8d, 0xd0, 0xf5, 0xa2, 0x9f,
+	0xe4, 0xa8, 0x6a, 0xbc, 0x50, 0x60, 0x2a, 0xa8, 0x10, 0xef, 0x53, 0x65, 0x18, 0x63, 0xeb, 0x04,
+	0x9f, 0x47, 0xae, 0x32, 0x15, 0xb0, 0x64, 0xbd, 0x2c, 0xa0, 0xd9, 0xb6, 0xba, 0x36, 0x6a, 0xbb,
+	0x75, 0x0e, 0x54, 0x3f, 0x80, 0x4c, 0xdb, 0x32, 0x4f, 0x48, 0x87, 0x4f, 0x2c, 0x57, 0x99, 0x0e,
+	0x86, 0x6c, 0xf1, 0xb7, 0xe2, 0xdc, 0x7c, 0xb0, 0xfa, 0x0c, 0x72, 0xde, 0x7f, 0x83, 0x75, 0x23,
+	0x57, 0x59, 0x1c, 0x9a, 0xe1, 0xae, 0xe9, 0x3e, 0x7a, 0x5f, 0xda, 0xd6, 0xc1, 0x1b, 0xce, 0xdb,
+	0x41, 0x82, 0xf2, 0xfe, 0x9d, 0x86, 0x1c, 0x9b, 0x5c, 0x03, 0x53, 0x4a, 0x2c, 0x53, 0xbd, 0x0d,
+	0x29, 0xa2, 0xf3, 0xb2, 0x8e, 0x8b, 0x5e, 0x53, 0x44, 0x57, 0x37, 0x21, 0xc7, 0x25, 0x7e, 0x6a,
+	0x19, 0xba, 0x9f, 0x89, 0xe9, 0x8a, 0x1a, 0x4c, 0x8b, 0x39, 0xaa, 0x72, 0xcb, 0x10, 0x23, 0xd4,
+	0x37, 0xa9, 0x77, 0xfb, 0x4b, 0x6c, 0x5a, 0x16, 0xc6, 0x5f, 0x63, 0xd7, 0x60, 0x92, 0xa1, 0xbc,
+	0x95, 0x70, 0x4c, 0xba, 0x68, 0x23, 0xdb, 0xf6, 0x96, 0xc1, 0xcb, 0x2f, 0x9c, 0xcc, 0x3b, 0x9b,
+	0x07, 0x5b, 0xff, 0xf8, 0xc2, 0x39, 0x3e, 0xec, 0xbd, 0xe7, 0x9e, 0x36, 0x49, 0x17, 0xab, 0x0f,
+	0xe1, 0x3a, 0xc7, 0x1a, 0x96, 0x77, 0x11, 0x93, 0x9f, 0x90, 0xf4, 0xf9, 0x29, 0x06, 0xd9, 0xf3,
+	0x11, 0x4c, 0xa0, 0x06, 0x72, 0x89, 0xdb, 0xd3, 0x71, 0x3e, 0x1b, 0x23, 0xd0, 0x6d, 0xab, 0x77,
+	0x6c, 0x60, 0xa9, 0x40, 0x83, 0xb1, 0x6c, 0x7d, 0x37, 0x2c, 0xb3, 0xe3, 0x39, 0x9a, 0xbc, 0xb4,
+	0xa3, 0xc1, 0x60, 0xed, 0x51, 0xb8, 0xb3, 0x86, 0x0a, 0x9e, 0xb4, 0x72, 0x1b, 0x91, 0x76, 0x17,
+	0x1e, 0xa8, 0x56, 0x00, 0x98, 0xca, 0x5b, 0x6c, 0xe6, 0x34, 0xaf, 0x14, 0xd3, 0xab, 0xb9, 0xca,
+	0x6c, 0x58, 0x0a, 0x3e, 0xb2, 0x3e, 0xc9, 0x60, 0xec, 0x05, 0x4d, 0x52, 0xe3, 0x51, 0x7f, 0x71,
+	0x6a, 0x62, 0xa7, 0x4b, 0x4c, 0xe4, 0xe2, 0xd1, 0x84, 0x99, 0x30, 0x8b, 0x1f, 0xc1, 0xa2, 0xe8,
+	0x77, 0xc3, 0x30, 0x46, 0x4c, 0x41, 0x09, 0xa6, 0x43, 0x8d, 0xb0, 0xd6, 0x73, 0x13, 0xf0, 0x5f,
+	0xa4, 0x60, 0xe6, 0xa9, 0xe5, 0xb4, 0x71, 0x1d, 0x1b, 0x16, 0xd2, 0x9f, 0x12, 0x6c, 0xe8, 0xea,
+	0x1e, 0xa8, 0x27, 0x83, 0x77, 0xdb, 0x3c, 0x49, 0x94, 0x4f, 0x27, 0x57, 0x29, 0x04, 0x49, 0x7b,
+	0x3a, 0x84, 0xa8, 0x5e, 0xab, 0x4b, 0xc6, 0xa9, 0x35, 0x98, 0x0d, 0xbd, 0xdd, 0xb2, 0x4c, 0x17,
+	0xb5, 0x5d, 0xea, 0x37, 0xa6, 0x45, 0x89, 0xbb, 0x00, 0x52, 0xbd, 0x56, 0x97, 0x8d, 0x14, 0xe8,
+	0x55, 0x09, 0x75, 0x2d, 0xe7, 0xdc, 0xef, 0x5a, 0x32, 0x7a, 0x3e, 0x42, 0xa0, 0xe7, 0xbf, 0xdd,
+	0xcc, 0xc0, 0xd8, 0xb1, 0xa5, 0x9f, 0x6b, 0x73, 0xa0, 0x0e, 0x4f, 0x49, 0xbb, 0x05, 0xb3, 0x12,
+	0x66, 0xda, 0x4e, 0x04, 0xec, 0xbb, 0x62, 0x3d, 0xd7, 0xc6, 0xfe, 0x6d, 0x61, 0xa8, 0xe7, 0x1e,
+	0xe0, 0xe1, 0x1e, 0xc3, 0x81, 0xda, 0x27, 0x30, 0x7f, 0x68, 0xb3, 0x6d, 0x4d, 0xc8, 0x59, 0xc3,
+	0x45, 0x2e, 0x56, 0x9f, 0x40, 0xe6, 0x84, 0xd5, 0x22, 0xd0, 0x6a, 0x5e, 0x32, 0x2f, 0x5e, 0xac,
+	0xa1, 0xbe, 0xec, 0x0d, 0xd3, 0xfe, 0x93, 0x1a, 0x1c, 0xfc, 0x48, 0xc7, 0xdc, 0x35, 0x6b, 0xc7,
+	0xd4, 0x62, 0x6b, 0xb5, 0x5a, 0x96, 0xde, 0x6d, 0x46, 0x97, 0xc5, 0xc8, 0xd5, 0xe6, 0x3d, 0xc8,
+	0xd2, 0x2e, 0xf5, 0xfa, 0xbb, 0x6c, 0x85, 0x9e, 0xa0, 0x5d, 0xca, 0xd7, 0x4e, 0x1f, 0xc8, 0x97,
+	0xf2, 0x74, 0x0c, 0x90, 0xef, 0x17, 0x85, 0xc3, 0xc6, 0xf8, 0x65, 0x0f, 0x1b, 0x99, 0xc4, 0x9e,
+	0x39, 0x38, 0x1a, 0x4d, 0x24, 0x1c, 0x8d, 0x6c, 0x7e, 0x34, 0xca, 0xca, 0x8f, 0x46, 0xf6, 0x33,
+	0x7c, 0x9e, 0xf0, 0x05, 0xfd, 0x2d, 0x1d, 0x49, 0xf4, 0xa1, 0xfd, 0x7d, 0x4a, 0x74, 0xb0, 0x9b,
+	0x19, 0x8b, 0xdf, 0xcd, 0x08, 0xb5, 0x98, 0xb8, 0x6c, 0x2d, 0xb2, 0x97, 0xa8, 0xc5, 0xe4, 0x48,
+	0xb5, 0x80, 0xf8, 0x5a, 0xa8, 0x8b, 0x30, 0x49, 0x68, 0x8b, 0x12, 0x03, 0x9b, 0x6e, 0x3e, 0xc7,
+	0xcf, 0x53, 0x59, 0x42, 0x1b, 0xfc, 0x39, 0xa1, 0x50, 0x7f, 0x57, 0xfa, 0x8d, 0xb5, 0x81, 0x4d,
+	0x9d, 0xf5, 0x78, 0x96, 0xa3, 0x7e, 0xb9, 0xfe, 0xaf, 0x77, 0xfe, 0x09, 0xdc, 0x7f, 0x0d, 0x4b,
+	0xfd, 0x23, 0xa9, 0x8c, 0xfb, 0x42, 0x48, 0x39, 0xfe, 0x6e, 0x3e, 0xd0, 0xca, 0xab, 0x38, 0x85,
+	0x5e, 0x48, 0x52, 0x87, 0x0c, 0xe3, 0x5b, 0xa4, 0x6e, 0x64, 0xa9, 0xaf, 0x08, 0x1b, 0xb0, 0xa4,
+	0x1c, 0x8f, 0x5d, 0x35, 0xc7, 0x6b, 0x67, 0x30, 0x2b, 0xb9, 0xe1, 0x57, 0xef, 0xc0, 0xe2, 0x41,
+	0xb5, 0xb6, 0xbf, 0xb3, 0xb1, 0xd5, 0xdc, 0x3d, 0xda, 0x68, 0xee, 0xd6, 0xf6, 0x9b, 0x9f, 0x1c,
+	0xec, 0xb4, 0x0e, 0xf7, 0x9f, 0xed, 0xd7, 0x3e, 0xde, 0x9f, 0xb9, 0xa6, 0x2e, 0x41, 0x5e, 0x06,
+	0xd8, 0xaa, 0x6d, 0xef, 0xcc, 0x28, 0x6a, 0x11, 0x96, 0x64, 0xd6, 0x83, 0x8d, 0x46, 0xe3, 0xe3,
+	0x5a, 0x7d, 0x7b, 0x26, 0xb5, 0xf6, 0x95, 0x02, 0xb3, 0x92, 0x0b, 0x58, 0x16, 0x78, 0xe7, 0x27,
+	0x1b, 0xbb, 0x7b, 0x2f, 0x0b, 0x2c, 0x03, 0xf8, 0x81, 0x97, 0xa1, 0x20, 0xb3, 0xd6, 0x36, 0x0e,
+	0x9b, 0xd5, 0xca, 0x4c, 0x8a, 0x11, 0x93, 0xd9, 0xfb, 0xc4, 0xd2, 0x6b, 0x3f, 0x03, 0x18, 0x6c,
+	0x92, 0xd5, 0x79, 0x50, 0xd9, 0xd0, 0x6a, 0x6d, 0x6f, 0x7b, 0xa7, 0x1e, 0x62, 0xb1, 0x00, 0xb7,
+	0x42, 0xef, 0x9b, 0xd5, 0xdd, 0xc6, 0xf6, 0xce, 0xd1, 0xee, 0x16, 0xa3, 0x50, 0x80, 0xf9, 0x90,
+	0xa9, 0xd6, 0xac, 0xee, 0xd4, 0x7d, 0x5b, 0xaa, 0xf2, 0xd5, 0x1c, 0x4c, 0x6f, 0x44, 0x7e, 0x33,
+	0x54, 0x3f, 0x57, 0x60, 0x5a, 0xf8, 0x91, 0xe7, 0x76, 0xb0, 0xec, 0x49, 0x7f, 0xa6, 0x2b, 0x2c,
+	0x0f, 0xcc, 0xb2, 0xdf, 0x88, 0xb4, 0x87, 0x9f, 0xff, 0xf3, 0x5f, 0x7f, 0x4c, 0xbd, 0xa3, 0xfd,
+	0xb0, 0x7c, 0xf6, 0xb0, 0xcc, 0x0a, 0x5e, 0x8e, 0x86, 0x2c, 0x47, 0xf1, 0x8f, 0x95, 0x35, 0xf5,
+	0x0b, 0x05, 0x66, 0x65, 0xbf, 0xcd, 0x68, 0x22, 0x93, 0x61, 0x4c, 0x61, 0x4e, 0xa4, 0x73, 0x64,
+	0x11, 0x5d, 0x7b, 0xc4, 0x49, 0xac, 0x6b, 0xef, 0xc4, 0x92, 0x18, 0x76, 0xc5, 0x98, 0xf4, 0xd3,
+	0x31, 0xf8, 0x65, 0x40, 0x9a, 0x8e, 0xbe, 0x39, 0x26, 0x1d, 0x7d, 0xfb, 0x88, 0xe9, 0xe8, 0xe3,
+	0x19, 0x89, 0xdf, 0x2a, 0xa0, 0xca, 0xee, 0xf3, 0x65, 0x44, 0x22, 0x90, 0xe1, 0x64, 0x70, 0x0a,
+	0x1f, 0x70, 0x0a, 0x65, 0x6d, 0xed, 0xa5, 0x14, 0x22, 0x9e, 0x18, 0x8d, 0xe7, 0x7e, 0x2a, 0x06,
+	0xd7, 0xd7, 0xd2, 0x54, 0xf4, 0xcd, 0x31, 0xd1, 0x47, 0x4b, 0x40, 0xdf, 0x0b, 0x8b, 0xfc, 0xa5,
+	0x02, 0x37, 0x87, 0x6f, 0x01, 0x8b, 0xb2, 0xe8, 0x61, 0x44, 0xe1, 0x6d, 0x69, 0x2d, 0xc2, 0x10,
+	0xed, 0x7d, 0xce, 0xa6, 0xa4, 0xdd, 0x7f, 0x29, 0x9b, 0xf0, 0x10, 0x46, 0xc8, 0x81, 0xa9, 0xc8,
+	0x4d, 0xe0, 0xa2, 0x40, 0x25, 0x6c, 0x8c, 0x49, 0x43, 0x99, 0x07, 0xbe, 0xaf, 0xdd, 0x8d, 0x0b,
+	0x1c, 0xf6, 0xc1, 0x62, 0x1a, 0x00, 0xa1, 0xdb, 0xbe, 0x05, 0x21, 0xe2, 0xc0, 0x14, 0xf3, 0x05,
+	0xbc, 0xcb, 0xe3, 0xdd, 0xd3, 0xb4, 0xb8, 0x78, 0x03, 0x0f, 0x2c, 0xda, 0x6f, 0x60, 0x66, 0xe8,
+	0xba, 0xef, 0x4e, 0xcc, 0x2c, 0x03, 0x40, 0xcc, 0x4c, 0xdf, 0xe3, 0x91, 0xdf, 0xd5, 0x56, 0x93,
+	0x66, 0x1a, 0xf8, 0x61, 0xf1, 0x7f, 0xa7, 0xc0, 0x0d, 0xf1, 0xba, 0x6c, 0x59, 0x88, 0x2f, 0xd8,
+	0x0b, 0x77, 0xc4, 0xf0, 0x02, 0x40, 0xab, 0x70, 0x26, 0x0f, 0xb4, 0x7b, 0x71, 0x4c, 0x84, 0x01,
+	0xbe, 0xea, 0x85, 0x1b, 0x36, 0x51, 0xf5, 0x51, 0xf3, 0x55, 0x55, 0x1f, 0xf5, 0xc2, 0x22, 0xff,
+	0x1c, 0x32, 0xfe, 0x45, 0xda, 0x2d, 0x51, 0xe9, 0xfc, 0x75, 0x4c, 0xa4, 0xfb, 0x3c, 0xd2, 0x8a,
+	0xb6, 0x1c, 0xab, 0x68, 0x3e, 0x3a, 0x94, 0xe4, 0xc8, 0x21, 0x5d, 0x92, 0xe4, 0xb0, 0x5d, 0x9a,
+	0xe4, 0x30, 0x60, 0xa4, 0x24, 0x47, 0xee, 0x13, 0x3c, 0xb5, 0x0d, 0x9d, 0xdf, 0x45, 0xb5, 0x89,
+	0x80, 0x18, 0x9d, 0x27, 0xaa, 0x4d, 0xf4, 0xc3, 0xe2, 0xbf, 0x50, 0x60, 0x4e, 0x76, 0xd0, 0x57,
+	0x57, 0xe2, 0x48, 0x84, 0x40, 0x31, 0x44, 0x3e, 0xe4, 0x44, 0x1e, 0x6a, 0x0f, 0x12, 0x89, 0x84,
+	0x6f, 0x16, 0x94, 0x35, 0xb5, 0x0d, 0x13, 0xfe, 0xbd, 0x81, 0x3a, 0x2f, 0x29, 0x7c, 0xad, 0xe7,
+	0xc6, 0x44, 0x5c, 0xe3, 0x11, 0xef, 0x6a, 0x77, 0x5e, 0x56, 0xf9, 0x5a, 0xcf, 0x0d, 0x9a, 0x79,
+	0xf4, 0x48, 0x7a, 0x5b, 0x12, 0x6b, 0x60, 0xbe, 0x72, 0x33, 0x8f, 0x78, 0x09, 0x45, 0x0e, 0x9d,
+	0xd1, 0x6e, 0x4b, 0xe5, 0xfd, 0x2a, 0x22, 0x0f, 0xbc, 0xb0, 0xc8, 0x5f, 0x2b, 0x30, 0x27, 0xdd,
+	0xb9, 0xaf, 0x48, 0xf6, 0x15, 0x22, 0xa8, 0x70, 0x77, 0x68, 0x31, 0x91, 0xa0, 0x92, 0xab, 0x2e,
+	0x1b, 0x15, 0x48, 0x50, 0xba, 0xaf, 0x8f, 0x25, 0x17, 0x02, 0x5d, 0x55, 0x82, 0x32, 0x5f, 0x8f,
+	0x95, 0xb5, 0xcd, 0x85, 0x8b, 0x27, 0xf3, 0x30, 0x17, 0xde, 0xa4, 0x53, 0xec, 0xb0, 0xc3, 0x24,
+	0x3d, 0xce, 0xf0, 0x6b, 0xc4, 0xf7, 0xfe, 0x17, 0x00, 0x00, 0xff, 0xff, 0x25, 0x7f, 0x77, 0x74,
+	0x6d, 0x26, 0x00, 0x00,
 }

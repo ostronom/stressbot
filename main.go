@@ -62,7 +62,7 @@ func main() {
 	metricsPort := flag.String("metricsport", "8081", "prometheus metrics endpoint port")
 
 	creationParallelism := flag.Int("cpar", 5, "creation parallelism")
-	botsAmount := flag.Int("botsnum", 10000, "bots amount")
+	botsAmount := flag.Int("botsnum", 100, "bots amount")
 	contactsAmount := flag.Int("ctsnum", 50, "contacts amount")
 
 	groupsAmount := flag.Int("grnum", 0, "groups amount")

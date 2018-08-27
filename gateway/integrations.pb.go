@@ -27,8 +27,8 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Group token response
 type ResponseIntegrationToken struct {
-	Token                string   `protobuf:"bytes,1,opt,name=token" json:"token,omitempty"`
-	Url                  string   `protobuf:"bytes,2,opt,name=url" json:"url,omitempty"`
+	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	Url                  string   `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -38,7 +38,7 @@ func (m *ResponseIntegrationToken) Reset()         { *m = ResponseIntegrationTok
 func (m *ResponseIntegrationToken) String() string { return proto.CompactTextString(m) }
 func (*ResponseIntegrationToken) ProtoMessage()    {}
 func (*ResponseIntegrationToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_integrations_304b862e9e457056, []int{0}
+	return fileDescriptor_integrations_21adda003d1bd25c, []int{0}
 }
 func (m *ResponseIntegrationToken) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseIntegrationToken.Unmarshal(m, b)
@@ -74,7 +74,7 @@ func (m *ResponseIntegrationToken) GetUrl() string {
 
 // Getting current group token
 type RequestGetIntegrationToken struct {
-	GroupPeer            *OutPeer `protobuf:"bytes,1,opt,name=group_peer,json=groupPeer" json:"group_peer,omitempty"`
+	GroupPeer            *OutPeer `protobuf:"bytes,1,opt,name=group_peer,json=groupPeer,proto3" json:"group_peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -84,7 +84,7 @@ func (m *RequestGetIntegrationToken) Reset()         { *m = RequestGetIntegratio
 func (m *RequestGetIntegrationToken) String() string { return proto.CompactTextString(m) }
 func (*RequestGetIntegrationToken) ProtoMessage()    {}
 func (*RequestGetIntegrationToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_integrations_304b862e9e457056, []int{1}
+	return fileDescriptor_integrations_21adda003d1bd25c, []int{1}
 }
 func (m *RequestGetIntegrationToken) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetIntegrationToken.Unmarshal(m, b)
@@ -113,7 +113,7 @@ func (m *RequestGetIntegrationToken) GetGroupPeer() *OutPeer {
 
 // Revoke group token
 type RequestRevokeIntegrationToken struct {
-	GroupPeer            *OutPeer `protobuf:"bytes,1,opt,name=group_peer,json=groupPeer" json:"group_peer,omitempty"`
+	GroupPeer            *OutPeer `protobuf:"bytes,1,opt,name=group_peer,json=groupPeer,proto3" json:"group_peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -123,7 +123,7 @@ func (m *RequestRevokeIntegrationToken) Reset()         { *m = RequestRevokeInte
 func (m *RequestRevokeIntegrationToken) String() string { return proto.CompactTextString(m) }
 func (*RequestRevokeIntegrationToken) ProtoMessage()    {}
 func (*RequestRevokeIntegrationToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_integrations_304b862e9e457056, []int{2}
+	return fileDescriptor_integrations_21adda003d1bd25c, []int{2}
 }
 func (m *RequestRevokeIntegrationToken) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRevokeIntegrationToken.Unmarshal(m, b)
@@ -168,7 +168,9 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type IntegrationsClient interface {
+	// / Get token for posting to group
 	GetIntegrationToken(ctx context.Context, in *RequestGetIntegrationToken, opts ...grpc.CallOption) (*ResponseIntegrationToken, error)
+	// / Revoke token
 	RevokeIntegrationToken(ctx context.Context, in *RequestRevokeIntegrationToken, opts ...grpc.CallOption) (*ResponseIntegrationToken, error)
 }
 
@@ -200,7 +202,9 @@ func (c *integrationsClient) RevokeIntegrationToken(ctx context.Context, in *Req
 
 // IntegrationsServer is the server API for Integrations service.
 type IntegrationsServer interface {
+	// / Get token for posting to group
 	GetIntegrationToken(context.Context, *RequestGetIntegrationToken) (*ResponseIntegrationToken, error)
+	// / Revoke token
 	RevokeIntegrationToken(context.Context, *RequestRevokeIntegrationToken) (*ResponseIntegrationToken, error)
 }
 
@@ -261,9 +265,9 @@ var _Integrations_serviceDesc = grpc.ServiceDesc{
 	Metadata: "integrations.proto",
 }
 
-func init() { proto.RegisterFile("integrations.proto", fileDescriptor_integrations_304b862e9e457056) }
+func init() { proto.RegisterFile("integrations.proto", fileDescriptor_integrations_21adda003d1bd25c) }
 
-var fileDescriptor_integrations_304b862e9e457056 = []byte{
+var fileDescriptor_integrations_21adda003d1bd25c = []byte{
 	// 386 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x92, 0xc1, 0xaa, 0xd3, 0x40,
 	0x14, 0x86, 0x49, 0xc5, 0x6a, 0x4f, 0x2b, 0x62, 0xd4, 0x9a, 0x86, 0x56, 0xca, 0x80, 0xa0, 0x45,

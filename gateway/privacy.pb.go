@@ -27,7 +27,7 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Block User
 type RequestBlockUser struct {
-	Peer                 *UserOutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *UserOutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -37,7 +37,7 @@ func (m *RequestBlockUser) Reset()         { *m = RequestBlockUser{} }
 func (m *RequestBlockUser) String() string { return proto.CompactTextString(m) }
 func (*RequestBlockUser) ProtoMessage()    {}
 func (*RequestBlockUser) Descriptor() ([]byte, []int) {
-	return fileDescriptor_privacy_7682d078fa2ea2a1, []int{0}
+	return fileDescriptor_privacy_e541bd717d463dd0, []int{0}
 }
 func (m *RequestBlockUser) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestBlockUser.Unmarshal(m, b)
@@ -66,7 +66,7 @@ func (m *RequestBlockUser) GetPeer() *UserOutPeer {
 
 // Unblock User
 type RequestUnblockUser struct {
-	Peer                 *UserOutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *UserOutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -76,7 +76,7 @@ func (m *RequestUnblockUser) Reset()         { *m = RequestUnblockUser{} }
 func (m *RequestUnblockUser) String() string { return proto.CompactTextString(m) }
 func (*RequestUnblockUser) ProtoMessage()    {}
 func (*RequestUnblockUser) Descriptor() ([]byte, []int) {
-	return fileDescriptor_privacy_7682d078fa2ea2a1, []int{1}
+	return fileDescriptor_privacy_e541bd717d463dd0, []int{1}
 }
 func (m *RequestUnblockUser) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestUnblockUser.Unmarshal(m, b)
@@ -114,7 +114,7 @@ func (m *RequestLoadBlockedUsers) Reset()         { *m = RequestLoadBlockedUsers
 func (m *RequestLoadBlockedUsers) String() string { return proto.CompactTextString(m) }
 func (*RequestLoadBlockedUsers) ProtoMessage()    {}
 func (*RequestLoadBlockedUsers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_privacy_7682d078fa2ea2a1, []int{2}
+	return fileDescriptor_privacy_e541bd717d463dd0, []int{2}
 }
 func (m *RequestLoadBlockedUsers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestLoadBlockedUsers.Unmarshal(m, b)
@@ -135,7 +135,7 @@ func (m *RequestLoadBlockedUsers) XXX_DiscardUnknown() {
 var xxx_messageInfo_RequestLoadBlockedUsers proto.InternalMessageInfo
 
 type ResponseLoadBlockedUsers struct {
-	UserPeers            []*UserOutPeer `protobuf:"bytes,1,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
+	UserPeers            []*UserOutPeer `protobuf:"bytes,1,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -145,7 +145,7 @@ func (m *ResponseLoadBlockedUsers) Reset()         { *m = ResponseLoadBlockedUse
 func (m *ResponseLoadBlockedUsers) String() string { return proto.CompactTextString(m) }
 func (*ResponseLoadBlockedUsers) ProtoMessage()    {}
 func (*ResponseLoadBlockedUsers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_privacy_7682d078fa2ea2a1, []int{3}
+	return fileDescriptor_privacy_e541bd717d463dd0, []int{3}
 }
 func (m *ResponseLoadBlockedUsers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseLoadBlockedUsers.Unmarshal(m, b)
@@ -174,7 +174,7 @@ func (m *ResponseLoadBlockedUsers) GetUserPeers() []*UserOutPeer {
 
 // Update about User Blocked
 type UpdateUserBlocked struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -184,7 +184,7 @@ func (m *UpdateUserBlocked) Reset()         { *m = UpdateUserBlocked{} }
 func (m *UpdateUserBlocked) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserBlocked) ProtoMessage()    {}
 func (*UpdateUserBlocked) Descriptor() ([]byte, []int) {
-	return fileDescriptor_privacy_7682d078fa2ea2a1, []int{4}
+	return fileDescriptor_privacy_e541bd717d463dd0, []int{4}
 }
 func (m *UpdateUserBlocked) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserBlocked.Unmarshal(m, b)
@@ -213,7 +213,7 @@ func (m *UpdateUserBlocked) GetUid() int32 {
 
 // Update about User Unblocked
 type UpdateUserUnblocked struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -223,7 +223,7 @@ func (m *UpdateUserUnblocked) Reset()         { *m = UpdateUserUnblocked{} }
 func (m *UpdateUserUnblocked) String() string { return proto.CompactTextString(m) }
 func (*UpdateUserUnblocked) ProtoMessage()    {}
 func (*UpdateUserUnblocked) Descriptor() ([]byte, []int) {
-	return fileDescriptor_privacy_7682d078fa2ea2a1, []int{5}
+	return fileDescriptor_privacy_e541bd717d463dd0, []int{5}
 }
 func (m *UpdateUserUnblocked) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUserUnblocked.Unmarshal(m, b)
@@ -397,9 +397,9 @@ var _Privacy_serviceDesc = grpc.ServiceDesc{
 	Metadata: "privacy.proto",
 }
 
-func init() { proto.RegisterFile("privacy.proto", fileDescriptor_privacy_7682d078fa2ea2a1) }
+func init() { proto.RegisterFile("privacy.proto", fileDescriptor_privacy_e541bd717d463dd0) }
 
-var fileDescriptor_privacy_7682d078fa2ea2a1 = []byte{
+var fileDescriptor_privacy_e541bd717d463dd0 = []byte{
 	// 452 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x93, 0xcd, 0x6e, 0xd3, 0x40,
 	0x10, 0xc7, 0xe5, 0x16, 0x5a, 0x65, 0xa2, 0x4a, 0xad, 0x03, 0xd4, 0xb5, 0x82, 0x92, 0xae, 0xc4,

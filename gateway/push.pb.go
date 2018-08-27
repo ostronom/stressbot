@@ -27,8 +27,8 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Registering push token on server
 type RequestRegisterGooglePush struct {
-	ProjectId            int64    `protobuf:"varint,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
-	Token                string   `protobuf:"bytes,2,opt,name=token" json:"token,omitempty"`
+	ProjectId            int64    `protobuf:"varint,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
+	Token                string   `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -38,7 +38,7 @@ func (m *RequestRegisterGooglePush) Reset()         { *m = RequestRegisterGoogle
 func (m *RequestRegisterGooglePush) String() string { return proto.CompactTextString(m) }
 func (*RequestRegisterGooglePush) ProtoMessage()    {}
 func (*RequestRegisterGooglePush) Descriptor() ([]byte, []int) {
-	return fileDescriptor_push_90bcc49de71cd6a0, []int{0}
+	return fileDescriptor_push_f7e7c8687bcbf997, []int{0}
 }
 func (m *RequestRegisterGooglePush) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRegisterGooglePush.Unmarshal(m, b)
@@ -74,7 +74,7 @@ func (m *RequestRegisterGooglePush) GetToken() string {
 
 // Unregistering Google Push
 type RequestUnregisterGooglePush struct {
-	Token                string   `protobuf:"bytes,1,opt,name=token" json:"token,omitempty"`
+	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -84,7 +84,7 @@ func (m *RequestUnregisterGooglePush) Reset()         { *m = RequestUnregisterGo
 func (m *RequestUnregisterGooglePush) String() string { return proto.CompactTextString(m) }
 func (*RequestUnregisterGooglePush) ProtoMessage()    {}
 func (*RequestUnregisterGooglePush) Descriptor() ([]byte, []int) {
-	return fileDescriptor_push_90bcc49de71cd6a0, []int{1}
+	return fileDescriptor_push_f7e7c8687bcbf997, []int{1}
 }
 func (m *RequestUnregisterGooglePush) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestUnregisterGooglePush.Unmarshal(m, b)
@@ -113,8 +113,8 @@ func (m *RequestUnregisterGooglePush) GetToken() string {
 
 // Registering apple push on server
 type RequestRegisterApplePush struct {
-	ApnsKey              int32    `protobuf:"varint,1,opt,name=apns_key,json=apnsKey" json:"apns_key,omitempty"`
-	Token                string   `protobuf:"bytes,2,opt,name=token" json:"token,omitempty"`
+	ApnsKey              int32    `protobuf:"varint,1,opt,name=apns_key,json=apnsKey,proto3" json:"apns_key,omitempty"`
+	Token                string   `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -124,7 +124,7 @@ func (m *RequestRegisterApplePush) Reset()         { *m = RequestRegisterApplePu
 func (m *RequestRegisterApplePush) String() string { return proto.CompactTextString(m) }
 func (*RequestRegisterApplePush) ProtoMessage()    {}
 func (*RequestRegisterApplePush) Descriptor() ([]byte, []int) {
-	return fileDescriptor_push_90bcc49de71cd6a0, []int{2}
+	return fileDescriptor_push_f7e7c8687bcbf997, []int{2}
 }
 func (m *RequestRegisterApplePush) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRegisterApplePush.Unmarshal(m, b)
@@ -160,7 +160,7 @@ func (m *RequestRegisterApplePush) GetToken() string {
 
 // Unregistering Apple Push
 type RequestUnregisterApplePush struct {
-	Token                string   `protobuf:"bytes,1,opt,name=token" json:"token,omitempty"`
+	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -170,7 +170,7 @@ func (m *RequestUnregisterApplePush) Reset()         { *m = RequestUnregisterApp
 func (m *RequestUnregisterApplePush) String() string { return proto.CompactTextString(m) }
 func (*RequestUnregisterApplePush) ProtoMessage()    {}
 func (*RequestUnregisterApplePush) Descriptor() ([]byte, []int) {
-	return fileDescriptor_push_90bcc49de71cd6a0, []int{3}
+	return fileDescriptor_push_f7e7c8687bcbf997, []int{3}
 }
 func (m *RequestUnregisterApplePush) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestUnregisterApplePush.Unmarshal(m, b)
@@ -199,8 +199,8 @@ func (m *RequestUnregisterApplePush) GetToken() string {
 
 // Registration of a new Apple's PushKit tokens
 type RequestRegisterApplePushKit struct {
-	ApnsKey              int32    `protobuf:"varint,1,opt,name=apns_key,json=apnsKey" json:"apns_key,omitempty"`
-	Token                string   `protobuf:"bytes,2,opt,name=token" json:"token,omitempty"`
+	ApnsKey              int32    `protobuf:"varint,1,opt,name=apns_key,json=apnsKey,proto3" json:"apns_key,omitempty"`
+	Token                string   `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -210,7 +210,7 @@ func (m *RequestRegisterApplePushKit) Reset()         { *m = RequestRegisterAppl
 func (m *RequestRegisterApplePushKit) String() string { return proto.CompactTextString(m) }
 func (*RequestRegisterApplePushKit) ProtoMessage()    {}
 func (*RequestRegisterApplePushKit) Descriptor() ([]byte, []int) {
-	return fileDescriptor_push_90bcc49de71cd6a0, []int{4}
+	return fileDescriptor_push_f7e7c8687bcbf997, []int{4}
 }
 func (m *RequestRegisterApplePushKit) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRegisterApplePushKit.Unmarshal(m, b)
@@ -246,7 +246,7 @@ func (m *RequestRegisterApplePushKit) GetToken() string {
 
 // Unregistering Apple Push Kit token
 type RequestUnregisterApplePushKit struct {
-	Token                string   `protobuf:"bytes,1,opt,name=token" json:"token,omitempty"`
+	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -256,7 +256,7 @@ func (m *RequestUnregisterApplePushKit) Reset()         { *m = RequestUnregister
 func (m *RequestUnregisterApplePushKit) String() string { return proto.CompactTextString(m) }
 func (*RequestUnregisterApplePushKit) ProtoMessage()    {}
 func (*RequestUnregisterApplePushKit) Descriptor() ([]byte, []int) {
-	return fileDescriptor_push_90bcc49de71cd6a0, []int{5}
+	return fileDescriptor_push_f7e7c8687bcbf997, []int{5}
 }
 func (m *RequestUnregisterApplePushKit) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestUnregisterApplePushKit.Unmarshal(m, b)
@@ -285,8 +285,8 @@ func (m *RequestUnregisterApplePushKit) GetToken() string {
 
 // Registering Apple Push Token
 type RequestRegisterApplePushToken struct {
-	BundleId             string   `protobuf:"bytes,1,opt,name=bundle_id,json=bundleId" json:"bundle_id,omitempty"`
-	Token                string   `protobuf:"bytes,2,opt,name=token" json:"token,omitempty"`
+	BundleId             string   `protobuf:"bytes,1,opt,name=bundle_id,json=bundleId,proto3" json:"bundle_id,omitempty"`
+	Token                string   `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -296,7 +296,7 @@ func (m *RequestRegisterApplePushToken) Reset()         { *m = RequestRegisterAp
 func (m *RequestRegisterApplePushToken) String() string { return proto.CompactTextString(m) }
 func (*RequestRegisterApplePushToken) ProtoMessage()    {}
 func (*RequestRegisterApplePushToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_push_90bcc49de71cd6a0, []int{6}
+	return fileDescriptor_push_f7e7c8687bcbf997, []int{6}
 }
 func (m *RequestRegisterApplePushToken) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRegisterApplePushToken.Unmarshal(m, b)
@@ -332,7 +332,7 @@ func (m *RequestRegisterApplePushToken) GetToken() string {
 
 // Unregister Apple Push token
 type RequestUnregisterApplePushToken struct {
-	Token                string   `protobuf:"bytes,1,opt,name=token" json:"token,omitempty"`
+	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -342,7 +342,7 @@ func (m *RequestUnregisterApplePushToken) Reset()         { *m = RequestUnregist
 func (m *RequestUnregisterApplePushToken) String() string { return proto.CompactTextString(m) }
 func (*RequestUnregisterApplePushToken) ProtoMessage()    {}
 func (*RequestUnregisterApplePushToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_push_90bcc49de71cd6a0, []int{7}
+	return fileDescriptor_push_f7e7c8687bcbf997, []int{7}
 }
 func (m *RequestUnregisterApplePushToken) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestUnregisterApplePushToken.Unmarshal(m, b)
@@ -683,9 +683,9 @@ var _Push_serviceDesc = grpc.ServiceDesc{
 	Metadata: "push.proto",
 }
 
-func init() { proto.RegisterFile("push.proto", fileDescriptor_push_90bcc49de71cd6a0) }
+func init() { proto.RegisterFile("push.proto", fileDescriptor_push_f7e7c8687bcbf997) }
 
-var fileDescriptor_push_90bcc49de71cd6a0 = []byte{
+var fileDescriptor_push_f7e7c8687bcbf997 = []byte{
 	// 585 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x96, 0xc1, 0x6e, 0xd3, 0x30,
 	0x18, 0xc7, 0xe5, 0xc1, 0xba, 0xf6, 0x13, 0x1c, 0x96, 0x95, 0xd1, 0x96, 0xa1, 0x75, 0xde, 0xba,

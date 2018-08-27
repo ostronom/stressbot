@@ -27,8 +27,8 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type RequestRawRequest struct {
-	Service              *wrappers.StringValue `protobuf:"bytes,1,opt,name=service" json:"service,omitempty"`
-	Body                 *wrappers.BytesValue  `protobuf:"bytes,2,opt,name=body" json:"body,omitempty"`
+	Service              *wrappers.StringValue `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
+	Body                 *wrappers.BytesValue  `protobuf:"bytes,2,opt,name=body,proto3" json:"body,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -38,7 +38,7 @@ func (m *RequestRawRequest) Reset()         { *m = RequestRawRequest{} }
 func (m *RequestRawRequest) String() string { return proto.CompactTextString(m) }
 func (*RequestRawRequest) ProtoMessage()    {}
 func (*RequestRawRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_raw_api_b756ce2c52ed7207, []int{0}
+	return fileDescriptor_raw_api_7cc5cbbd4ff418db, []int{0}
 }
 func (m *RequestRawRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRawRequest.Unmarshal(m, b)
@@ -73,7 +73,7 @@ func (m *RequestRawRequest) GetBody() *wrappers.BytesValue {
 }
 
 type ResponseRawRequest struct {
-	Body                 *wrappers.BytesValue `protobuf:"bytes,1,opt,name=body" json:"body,omitempty"`
+	Body                 *wrappers.BytesValue `protobuf:"bytes,1,opt,name=body,proto3" json:"body,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -83,7 +83,7 @@ func (m *ResponseRawRequest) Reset()         { *m = ResponseRawRequest{} }
 func (m *ResponseRawRequest) String() string { return proto.CompactTextString(m) }
 func (*ResponseRawRequest) ProtoMessage()    {}
 func (*ResponseRawRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_raw_api_b756ce2c52ed7207, []int{1}
+	return fileDescriptor_raw_api_7cc5cbbd4ff418db, []int{1}
 }
 func (m *ResponseRawRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseRawRequest.Unmarshal(m, b)
@@ -187,9 +187,9 @@ var _RawAPI_serviceDesc = grpc.ServiceDesc{
 	Metadata: "raw_api.proto",
 }
 
-func init() { proto.RegisterFile("raw_api.proto", fileDescriptor_raw_api_b756ce2c52ed7207) }
+func init() { proto.RegisterFile("raw_api.proto", fileDescriptor_raw_api_7cc5cbbd4ff418db) }
 
-var fileDescriptor_raw_api_b756ce2c52ed7207 = []byte{
+var fileDescriptor_raw_api_7cc5cbbd4ff418db = []byte{
 	// 349 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x91, 0xcd, 0x4a, 0x3b, 0x31,
 	0x14, 0xc5, 0x99, 0xf2, 0x67, 0xfa, 0x37, 0xda, 0x45, 0x07, 0x3f, 0xda, 0xb1, 0x7e, 0x30, 0x20,

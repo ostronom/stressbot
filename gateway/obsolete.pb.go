@@ -47,7 +47,7 @@ func (x ObsoleteTypingType) String() string {
 	return proto.EnumName(ObsoleteTypingType_name, int32(x))
 }
 func (ObsoleteTypingType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{0}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{0}
 }
 
 type ObsoletePeer_ObsoletePeerType int32
@@ -77,7 +77,7 @@ func (x ObsoletePeer_ObsoletePeerType) String() string {
 	return proto.EnumName(ObsoletePeer_ObsoletePeerType_name, int32(x))
 }
 func (ObsoletePeer_ObsoletePeerType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{0, 0}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{0, 0}
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed_ObsoleteDisposalReason int32
@@ -109,14 +109,14 @@ func (x ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed_ObsoleteDisposalReason)
 	return proto.EnumName(ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed_ObsoleteDisposalReason_name, int32(x))
 }
 func (ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed_ObsoleteDisposalReason) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 9, 0}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 9, 0}
 }
 
 type ObsoletePeer struct {
-	Type                 ObsoletePeer_ObsoletePeerType `protobuf:"varint,1,opt,name=type,enum=dialog.ObsoletePeer_ObsoletePeerType" json:"type,omitempty"`
-	Id                   int32                         `protobuf:"varint,2,opt,name=id" json:"id,omitempty"`
-	StrId                *wrappers.StringValue         `protobuf:"bytes,3,opt,name=strId" json:"strId,omitempty"`
-	AccessHash           int64                         `protobuf:"varint,4,opt,name=access_hash,json=accessHash" json:"access_hash,omitempty"`
+	Type                 ObsoletePeer_ObsoletePeerType `protobuf:"varint,1,opt,name=type,proto3,enum=dialog.ObsoletePeer_ObsoletePeerType" json:"type,omitempty"`
+	Id                   int32                         `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
+	StrId                *wrappers.StringValue         `protobuf:"bytes,3,opt,name=strId,proto3" json:"strId,omitempty"`
+	AccessHash           int64                         `protobuf:"varint,4,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
 	XXX_unrecognized     []byte                        `json:"-"`
 	XXX_sizecache        int32                         `json:"-"`
@@ -126,7 +126,7 @@ func (m *ObsoletePeer) Reset()         { *m = ObsoletePeer{} }
 func (m *ObsoletePeer) String() string { return proto.CompactTextString(m) }
 func (*ObsoletePeer) ProtoMessage()    {}
 func (*ObsoletePeer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{0}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{0}
 }
 func (m *ObsoletePeer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoletePeer.Unmarshal(m, b)
@@ -175,8 +175,8 @@ func (m *ObsoletePeer) GetAccessHash() int64 {
 }
 
 type ObsoleteOutPeer struct {
-	Peer                 *ObsoletePeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	AccessHash           int64         `protobuf:"varint,2,opt,name=accessHash" json:"accessHash,omitempty"`
+	Peer                 *ObsoletePeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	AccessHash           int64         `protobuf:"varint,2,opt,name=accessHash,proto3" json:"accessHash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -186,7 +186,7 @@ func (m *ObsoleteOutPeer) Reset()         { *m = ObsoleteOutPeer{} }
 func (m *ObsoleteOutPeer) String() string { return proto.CompactTextString(m) }
 func (*ObsoleteOutPeer) ProtoMessage()    {}
 func (*ObsoleteOutPeer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{1}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{1}
 }
 func (m *ObsoleteOutPeer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteOutPeer.Unmarshal(m, b)
@@ -221,7 +221,7 @@ func (m *ObsoleteOutPeer) GetAccessHash() int64 {
 }
 
 type ObsoletePeersList struct {
-	Peers                []*ObsoletePeer `protobuf:"bytes,1,rep,name=peers" json:"peers,omitempty"`
+	Peers                []*ObsoletePeer `protobuf:"bytes,1,rep,name=peers,proto3" json:"peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -231,7 +231,7 @@ func (m *ObsoletePeersList) Reset()         { *m = ObsoletePeersList{} }
 func (m *ObsoletePeersList) String() string { return proto.CompactTextString(m) }
 func (*ObsoletePeersList) ProtoMessage()    {}
 func (*ObsoletePeersList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{2}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{2}
 }
 func (m *ObsoletePeersList) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoletePeersList.Unmarshal(m, b)
@@ -259,9 +259,9 @@ func (m *ObsoletePeersList) GetPeers() []*ObsoletePeer {
 }
 
 type ObsoleteGetDifferenceCommand struct {
-	Seq                  *wrappers.Int32Value `protobuf:"bytes,1,opt,name=seq" json:"seq,omitempty"`
+	Seq                  *wrappers.Int32Value `protobuf:"bytes,1,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte               `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	ConfigHash           int64                `protobuf:"varint,3,opt,name=configHash" json:"configHash,omitempty"`
+	ConfigHash           int64                `protobuf:"varint,3,opt,name=configHash,proto3" json:"configHash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -271,7 +271,7 @@ func (m *ObsoleteGetDifferenceCommand) Reset()         { *m = ObsoleteGetDiffere
 func (m *ObsoleteGetDifferenceCommand) String() string { return proto.CompactTextString(m) }
 func (*ObsoleteGetDifferenceCommand) ProtoMessage()    {}
 func (*ObsoleteGetDifferenceCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{3}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{3}
 }
 func (m *ObsoleteGetDifferenceCommand) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteGetDifferenceCommand.Unmarshal(m, b)
@@ -313,7 +313,7 @@ func (m *ObsoleteGetDifferenceCommand) GetConfigHash() int64 {
 }
 
 type ObsoleteSeqUpdateBox struct {
-	Seq   int32  `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
+	Seq   int32  `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
 	State []byte `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
 	// Types that are valid to be assigned to Updatebox:
 	//	*ObsoleteSeqUpdateBox_ObsoleteUpdate
@@ -327,7 +327,7 @@ func (m *ObsoleteSeqUpdateBox) Reset()         { *m = ObsoleteSeqUpdateBox{} }
 func (m *ObsoleteSeqUpdateBox) String() string { return proto.CompactTextString(m) }
 func (*ObsoleteSeqUpdateBox) ProtoMessage()    {}
 func (*ObsoleteSeqUpdateBox) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{4}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{4}
 }
 func (m *ObsoleteSeqUpdateBox) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteSeqUpdateBox.Unmarshal(m, b)
@@ -347,23 +347,6 @@ func (m *ObsoleteSeqUpdateBox) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ObsoleteSeqUpdateBox proto.InternalMessageInfo
 
-type isObsoleteSeqUpdateBox_Updatebox interface {
-	isObsoleteSeqUpdateBox_Updatebox()
-}
-
-type ObsoleteSeqUpdateBox_ObsoleteUpdate struct {
-	ObsoleteUpdate *wrappers.BytesValue `protobuf:"bytes,3,opt,name=obsoleteUpdate,oneof"`
-}
-
-func (*ObsoleteSeqUpdateBox_ObsoleteUpdate) isObsoleteSeqUpdateBox_Updatebox() {}
-
-func (m *ObsoleteSeqUpdateBox) GetUpdatebox() isObsoleteSeqUpdateBox_Updatebox {
-	if m != nil {
-		return m.Updatebox
-	}
-	return nil
-}
-
 func (m *ObsoleteSeqUpdateBox) GetSeq() int32 {
 	if m != nil {
 		return m.Seq
@@ -374,6 +357,23 @@ func (m *ObsoleteSeqUpdateBox) GetSeq() int32 {
 func (m *ObsoleteSeqUpdateBox) GetState() []byte {
 	if m != nil {
 		return m.State
+	}
+	return nil
+}
+
+type isObsoleteSeqUpdateBox_Updatebox interface {
+	isObsoleteSeqUpdateBox_Updatebox()
+}
+
+type ObsoleteSeqUpdateBox_ObsoleteUpdate struct {
+	ObsoleteUpdate *wrappers.BytesValue `protobuf:"bytes,3,opt,name=obsoleteUpdate,proto3,oneof"`
+}
+
+func (*ObsoleteSeqUpdateBox_ObsoleteUpdate) isObsoleteSeqUpdateBox_Updatebox() {}
+
+func (m *ObsoleteSeqUpdateBox) GetUpdatebox() isObsoleteSeqUpdateBox_Updatebox {
+	if m != nil {
+		return m.Updatebox
 	}
 	return nil
 }
@@ -441,7 +441,7 @@ func _ObsoleteSeqUpdateBox_OneofSizer(msg proto.Message) (n int) {
 }
 
 type ObsoleteWeakUpdateBox struct {
-	Date int64 `protobuf:"varint,1,opt,name=date" json:"date,omitempty"`
+	Date int64 `protobuf:"varint,1,opt,name=date,proto3" json:"date,omitempty"`
 	// Types that are valid to be assigned to Updatebox:
 	//	*ObsoleteWeakUpdateBox_Typing
 	//	*ObsoleteWeakUpdateBox_UserLastSeen
@@ -464,7 +464,7 @@ func (m *ObsoleteWeakUpdateBox) Reset()         { *m = ObsoleteWeakUpdateBox{} }
 func (m *ObsoleteWeakUpdateBox) String() string { return proto.CompactTextString(m) }
 func (*ObsoleteWeakUpdateBox) ProtoMessage()    {}
 func (*ObsoleteWeakUpdateBox) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5}
 }
 func (m *ObsoleteWeakUpdateBox) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox.Unmarshal(m, b)
@@ -484,68 +484,88 @@ func (m *ObsoleteWeakUpdateBox) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ObsoleteWeakUpdateBox proto.InternalMessageInfo
 
+func (m *ObsoleteWeakUpdateBox) GetDate() int64 {
+	if m != nil {
+		return m.Date
+	}
+	return 0
+}
+
 type isObsoleteWeakUpdateBox_Updatebox interface {
 	isObsoleteWeakUpdateBox_Updatebox()
 }
 
 type ObsoleteWeakUpdateBox_Typing struct {
-	Typing *ObsoleteWeakUpdateBox_ObsoleteUpdateTyping `protobuf:"bytes,2,opt,name=typing,oneof"`
-}
-type ObsoleteWeakUpdateBox_UserLastSeen struct {
-	UserLastSeen *ObsoleteWeakUpdateBox_ObsoleteUpdateUserLastSeen `protobuf:"bytes,3,opt,name=userLastSeen,oneof"`
-}
-type ObsoleteWeakUpdateBox_GroupOnline struct {
-	GroupOnline *ObsoleteWeakUpdateBox_ObsoleteUpdateGroupOnline `protobuf:"bytes,4,opt,name=groupOnline,oneof"`
-}
-type ObsoleteWeakUpdateBox_BusMessage struct {
-	BusMessage *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusMessage `protobuf:"bytes,5,opt,name=busMessage,oneof"`
-}
-type ObsoleteWeakUpdateBox_BusDeviceConnected struct {
-	BusDeviceConnected *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceConnected `protobuf:"bytes,6,opt,name=busDeviceConnected,oneof"`
-}
-type ObsoleteWeakUpdateBox_BusDeviceDisconnected struct {
-	BusDeviceDisconnected *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceDisconnected `protobuf:"bytes,7,opt,name=busDeviceDisconnected,oneof"`
-}
-type ObsoleteWeakUpdateBox_BusDisposed struct {
-	BusDisposed *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDisposed `protobuf:"bytes,8,opt,name=busDisposed,oneof"`
-}
-type ObsoleteWeakUpdateBox_ForceReload struct {
-	ForceReload *ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState `protobuf:"bytes,9,opt,name=forceReload,oneof"`
-}
-type ObsoleteWeakUpdateBox_IncomingCall struct {
-	IncomingCall *ObsoleteWeakUpdateBox_ObsoleteUpdateIncomingCall `protobuf:"bytes,10,opt,name=incomingCall,oneof"`
-}
-type ObsoleteWeakUpdateBox_CallHandled struct {
-	CallHandled *ObsoleteWeakUpdateBox_ObsoleteUpdateCallHandled `protobuf:"bytes,11,opt,name=callHandled,oneof"`
-}
-type ObsoleteWeakUpdateBox_CallDisposed struct {
-	CallDisposed *ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed `protobuf:"bytes,12,opt,name=callDisposed,oneof"`
+	Typing *ObsoleteWeakUpdateBox_ObsoleteUpdateTyping `protobuf:"bytes,2,opt,name=typing,proto3,oneof"`
 }
 
-func (*ObsoleteWeakUpdateBox_Typing) isObsoleteWeakUpdateBox_Updatebox()                {}
-func (*ObsoleteWeakUpdateBox_UserLastSeen) isObsoleteWeakUpdateBox_Updatebox()          {}
-func (*ObsoleteWeakUpdateBox_GroupOnline) isObsoleteWeakUpdateBox_Updatebox()           {}
-func (*ObsoleteWeakUpdateBox_BusMessage) isObsoleteWeakUpdateBox_Updatebox()            {}
-func (*ObsoleteWeakUpdateBox_BusDeviceConnected) isObsoleteWeakUpdateBox_Updatebox()    {}
+type ObsoleteWeakUpdateBox_UserLastSeen struct {
+	UserLastSeen *ObsoleteWeakUpdateBox_ObsoleteUpdateUserLastSeen `protobuf:"bytes,3,opt,name=userLastSeen,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateBox_GroupOnline struct {
+	GroupOnline *ObsoleteWeakUpdateBox_ObsoleteUpdateGroupOnline `protobuf:"bytes,4,opt,name=groupOnline,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateBox_BusMessage struct {
+	BusMessage *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusMessage `protobuf:"bytes,5,opt,name=busMessage,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateBox_BusDeviceConnected struct {
+	BusDeviceConnected *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceConnected `protobuf:"bytes,6,opt,name=busDeviceConnected,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateBox_BusDeviceDisconnected struct {
+	BusDeviceDisconnected *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceDisconnected `protobuf:"bytes,7,opt,name=busDeviceDisconnected,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateBox_BusDisposed struct {
+	BusDisposed *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDisposed `protobuf:"bytes,8,opt,name=busDisposed,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateBox_ForceReload struct {
+	ForceReload *ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState `protobuf:"bytes,9,opt,name=forceReload,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateBox_IncomingCall struct {
+	IncomingCall *ObsoleteWeakUpdateBox_ObsoleteUpdateIncomingCall `protobuf:"bytes,10,opt,name=incomingCall,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateBox_CallHandled struct {
+	CallHandled *ObsoleteWeakUpdateBox_ObsoleteUpdateCallHandled `protobuf:"bytes,11,opt,name=callHandled,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateBox_CallDisposed struct {
+	CallDisposed *ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed `protobuf:"bytes,12,opt,name=callDisposed,proto3,oneof"`
+}
+
+func (*ObsoleteWeakUpdateBox_Typing) isObsoleteWeakUpdateBox_Updatebox() {}
+
+func (*ObsoleteWeakUpdateBox_UserLastSeen) isObsoleteWeakUpdateBox_Updatebox() {}
+
+func (*ObsoleteWeakUpdateBox_GroupOnline) isObsoleteWeakUpdateBox_Updatebox() {}
+
+func (*ObsoleteWeakUpdateBox_BusMessage) isObsoleteWeakUpdateBox_Updatebox() {}
+
+func (*ObsoleteWeakUpdateBox_BusDeviceConnected) isObsoleteWeakUpdateBox_Updatebox() {}
+
 func (*ObsoleteWeakUpdateBox_BusDeviceDisconnected) isObsoleteWeakUpdateBox_Updatebox() {}
-func (*ObsoleteWeakUpdateBox_BusDisposed) isObsoleteWeakUpdateBox_Updatebox()           {}
-func (*ObsoleteWeakUpdateBox_ForceReload) isObsoleteWeakUpdateBox_Updatebox()           {}
-func (*ObsoleteWeakUpdateBox_IncomingCall) isObsoleteWeakUpdateBox_Updatebox()          {}
-func (*ObsoleteWeakUpdateBox_CallHandled) isObsoleteWeakUpdateBox_Updatebox()           {}
-func (*ObsoleteWeakUpdateBox_CallDisposed) isObsoleteWeakUpdateBox_Updatebox()          {}
+
+func (*ObsoleteWeakUpdateBox_BusDisposed) isObsoleteWeakUpdateBox_Updatebox() {}
+
+func (*ObsoleteWeakUpdateBox_ForceReload) isObsoleteWeakUpdateBox_Updatebox() {}
+
+func (*ObsoleteWeakUpdateBox_IncomingCall) isObsoleteWeakUpdateBox_Updatebox() {}
+
+func (*ObsoleteWeakUpdateBox_CallHandled) isObsoleteWeakUpdateBox_Updatebox() {}
+
+func (*ObsoleteWeakUpdateBox_CallDisposed) isObsoleteWeakUpdateBox_Updatebox() {}
 
 func (m *ObsoleteWeakUpdateBox) GetUpdatebox() isObsoleteWeakUpdateBox_Updatebox {
 	if m != nil {
 		return m.Updatebox
 	}
 	return nil
-}
-
-func (m *ObsoleteWeakUpdateBox) GetDate() int64 {
-	if m != nil {
-		return m.Date
-	}
-	return 0
 }
 
 func (m *ObsoleteWeakUpdateBox) GetTyping() *ObsoleteWeakUpdateBox_ObsoleteUpdateTyping {
@@ -871,10 +891,10 @@ func _ObsoleteWeakUpdateBox_OneofSizer(msg proto.Message) (n int) {
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateTyping struct {
-	Peer                 *ObsoletePeer      `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	UserId               int32              `protobuf:"varint,2,opt,name=userId" json:"userId,omitempty"`
-	Type                 ObsoleteTypingType `protobuf:"varint,3,opt,name=type,enum=dialog.ObsoleteTypingType" json:"type,omitempty"`
-	IsTyping             bool               `protobuf:"varint,4,opt,name=isTyping" json:"isTyping,omitempty"`
+	Peer                 *ObsoletePeer      `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	UserId               int32              `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	Type                 ObsoleteTypingType `protobuf:"varint,3,opt,name=type,proto3,enum=dialog.ObsoleteTypingType" json:"type,omitempty"`
+	IsTyping             bool               `protobuf:"varint,4,opt,name=isTyping,proto3" json:"isTyping,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -888,7 +908,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateTyping) String() string {
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateTyping) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateTyping) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 0}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 0}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateTyping) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateTyping.Unmarshal(m, b)
@@ -937,11 +957,11 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateTyping) GetIsTyping() bool {
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateUserLastSeen struct {
-	UserId               int32    `protobuf:"varint,1,opt,name=userId" json:"userId,omitempty"`
-	EpochMillis          int64    `protobuf:"varint,2,opt,name=epochMillis" json:"epochMillis,omitempty"`
-	DeviceType           int32    `protobuf:"varint,3,opt,name=deviceType" json:"deviceType,omitempty"`
-	DeviceCategory       string   `protobuf:"bytes,4,opt,name=deviceCategory" json:"deviceCategory,omitempty"`
-	IsOnline             bool     `protobuf:"varint,5,opt,name=isOnline" json:"isOnline,omitempty"`
+	UserId               int32    `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	EpochMillis          int64    `protobuf:"varint,2,opt,name=epochMillis,proto3" json:"epochMillis,omitempty"`
+	DeviceType           int32    `protobuf:"varint,3,opt,name=deviceType,proto3" json:"deviceType,omitempty"`
+	DeviceCategory       string   `protobuf:"bytes,4,opt,name=deviceCategory,proto3" json:"deviceCategory,omitempty"`
+	IsOnline             bool     `protobuf:"varint,5,opt,name=isOnline,proto3" json:"isOnline,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -955,7 +975,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateUserLastSeen) String() string {
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateUserLastSeen) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateUserLastSeen) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 1}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 1}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateUserLastSeen) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateUserLastSeen.Unmarshal(m, b)
@@ -1011,8 +1031,8 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateUserLastSeen) GetIsOnline() bool {
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateGroupOnline struct {
-	GroupId              int32    `protobuf:"varint,1,opt,name=groupId" json:"groupId,omitempty"`
-	Count                int32    `protobuf:"varint,2,opt,name=count" json:"count,omitempty"`
+	GroupId              int32    `protobuf:"varint,1,opt,name=groupId,proto3" json:"groupId,omitempty"`
+	Count                int32    `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1026,7 +1046,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateGroupOnline) String() string {
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateGroupOnline) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateGroupOnline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 2}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 2}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateGroupOnline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateGroupOnline.Unmarshal(m, b)
@@ -1061,9 +1081,9 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateGroupOnline) GetCount() int32 {
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusMessage struct {
-	BusId                string               `protobuf:"bytes,1,opt,name=busId" json:"busId,omitempty"`
-	SenderId             *wrappers.Int32Value `protobuf:"bytes,2,opt,name=senderId" json:"senderId,omitempty"`
-	SenderDeviceId       *wrappers.Int64Value `protobuf:"bytes,3,opt,name=senderDeviceId" json:"senderDeviceId,omitempty"`
+	BusId                string               `protobuf:"bytes,1,opt,name=busId,proto3" json:"busId,omitempty"`
+	SenderId             *wrappers.Int32Value `protobuf:"bytes,2,opt,name=senderId,proto3" json:"senderId,omitempty"`
+	SenderDeviceId       *wrappers.Int64Value `protobuf:"bytes,3,opt,name=senderDeviceId,proto3" json:"senderDeviceId,omitempty"`
 	Message              []byte               `protobuf:"bytes,4,opt,name=message,proto3" json:"message,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
@@ -1078,7 +1098,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusMessage) String() string {
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusMessage) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 3}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 3}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusMessage.Unmarshal(m, b)
@@ -1127,9 +1147,9 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusMessage) GetMessage() []byt
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceConnected struct {
-	BusId                string               `protobuf:"bytes,1,opt,name=busId" json:"busId,omitempty"`
-	UserId               *wrappers.Int32Value `protobuf:"bytes,2,opt,name=userId" json:"userId,omitempty"`
-	DeviceId             int64                `protobuf:"varint,3,opt,name=deviceId" json:"deviceId,omitempty"`
+	BusId                string               `protobuf:"bytes,1,opt,name=busId,proto3" json:"busId,omitempty"`
+	UserId               *wrappers.Int32Value `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	DeviceId             int64                `protobuf:"varint,3,opt,name=deviceId,proto3" json:"deviceId,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1143,7 +1163,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceConnected) String() s
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceConnected) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceConnected) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 4}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 4}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceConnected) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceConnected.Unmarshal(m, b)
@@ -1185,9 +1205,9 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceConnected) GetDeviceI
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceDisconnected struct {
-	BusId                string               `protobuf:"bytes,1,opt,name=busId" json:"busId,omitempty"`
-	UserId               *wrappers.Int32Value `protobuf:"bytes,2,opt,name=userId" json:"userId,omitempty"`
-	DeviceId             int64                `protobuf:"varint,3,opt,name=deviceId" json:"deviceId,omitempty"`
+	BusId                string               `protobuf:"bytes,1,opt,name=busId,proto3" json:"busId,omitempty"`
+	UserId               *wrappers.Int32Value `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	DeviceId             int64                `protobuf:"varint,3,opt,name=deviceId,proto3" json:"deviceId,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1201,7 +1221,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceDisconnected) String(
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceDisconnected) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceDisconnected) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 5}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 5}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceDisconnected) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceDisconnected.Unmarshal(m, b)
@@ -1243,7 +1263,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDeviceDisconnected) GetDevi
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDisposed struct {
-	BusId                string   `protobuf:"bytes,1,opt,name=busId" json:"busId,omitempty"`
+	BusId                string   `protobuf:"bytes,1,opt,name=busId,proto3" json:"busId,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1257,7 +1277,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDisposed) String() string {
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDisposed) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDisposed) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 6}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 6}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDisposed) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDisposed.Unmarshal(m, b)
@@ -1285,12 +1305,12 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateEventBusDisposed) GetBusId() string
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateIncomingCall struct {
-	CallId               int64                 `protobuf:"varint,1,opt,name=callId" json:"callId,omitempty"`
-	BusId                string                `protobuf:"bytes,2,opt,name=busId" json:"busId,omitempty"`
-	Peer                 *ObsoletePeer         `protobuf:"bytes,3,opt,name=peer" json:"peer,omitempty"`
-	DisplayName          *wrappers.StringValue `protobuf:"bytes,4,opt,name=displayName" json:"displayName,omitempty"`
-	AttemptIndex         *wrappers.Int32Value  `protobuf:"bytes,5,opt,name=attemptIndex" json:"attemptIndex,omitempty"`
-	OutPeer              *ObsoleteOutPeer      `protobuf:"bytes,6,opt,name=outPeer" json:"outPeer,omitempty"`
+	CallId               int64                 `protobuf:"varint,1,opt,name=callId,proto3" json:"callId,omitempty"`
+	BusId                string                `protobuf:"bytes,2,opt,name=busId,proto3" json:"busId,omitempty"`
+	Peer                 *ObsoletePeer         `protobuf:"bytes,3,opt,name=peer,proto3" json:"peer,omitempty"`
+	DisplayName          *wrappers.StringValue `protobuf:"bytes,4,opt,name=displayName,proto3" json:"displayName,omitempty"`
+	AttemptIndex         *wrappers.Int32Value  `protobuf:"bytes,5,opt,name=attemptIndex,proto3" json:"attemptIndex,omitempty"`
+	OutPeer              *ObsoleteOutPeer      `protobuf:"bytes,6,opt,name=outPeer,proto3" json:"outPeer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -1304,7 +1324,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateIncomingCall) String() string {
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateIncomingCall) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateIncomingCall) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 7}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 7}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateIncomingCall) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateIncomingCall.Unmarshal(m, b)
@@ -1367,8 +1387,8 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateIncomingCall) GetOutPeer() *Obsolet
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateCallHandled struct {
-	CallId               int64                `protobuf:"varint,1,opt,name=callId" json:"callId,omitempty"`
-	AttemptIndex         *wrappers.Int32Value `protobuf:"bytes,2,opt,name=attemptIndex" json:"attemptIndex,omitempty"`
+	CallId               int64                `protobuf:"varint,1,opt,name=callId,proto3" json:"callId,omitempty"`
+	AttemptIndex         *wrappers.Int32Value `protobuf:"bytes,2,opt,name=attemptIndex,proto3" json:"attemptIndex,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1382,7 +1402,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateCallHandled) String() string {
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateCallHandled) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateCallHandled) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 8}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 8}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateCallHandled) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateCallHandled.Unmarshal(m, b)
@@ -1417,9 +1437,9 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateCallHandled) GetAttemptIndex() *wra
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed struct {
-	CallId               int64                                                                   `protobuf:"varint,1,opt,name=callId" json:"callId,omitempty"`
-	AttemptIndex         *wrappers.Int32Value                                                    `protobuf:"bytes,2,opt,name=attemptIndex" json:"attemptIndex,omitempty"`
-	Reason               ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed_ObsoleteDisposalReason `protobuf:"varint,3,opt,name=reason,enum=dialog.ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed_ObsoleteDisposalReason" json:"reason,omitempty"`
+	CallId               int64                                                                   `protobuf:"varint,1,opt,name=callId,proto3" json:"callId,omitempty"`
+	AttemptIndex         *wrappers.Int32Value                                                    `protobuf:"bytes,2,opt,name=attemptIndex,proto3" json:"attemptIndex,omitempty"`
+	Reason               ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed_ObsoleteDisposalReason `protobuf:"varint,3,opt,name=reason,proto3,enum=dialog.ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed_ObsoleteDisposalReason" json:"reason,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                                                `json:"-"`
 	XXX_unrecognized     []byte                                                                  `json:"-"`
 	XXX_sizecache        int32                                                                   `json:"-"`
@@ -1433,7 +1453,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed) String() string {
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 9}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 9}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed.Unmarshal(m, b)
@@ -1475,7 +1495,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateCallDisposed) GetReason() ObsoleteW
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState struct {
-	Fields               []*ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField `protobuf:"bytes,1,rep,name=fields" json:"fields,omitempty"`
+	Fields               []*ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                                                         `json:"-"`
 	XXX_unrecognized     []byte                                                                           `json:"-"`
 	XXX_sizecache        int32                                                                            `json:"-"`
@@ -1489,7 +1509,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState) String() string {
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 10}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 10}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState.Unmarshal(m, b)
@@ -1535,7 +1555,7 @@ func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloa
 }
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField) ProtoMessage() {}
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{5, 10, 0}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{5, 10, 0}
 }
 func (m *ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField.Unmarshal(m, b)
@@ -1560,19 +1580,23 @@ type isObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadF
 }
 
 type ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField_ReloadDialogs struct {
-	ReloadDialogs *empty.Empty `protobuf:"bytes,1,opt,name=reloadDialogs,oneof"`
+	ReloadDialogs *empty.Empty `protobuf:"bytes,1,opt,name=reloadDialogs,proto3,oneof"`
 }
+
 type ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField_ReloadContacts struct {
-	ReloadContacts *empty.Empty `protobuf:"bytes,2,opt,name=reloadContacts,oneof"`
+	ReloadContacts *empty.Empty `protobuf:"bytes,2,opt,name=reloadContacts,proto3,oneof"`
 }
+
 type ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField_ReloadHistory struct {
-	ReloadHistory *ObsoletePeersList `protobuf:"bytes,3,opt,name=reloadHistory,oneof"`
+	ReloadHistory *ObsoletePeersList `protobuf:"bytes,3,opt,name=reloadHistory,proto3,oneof"`
 }
 
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField_ReloadDialogs) isObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField_Field() {
 }
+
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField_ReloadContacts) isObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField_Field() {
 }
+
 func (*ObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField_ReloadHistory) isObsoleteWeakUpdateBox_ObsoleteUpdateForceReloadState_ObsoleteForceReloadField_Field() {
 }
 
@@ -1710,7 +1734,7 @@ func (m *ObsoleteServiceUpdate) Reset()         { *m = ObsoleteServiceUpdate{} }
 func (m *ObsoleteServiceUpdate) String() string { return proto.CompactTextString(m) }
 func (*ObsoleteServiceUpdate) ProtoMessage()    {}
 func (*ObsoleteServiceUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{6}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{6}
 }
 func (m *ObsoleteServiceUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteServiceUpdate.Unmarshal(m, b)
@@ -1735,7 +1759,7 @@ type isObsoleteServiceUpdate_Update interface {
 }
 
 type ObsoleteServiceUpdate_ObsoleteUpdate struct {
-	ObsoleteUpdate *wrappers.BytesValue `protobuf:"bytes,1,opt,name=obsoleteUpdate,oneof"`
+	ObsoleteUpdate *wrappers.BytesValue `protobuf:"bytes,1,opt,name=obsoleteUpdate,proto3,oneof"`
 }
 
 func (*ObsoleteServiceUpdate_ObsoleteUpdate) isObsoleteServiceUpdate_Update() {}
@@ -1830,7 +1854,7 @@ func (m *ObsoleteWeakUpdateCommand) Reset()         { *m = ObsoleteWeakUpdateCom
 func (m *ObsoleteWeakUpdateCommand) String() string { return proto.CompactTextString(m) }
 func (*ObsoleteWeakUpdateCommand) ProtoMessage()    {}
 func (*ObsoleteWeakUpdateCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{7}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{7}
 }
 func (m *ObsoleteWeakUpdateCommand) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateCommand.Unmarshal(m, b)
@@ -1855,42 +1879,58 @@ type isObsoleteWeakUpdateCommand_Command interface {
 }
 
 type ObsoleteWeakUpdateCommand_SubscribeToOnlines struct {
-	SubscribeToOnlines *ObsoletePeersList `protobuf:"bytes,1,opt,name=subscribeToOnlines,oneof"`
-}
-type ObsoleteWeakUpdateCommand_UnsubscribeFromOnlines struct {
-	UnsubscribeFromOnlines *ObsoletePeersList `protobuf:"bytes,2,opt,name=unsubscribeFromOnlines,oneof"`
-}
-type ObsoleteWeakUpdateCommand_DropOnlineSubscriptions struct {
-	DropOnlineSubscriptions *empty.Empty `protobuf:"bytes,3,opt,name=dropOnlineSubscriptions,oneof"`
-}
-type ObsoleteWeakUpdateCommand_MyTyping struct {
-	MyTyping *ObsoleteWeakUpdateCommand_ObsoleteMyTyping `protobuf:"bytes,7,opt,name=myTyping,oneof"`
-}
-type ObsoleteWeakUpdateCommand_SubscribeToTypings struct {
-	SubscribeToTypings *ObsoletePeersList `protobuf:"bytes,8,opt,name=subscribeToTypings,oneof"`
-}
-type ObsoleteWeakUpdateCommand_UnsubscribeFromTypings struct {
-	UnsubscribeFromTypings *ObsoletePeersList `protobuf:"bytes,9,opt,name=unsubscribeFromTypings,oneof"`
-}
-type ObsoleteWeakUpdateCommand_DropTypingSubscriptions struct {
-	DropTypingSubscriptions *empty.Empty `protobuf:"bytes,10,opt,name=dropTypingSubscriptions,oneof"`
-}
-type ObsoleteWeakUpdateCommand_SubscribeToEventBusUpdates struct {
-	SubscribeToEventBusUpdates *empty.Empty `protobuf:"bytes,11,opt,name=subscribeToEventBusUpdates,oneof"`
-}
-type ObsoleteWeakUpdateCommand_MyOnline struct {
-	MyOnline *ObsoleteWeakUpdateCommand_ObsoleteMyOnline `protobuf:"bytes,12,opt,name=myOnline,oneof"`
+	SubscribeToOnlines *ObsoletePeersList `protobuf:"bytes,1,opt,name=subscribeToOnlines,proto3,oneof"`
 }
 
-func (*ObsoleteWeakUpdateCommand_SubscribeToOnlines) isObsoleteWeakUpdateCommand_Command()         {}
-func (*ObsoleteWeakUpdateCommand_UnsubscribeFromOnlines) isObsoleteWeakUpdateCommand_Command()     {}
-func (*ObsoleteWeakUpdateCommand_DropOnlineSubscriptions) isObsoleteWeakUpdateCommand_Command()    {}
-func (*ObsoleteWeakUpdateCommand_MyTyping) isObsoleteWeakUpdateCommand_Command()                   {}
-func (*ObsoleteWeakUpdateCommand_SubscribeToTypings) isObsoleteWeakUpdateCommand_Command()         {}
-func (*ObsoleteWeakUpdateCommand_UnsubscribeFromTypings) isObsoleteWeakUpdateCommand_Command()     {}
-func (*ObsoleteWeakUpdateCommand_DropTypingSubscriptions) isObsoleteWeakUpdateCommand_Command()    {}
+type ObsoleteWeakUpdateCommand_UnsubscribeFromOnlines struct {
+	UnsubscribeFromOnlines *ObsoletePeersList `protobuf:"bytes,2,opt,name=unsubscribeFromOnlines,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateCommand_DropOnlineSubscriptions struct {
+	DropOnlineSubscriptions *empty.Empty `protobuf:"bytes,3,opt,name=dropOnlineSubscriptions,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateCommand_MyTyping struct {
+	MyTyping *ObsoleteWeakUpdateCommand_ObsoleteMyTyping `protobuf:"bytes,7,opt,name=myTyping,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateCommand_SubscribeToTypings struct {
+	SubscribeToTypings *ObsoletePeersList `protobuf:"bytes,8,opt,name=subscribeToTypings,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateCommand_UnsubscribeFromTypings struct {
+	UnsubscribeFromTypings *ObsoletePeersList `protobuf:"bytes,9,opt,name=unsubscribeFromTypings,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateCommand_DropTypingSubscriptions struct {
+	DropTypingSubscriptions *empty.Empty `protobuf:"bytes,10,opt,name=dropTypingSubscriptions,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateCommand_SubscribeToEventBusUpdates struct {
+	SubscribeToEventBusUpdates *empty.Empty `protobuf:"bytes,11,opt,name=subscribeToEventBusUpdates,proto3,oneof"`
+}
+
+type ObsoleteWeakUpdateCommand_MyOnline struct {
+	MyOnline *ObsoleteWeakUpdateCommand_ObsoleteMyOnline `protobuf:"bytes,12,opt,name=myOnline,proto3,oneof"`
+}
+
+func (*ObsoleteWeakUpdateCommand_SubscribeToOnlines) isObsoleteWeakUpdateCommand_Command() {}
+
+func (*ObsoleteWeakUpdateCommand_UnsubscribeFromOnlines) isObsoleteWeakUpdateCommand_Command() {}
+
+func (*ObsoleteWeakUpdateCommand_DropOnlineSubscriptions) isObsoleteWeakUpdateCommand_Command() {}
+
+func (*ObsoleteWeakUpdateCommand_MyTyping) isObsoleteWeakUpdateCommand_Command() {}
+
+func (*ObsoleteWeakUpdateCommand_SubscribeToTypings) isObsoleteWeakUpdateCommand_Command() {}
+
+func (*ObsoleteWeakUpdateCommand_UnsubscribeFromTypings) isObsoleteWeakUpdateCommand_Command() {}
+
+func (*ObsoleteWeakUpdateCommand_DropTypingSubscriptions) isObsoleteWeakUpdateCommand_Command() {}
+
 func (*ObsoleteWeakUpdateCommand_SubscribeToEventBusUpdates) isObsoleteWeakUpdateCommand_Command() {}
-func (*ObsoleteWeakUpdateCommand_MyOnline) isObsoleteWeakUpdateCommand_Command()                   {}
+
+func (*ObsoleteWeakUpdateCommand_MyOnline) isObsoleteWeakUpdateCommand_Command() {}
 
 func (m *ObsoleteWeakUpdateCommand) GetCommand() isObsoleteWeakUpdateCommand_Command {
 	if m != nil {
@@ -2170,9 +2210,9 @@ func _ObsoleteWeakUpdateCommand_OneofSizer(msg proto.Message) (n int) {
 }
 
 type ObsoleteWeakUpdateCommand_ObsoleteMyTyping struct {
-	Peer                 *ObsoletePeer      `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Type                 ObsoleteTypingType `protobuf:"varint,2,opt,name=type,enum=dialog.ObsoleteTypingType" json:"type,omitempty"`
-	Start                bool               `protobuf:"varint,3,opt,name=start" json:"start,omitempty"`
+	Peer                 *ObsoletePeer      `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Type                 ObsoleteTypingType `protobuf:"varint,2,opt,name=type,proto3,enum=dialog.ObsoleteTypingType" json:"type,omitempty"`
+	Start                bool               `protobuf:"varint,3,opt,name=start,proto3" json:"start,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -2186,7 +2226,7 @@ func (m *ObsoleteWeakUpdateCommand_ObsoleteMyTyping) String() string {
 }
 func (*ObsoleteWeakUpdateCommand_ObsoleteMyTyping) ProtoMessage() {}
 func (*ObsoleteWeakUpdateCommand_ObsoleteMyTyping) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{7, 0}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{7, 0}
 }
 func (m *ObsoleteWeakUpdateCommand_ObsoleteMyTyping) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateCommand_ObsoleteMyTyping.Unmarshal(m, b)
@@ -2228,7 +2268,7 @@ func (m *ObsoleteWeakUpdateCommand_ObsoleteMyTyping) GetStart() bool {
 }
 
 type ObsoleteWeakUpdateCommand_ObsoleteMyOnline struct {
-	Online               bool     `protobuf:"varint,1,opt,name=online" json:"online,omitempty"`
+	Online               bool     `protobuf:"varint,1,opt,name=online,proto3" json:"online,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2242,7 +2282,7 @@ func (m *ObsoleteWeakUpdateCommand_ObsoleteMyOnline) String() string {
 }
 func (*ObsoleteWeakUpdateCommand_ObsoleteMyOnline) ProtoMessage() {}
 func (*ObsoleteWeakUpdateCommand_ObsoleteMyOnline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_obsolete_1cc8d4c262a0b5c5, []int{7, 1}
+	return fileDescriptor_obsolete_d0f59eec3c61b5eb, []int{7, 1}
 }
 func (m *ObsoleteWeakUpdateCommand_ObsoleteMyOnline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObsoleteWeakUpdateCommand_ObsoleteMyOnline.Unmarshal(m, b)
@@ -2495,9 +2535,9 @@ var _Obsolete_serviceDesc = grpc.ServiceDesc{
 	Metadata: "obsolete.proto",
 }
 
-func init() { proto.RegisterFile("obsolete.proto", fileDescriptor_obsolete_1cc8d4c262a0b5c5) }
+func init() { proto.RegisterFile("obsolete.proto", fileDescriptor_obsolete_d0f59eec3c61b5eb) }
 
-var fileDescriptor_obsolete_1cc8d4c262a0b5c5 = []byte{
+var fileDescriptor_obsolete_d0f59eec3c61b5eb = []byte{
 	// 1753 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x58, 0x41, 0x73, 0x1b, 0x49,
 	0x15, 0xd6, 0x48, 0xb6, 0x2c, 0x3f, 0x19, 0x23, 0xba, 0x12, 0x47, 0x9e, 0xd8, 0x89, 0xa3, 0x22,

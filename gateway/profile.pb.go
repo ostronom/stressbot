@@ -28,7 +28,7 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Changing account's name
 type RequestEditName struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -38,7 +38,7 @@ func (m *RequestEditName) Reset()         { *m = RequestEditName{} }
 func (m *RequestEditName) String() string { return proto.CompactTextString(m) }
 func (*RequestEditName) ProtoMessage()    {}
 func (*RequestEditName) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{0}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{0}
 }
 func (m *RequestEditName) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestEditName.Unmarshal(m, b)
@@ -67,7 +67,7 @@ func (m *RequestEditName) GetName() string {
 
 // Changing account's nickname
 type RequestEditNickName struct {
-	Nickname             *wrappers.StringValue `protobuf:"bytes,1,opt,name=nickname" json:"nickname,omitempty"`
+	Nickname             *wrappers.StringValue `protobuf:"bytes,1,opt,name=nickname,proto3" json:"nickname,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -77,7 +77,7 @@ func (m *RequestEditNickName) Reset()         { *m = RequestEditNickName{} }
 func (m *RequestEditNickName) String() string { return proto.CompactTextString(m) }
 func (*RequestEditNickName) ProtoMessage()    {}
 func (*RequestEditNickName) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{1}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{1}
 }
 func (m *RequestEditNickName) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestEditNickName.Unmarshal(m, b)
@@ -106,7 +106,7 @@ func (m *RequestEditNickName) GetNickname() *wrappers.StringValue {
 
 // Checking availability of nickname
 type RequestCheckNickName struct {
-	Nickname             string   `protobuf:"bytes,1,opt,name=nickname" json:"nickname,omitempty"`
+	Nickname             string   `protobuf:"bytes,1,opt,name=nickname,proto3" json:"nickname,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -116,7 +116,7 @@ func (m *RequestCheckNickName) Reset()         { *m = RequestCheckNickName{} }
 func (m *RequestCheckNickName) String() string { return proto.CompactTextString(m) }
 func (*RequestCheckNickName) ProtoMessage()    {}
 func (*RequestCheckNickName) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{2}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{2}
 }
 func (m *RequestCheckNickName) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestCheckNickName.Unmarshal(m, b)
@@ -145,7 +145,7 @@ func (m *RequestCheckNickName) GetNickname() string {
 
 // Changing about information
 type RequestEditAbout struct {
-	About                *wrappers.StringValue `protobuf:"bytes,1,opt,name=about" json:"about,omitempty"`
+	About                *wrappers.StringValue `protobuf:"bytes,1,opt,name=about,proto3" json:"about,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -155,7 +155,7 @@ func (m *RequestEditAbout) Reset()         { *m = RequestEditAbout{} }
 func (m *RequestEditAbout) String() string { return proto.CompactTextString(m) }
 func (*RequestEditAbout) ProtoMessage()    {}
 func (*RequestEditAbout) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{3}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{3}
 }
 func (m *RequestEditAbout) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestEditAbout.Unmarshal(m, b)
@@ -184,7 +184,7 @@ func (m *RequestEditAbout) GetAbout() *wrappers.StringValue {
 
 // Changing account's avatar
 type RequestEditAvatar struct {
-	FileLocation         *FileLocation `protobuf:"bytes,1,opt,name=file_location,json=fileLocation" json:"file_location,omitempty"`
+	FileLocation         *FileLocation `protobuf:"bytes,1,opt,name=file_location,json=fileLocation,proto3" json:"file_location,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -194,7 +194,7 @@ func (m *RequestEditAvatar) Reset()         { *m = RequestEditAvatar{} }
 func (m *RequestEditAvatar) String() string { return proto.CompactTextString(m) }
 func (*RequestEditAvatar) ProtoMessage()    {}
 func (*RequestEditAvatar) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{4}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{4}
 }
 func (m *RequestEditAvatar) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestEditAvatar.Unmarshal(m, b)
@@ -222,8 +222,8 @@ func (m *RequestEditAvatar) GetFileLocation() *FileLocation {
 }
 
 type ResponseEditAvatar struct {
-	Avatar               *Avatar  `protobuf:"bytes,1,opt,name=avatar" json:"avatar,omitempty"`
-	Seq                  int32    `protobuf:"varint,2,opt,name=seq" json:"seq,omitempty"`
+	Avatar               *Avatar  `protobuf:"bytes,1,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	Seq                  int32    `protobuf:"varint,2,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte   `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -234,7 +234,7 @@ func (m *ResponseEditAvatar) Reset()         { *m = ResponseEditAvatar{} }
 func (m *ResponseEditAvatar) String() string { return proto.CompactTextString(m) }
 func (*ResponseEditAvatar) ProtoMessage()    {}
 func (*ResponseEditAvatar) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{5}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{5}
 }
 func (m *ResponseEditAvatar) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseEditAvatar.Unmarshal(m, b)
@@ -286,7 +286,7 @@ func (m *RequestRemoveAvatar) Reset()         { *m = RequestRemoveAvatar{} }
 func (m *RequestRemoveAvatar) String() string { return proto.CompactTextString(m) }
 func (*RequestRemoveAvatar) ProtoMessage()    {}
 func (*RequestRemoveAvatar) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{6}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{6}
 }
 func (m *RequestRemoveAvatar) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRemoveAvatar.Unmarshal(m, b)
@@ -308,7 +308,7 @@ var xxx_messageInfo_RequestRemoveAvatar proto.InternalMessageInfo
 
 // Updating user's time zone
 type RequestEditMyTimeZone struct {
-	Tz                   string   `protobuf:"bytes,1,opt,name=tz" json:"tz,omitempty"`
+	Tz                   string   `protobuf:"bytes,1,opt,name=tz,proto3" json:"tz,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -318,7 +318,7 @@ func (m *RequestEditMyTimeZone) Reset()         { *m = RequestEditMyTimeZone{} }
 func (m *RequestEditMyTimeZone) String() string { return proto.CompactTextString(m) }
 func (*RequestEditMyTimeZone) ProtoMessage()    {}
 func (*RequestEditMyTimeZone) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{7}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{7}
 }
 func (m *RequestEditMyTimeZone) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestEditMyTimeZone.Unmarshal(m, b)
@@ -347,7 +347,7 @@ func (m *RequestEditMyTimeZone) GetTz() string {
 
 // Changing preffered languages
 type RequestEditMyPreferredLanguages struct {
-	PreferredLanguages   []string `protobuf:"bytes,1,rep,name=preferred_languages,json=preferredLanguages" json:"preferred_languages,omitempty"`
+	PreferredLanguages   []string `protobuf:"bytes,1,rep,name=preferred_languages,json=preferredLanguages,proto3" json:"preferred_languages,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -357,7 +357,7 @@ func (m *RequestEditMyPreferredLanguages) Reset()         { *m = RequestEditMyPr
 func (m *RequestEditMyPreferredLanguages) String() string { return proto.CompactTextString(m) }
 func (*RequestEditMyPreferredLanguages) ProtoMessage()    {}
 func (*RequestEditMyPreferredLanguages) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{8}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{8}
 }
 func (m *RequestEditMyPreferredLanguages) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestEditMyPreferredLanguages.Unmarshal(m, b)
@@ -386,7 +386,7 @@ func (m *RequestEditMyPreferredLanguages) GetPreferredLanguages() []string {
 
 // Changing user's sex
 type RequestEditSex struct {
-	Sex                  Sex      `protobuf:"varint,1,opt,name=sex,enum=dialog.Sex" json:"sex,omitempty"`
+	Sex                  Sex      `protobuf:"varint,1,opt,name=sex,proto3,enum=dialog.Sex" json:"sex,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -396,7 +396,7 @@ func (m *RequestEditSex) Reset()         { *m = RequestEditSex{} }
 func (m *RequestEditSex) String() string { return proto.CompactTextString(m) }
 func (*RequestEditSex) ProtoMessage()    {}
 func (*RequestEditSex) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{9}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{9}
 }
 func (m *RequestEditSex) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestEditSex.Unmarshal(m, b)
@@ -425,7 +425,7 @@ func (m *RequestEditSex) GetSex() Sex {
 
 // Chaning user custom profile based on scheme
 type RequestEditCustomProfile struct {
-	CustomProfile        string   `protobuf:"bytes,1,opt,name=custom_profile,json=customProfile" json:"custom_profile,omitempty"`
+	CustomProfile        string   `protobuf:"bytes,1,opt,name=custom_profile,json=customProfile,proto3" json:"custom_profile,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -435,7 +435,7 @@ func (m *RequestEditCustomProfile) Reset()         { *m = RequestEditCustomProfi
 func (m *RequestEditCustomProfile) String() string { return proto.CompactTextString(m) }
 func (*RequestEditCustomProfile) ProtoMessage()    {}
 func (*RequestEditCustomProfile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{10}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{10}
 }
 func (m *RequestEditCustomProfile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestEditCustomProfile.Unmarshal(m, b)
@@ -464,7 +464,7 @@ func (m *RequestEditCustomProfile) GetCustomProfile() string {
 
 // Changing user's status
 type RequestChangeUserStatus struct {
-	Status               *UserStatus `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
+	Status               *UserStatus `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
 	XXX_unrecognized     []byte      `json:"-"`
 	XXX_sizecache        int32       `json:"-"`
@@ -474,7 +474,7 @@ func (m *RequestChangeUserStatus) Reset()         { *m = RequestChangeUserStatus
 func (m *RequestChangeUserStatus) String() string { return proto.CompactTextString(m) }
 func (*RequestChangeUserStatus) ProtoMessage()    {}
 func (*RequestChangeUserStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_9abd2c6143c7d863, []int{11}
+	return fileDescriptor_profile_a6a659a3c8598714, []int{11}
 }
 func (m *RequestChangeUserStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestChangeUserStatus.Unmarshal(m, b)
@@ -918,9 +918,9 @@ var _Profile_serviceDesc = grpc.ServiceDesc{
 	Metadata: "profile.proto",
 }
 
-func init() { proto.RegisterFile("profile.proto", fileDescriptor_profile_9abd2c6143c7d863) }
+func init() { proto.RegisterFile("profile.proto", fileDescriptor_profile_a6a659a3c8598714) }
 
-var fileDescriptor_profile_9abd2c6143c7d863 = []byte{
+var fileDescriptor_profile_a6a659a3c8598714 = []byte{
 	// 923 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x96, 0xcf, 0x73, 0xdb, 0x44,
 	0x14, 0xc7, 0x47, 0x09, 0x71, 0xe2, 0x97, 0xd8, 0x24, 0x8a, 0xd3, 0x28, 0x6e, 0x7e, 0x98, 0x6d,

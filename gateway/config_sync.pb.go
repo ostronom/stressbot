@@ -27,11 +27,9 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Syncing Parameter
-// key Key of parameter
-// value Value of parameter
 type Parameter struct {
-	Key                  string   `protobuf:"bytes,1,opt,name=key" json:"key,omitempty"`
-	Value                string   `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
+	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value                string   `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -41,7 +39,7 @@ func (m *Parameter) Reset()         { *m = Parameter{} }
 func (m *Parameter) String() string { return proto.CompactTextString(m) }
 func (*Parameter) ProtoMessage()    {}
 func (*Parameter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_sync_89cab1aaa678e2ff, []int{0}
+	return fileDescriptor_config_sync_5436250be4ef2141, []int{0}
 }
 func (m *Parameter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Parameter.Unmarshal(m, b)
@@ -86,7 +84,7 @@ func (m *RequestGetParameters) Reset()         { *m = RequestGetParameters{} }
 func (m *RequestGetParameters) String() string { return proto.CompactTextString(m) }
 func (*RequestGetParameters) ProtoMessage()    {}
 func (*RequestGetParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_sync_89cab1aaa678e2ff, []int{1}
+	return fileDescriptor_config_sync_5436250be4ef2141, []int{1}
 }
 func (m *RequestGetParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetParameters.Unmarshal(m, b)
@@ -107,7 +105,7 @@ func (m *RequestGetParameters) XXX_DiscardUnknown() {
 var xxx_messageInfo_RequestGetParameters proto.InternalMessageInfo
 
 type ResponseGetParameters struct {
-	Parameters           []*Parameter `protobuf:"bytes,1,rep,name=parameters" json:"parameters,omitempty"`
+	Parameters           []*Parameter `protobuf:"bytes,1,rep,name=parameters,proto3" json:"parameters,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -117,7 +115,7 @@ func (m *ResponseGetParameters) Reset()         { *m = ResponseGetParameters{} }
 func (m *ResponseGetParameters) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetParameters) ProtoMessage()    {}
 func (*ResponseGetParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_sync_89cab1aaa678e2ff, []int{2}
+	return fileDescriptor_config_sync_5436250be4ef2141, []int{2}
 }
 func (m *ResponseGetParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetParameters.Unmarshal(m, b)
@@ -146,8 +144,8 @@ func (m *ResponseGetParameters) GetParameters() []*Parameter {
 
 // Change parameter value
 type RequestEditParameter struct {
-	Key                  string                `protobuf:"bytes,1,opt,name=key" json:"key,omitempty"`
-	Value                *wrappers.StringValue `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
+	Key                  string                `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value                *wrappers.StringValue `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -157,7 +155,7 @@ func (m *RequestEditParameter) Reset()         { *m = RequestEditParameter{} }
 func (m *RequestEditParameter) String() string { return proto.CompactTextString(m) }
 func (*RequestEditParameter) ProtoMessage()    {}
 func (*RequestEditParameter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_sync_89cab1aaa678e2ff, []int{3}
+	return fileDescriptor_config_sync_5436250be4ef2141, []int{3}
 }
 func (m *RequestEditParameter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestEditParameter.Unmarshal(m, b)
@@ -193,8 +191,8 @@ func (m *RequestEditParameter) GetValue() *wrappers.StringValue {
 
 // Update about parameter change
 type UpdateParameterChanged struct {
-	Key                  string                `protobuf:"bytes,1,opt,name=key" json:"key,omitempty"`
-	Value                *wrappers.StringValue `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
+	Key                  string                `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value                *wrappers.StringValue `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -204,7 +202,7 @@ func (m *UpdateParameterChanged) Reset()         { *m = UpdateParameterChanged{}
 func (m *UpdateParameterChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateParameterChanged) ProtoMessage()    {}
 func (*UpdateParameterChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_sync_89cab1aaa678e2ff, []int{4}
+	return fileDescriptor_config_sync_5436250be4ef2141, []int{4}
 }
 func (m *UpdateParameterChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateParameterChanged.Unmarshal(m, b)
@@ -351,9 +349,9 @@ var _ConfigSync_serviceDesc = grpc.ServiceDesc{
 	Metadata: "config_sync.proto",
 }
 
-func init() { proto.RegisterFile("config_sync.proto", fileDescriptor_config_sync_89cab1aaa678e2ff) }
+func init() { proto.RegisterFile("config_sync.proto", fileDescriptor_config_sync_5436250be4ef2141) }
 
-var fileDescriptor_config_sync_89cab1aaa678e2ff = []byte{
+var fileDescriptor_config_sync_5436250be4ef2141 = []byte{
 	// 447 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x52, 0xbf, 0x6f, 0x13, 0x31,
 	0x18, 0xd5, 0xb5, 0x22, 0x90, 0xaf, 0x64, 0xc8, 0xf5, 0x07, 0xe9, 0x29, 0x85, 0x72, 0x03, 0xaa,

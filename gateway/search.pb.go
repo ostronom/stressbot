@@ -52,7 +52,7 @@ func (x SearchPeerType) String() string {
 	return proto.EnumName(SearchPeerType_name, int32(x))
 }
 func (SearchPeerType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{0}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{0}
 }
 
 type SearchContentType int32
@@ -87,11 +87,11 @@ func (x SearchContentType) String() string {
 	return proto.EnumName(SearchContentType_name, int32(x))
 }
 func (SearchContentType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{1}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{1}
 }
 
 type SimpleContactSearchCondition struct {
-	Text                 string   `protobuf:"bytes,1,opt,name=text" json:"text,omitempty"`
+	Text                 string   `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -101,7 +101,7 @@ func (m *SimpleContactSearchCondition) Reset()         { *m = SimpleContactSearc
 func (m *SimpleContactSearchCondition) String() string { return proto.CompactTextString(m) }
 func (*SimpleContactSearchCondition) ProtoMessage()    {}
 func (*SimpleContactSearchCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{0}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{0}
 }
 func (m *SimpleContactSearchCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SimpleContactSearchCondition.Unmarshal(m, b)
@@ -129,9 +129,9 @@ func (m *SimpleContactSearchCondition) GetText() string {
 }
 
 type SimpleMessageSearchCondition struct {
-	Peer                 *Peer             `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Text                 string            `protobuf:"bytes,2,opt,name=text" json:"text,omitempty"`
-	ContentType          SearchContentType `protobuf:"varint,3,opt,name=content_type,json=contentType,enum=dialog.SearchContentType" json:"content_type,omitempty"`
+	Peer                 *Peer             `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Text                 string            `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	ContentType          SearchContentType `protobuf:"varint,3,opt,name=content_type,json=contentType,proto3,enum=dialog.SearchContentType" json:"content_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -141,7 +141,7 @@ func (m *SimpleMessageSearchCondition) Reset()         { *m = SimpleMessageSearc
 func (m *SimpleMessageSearchCondition) String() string { return proto.CompactTextString(m) }
 func (*SimpleMessageSearchCondition) ProtoMessage()    {}
 func (*SimpleMessageSearchCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{1}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{1}
 }
 func (m *SimpleMessageSearchCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SimpleMessageSearchCondition.Unmarshal(m, b)
@@ -182,9 +182,10 @@ func (m *SimpleMessageSearchCondition) GetContentType() SearchContentType {
 	return SearchContentType_SEARCHCONTENTTYPE_UNKNOWN
 }
 
+// / Search among contacts/groups/users
 type SimplePeerSearchCondition struct {
-	PeerType             SearchPeerType        `protobuf:"varint,1,opt,name=peer_type,json=peerType,enum=dialog.SearchPeerType" json:"peer_type,omitempty"`
-	Text                 *wrappers.StringValue `protobuf:"bytes,2,opt,name=text" json:"text,omitempty"`
+	PeerType             SearchPeerType        `protobuf:"varint,1,opt,name=peer_type,json=peerType,proto3,enum=dialog.SearchPeerType" json:"peer_type,omitempty"`
+	Text                 *wrappers.StringValue `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -194,7 +195,7 @@ func (m *SimplePeerSearchCondition) Reset()         { *m = SimplePeerSearchCondi
 func (m *SimplePeerSearchCondition) String() string { return proto.CompactTextString(m) }
 func (*SimplePeerSearchCondition) ProtoMessage()    {}
 func (*SimplePeerSearchCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{2}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{2}
 }
 func (m *SimplePeerSearchCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SimplePeerSearchCondition.Unmarshal(m, b)
@@ -229,7 +230,7 @@ func (m *SimplePeerSearchCondition) GetText() *wrappers.StringValue {
 }
 
 type SimpleUserProfileSearchCondition struct {
-	QueryString          string   `protobuf:"bytes,1,opt,name=query_string,json=queryString" json:"query_string,omitempty"`
+	QueryString          string   `protobuf:"bytes,1,opt,name=query_string,json=queryString,proto3" json:"query_string,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -239,7 +240,7 @@ func (m *SimpleUserProfileSearchCondition) Reset()         { *m = SimpleUserProf
 func (m *SimpleUserProfileSearchCondition) String() string { return proto.CompactTextString(m) }
 func (*SimpleUserProfileSearchCondition) ProtoMessage()    {}
 func (*SimpleUserProfileSearchCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{3}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{3}
 }
 func (m *SimpleUserProfileSearchCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SimpleUserProfileSearchCondition.Unmarshal(m, b)
@@ -276,7 +277,7 @@ func (m *Criterion) Reset()         { *m = Criterion{} }
 func (m *Criterion) String() string { return proto.CompactTextString(m) }
 func (*Criterion) ProtoMessage()    {}
 func (*Criterion) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{4}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{4}
 }
 func (m *Criterion) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Criterion.Unmarshal(m, b)
@@ -312,7 +313,7 @@ func (m *SimpleSearchCondition) Reset()         { *m = SimpleSearchCondition{} }
 func (m *SimpleSearchCondition) String() string { return proto.CompactTextString(m) }
 func (*SimpleSearchCondition) ProtoMessage()    {}
 func (*SimpleSearchCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{5}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{5}
 }
 func (m *SimpleSearchCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SimpleSearchCondition.Unmarshal(m, b)
@@ -337,21 +338,27 @@ type isSimpleSearchCondition_Criterion interface {
 }
 
 type SimpleSearchCondition_Contact struct {
-	Contact *SimpleContactSearchCondition `protobuf:"bytes,1,opt,name=contact,oneof"`
-}
-type SimpleSearchCondition_Message struct {
-	Message *SimpleMessageSearchCondition `protobuf:"bytes,2,opt,name=message,oneof"`
-}
-type SimpleSearchCondition_Peer struct {
-	Peer *SimplePeerSearchCondition `protobuf:"bytes,3,opt,name=peer,oneof"`
-}
-type SimpleSearchCondition_UserProfile struct {
-	UserProfile *SimpleUserProfileSearchCondition `protobuf:"bytes,4,opt,name=userProfile,oneof"`
+	Contact *SimpleContactSearchCondition `protobuf:"bytes,1,opt,name=contact,proto3,oneof"`
 }
 
-func (*SimpleSearchCondition_Contact) isSimpleSearchCondition_Criterion()     {}
-func (*SimpleSearchCondition_Message) isSimpleSearchCondition_Criterion()     {}
-func (*SimpleSearchCondition_Peer) isSimpleSearchCondition_Criterion()        {}
+type SimpleSearchCondition_Message struct {
+	Message *SimpleMessageSearchCondition `protobuf:"bytes,2,opt,name=message,proto3,oneof"`
+}
+
+type SimpleSearchCondition_Peer struct {
+	Peer *SimplePeerSearchCondition `protobuf:"bytes,3,opt,name=peer,proto3,oneof"`
+}
+
+type SimpleSearchCondition_UserProfile struct {
+	UserProfile *SimpleUserProfileSearchCondition `protobuf:"bytes,4,opt,name=userProfile,proto3,oneof"`
+}
+
+func (*SimpleSearchCondition_Contact) isSimpleSearchCondition_Criterion() {}
+
+func (*SimpleSearchCondition_Message) isSimpleSearchCondition_Criterion() {}
+
+func (*SimpleSearchCondition_Peer) isSimpleSearchCondition_Criterion() {}
+
 func (*SimpleSearchCondition_UserProfile) isSimpleSearchCondition_Criterion() {}
 
 func (m *SimpleSearchCondition) GetCriterion() isSimpleSearchCondition_Criterion {
@@ -520,7 +527,7 @@ func (m *SearchCondition) Reset()         { *m = SearchCondition{} }
 func (m *SearchCondition) String() string { return proto.CompactTextString(m) }
 func (*SearchCondition) ProtoMessage()    {}
 func (*SearchCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{6}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{6}
 }
 func (m *SearchCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchCondition.Unmarshal(m, b)
@@ -545,33 +552,45 @@ type isSearchCondition_Body interface {
 }
 
 type SearchCondition_SearchPeerTypeCondition struct {
-	SearchPeerTypeCondition *SearchPeerTypeCondition `protobuf:"bytes,1,opt,name=searchPeerTypeCondition,oneof"`
+	SearchPeerTypeCondition *SearchPeerTypeCondition `protobuf:"bytes,1,opt,name=searchPeerTypeCondition,proto3,oneof"`
 }
+
 type SearchCondition_SearchPieceText struct {
-	SearchPieceText *SearchPieceText `protobuf:"bytes,2,opt,name=searchPieceText,oneof"`
+	SearchPieceText *SearchPieceText `protobuf:"bytes,2,opt,name=searchPieceText,proto3,oneof"`
 }
+
 type SearchCondition_SearchAndCondition struct {
-	SearchAndCondition *SearchAndCondition `protobuf:"bytes,3,opt,name=searchAndCondition,oneof"`
+	SearchAndCondition *SearchAndCondition `protobuf:"bytes,3,opt,name=searchAndCondition,proto3,oneof"`
 }
+
 type SearchCondition_SearchOrCondition struct {
-	SearchOrCondition *SearchOrCondition `protobuf:"bytes,4,opt,name=searchOrCondition,oneof"`
+	SearchOrCondition *SearchOrCondition `protobuf:"bytes,4,opt,name=searchOrCondition,proto3,oneof"`
 }
+
 type SearchCondition_SearchPeerCondition struct {
-	SearchPeerCondition *SearchPeerCondition `protobuf:"bytes,5,opt,name=searchPeerCondition,oneof"`
+	SearchPeerCondition *SearchPeerCondition `protobuf:"bytes,5,opt,name=searchPeerCondition,proto3,oneof"`
 }
+
 type SearchCondition_SearchPeerContentType struct {
-	SearchPeerContentType *SearchPeerContentType `protobuf:"bytes,6,opt,name=searchPeerContentType,oneof"`
+	SearchPeerContentType *SearchPeerContentType `protobuf:"bytes,6,opt,name=searchPeerContentType,proto3,oneof"`
 }
+
 type SearchCondition_SearchSenderIdConfition struct {
-	SearchSenderIdConfition *SearchSenderIdConfition `protobuf:"bytes,7,opt,name=searchSenderIdConfition,oneof"`
+	SearchSenderIdConfition *SearchSenderIdConfition `protobuf:"bytes,7,opt,name=searchSenderIdConfition,proto3,oneof"`
 }
 
 func (*SearchCondition_SearchPeerTypeCondition) isSearchCondition_Body() {}
-func (*SearchCondition_SearchPieceText) isSearchCondition_Body()         {}
-func (*SearchCondition_SearchAndCondition) isSearchCondition_Body()      {}
-func (*SearchCondition_SearchOrCondition) isSearchCondition_Body()       {}
-func (*SearchCondition_SearchPeerCondition) isSearchCondition_Body()     {}
-func (*SearchCondition_SearchPeerContentType) isSearchCondition_Body()   {}
+
+func (*SearchCondition_SearchPieceText) isSearchCondition_Body() {}
+
+func (*SearchCondition_SearchAndCondition) isSearchCondition_Body() {}
+
+func (*SearchCondition_SearchOrCondition) isSearchCondition_Body() {}
+
+func (*SearchCondition_SearchPeerCondition) isSearchCondition_Body() {}
+
+func (*SearchCondition_SearchPeerContentType) isSearchCondition_Body() {}
+
 func (*SearchCondition_SearchSenderIdConfition) isSearchCondition_Body() {}
 
 func (m *SearchCondition) GetBody() isSearchCondition_Body {
@@ -800,9 +819,8 @@ func _SearchCondition_OneofSizer(msg proto.Message) (n int) {
 }
 
 // Search peer type condition
-// peerType Peer type for searching
 type SearchPeerTypeCondition struct {
-	PeerType             SearchPeerType `protobuf:"varint,1,opt,name=peer_type,json=peerType,enum=dialog.SearchPeerType" json:"peer_type,omitempty"`
+	PeerType             SearchPeerType `protobuf:"varint,1,opt,name=peer_type,json=peerType,proto3,enum=dialog.SearchPeerType" json:"peer_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -812,7 +830,7 @@ func (m *SearchPeerTypeCondition) Reset()         { *m = SearchPeerTypeCondition
 func (m *SearchPeerTypeCondition) String() string { return proto.CompactTextString(m) }
 func (*SearchPeerTypeCondition) ProtoMessage()    {}
 func (*SearchPeerTypeCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{7}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{7}
 }
 func (m *SearchPeerTypeCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchPeerTypeCondition.Unmarshal(m, b)
@@ -840,9 +858,8 @@ func (m *SearchPeerTypeCondition) GetPeerType() SearchPeerType {
 }
 
 // Search peer name condition
-// query Search query
 type SearchPieceText struct {
-	Query                string   `protobuf:"bytes,1,opt,name=query" json:"query,omitempty"`
+	Query                string   `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -852,7 +869,7 @@ func (m *SearchPieceText) Reset()         { *m = SearchPieceText{} }
 func (m *SearchPieceText) String() string { return proto.CompactTextString(m) }
 func (*SearchPieceText) ProtoMessage()    {}
 func (*SearchPieceText) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{8}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{8}
 }
 func (m *SearchPieceText) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchPieceText.Unmarshal(m, b)
@@ -880,9 +897,9 @@ func (m *SearchPieceText) GetQuery() string {
 }
 
 // Search AND condion
-// andQuery And Query
 type SearchAndCondition struct {
-	AndQuery             []*SearchCondition `protobuf:"bytes,1,rep,name=and_query,json=andQuery" json:"and_query,omitempty"`
+	// / "And" query
+	AndQuery             []*SearchCondition `protobuf:"bytes,1,rep,name=and_query,json=andQuery,proto3" json:"and_query,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -892,7 +909,7 @@ func (m *SearchAndCondition) Reset()         { *m = SearchAndCondition{} }
 func (m *SearchAndCondition) String() string { return proto.CompactTextString(m) }
 func (*SearchAndCondition) ProtoMessage()    {}
 func (*SearchAndCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{9}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{9}
 }
 func (m *SearchAndCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchAndCondition.Unmarshal(m, b)
@@ -920,9 +937,9 @@ func (m *SearchAndCondition) GetAndQuery() []*SearchCondition {
 }
 
 // Search OR condition
-// orQuery Or Query
 type SearchOrCondition struct {
-	OrQuery              []*SearchCondition `protobuf:"bytes,2,rep,name=or_query,json=orQuery" json:"or_query,omitempty"`
+	// / "Or" query
+	OrQuery              []*SearchCondition `protobuf:"bytes,2,rep,name=or_query,json=orQuery,proto3" json:"or_query,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -932,7 +949,7 @@ func (m *SearchOrCondition) Reset()         { *m = SearchOrCondition{} }
 func (m *SearchOrCondition) String() string { return proto.CompactTextString(m) }
 func (*SearchOrCondition) ProtoMessage()    {}
 func (*SearchOrCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{10}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{10}
 }
 func (m *SearchOrCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchOrCondition.Unmarshal(m, b)
@@ -960,9 +977,8 @@ func (m *SearchOrCondition) GetOrQuery() []*SearchCondition {
 }
 
 // Serch Peer condition
-// peer Peer condition
 type SearchPeerCondition struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -972,7 +988,7 @@ func (m *SearchPeerCondition) Reset()         { *m = SearchPeerCondition{} }
 func (m *SearchPeerCondition) String() string { return proto.CompactTextString(m) }
 func (*SearchPeerCondition) ProtoMessage()    {}
 func (*SearchPeerCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{11}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{11}
 }
 func (m *SearchPeerCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchPeerCondition.Unmarshal(m, b)
@@ -1000,9 +1016,8 @@ func (m *SearchPeerCondition) GetPeer() *OutPeer {
 }
 
 // Search content type condition
-// contentType Content Type
 type SearchPeerContentType struct {
-	ContentType          SearchContentType `protobuf:"varint,1,opt,name=content_type,json=contentType,enum=dialog.SearchContentType" json:"content_type,omitempty"`
+	ContentType          SearchContentType `protobuf:"varint,1,opt,name=content_type,json=contentType,proto3,enum=dialog.SearchContentType" json:"content_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -1012,7 +1027,7 @@ func (m *SearchPeerContentType) Reset()         { *m = SearchPeerContentType{} }
 func (m *SearchPeerContentType) String() string { return proto.CompactTextString(m) }
 func (*SearchPeerContentType) ProtoMessage()    {}
 func (*SearchPeerContentType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{12}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{12}
 }
 func (m *SearchPeerContentType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchPeerContentType.Unmarshal(m, b)
@@ -1040,9 +1055,8 @@ func (m *SearchPeerContentType) GetContentType() SearchContentType {
 }
 
 // Searching sender uid condition
-// senderId sender UID
 type SearchSenderIdConfition struct {
-	SenderId             int32    `protobuf:"varint,1,opt,name=sender_id,json=senderId" json:"sender_id,omitempty"`
+	SenderId             int32    `protobuf:"varint,1,opt,name=sender_id,json=senderId,proto3" json:"sender_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1052,7 +1066,7 @@ func (m *SearchSenderIdConfition) Reset()         { *m = SearchSenderIdConfition
 func (m *SearchSenderIdConfition) String() string { return proto.CompactTextString(m) }
 func (*SearchSenderIdConfition) ProtoMessage()    {}
 func (*SearchSenderIdConfition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{13}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{13}
 }
 func (m *SearchSenderIdConfition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchSenderIdConfition.Unmarshal(m, b)
@@ -1080,33 +1094,28 @@ func (m *SearchSenderIdConfition) GetSenderId() int32 {
 }
 
 // Peer search result
-// peer Peer information
-// title Peer title
-// description Description
-// membersCount Members count
-// dateCreated Group Creation Date
-// creator Group Creator uid
-// isPublic Is group public
 type PeerSearchResult struct {
-	Peer                 *Peer                 `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Title                string                `protobuf:"bytes,2,opt,name=title" json:"title,omitempty"`
-	Shortname            *wrappers.StringValue `protobuf:"bytes,9,opt,name=shortname" json:"shortname,omitempty"`
-	Description          *wrappers.StringValue `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
-	MembersCount         *wrappers.Int32Value  `protobuf:"bytes,4,opt,name=members_count,json=membersCount" json:"members_count,omitempty"`
-	DateCreated          int64                 `protobuf:"varint,5,opt,name=date_created,json=dateCreated" json:"date_created,omitempty"`
-	Creator              *wrappers.Int32Value  `protobuf:"bytes,6,opt,name=creator" json:"creator,omitempty"`
-	IsPublic             *wrappers.BoolValue   `protobuf:"bytes,7,opt,name=is_public,json=isPublic" json:"is_public,omitempty"`
-	IsJoined             *wrappers.BoolValue   `protobuf:"bytes,8,opt,name=is_joined,json=isJoined" json:"is_joined,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	Peer         *Peer                 `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Title        string                `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Shortname    *wrappers.StringValue `protobuf:"bytes,9,opt,name=shortname,proto3" json:"shortname,omitempty"`
+	Description  *wrappers.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	MembersCount *wrappers.Int32Value  `protobuf:"bytes,4,opt,name=members_count,json=membersCount,proto3" json:"members_count,omitempty"`
+	// / Group Creation Date
+	DateCreated int64                `protobuf:"varint,5,opt,name=date_created,json=dateCreated,proto3" json:"date_created,omitempty"`
+	Creator     *wrappers.Int32Value `protobuf:"bytes,6,opt,name=creator,proto3" json:"creator,omitempty"`
+	IsPublic    *wrappers.BoolValue  `protobuf:"bytes,7,opt,name=is_public,json=isPublic,proto3" json:"is_public,omitempty"`
+	// / Are you joined?
+	IsJoined             *wrappers.BoolValue `protobuf:"bytes,8,opt,name=is_joined,json=isJoined,proto3" json:"is_joined,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
 func (m *PeerSearchResult) Reset()         { *m = PeerSearchResult{} }
 func (m *PeerSearchResult) String() string { return proto.CompactTextString(m) }
 func (*PeerSearchResult) ProtoMessage()    {}
 func (*PeerSearchResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{14}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{14}
 }
 func (m *PeerSearchResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PeerSearchResult.Unmarshal(m, b)
@@ -1191,8 +1200,8 @@ func (m *PeerSearchResult) GetIsJoined() *wrappers.BoolValue {
 
 // Performing peer search
 type RequestPeerSearch struct {
-	Query                []*SearchCondition   `protobuf:"bytes,1,rep,name=query" json:"query,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Query                []*SearchCondition   `protobuf:"bytes,1,rep,name=query,proto3" json:"query,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1202,7 +1211,7 @@ func (m *RequestPeerSearch) Reset()         { *m = RequestPeerSearch{} }
 func (m *RequestPeerSearch) String() string { return proto.CompactTextString(m) }
 func (*RequestPeerSearch) ProtoMessage()    {}
 func (*RequestPeerSearch) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{15}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{15}
 }
 func (m *RequestPeerSearch) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestPeerSearch.Unmarshal(m, b)
@@ -1236,12 +1245,13 @@ func (m *RequestPeerSearch) GetOptimizations() []UpdateOptimization {
 	return nil
 }
 
+// / Response with related peers and entities
 type ResponsePeerSearch struct {
-	SearchResults        []*PeerSearchResult `protobuf:"bytes,1,rep,name=search_results,json=searchResults" json:"search_results,omitempty"`
-	Users                []*User             `protobuf:"bytes,2,rep,name=users" json:"users,omitempty"`
-	Groups               []*Group            `protobuf:"bytes,3,rep,name=groups" json:"groups,omitempty"`
-	UserPeers            []*UserOutPeer      `protobuf:"bytes,4,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
-	GroupPeers           []*GroupOutPeer     `protobuf:"bytes,5,rep,name=group_peers,json=groupPeers" json:"group_peers,omitempty"`
+	SearchResults        []*PeerSearchResult `protobuf:"bytes,1,rep,name=search_results,json=searchResults,proto3" json:"search_results,omitempty"`
+	Users                []*User             `protobuf:"bytes,2,rep,name=users,proto3" json:"users,omitempty"`
+	Groups               []*Group            `protobuf:"bytes,3,rep,name=groups,proto3" json:"groups,omitempty"`
+	UserPeers            []*UserOutPeer      `protobuf:"bytes,4,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
+	GroupPeers           []*GroupOutPeer     `protobuf:"bytes,5,rep,name=group_peers,json=groupPeers,proto3" json:"group_peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -1251,7 +1261,7 @@ func (m *ResponsePeerSearch) Reset()         { *m = ResponsePeerSearch{} }
 func (m *ResponsePeerSearch) String() string { return proto.CompactTextString(m) }
 func (*ResponsePeerSearch) ProtoMessage()    {}
 func (*ResponsePeerSearch) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{16}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{16}
 }
 func (m *ResponsePeerSearch) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponsePeerSearch.Unmarshal(m, b)
@@ -1308,7 +1318,7 @@ func (m *ResponsePeerSearch) GetGroupPeers() []*GroupOutPeer {
 
 // Resolve peer by shortname
 type RequestResolvePeer struct {
-	Shortname            string   `protobuf:"bytes,1,opt,name=shortname" json:"shortname,omitempty"`
+	Shortname            string   `protobuf:"bytes,1,opt,name=shortname,proto3" json:"shortname,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1318,7 +1328,7 @@ func (m *RequestResolvePeer) Reset()         { *m = RequestResolvePeer{} }
 func (m *RequestResolvePeer) String() string { return proto.CompactTextString(m) }
 func (*RequestResolvePeer) ProtoMessage()    {}
 func (*RequestResolvePeer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{17}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{17}
 }
 func (m *RequestResolvePeer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestResolvePeer.Unmarshal(m, b)
@@ -1346,7 +1356,7 @@ func (m *RequestResolvePeer) GetShortname() string {
 }
 
 type ResponseResolvePeer struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1356,7 +1366,7 @@ func (m *ResponseResolvePeer) Reset()         { *m = ResponseResolvePeer{} }
 func (m *ResponseResolvePeer) String() string { return proto.CompactTextString(m) }
 func (*ResponseResolvePeer) ProtoMessage()    {}
 func (*ResponseResolvePeer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{18}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{18}
 }
 func (m *ResponseResolvePeer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseResolvePeer.Unmarshal(m, b)
@@ -1384,17 +1394,12 @@ func (m *ResponseResolvePeer) GetPeer() *OutPeer {
 }
 
 // Message container
-// peer Message Peer
-// rid Message Random Id
-// date Message Date
-// senderId Message sender UID
-// content Message content
 type MessageSearchResult struct {
-	Peer                 *Peer           `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Rid                  int64           `protobuf:"varint,2,opt,name=rid" json:"rid,omitempty"`
-	Date                 int64           `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
-	SenderId             int32           `protobuf:"varint,4,opt,name=sender_id,json=senderId" json:"sender_id,omitempty"`
-	Content              *MessageContent `protobuf:"bytes,5,opt,name=content" json:"content,omitempty"`
+	Peer                 *Peer           `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Rid                  int64           `protobuf:"varint,2,opt,name=rid,proto3" json:"rid,omitempty"`
+	Date                 int64           `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
+	SenderId             int32           `protobuf:"varint,4,opt,name=sender_id,json=senderId,proto3" json:"sender_id,omitempty"`
+	Content              *MessageContent `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -1404,7 +1409,7 @@ func (m *MessageSearchResult) Reset()         { *m = MessageSearchResult{} }
 func (m *MessageSearchResult) String() string { return proto.CompactTextString(m) }
 func (*MessageSearchResult) ProtoMessage()    {}
 func (*MessageSearchResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{19}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{19}
 }
 func (m *MessageSearchResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MessageSearchResult.Unmarshal(m, b)
@@ -1461,7 +1466,7 @@ func (m *MessageSearchResult) GetContent() *MessageContent {
 
 // Message Search result container
 type MessageSearchItem struct {
-	Result               *MessageSearchResult `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	Result               *MessageSearchResult `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1471,7 +1476,7 @@ func (m *MessageSearchItem) Reset()         { *m = MessageSearchItem{} }
 func (m *MessageSearchItem) String() string { return proto.CompactTextString(m) }
 func (*MessageSearchItem) ProtoMessage()    {}
 func (*MessageSearchItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{20}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{20}
 }
 func (m *MessageSearchItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MessageSearchItem.Unmarshal(m, b)
@@ -1498,14 +1503,14 @@ func (m *MessageSearchItem) GetResult() *MessageSearchResult {
 	return nil
 }
 
-// Search Result
+// Search Result with related peers and entities
 type ResponseMessageSearchResponse struct {
-	SearchResults        []*MessageSearchItem `protobuf:"bytes,1,rep,name=search_results,json=searchResults" json:"search_results,omitempty"`
-	Users                []*User              `protobuf:"bytes,2,rep,name=users" json:"users,omitempty"`
-	Groups               []*Group             `protobuf:"bytes,3,rep,name=groups" json:"groups,omitempty"`
-	LoadMoreState        *wrappers.BytesValue `protobuf:"bytes,4,opt,name=load_more_state,json=loadMoreState" json:"load_more_state,omitempty"`
-	UserOutPeers         []*UserOutPeer       `protobuf:"bytes,5,rep,name=user_out_peers,json=userOutPeers" json:"user_out_peers,omitempty"`
-	GroupOutPeers        []*GroupOutPeer      `protobuf:"bytes,6,rep,name=group_out_peers,json=groupOutPeers" json:"group_out_peers,omitempty"`
+	SearchResults        []*MessageSearchItem `protobuf:"bytes,1,rep,name=search_results,json=searchResults,proto3" json:"search_results,omitempty"`
+	Users                []*User              `protobuf:"bytes,2,rep,name=users,proto3" json:"users,omitempty"`
+	Groups               []*Group             `protobuf:"bytes,3,rep,name=groups,proto3" json:"groups,omitempty"`
+	LoadMoreState        *wrappers.BytesValue `protobuf:"bytes,4,opt,name=load_more_state,json=loadMoreState,proto3" json:"load_more_state,omitempty"`
+	UserOutPeers         []*UserOutPeer       `protobuf:"bytes,5,rep,name=user_out_peers,json=userOutPeers,proto3" json:"user_out_peers,omitempty"`
+	GroupOutPeers        []*GroupOutPeer      `protobuf:"bytes,6,rep,name=group_out_peers,json=groupOutPeers,proto3" json:"group_out_peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1515,7 +1520,7 @@ func (m *ResponseMessageSearchResponse) Reset()         { *m = ResponseMessageSe
 func (m *ResponseMessageSearchResponse) String() string { return proto.CompactTextString(m) }
 func (*ResponseMessageSearchResponse) ProtoMessage()    {}
 func (*ResponseMessageSearchResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{21}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{21}
 }
 func (m *ResponseMessageSearchResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseMessageSearchResponse.Unmarshal(m, b)
@@ -1579,8 +1584,8 @@ func (m *ResponseMessageSearchResponse) GetGroupOutPeers() []*GroupOutPeer {
 
 // Performing message search
 type RequestMessageSearch struct {
-	Query                *SearchCondition     `protobuf:"bytes,1,opt,name=query" json:"query,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Query                *SearchCondition     `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1590,7 +1595,7 @@ func (m *RequestMessageSearch) Reset()         { *m = RequestMessageSearch{} }
 func (m *RequestMessageSearch) String() string { return proto.CompactTextString(m) }
 func (*RequestMessageSearch) ProtoMessage()    {}
 func (*RequestMessageSearch) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{22}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{22}
 }
 func (m *RequestMessageSearch) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestMessageSearch.Unmarshal(m, b)
@@ -1627,7 +1632,7 @@ func (m *RequestMessageSearch) GetOptimizations() []UpdateOptimization {
 // Performing message search paging
 type RequestMessageSearchMore struct {
 	LoadMoreState        []byte               `protobuf:"bytes,1,opt,name=load_more_state,json=loadMoreState,proto3" json:"load_more_state,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1637,7 +1642,7 @@ func (m *RequestMessageSearchMore) Reset()         { *m = RequestMessageSearchMo
 func (m *RequestMessageSearchMore) String() string { return proto.CompactTextString(m) }
 func (*RequestMessageSearchMore) ProtoMessage()    {}
 func (*RequestMessageSearchMore) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{23}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{23}
 }
 func (m *RequestMessageSearchMore) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestMessageSearchMore.Unmarshal(m, b)
@@ -1672,8 +1677,8 @@ func (m *RequestMessageSearchMore) GetOptimizations() []UpdateOptimization {
 }
 
 type RequestSimpleSearch struct {
-	Criteria             []*SimpleSearchCondition `protobuf:"bytes,1,rep,name=criteria" json:"criteria,omitempty"`
-	Optimizations        []UpdateOptimization     `protobuf:"varint,2,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Criteria             []*SimpleSearchCondition `protobuf:"bytes,1,rep,name=criteria,proto3" json:"criteria,omitempty"`
+	Optimizations        []UpdateOptimization     `protobuf:"varint,2,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
 	XXX_unrecognized     []byte                   `json:"-"`
 	XXX_sizecache        int32                    `json:"-"`
@@ -1683,7 +1688,7 @@ func (m *RequestSimpleSearch) Reset()         { *m = RequestSimpleSearch{} }
 func (m *RequestSimpleSearch) String() string { return proto.CompactTextString(m) }
 func (*RequestSimpleSearch) ProtoMessage()    {}
 func (*RequestSimpleSearch) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{24}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{24}
 }
 func (m *RequestSimpleSearch) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSimpleSearch.Unmarshal(m, b)
@@ -1719,7 +1724,7 @@ func (m *RequestSimpleSearch) GetOptimizations() []UpdateOptimization {
 
 type RequestSimpleSearchMore struct {
 	LoadMoreState        []byte               `protobuf:"bytes,1,opt,name=load_more_state,json=loadMoreState,proto3" json:"load_more_state,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,2,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1729,7 +1734,7 @@ func (m *RequestSimpleSearchMore) Reset()         { *m = RequestSimpleSearchMore
 func (m *RequestSimpleSearchMore) String() string { return proto.CompactTextString(m) }
 func (*RequestSimpleSearchMore) ProtoMessage()    {}
 func (*RequestSimpleSearchMore) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_f95f3a19a18fc042, []int{25}
+	return fileDescriptor_search_288a416e17a5b6e5, []int{25}
 }
 func (m *RequestSimpleSearchMore) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSimpleSearchMore.Unmarshal(m, b)
@@ -1806,10 +1811,13 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SearchClient interface {
+	// / Search among groups/users/contacts
 	PeerSearch(ctx context.Context, in *RequestPeerSearch, opts ...grpc.CallOption) (*ResponsePeerSearch, error)
 	ResolvePeer(ctx context.Context, in *RequestResolvePeer, opts ...grpc.CallOption) (*ResponseResolvePeer, error)
+	// / Search by messages
 	MessageSearch(ctx context.Context, in *RequestMessageSearch, opts ...grpc.CallOption) (*ResponseMessageSearchResponse, error)
 	MessageSearchMore(ctx context.Context, in *RequestMessageSearchMore, opts ...grpc.CallOption) (*ResponseMessageSearchResponse, error)
+	// / Custom search by conditions
 	SimpleSearch(ctx context.Context, in *RequestSimpleSearch, opts ...grpc.CallOption) (*ResponseMessageSearchResponse, error)
 	SimpleSearchMore(ctx context.Context, in *RequestSimpleSearchMore, opts ...grpc.CallOption) (*ResponseMessageSearchResponse, error)
 }
@@ -1878,10 +1886,13 @@ func (c *searchClient) SimpleSearchMore(ctx context.Context, in *RequestSimpleSe
 
 // SearchServer is the server API for Search service.
 type SearchServer interface {
+	// / Search among groups/users/contacts
 	PeerSearch(context.Context, *RequestPeerSearch) (*ResponsePeerSearch, error)
 	ResolvePeer(context.Context, *RequestResolvePeer) (*ResponseResolvePeer, error)
+	// / Search by messages
 	MessageSearch(context.Context, *RequestMessageSearch) (*ResponseMessageSearchResponse, error)
 	MessageSearchMore(context.Context, *RequestMessageSearchMore) (*ResponseMessageSearchResponse, error)
+	// / Custom search by conditions
 	SimpleSearch(context.Context, *RequestSimpleSearch) (*ResponseMessageSearchResponse, error)
 	SimpleSearchMore(context.Context, *RequestSimpleSearchMore) (*ResponseMessageSearchResponse, error)
 }
@@ -2031,9 +2042,9 @@ var _Search_serviceDesc = grpc.ServiceDesc{
 	Metadata: "search.proto",
 }
 
-func init() { proto.RegisterFile("search.proto", fileDescriptor_search_f95f3a19a18fc042) }
+func init() { proto.RegisterFile("search.proto", fileDescriptor_search_288a416e17a5b6e5) }
 
-var fileDescriptor_search_f95f3a19a18fc042 = []byte{
+var fileDescriptor_search_288a416e17a5b6e5 = []byte{
 	// 1809 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x57, 0x5f, 0x6f, 0xe3, 0x58,
 	0x15, 0xaf, 0x9b, 0x34, 0x6d, 0x4e, 0xd3, 0x36, 0xbd, 0x9d, 0x4e, 0xd3, 0xb4, 0xa5, 0xad, 0x61,

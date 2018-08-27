@@ -27,27 +27,26 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Descriptor of a Sticker
-// id Sticker unique id
-// emoji Emoji code for sticker
-// image128 Image of sticker 128x128 in WebP format
-// image512 Image of sticker 512x512 in WebP format
-// image256 Image of sticker 256x256 in WebP format
 type StickerDescriptor struct {
-	Id                   int32                 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	Emoji                *wrappers.StringValue `protobuf:"bytes,2,opt,name=emoji" json:"emoji,omitempty"`
-	Image_128            *ImageLocation        `protobuf:"bytes,3,opt,name=image_128,json=image128" json:"image_128,omitempty"`
-	Image_512            *ImageLocation        `protobuf:"bytes,4,opt,name=image_512,json=image512" json:"image_512,omitempty"`
-	Image_256            *ImageLocation        `protobuf:"bytes,5,opt,name=image_256,json=image256" json:"image_256,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	// / Emoji code for sticker
+	Emoji *wrappers.StringValue `protobuf:"bytes,2,opt,name=emoji,proto3" json:"emoji,omitempty"`
+	// / Image of sticker 128x128 in WebP format
+	Image_128 *ImageLocation `protobuf:"bytes,3,opt,name=image_128,json=image128,proto3" json:"image_128,omitempty"`
+	// / Image of sticker 512x512 in WebP format
+	Image_512 *ImageLocation `protobuf:"bytes,4,opt,name=image_512,json=image512,proto3" json:"image_512,omitempty"`
+	// / Image of sticker 256x256 in WebP format
+	Image_256            *ImageLocation `protobuf:"bytes,5,opt,name=image_256,json=image256,proto3" json:"image_256,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
 func (m *StickerDescriptor) Reset()         { *m = StickerDescriptor{} }
 func (m *StickerDescriptor) String() string { return proto.CompactTextString(m) }
 func (*StickerDescriptor) ProtoMessage()    {}
 func (*StickerDescriptor) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{0}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{0}
 }
 func (m *StickerDescriptor) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StickerDescriptor.Unmarshal(m, b)
@@ -103,25 +102,24 @@ func (m *StickerDescriptor) GetImage_256() *ImageLocation {
 }
 
 // Sticker collection
-// id Unique id of a collection
-// title Sticker pack title
-// stickers Sticker list
-// ownedByMe does this pack belongs to current user
 type StickerCollection struct {
-	Id                   int32                 `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	Title                *wrappers.StringValue `protobuf:"bytes,2,opt,name=title" json:"title,omitempty"`
-	Stickers             []*StickerDescriptor  `protobuf:"bytes,3,rep,name=stickers" json:"stickers,omitempty"`
-	OwnedByMe            *wrappers.BoolValue   `protobuf:"bytes,4,opt,name=owned_by_me,json=ownedByMe" json:"owned_by_me,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	// / Unique id of a collection
+	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	// / Sticker pack title
+	Title    *wrappers.StringValue `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Stickers []*StickerDescriptor  `protobuf:"bytes,3,rep,name=stickers,proto3" json:"stickers,omitempty"`
+	// / does this pack belongs to current user
+	OwnedByMe            *wrappers.BoolValue `protobuf:"bytes,4,opt,name=owned_by_me,json=ownedByMe,proto3" json:"owned_by_me,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
 func (m *StickerCollection) Reset()         { *m = StickerCollection{} }
 func (m *StickerCollection) String() string { return proto.CompactTextString(m) }
 func (*StickerCollection) ProtoMessage()    {}
 func (*StickerCollection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{1}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{1}
 }
 func (m *StickerCollection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StickerCollection.Unmarshal(m, b)
@@ -171,8 +169,8 @@ func (m *StickerCollection) GetOwnedByMe() *wrappers.BoolValue {
 
 // Stickers response
 type ResponseStickersResponse struct {
-	Collections          []*StickerCollection `protobuf:"bytes,1,rep,name=collections" json:"collections,omitempty"`
-	Seq                  int32                `protobuf:"varint,2,opt,name=seq" json:"seq,omitempty"`
+	Collections          []*StickerCollection `protobuf:"bytes,1,rep,name=collections,proto3" json:"collections,omitempty"`
+	Seq                  int32                `protobuf:"varint,2,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte               `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
@@ -183,7 +181,7 @@ func (m *ResponseStickersResponse) Reset()         { *m = ResponseStickersRespon
 func (m *ResponseStickersResponse) String() string { return proto.CompactTextString(m) }
 func (*ResponseStickersResponse) ProtoMessage()    {}
 func (*ResponseStickersResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{2}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{2}
 }
 func (m *ResponseStickersResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseStickersResponse.Unmarshal(m, b)
@@ -235,7 +233,7 @@ func (m *RequestLoadOwnStickers) Reset()         { *m = RequestLoadOwnStickers{}
 func (m *RequestLoadOwnStickers) String() string { return proto.CompactTextString(m) }
 func (*RequestLoadOwnStickers) ProtoMessage()    {}
 func (*RequestLoadOwnStickers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{3}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{3}
 }
 func (m *RequestLoadOwnStickers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestLoadOwnStickers.Unmarshal(m, b)
@@ -256,7 +254,7 @@ func (m *RequestLoadOwnStickers) XXX_DiscardUnknown() {
 var xxx_messageInfo_RequestLoadOwnStickers proto.InternalMessageInfo
 
 type ResponseLoadOwnStickers struct {
-	OwnStickers          []*StickerCollection `protobuf:"bytes,1,rep,name=own_stickers,json=ownStickers" json:"own_stickers,omitempty"`
+	OwnStickers          []*StickerCollection `protobuf:"bytes,1,rep,name=own_stickers,json=ownStickers,proto3" json:"own_stickers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -266,7 +264,7 @@ func (m *ResponseLoadOwnStickers) Reset()         { *m = ResponseLoadOwnStickers
 func (m *ResponseLoadOwnStickers) String() string { return proto.CompactTextString(m) }
 func (*ResponseLoadOwnStickers) ProtoMessage()    {}
 func (*ResponseLoadOwnStickers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{4}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{4}
 }
 func (m *ResponseLoadOwnStickers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseLoadOwnStickers.Unmarshal(m, b)
@@ -304,7 +302,7 @@ func (m *RequestLoadAcesssibleStickers) Reset()         { *m = RequestLoadAcesss
 func (m *RequestLoadAcesssibleStickers) String() string { return proto.CompactTextString(m) }
 func (*RequestLoadAcesssibleStickers) ProtoMessage()    {}
 func (*RequestLoadAcesssibleStickers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{5}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{5}
 }
 func (m *RequestLoadAcesssibleStickers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestLoadAcesssibleStickers.Unmarshal(m, b)
@@ -325,7 +323,7 @@ func (m *RequestLoadAcesssibleStickers) XXX_DiscardUnknown() {
 var xxx_messageInfo_RequestLoadAcesssibleStickers proto.InternalMessageInfo
 
 type ResponseLoadAcesssibleStickers struct {
-	AccessibleStickers   []*StickerCollection `protobuf:"bytes,1,rep,name=accessible_stickers,json=accessibleStickers" json:"accessible_stickers,omitempty"`
+	AccessibleStickers   []*StickerCollection `protobuf:"bytes,1,rep,name=accessible_stickers,json=accessibleStickers,proto3" json:"accessible_stickers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -335,7 +333,7 @@ func (m *ResponseLoadAcesssibleStickers) Reset()         { *m = ResponseLoadAces
 func (m *ResponseLoadAcesssibleStickers) String() string { return proto.CompactTextString(m) }
 func (*ResponseLoadAcesssibleStickers) ProtoMessage()    {}
 func (*ResponseLoadAcesssibleStickers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{6}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{6}
 }
 func (m *ResponseLoadAcesssibleStickers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseLoadAcesssibleStickers.Unmarshal(m, b)
@@ -364,7 +362,7 @@ func (m *ResponseLoadAcesssibleStickers) GetAccessibleStickers() []*StickerColle
 
 // Add a reference to other user's sticker pack
 type RequestAddStickerPackReference struct {
-	SourceStickerPack    int32    `protobuf:"varint,1,opt,name=source_sticker_pack,json=sourceStickerPack" json:"source_sticker_pack,omitempty"`
+	SourceStickerPack    int32    `protobuf:"varint,1,opt,name=source_sticker_pack,json=sourceStickerPack,proto3" json:"source_sticker_pack,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -374,7 +372,7 @@ func (m *RequestAddStickerPackReference) Reset()         { *m = RequestAddSticke
 func (m *RequestAddStickerPackReference) String() string { return proto.CompactTextString(m) }
 func (*RequestAddStickerPackReference) ProtoMessage()    {}
 func (*RequestAddStickerPackReference) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{7}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{7}
 }
 func (m *RequestAddStickerPackReference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestAddStickerPackReference.Unmarshal(m, b)
@@ -403,7 +401,7 @@ func (m *RequestAddStickerPackReference) GetSourceStickerPack() int32 {
 
 // Remove a reference to an other user's sticker pack
 type RequestRemoveStickerPackReference struct {
-	SourceStickerPack    int32    `protobuf:"varint,1,opt,name=source_sticker_pack,json=sourceStickerPack" json:"source_sticker_pack,omitempty"`
+	SourceStickerPack    int32    `protobuf:"varint,1,opt,name=source_sticker_pack,json=sourceStickerPack,proto3" json:"source_sticker_pack,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -413,7 +411,7 @@ func (m *RequestRemoveStickerPackReference) Reset()         { *m = RequestRemove
 func (m *RequestRemoveStickerPackReference) String() string { return proto.CompactTextString(m) }
 func (*RequestRemoveStickerPackReference) ProtoMessage()    {}
 func (*RequestRemoveStickerPackReference) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{8}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{8}
 }
 func (m *RequestRemoveStickerPackReference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRemoveStickerPackReference.Unmarshal(m, b)
@@ -442,7 +440,7 @@ func (m *RequestRemoveStickerPackReference) GetSourceStickerPack() int32 {
 
 // Sticker collection changed
 type UpdateStickerCollectionsChanged struct {
-	UpdatedCollections   []*StickerCollection `protobuf:"bytes,1,rep,name=updated_collections,json=updatedCollections" json:"updated_collections,omitempty"`
+	UpdatedCollections   []*StickerCollection `protobuf:"bytes,1,rep,name=updated_collections,json=updatedCollections,proto3" json:"updated_collections,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -452,7 +450,7 @@ func (m *UpdateStickerCollectionsChanged) Reset()         { *m = UpdateStickerCo
 func (m *UpdateStickerCollectionsChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateStickerCollectionsChanged) ProtoMessage()    {}
 func (*UpdateStickerCollectionsChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{9}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{9}
 }
 func (m *UpdateStickerCollectionsChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateStickerCollectionsChanged.Unmarshal(m, b)
@@ -481,7 +479,7 @@ func (m *UpdateStickerCollectionsChanged) GetUpdatedCollections() []*StickerColl
 
 // Sticker pack removed
 type UpdateStickerPackRemoved struct {
-	PackId               int32    `protobuf:"varint,1,opt,name=pack_id,json=packId" json:"pack_id,omitempty"`
+	PackId               int32    `protobuf:"varint,1,opt,name=pack_id,json=packId,proto3" json:"pack_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -491,7 +489,7 @@ func (m *UpdateStickerPackRemoved) Reset()         { *m = UpdateStickerPackRemov
 func (m *UpdateStickerPackRemoved) String() string { return proto.CompactTextString(m) }
 func (*UpdateStickerPackRemoved) ProtoMessage()    {}
 func (*UpdateStickerPackRemoved) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{10}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{10}
 }
 func (m *UpdateStickerPackRemoved) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateStickerPackRemoved.Unmarshal(m, b)
@@ -520,7 +518,7 @@ func (m *UpdateStickerPackRemoved) GetPackId() int32 {
 
 // Sticker pack was added
 type UpdateStickerPackAdded struct {
-	Pack                 *StickerCollection `protobuf:"bytes,1,opt,name=pack" json:"pack,omitempty"`
+	Pack                 *StickerCollection `protobuf:"bytes,1,opt,name=pack,proto3" json:"pack,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -530,7 +528,7 @@ func (m *UpdateStickerPackAdded) Reset()         { *m = UpdateStickerPackAdded{}
 func (m *UpdateStickerPackAdded) String() string { return proto.CompactTextString(m) }
 func (*UpdateStickerPackAdded) ProtoMessage()    {}
 func (*UpdateStickerPackAdded) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{11}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{11}
 }
 func (m *UpdateStickerPackAdded) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateStickerPackAdded.Unmarshal(m, b)
@@ -559,7 +557,7 @@ func (m *UpdateStickerPackAdded) GetPack() *StickerCollection {
 
 // Adding sticker collection
 type RequestAddStickerCollection struct {
-	Title                string   `protobuf:"bytes,1,opt,name=title" json:"title,omitempty"`
+	Title                string   `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -569,7 +567,7 @@ func (m *RequestAddStickerCollection) Reset()         { *m = RequestAddStickerCo
 func (m *RequestAddStickerCollection) String() string { return proto.CompactTextString(m) }
 func (*RequestAddStickerCollection) ProtoMessage()    {}
 func (*RequestAddStickerCollection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{12}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{12}
 }
 func (m *RequestAddStickerCollection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestAddStickerCollection.Unmarshal(m, b)
@@ -598,7 +596,7 @@ func (m *RequestAddStickerCollection) GetTitle() string {
 
 // Removing sticker collection
 type RequestRemoveStickerCollection struct {
-	Id                   int32    `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -608,7 +606,7 @@ func (m *RequestRemoveStickerCollection) Reset()         { *m = RequestRemoveSti
 func (m *RequestRemoveStickerCollection) String() string { return proto.CompactTextString(m) }
 func (*RequestRemoveStickerCollection) ProtoMessage()    {}
 func (*RequestRemoveStickerCollection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{13}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{13}
 }
 func (m *RequestRemoveStickerCollection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestRemoveStickerCollection.Unmarshal(m, b)
@@ -637,7 +635,7 @@ func (m *RequestRemoveStickerCollection) GetId() int32 {
 
 // Loading stickers
 type RequestLoadStickerCollection struct {
-	Id                   int32    `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -647,7 +645,7 @@ func (m *RequestLoadStickerCollection) Reset()         { *m = RequestLoadSticker
 func (m *RequestLoadStickerCollection) String() string { return proto.CompactTextString(m) }
 func (*RequestLoadStickerCollection) ProtoMessage()    {}
 func (*RequestLoadStickerCollection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{14}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{14}
 }
 func (m *RequestLoadStickerCollection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestLoadStickerCollection.Unmarshal(m, b)
@@ -675,7 +673,7 @@ func (m *RequestLoadStickerCollection) GetId() int32 {
 }
 
 type ResponseLoadStickerCollection struct {
-	Collection           *StickerCollection `protobuf:"bytes,1,opt,name=collection" json:"collection,omitempty"`
+	Collection           *StickerCollection `protobuf:"bytes,1,opt,name=collection,proto3" json:"collection,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -685,7 +683,7 @@ func (m *ResponseLoadStickerCollection) Reset()         { *m = ResponseLoadStick
 func (m *ResponseLoadStickerCollection) String() string { return proto.CompactTextString(m) }
 func (*ResponseLoadStickerCollection) ProtoMessage()    {}
 func (*ResponseLoadStickerCollection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_stickers_1b0f17e8236f36d5, []int{15}
+	return fileDescriptor_stickers_4d7cc20844ea82e4, []int{15}
 }
 func (m *ResponseLoadStickerCollection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseLoadStickerCollection.Unmarshal(m, b)
@@ -1001,9 +999,9 @@ var _Stickers_serviceDesc = grpc.ServiceDesc{
 	Metadata: "stickers.proto",
 }
 
-func init() { proto.RegisterFile("stickers.proto", fileDescriptor_stickers_1b0f17e8236f36d5) }
+func init() { proto.RegisterFile("stickers.proto", fileDescriptor_stickers_4d7cc20844ea82e4) }
 
-var fileDescriptor_stickers_1b0f17e8236f36d5 = []byte{
+var fileDescriptor_stickers_4d7cc20844ea82e4 = []byte{
 	// 971 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x96, 0xdf, 0x6e, 0x1b, 0x45,
 	0x14, 0xc6, 0xb5, 0x4e, 0x93, 0x26, 0x27, 0x05, 0x94, 0x71, 0x93, 0x6c, 0x4c, 0xfe, 0x75, 0x4b,

@@ -29,20 +29,107 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Sequence update
 type UpdateSeqUpdate struct {
-	Seq                  int32    `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
-	State                []byte   `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	UpdateHeader         int32    `protobuf:"varint,3,opt,name=update_header,json=updateHeader" json:"update_header,omitempty"`
-	Update               []byte   `protobuf:"bytes,4,opt,name=update,proto3" json:"update,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Seq          int32  `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
+	State        []byte `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
+	UpdateHeader int32  `protobuf:"varint,3,opt,name=update_header,json=updateHeader,proto3" json:"update_header,omitempty"`
+	// Types that are valid to be assigned to Update:
+	//	*UpdateSeqUpdate_UpdateForceReloadState
+	//	*UpdateSeqUpdate_UpdateUserAvatarChanged
+	//	*UpdateSeqUpdate_UpdateUserNameChanged
+	//	*UpdateSeqUpdate_UpdateUserLocalNameChanged
+	//	*UpdateSeqUpdate_UpdateUserContactsChanged
+	//	*UpdateSeqUpdate_UpdateUserNickChanged
+	//	*UpdateSeqUpdate_UpdateUserAboutChanged
+	//	*UpdateSeqUpdate_UpdateUserPreferredLanguagesChanged
+	//	*UpdateSeqUpdate_UpdateUserTimeZoneChanged
+	//	*UpdateSeqUpdate_UpdateUserBotCommandsChanged
+	//	*UpdateSeqUpdate_UpdateUserExtChanged
+	//	*UpdateSeqUpdate_UpdateUserFullExtChanged
+	//	*UpdateSeqUpdate_UpdateUserSexChanged
+	//	*UpdateSeqUpdate_UpdateUserCustomProfileChanged
+	//	*UpdateSeqUpdate_UpdateUserStatusChanged
+	//	*UpdateSeqUpdate_UpdateContactRegistered
+	//	*UpdateSeqUpdate_UpdateContactsAdded
+	//	*UpdateSeqUpdate_UpdateContactsAddTaskSuspended
+	//	*UpdateSeqUpdate_UpdateContactsRemoved
+	//	*UpdateSeqUpdate_UpdateUserBlocked
+	//	*UpdateSeqUpdate_UpdateUserUnblocked
+	//	*UpdateSeqUpdate_UpdateInteractiveMediaEvent
+	//	*UpdateSeqUpdate_UpdateMessage
+	//	*UpdateSeqUpdate_UpdateMessageContentChanged
+	//	*UpdateSeqUpdate_UpdateMessageSent
+	//	*UpdateSeqUpdate_UpdateMessageReceived
+	//	*UpdateSeqUpdate_UpdateMessageRead
+	//	*UpdateSeqUpdate_UpdateMessageReadByMe
+	//	*UpdateSeqUpdate_UpdateMessageDelete
+	//	*UpdateSeqUpdate_UpdateChatClear
+	//	*UpdateSeqUpdate_UpdateChatDelete
+	//	*UpdateSeqUpdate_UpdateChatArchive
+	//	*UpdateSeqUpdate_UpdateChatGroupsChanged
+	//	*UpdateSeqUpdate_UpdateReactionsUpdate
+	//	*UpdateSeqUpdate_UpdateDialogFavouriteChanged
+	//	*UpdateSeqUpdate_UpdatePinnedMessagesChanged
+	//	*UpdateSeqUpdate_UpdateGroupTitleChanged
+	//	*UpdateSeqUpdate_UpdateGroupAvatarChanged
+	//	*UpdateSeqUpdate_UpdateGroupTopicChanged
+	//	*UpdateSeqUpdate_UpdateGroupAboutChanged
+	//	*UpdateSeqUpdate_UpdateGroupOwnerChanged
+	//	*UpdateSeqUpdate_UpdateGroupHistoryShared
+	//	*UpdateSeqUpdate_UpdateGroupCanSendMessagesChanged
+	//	*UpdateSeqUpdate_UpdateGroupCanViewMembersChanged
+	//	*UpdateSeqUpdate_UpdateGroupCanInviteMembersChanged
+	//	*UpdateSeqUpdate_UpdateGroupMemberChanged
+	//	*UpdateSeqUpdate_UpdateGroupMembersBecameAsync
+	//	*UpdateSeqUpdate_UpdateGroupMembersUpdated
+	//	*UpdateSeqUpdate_UpdateGroupMemberDiff
+	//	*UpdateSeqUpdate_UpdateGroupMembersCountChanged
+	//	*UpdateSeqUpdate_UpdateGroupMemberAdminChanged
+	//	*UpdateSeqUpdate_UpdateGroupMemberPermissionsChanged
+	//	*UpdateSeqUpdate_UpdateGroupInviteObsolete
+	//	*UpdateSeqUpdate_UpdateGroupUserInvitedObsolete
+	//	*UpdateSeqUpdate_UpdateGroupUserLeaveObsolete
+	//	*UpdateSeqUpdate_UpdateGroupUserKickObsolete
+	//	*UpdateSeqUpdate_UpdateGroupMembersUpdateObsolete
+	//	*UpdateSeqUpdate_UpdateGroupTitleChangedObsolete
+	//	*UpdateSeqUpdate_UpdateGroupTopicChangedObsolete
+	//	*UpdateSeqUpdate_UpdateGroupAboutChangedObsolete
+	//	*UpdateSeqUpdate_UpdateGroupAvatarChangedObsolete
+	//	*UpdateSeqUpdate_UpdateGroupShortnameChanged
+	//	*UpdateSeqUpdate_UpdateStickerCollectionsChanged
+	//	*UpdateSeqUpdate_UpdateStickerPackRemoved
+	//	*UpdateSeqUpdate_UpdateStickerPackAdded
+	//	*UpdateSeqUpdate_UpdatePauseNotifications
+	//	*UpdateSeqUpdate_UpdateRestoreNotifications
+	//	*UpdateSeqUpdate_UpdateTyping
+	//	*UpdateSeqUpdate_UpdateTypingStop
+	//	*UpdateSeqUpdate_UpdateUserOnline
+	//	*UpdateSeqUpdate_UpdateUserOffline
+	//	*UpdateSeqUpdate_UpdateUserLastSeen
+	//	*UpdateSeqUpdate_UpdateGroupOnline
+	//	*UpdateSeqUpdate_UpdateEventBusDeviceConnected
+	//	*UpdateSeqUpdate_UpdateEventBusDeviceDisconnected
+	//	*UpdateSeqUpdate_UpdateEventBusMessage
+	//	*UpdateSeqUpdate_UpdateEventBusDisposed
+	//	*UpdateSeqUpdate_UpdateIncomingCallDeprecated
+	//	*UpdateSeqUpdate_UpdateIncomingCall
+	//	*UpdateSeqUpdate_UpdateCallHandled
+	//	*UpdateSeqUpdate_UpdateCallDisposed
+	//	*UpdateSeqUpdate_UpdateParameterChanged
+	//	*UpdateSeqUpdate_UpdateRawUpdate
+	//	*UpdateSeqUpdate_UpdateEmptyUpdate
+	//	*UpdateSeqUpdate_UpdateCountersChanged
+	//	*UpdateSeqUpdate_UpdateConfig
+	Update               isUpdateSeqUpdate_Update `protobuf_oneof:"update"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
 }
 
 func (m *UpdateSeqUpdate) Reset()         { *m = UpdateSeqUpdate{} }
 func (m *UpdateSeqUpdate) String() string { return proto.CompactTextString(m) }
 func (*UpdateSeqUpdate) ProtoMessage()    {}
 func (*UpdateSeqUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{0}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{0}
 }
 func (m *UpdateSeqUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSeqUpdate.Unmarshal(m, b)
@@ -83,21 +170,2815 @@ func (m *UpdateSeqUpdate) GetUpdateHeader() int32 {
 	return 0
 }
 
-func (m *UpdateSeqUpdate) GetUpdate() []byte {
+type isUpdateSeqUpdate_Update interface {
+	isUpdateSeqUpdate_Update()
+}
+
+type UpdateSeqUpdate_UpdateForceReloadState struct {
+	UpdateForceReloadState *UpdateForceReloadState `protobuf:"bytes,4,opt,name=updateForceReloadState,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserAvatarChanged struct {
+	UpdateUserAvatarChanged *UpdateUserAvatarChanged `protobuf:"bytes,5,opt,name=updateUserAvatarChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserNameChanged struct {
+	UpdateUserNameChanged *UpdateUserNameChanged `protobuf:"bytes,6,opt,name=updateUserNameChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserLocalNameChanged struct {
+	UpdateUserLocalNameChanged *UpdateUserLocalNameChanged `protobuf:"bytes,7,opt,name=updateUserLocalNameChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserContactsChanged struct {
+	UpdateUserContactsChanged *UpdateUserContactsChanged `protobuf:"bytes,8,opt,name=updateUserContactsChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserNickChanged struct {
+	UpdateUserNickChanged *UpdateUserNickChanged `protobuf:"bytes,9,opt,name=updateUserNickChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserAboutChanged struct {
+	UpdateUserAboutChanged *UpdateUserAboutChanged `protobuf:"bytes,10,opt,name=updateUserAboutChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserPreferredLanguagesChanged struct {
+	UpdateUserPreferredLanguagesChanged *UpdateUserPreferredLanguagesChanged `protobuf:"bytes,11,opt,name=updateUserPreferredLanguagesChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserTimeZoneChanged struct {
+	UpdateUserTimeZoneChanged *UpdateUserTimeZoneChanged `protobuf:"bytes,12,opt,name=updateUserTimeZoneChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserBotCommandsChanged struct {
+	UpdateUserBotCommandsChanged *UpdateUserBotCommandsChanged `protobuf:"bytes,13,opt,name=updateUserBotCommandsChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserExtChanged struct {
+	UpdateUserExtChanged *UpdateUserExtChanged `protobuf:"bytes,14,opt,name=updateUserExtChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserFullExtChanged struct {
+	UpdateUserFullExtChanged *UpdateUserFullExtChanged `protobuf:"bytes,15,opt,name=updateUserFullExtChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserSexChanged struct {
+	UpdateUserSexChanged *UpdateUserSexChanged `protobuf:"bytes,16,opt,name=updateUserSexChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserCustomProfileChanged struct {
+	UpdateUserCustomProfileChanged *UpdateUserCustomProfileChanged `protobuf:"bytes,17,opt,name=updateUserCustomProfileChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserStatusChanged struct {
+	UpdateUserStatusChanged *UpdateUserStatusChanged `protobuf:"bytes,18,opt,name=updateUserStatusChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateContactRegistered struct {
+	UpdateContactRegistered *UpdateContactRegistered `protobuf:"bytes,19,opt,name=updateContactRegistered,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateContactsAdded struct {
+	UpdateContactsAdded *UpdateContactsAdded `protobuf:"bytes,20,opt,name=updateContactsAdded,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateContactsAddTaskSuspended struct {
+	UpdateContactsAddTaskSuspended *UpdateContactsAddTaskSuspended `protobuf:"bytes,21,opt,name=updateContactsAddTaskSuspended,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateContactsRemoved struct {
+	UpdateContactsRemoved *UpdateContactsRemoved `protobuf:"bytes,22,opt,name=updateContactsRemoved,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserBlocked struct {
+	UpdateUserBlocked *UpdateUserBlocked `protobuf:"bytes,23,opt,name=updateUserBlocked,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserUnblocked struct {
+	UpdateUserUnblocked *UpdateUserUnblocked `protobuf:"bytes,24,opt,name=updateUserUnblocked,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateInteractiveMediaEvent struct {
+	UpdateInteractiveMediaEvent *UpdateInteractiveMediaEvent `protobuf:"bytes,25,opt,name=updateInteractiveMediaEvent,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateMessage struct {
+	UpdateMessage *UpdateMessage `protobuf:"bytes,26,opt,name=updateMessage,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateMessageContentChanged struct {
+	UpdateMessageContentChanged *UpdateMessageContentChanged `protobuf:"bytes,27,opt,name=updateMessageContentChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateMessageSent struct {
+	UpdateMessageSent *UpdateMessageSent `protobuf:"bytes,28,opt,name=updateMessageSent,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateMessageReceived struct {
+	UpdateMessageReceived *UpdateMessageReceived `protobuf:"bytes,29,opt,name=updateMessageReceived,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateMessageRead struct {
+	UpdateMessageRead *UpdateMessageRead `protobuf:"bytes,30,opt,name=updateMessageRead,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateMessageReadByMe struct {
+	UpdateMessageReadByMe *UpdateMessageReadByMe `protobuf:"bytes,31,opt,name=updateMessageReadByMe,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateMessageDelete struct {
+	UpdateMessageDelete *UpdateMessageDelete `protobuf:"bytes,32,opt,name=updateMessageDelete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateChatClear struct {
+	UpdateChatClear *UpdateChatClear `protobuf:"bytes,33,opt,name=updateChatClear,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateChatDelete struct {
+	UpdateChatDelete *UpdateChatDelete `protobuf:"bytes,34,opt,name=updateChatDelete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateChatArchive struct {
+	UpdateChatArchive *UpdateChatArchive `protobuf:"bytes,35,opt,name=updateChatArchive,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateChatGroupsChanged struct {
+	UpdateChatGroupsChanged *UpdateChatGroupsChanged `protobuf:"bytes,36,opt,name=updateChatGroupsChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateReactionsUpdate struct {
+	UpdateReactionsUpdate *UpdateReactionsUpdate `protobuf:"bytes,37,opt,name=updateReactionsUpdate,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateDialogFavouriteChanged struct {
+	UpdateDialogFavouriteChanged *UpdateDialogFavouriteChanged `protobuf:"bytes,38,opt,name=updateDialogFavouriteChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdatePinnedMessagesChanged struct {
+	UpdatePinnedMessagesChanged *UpdatePinnedMessagesChanged `protobuf:"bytes,39,opt,name=updatePinnedMessagesChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupTitleChanged struct {
+	UpdateGroupTitleChanged *UpdateGroupTitleChanged `protobuf:"bytes,40,opt,name=updateGroupTitleChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupAvatarChanged struct {
+	UpdateGroupAvatarChanged *UpdateGroupAvatarChanged `protobuf:"bytes,41,opt,name=updateGroupAvatarChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupTopicChanged struct {
+	UpdateGroupTopicChanged *UpdateGroupTopicChanged `protobuf:"bytes,42,opt,name=updateGroupTopicChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupAboutChanged struct {
+	UpdateGroupAboutChanged *UpdateGroupAboutChanged `protobuf:"bytes,43,opt,name=updateGroupAboutChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupOwnerChanged struct {
+	UpdateGroupOwnerChanged *UpdateGroupOwnerChanged `protobuf:"bytes,44,opt,name=updateGroupOwnerChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupHistoryShared struct {
+	UpdateGroupHistoryShared *UpdateGroupHistoryShared `protobuf:"bytes,45,opt,name=updateGroupHistoryShared,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupCanSendMessagesChanged struct {
+	UpdateGroupCanSendMessagesChanged *UpdateGroupCanSendMessagesChanged `protobuf:"bytes,46,opt,name=updateGroupCanSendMessagesChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupCanViewMembersChanged struct {
+	UpdateGroupCanViewMembersChanged *UpdateGroupCanViewMembersChanged `protobuf:"bytes,47,opt,name=updateGroupCanViewMembersChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupCanInviteMembersChanged struct {
+	UpdateGroupCanInviteMembersChanged *UpdateGroupCanInviteMembersChanged `protobuf:"bytes,48,opt,name=updateGroupCanInviteMembersChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupMemberChanged struct {
+	UpdateGroupMemberChanged *UpdateGroupMemberChanged `protobuf:"bytes,49,opt,name=updateGroupMemberChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupMembersBecameAsync struct {
+	UpdateGroupMembersBecameAsync *UpdateGroupMembersBecameAsync `protobuf:"bytes,50,opt,name=updateGroupMembersBecameAsync,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupMembersUpdated struct {
+	UpdateGroupMembersUpdated *UpdateGroupMembersUpdated `protobuf:"bytes,51,opt,name=updateGroupMembersUpdated,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupMemberDiff struct {
+	UpdateGroupMemberDiff *UpdateGroupMemberDiff `protobuf:"bytes,52,opt,name=updateGroupMemberDiff,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupMembersCountChanged struct {
+	UpdateGroupMembersCountChanged *UpdateGroupMembersCountChanged `protobuf:"bytes,53,opt,name=updateGroupMembersCountChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupMemberAdminChanged struct {
+	UpdateGroupMemberAdminChanged *UpdateGroupMemberAdminChanged `protobuf:"bytes,54,opt,name=updateGroupMemberAdminChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupMemberPermissionsChanged struct {
+	UpdateGroupMemberPermissionsChanged *UpdateGroupMemberPermissionsChanged `protobuf:"bytes,55,opt,name=updateGroupMemberPermissionsChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupInviteObsolete struct {
+	UpdateGroupInviteObsolete *UpdateGroupInviteObsolete `protobuf:"bytes,56,opt,name=updateGroupInviteObsolete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupUserInvitedObsolete struct {
+	UpdateGroupUserInvitedObsolete *UpdateGroupUserInvitedObsolete `protobuf:"bytes,57,opt,name=updateGroupUserInvitedObsolete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupUserLeaveObsolete struct {
+	UpdateGroupUserLeaveObsolete *UpdateGroupUserLeaveObsolete `protobuf:"bytes,58,opt,name=updateGroupUserLeaveObsolete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupUserKickObsolete struct {
+	UpdateGroupUserKickObsolete *UpdateGroupUserKickObsolete `protobuf:"bytes,59,opt,name=updateGroupUserKickObsolete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupMembersUpdateObsolete struct {
+	UpdateGroupMembersUpdateObsolete *UpdateGroupMembersUpdateObsolete `protobuf:"bytes,60,opt,name=updateGroupMembersUpdateObsolete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupTitleChangedObsolete struct {
+	UpdateGroupTitleChangedObsolete *UpdateGroupTitleChangedObsolete `protobuf:"bytes,61,opt,name=updateGroupTitleChangedObsolete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupTopicChangedObsolete struct {
+	UpdateGroupTopicChangedObsolete *UpdateGroupTopicChangedObsolete `protobuf:"bytes,62,opt,name=updateGroupTopicChangedObsolete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupAboutChangedObsolete struct {
+	UpdateGroupAboutChangedObsolete *UpdateGroupAboutChangedObsolete `protobuf:"bytes,63,opt,name=updateGroupAboutChangedObsolete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupAvatarChangedObsolete struct {
+	UpdateGroupAvatarChangedObsolete *UpdateGroupAvatarChangedObsolete `protobuf:"bytes,64,opt,name=updateGroupAvatarChangedObsolete,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupShortnameChanged struct {
+	UpdateGroupShortnameChanged *UpdateGroupShortnameChanged `protobuf:"bytes,65,opt,name=updateGroupShortnameChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateStickerCollectionsChanged struct {
+	UpdateStickerCollectionsChanged *UpdateStickerCollectionsChanged `protobuf:"bytes,66,opt,name=updateStickerCollectionsChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateStickerPackRemoved struct {
+	UpdateStickerPackRemoved *UpdateStickerPackRemoved `protobuf:"bytes,67,opt,name=updateStickerPackRemoved,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateStickerPackAdded struct {
+	UpdateStickerPackAdded *UpdateStickerPackAdded `protobuf:"bytes,68,opt,name=updateStickerPackAdded,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdatePauseNotifications struct {
+	UpdatePauseNotifications *UpdatePauseNotifications `protobuf:"bytes,69,opt,name=updatePauseNotifications,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateRestoreNotifications struct {
+	UpdateRestoreNotifications *UpdateRestoreNotifications `protobuf:"bytes,70,opt,name=updateRestoreNotifications,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateTyping struct {
+	UpdateTyping *UpdateTyping `protobuf:"bytes,71,opt,name=updateTyping,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateTypingStop struct {
+	UpdateTypingStop *UpdateTypingStop `protobuf:"bytes,72,opt,name=updateTypingStop,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserOnline struct {
+	UpdateUserOnline *UpdateUserOnline `protobuf:"bytes,73,opt,name=updateUserOnline,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserOffline struct {
+	UpdateUserOffline *UpdateUserOffline `protobuf:"bytes,74,opt,name=updateUserOffline,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateUserLastSeen struct {
+	UpdateUserLastSeen *UpdateUserLastSeen `protobuf:"bytes,75,opt,name=updateUserLastSeen,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateGroupOnline struct {
+	UpdateGroupOnline *UpdateGroupOnline `protobuf:"bytes,76,opt,name=updateGroupOnline,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateEventBusDeviceConnected struct {
+	UpdateEventBusDeviceConnected *UpdateEventBusDeviceConnected `protobuf:"bytes,77,opt,name=updateEventBusDeviceConnected,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateEventBusDeviceDisconnected struct {
+	UpdateEventBusDeviceDisconnected *UpdateEventBusDeviceDisconnected `protobuf:"bytes,78,opt,name=updateEventBusDeviceDisconnected,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateEventBusMessage struct {
+	UpdateEventBusMessage *UpdateEventBusMessage `protobuf:"bytes,79,opt,name=updateEventBusMessage,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateEventBusDisposed struct {
+	UpdateEventBusDisposed *UpdateEventBusDisposed `protobuf:"bytes,80,opt,name=updateEventBusDisposed,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateIncomingCallDeprecated struct {
+	UpdateIncomingCallDeprecated *UpdateIncomingCallDeprecated `protobuf:"bytes,81,opt,name=updateIncomingCallDeprecated,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateIncomingCall struct {
+	UpdateIncomingCall *UpdateIncomingCall `protobuf:"bytes,82,opt,name=updateIncomingCall,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateCallHandled struct {
+	UpdateCallHandled *UpdateCallHandled `protobuf:"bytes,83,opt,name=updateCallHandled,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateCallDisposed struct {
+	UpdateCallDisposed *UpdateCallDisposed `protobuf:"bytes,84,opt,name=updateCallDisposed,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateParameterChanged struct {
+	UpdateParameterChanged *UpdateParameterChanged `protobuf:"bytes,85,opt,name=updateParameterChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateRawUpdate struct {
+	UpdateRawUpdate *UpdateRawUpdate `protobuf:"bytes,86,opt,name=updateRawUpdate,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateEmptyUpdate struct {
+	UpdateEmptyUpdate *UpdateEmptyUpdate `protobuf:"bytes,87,opt,name=updateEmptyUpdate,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateCountersChanged struct {
+	UpdateCountersChanged *UpdateCountersChanged `protobuf:"bytes,88,opt,name=updateCountersChanged,proto3,oneof"`
+}
+
+type UpdateSeqUpdate_UpdateConfig struct {
+	UpdateConfig *UpdateConfig `protobuf:"bytes,89,opt,name=updateConfig,proto3,oneof"`
+}
+
+func (*UpdateSeqUpdate_UpdateForceReloadState) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserAvatarChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserNameChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserLocalNameChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserContactsChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserNickChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserAboutChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserPreferredLanguagesChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserTimeZoneChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserBotCommandsChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserExtChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserFullExtChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserSexChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserCustomProfileChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserStatusChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateContactRegistered) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateContactsAdded) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateContactsAddTaskSuspended) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateContactsRemoved) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserBlocked) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserUnblocked) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateInteractiveMediaEvent) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateMessage) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateMessageContentChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateMessageSent) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateMessageReceived) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateMessageRead) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateMessageReadByMe) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateMessageDelete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateChatClear) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateChatDelete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateChatArchive) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateChatGroupsChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateReactionsUpdate) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateDialogFavouriteChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdatePinnedMessagesChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupTitleChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupAvatarChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupTopicChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupAboutChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupOwnerChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupHistoryShared) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupCanSendMessagesChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupCanViewMembersChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupCanInviteMembersChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupMemberChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupMembersBecameAsync) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupMembersUpdated) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupMemberDiff) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupMembersCountChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupMemberAdminChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupMemberPermissionsChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupInviteObsolete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupUserInvitedObsolete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupUserLeaveObsolete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupUserKickObsolete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupMembersUpdateObsolete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupTitleChangedObsolete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupTopicChangedObsolete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupAboutChangedObsolete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupAvatarChangedObsolete) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupShortnameChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateStickerCollectionsChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateStickerPackRemoved) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateStickerPackAdded) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdatePauseNotifications) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateRestoreNotifications) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateTyping) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateTypingStop) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserOnline) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserOffline) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateUserLastSeen) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateGroupOnline) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateEventBusDeviceConnected) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateEventBusDeviceDisconnected) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateEventBusMessage) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateEventBusDisposed) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateIncomingCallDeprecated) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateIncomingCall) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateCallHandled) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateCallDisposed) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateParameterChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateRawUpdate) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateEmptyUpdate) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateCountersChanged) isUpdateSeqUpdate_Update() {}
+
+func (*UpdateSeqUpdate_UpdateConfig) isUpdateSeqUpdate_Update() {}
+
+func (m *UpdateSeqUpdate) GetUpdate() isUpdateSeqUpdate_Update {
 	if m != nil {
 		return m.Update
 	}
 	return nil
 }
 
+func (m *UpdateSeqUpdate) GetUpdateForceReloadState() *UpdateForceReloadState {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateForceReloadState); ok {
+		return x.UpdateForceReloadState
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserAvatarChanged() *UpdateUserAvatarChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserAvatarChanged); ok {
+		return x.UpdateUserAvatarChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserNameChanged() *UpdateUserNameChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserNameChanged); ok {
+		return x.UpdateUserNameChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserLocalNameChanged() *UpdateUserLocalNameChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserLocalNameChanged); ok {
+		return x.UpdateUserLocalNameChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserContactsChanged() *UpdateUserContactsChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserContactsChanged); ok {
+		return x.UpdateUserContactsChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserNickChanged() *UpdateUserNickChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserNickChanged); ok {
+		return x.UpdateUserNickChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserAboutChanged() *UpdateUserAboutChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserAboutChanged); ok {
+		return x.UpdateUserAboutChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserPreferredLanguagesChanged() *UpdateUserPreferredLanguagesChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserPreferredLanguagesChanged); ok {
+		return x.UpdateUserPreferredLanguagesChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserTimeZoneChanged() *UpdateUserTimeZoneChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserTimeZoneChanged); ok {
+		return x.UpdateUserTimeZoneChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserBotCommandsChanged() *UpdateUserBotCommandsChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserBotCommandsChanged); ok {
+		return x.UpdateUserBotCommandsChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserExtChanged() *UpdateUserExtChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserExtChanged); ok {
+		return x.UpdateUserExtChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserFullExtChanged() *UpdateUserFullExtChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserFullExtChanged); ok {
+		return x.UpdateUserFullExtChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserSexChanged() *UpdateUserSexChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserSexChanged); ok {
+		return x.UpdateUserSexChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserCustomProfileChanged() *UpdateUserCustomProfileChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserCustomProfileChanged); ok {
+		return x.UpdateUserCustomProfileChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserStatusChanged() *UpdateUserStatusChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserStatusChanged); ok {
+		return x.UpdateUserStatusChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateContactRegistered() *UpdateContactRegistered {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateContactRegistered); ok {
+		return x.UpdateContactRegistered
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateContactsAdded() *UpdateContactsAdded {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateContactsAdded); ok {
+		return x.UpdateContactsAdded
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateContactsAddTaskSuspended() *UpdateContactsAddTaskSuspended {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateContactsAddTaskSuspended); ok {
+		return x.UpdateContactsAddTaskSuspended
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateContactsRemoved() *UpdateContactsRemoved {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateContactsRemoved); ok {
+		return x.UpdateContactsRemoved
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserBlocked() *UpdateUserBlocked {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserBlocked); ok {
+		return x.UpdateUserBlocked
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserUnblocked() *UpdateUserUnblocked {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserUnblocked); ok {
+		return x.UpdateUserUnblocked
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateInteractiveMediaEvent() *UpdateInteractiveMediaEvent {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateInteractiveMediaEvent); ok {
+		return x.UpdateInteractiveMediaEvent
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateMessage() *UpdateMessage {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateMessage); ok {
+		return x.UpdateMessage
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateMessageContentChanged() *UpdateMessageContentChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateMessageContentChanged); ok {
+		return x.UpdateMessageContentChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateMessageSent() *UpdateMessageSent {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateMessageSent); ok {
+		return x.UpdateMessageSent
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateMessageReceived() *UpdateMessageReceived {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateMessageReceived); ok {
+		return x.UpdateMessageReceived
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateMessageRead() *UpdateMessageRead {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateMessageRead); ok {
+		return x.UpdateMessageRead
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateMessageReadByMe() *UpdateMessageReadByMe {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateMessageReadByMe); ok {
+		return x.UpdateMessageReadByMe
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateMessageDelete() *UpdateMessageDelete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateMessageDelete); ok {
+		return x.UpdateMessageDelete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateChatClear() *UpdateChatClear {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateChatClear); ok {
+		return x.UpdateChatClear
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateChatDelete() *UpdateChatDelete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateChatDelete); ok {
+		return x.UpdateChatDelete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateChatArchive() *UpdateChatArchive {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateChatArchive); ok {
+		return x.UpdateChatArchive
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateChatGroupsChanged() *UpdateChatGroupsChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateChatGroupsChanged); ok {
+		return x.UpdateChatGroupsChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateReactionsUpdate() *UpdateReactionsUpdate {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateReactionsUpdate); ok {
+		return x.UpdateReactionsUpdate
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateDialogFavouriteChanged() *UpdateDialogFavouriteChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateDialogFavouriteChanged); ok {
+		return x.UpdateDialogFavouriteChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdatePinnedMessagesChanged() *UpdatePinnedMessagesChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdatePinnedMessagesChanged); ok {
+		return x.UpdatePinnedMessagesChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupTitleChanged() *UpdateGroupTitleChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupTitleChanged); ok {
+		return x.UpdateGroupTitleChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupAvatarChanged() *UpdateGroupAvatarChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupAvatarChanged); ok {
+		return x.UpdateGroupAvatarChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupTopicChanged() *UpdateGroupTopicChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupTopicChanged); ok {
+		return x.UpdateGroupTopicChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupAboutChanged() *UpdateGroupAboutChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupAboutChanged); ok {
+		return x.UpdateGroupAboutChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupOwnerChanged() *UpdateGroupOwnerChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupOwnerChanged); ok {
+		return x.UpdateGroupOwnerChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupHistoryShared() *UpdateGroupHistoryShared {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupHistoryShared); ok {
+		return x.UpdateGroupHistoryShared
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupCanSendMessagesChanged() *UpdateGroupCanSendMessagesChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupCanSendMessagesChanged); ok {
+		return x.UpdateGroupCanSendMessagesChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupCanViewMembersChanged() *UpdateGroupCanViewMembersChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupCanViewMembersChanged); ok {
+		return x.UpdateGroupCanViewMembersChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupCanInviteMembersChanged() *UpdateGroupCanInviteMembersChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupCanInviteMembersChanged); ok {
+		return x.UpdateGroupCanInviteMembersChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupMemberChanged() *UpdateGroupMemberChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupMemberChanged); ok {
+		return x.UpdateGroupMemberChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupMembersBecameAsync() *UpdateGroupMembersBecameAsync {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupMembersBecameAsync); ok {
+		return x.UpdateGroupMembersBecameAsync
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupMembersUpdated() *UpdateGroupMembersUpdated {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupMembersUpdated); ok {
+		return x.UpdateGroupMembersUpdated
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupMemberDiff() *UpdateGroupMemberDiff {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupMemberDiff); ok {
+		return x.UpdateGroupMemberDiff
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupMembersCountChanged() *UpdateGroupMembersCountChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupMembersCountChanged); ok {
+		return x.UpdateGroupMembersCountChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupMemberAdminChanged() *UpdateGroupMemberAdminChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupMemberAdminChanged); ok {
+		return x.UpdateGroupMemberAdminChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupMemberPermissionsChanged() *UpdateGroupMemberPermissionsChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupMemberPermissionsChanged); ok {
+		return x.UpdateGroupMemberPermissionsChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupInviteObsolete() *UpdateGroupInviteObsolete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupInviteObsolete); ok {
+		return x.UpdateGroupInviteObsolete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupUserInvitedObsolete() *UpdateGroupUserInvitedObsolete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupUserInvitedObsolete); ok {
+		return x.UpdateGroupUserInvitedObsolete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupUserLeaveObsolete() *UpdateGroupUserLeaveObsolete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupUserLeaveObsolete); ok {
+		return x.UpdateGroupUserLeaveObsolete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupUserKickObsolete() *UpdateGroupUserKickObsolete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupUserKickObsolete); ok {
+		return x.UpdateGroupUserKickObsolete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupMembersUpdateObsolete() *UpdateGroupMembersUpdateObsolete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupMembersUpdateObsolete); ok {
+		return x.UpdateGroupMembersUpdateObsolete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupTitleChangedObsolete() *UpdateGroupTitleChangedObsolete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupTitleChangedObsolete); ok {
+		return x.UpdateGroupTitleChangedObsolete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupTopicChangedObsolete() *UpdateGroupTopicChangedObsolete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupTopicChangedObsolete); ok {
+		return x.UpdateGroupTopicChangedObsolete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupAboutChangedObsolete() *UpdateGroupAboutChangedObsolete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupAboutChangedObsolete); ok {
+		return x.UpdateGroupAboutChangedObsolete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupAvatarChangedObsolete() *UpdateGroupAvatarChangedObsolete {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupAvatarChangedObsolete); ok {
+		return x.UpdateGroupAvatarChangedObsolete
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupShortnameChanged() *UpdateGroupShortnameChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupShortnameChanged); ok {
+		return x.UpdateGroupShortnameChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateStickerCollectionsChanged() *UpdateStickerCollectionsChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateStickerCollectionsChanged); ok {
+		return x.UpdateStickerCollectionsChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateStickerPackRemoved() *UpdateStickerPackRemoved {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateStickerPackRemoved); ok {
+		return x.UpdateStickerPackRemoved
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateStickerPackAdded() *UpdateStickerPackAdded {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateStickerPackAdded); ok {
+		return x.UpdateStickerPackAdded
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdatePauseNotifications() *UpdatePauseNotifications {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdatePauseNotifications); ok {
+		return x.UpdatePauseNotifications
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateRestoreNotifications() *UpdateRestoreNotifications {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateRestoreNotifications); ok {
+		return x.UpdateRestoreNotifications
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateTyping() *UpdateTyping {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateTyping); ok {
+		return x.UpdateTyping
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateTypingStop() *UpdateTypingStop {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateTypingStop); ok {
+		return x.UpdateTypingStop
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserOnline() *UpdateUserOnline {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserOnline); ok {
+		return x.UpdateUserOnline
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserOffline() *UpdateUserOffline {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserOffline); ok {
+		return x.UpdateUserOffline
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateUserLastSeen() *UpdateUserLastSeen {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateUserLastSeen); ok {
+		return x.UpdateUserLastSeen
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateGroupOnline() *UpdateGroupOnline {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateGroupOnline); ok {
+		return x.UpdateGroupOnline
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateEventBusDeviceConnected() *UpdateEventBusDeviceConnected {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateEventBusDeviceConnected); ok {
+		return x.UpdateEventBusDeviceConnected
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateEventBusDeviceDisconnected() *UpdateEventBusDeviceDisconnected {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateEventBusDeviceDisconnected); ok {
+		return x.UpdateEventBusDeviceDisconnected
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateEventBusMessage() *UpdateEventBusMessage {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateEventBusMessage); ok {
+		return x.UpdateEventBusMessage
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateEventBusDisposed() *UpdateEventBusDisposed {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateEventBusDisposed); ok {
+		return x.UpdateEventBusDisposed
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateIncomingCallDeprecated() *UpdateIncomingCallDeprecated {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateIncomingCallDeprecated); ok {
+		return x.UpdateIncomingCallDeprecated
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateIncomingCall() *UpdateIncomingCall {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateIncomingCall); ok {
+		return x.UpdateIncomingCall
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateCallHandled() *UpdateCallHandled {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateCallHandled); ok {
+		return x.UpdateCallHandled
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateCallDisposed() *UpdateCallDisposed {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateCallDisposed); ok {
+		return x.UpdateCallDisposed
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateParameterChanged() *UpdateParameterChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateParameterChanged); ok {
+		return x.UpdateParameterChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateRawUpdate() *UpdateRawUpdate {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateRawUpdate); ok {
+		return x.UpdateRawUpdate
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateEmptyUpdate() *UpdateEmptyUpdate {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateEmptyUpdate); ok {
+		return x.UpdateEmptyUpdate
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateCountersChanged() *UpdateCountersChanged {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateCountersChanged); ok {
+		return x.UpdateCountersChanged
+	}
+	return nil
+}
+
+func (m *UpdateSeqUpdate) GetUpdateConfig() *UpdateConfig {
+	if x, ok := m.GetUpdate().(*UpdateSeqUpdate_UpdateConfig); ok {
+		return x.UpdateConfig
+	}
+	return nil
+}
+
+// XXX_OneofFuncs is for the internal use of the proto package.
+func (*UpdateSeqUpdate) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _UpdateSeqUpdate_OneofMarshaler, _UpdateSeqUpdate_OneofUnmarshaler, _UpdateSeqUpdate_OneofSizer, []interface{}{
+		(*UpdateSeqUpdate_UpdateForceReloadState)(nil),
+		(*UpdateSeqUpdate_UpdateUserAvatarChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserNameChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserLocalNameChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserContactsChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserNickChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserAboutChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserPreferredLanguagesChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserTimeZoneChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserBotCommandsChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserExtChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserFullExtChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserSexChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserCustomProfileChanged)(nil),
+		(*UpdateSeqUpdate_UpdateUserStatusChanged)(nil),
+		(*UpdateSeqUpdate_UpdateContactRegistered)(nil),
+		(*UpdateSeqUpdate_UpdateContactsAdded)(nil),
+		(*UpdateSeqUpdate_UpdateContactsAddTaskSuspended)(nil),
+		(*UpdateSeqUpdate_UpdateContactsRemoved)(nil),
+		(*UpdateSeqUpdate_UpdateUserBlocked)(nil),
+		(*UpdateSeqUpdate_UpdateUserUnblocked)(nil),
+		(*UpdateSeqUpdate_UpdateInteractiveMediaEvent)(nil),
+		(*UpdateSeqUpdate_UpdateMessage)(nil),
+		(*UpdateSeqUpdate_UpdateMessageContentChanged)(nil),
+		(*UpdateSeqUpdate_UpdateMessageSent)(nil),
+		(*UpdateSeqUpdate_UpdateMessageReceived)(nil),
+		(*UpdateSeqUpdate_UpdateMessageRead)(nil),
+		(*UpdateSeqUpdate_UpdateMessageReadByMe)(nil),
+		(*UpdateSeqUpdate_UpdateMessageDelete)(nil),
+		(*UpdateSeqUpdate_UpdateChatClear)(nil),
+		(*UpdateSeqUpdate_UpdateChatDelete)(nil),
+		(*UpdateSeqUpdate_UpdateChatArchive)(nil),
+		(*UpdateSeqUpdate_UpdateChatGroupsChanged)(nil),
+		(*UpdateSeqUpdate_UpdateReactionsUpdate)(nil),
+		(*UpdateSeqUpdate_UpdateDialogFavouriteChanged)(nil),
+		(*UpdateSeqUpdate_UpdatePinnedMessagesChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupTitleChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupAvatarChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupTopicChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupAboutChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupOwnerChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupHistoryShared)(nil),
+		(*UpdateSeqUpdate_UpdateGroupCanSendMessagesChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupCanViewMembersChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupCanInviteMembersChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupMemberChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupMembersBecameAsync)(nil),
+		(*UpdateSeqUpdate_UpdateGroupMembersUpdated)(nil),
+		(*UpdateSeqUpdate_UpdateGroupMemberDiff)(nil),
+		(*UpdateSeqUpdate_UpdateGroupMembersCountChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupMemberAdminChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupMemberPermissionsChanged)(nil),
+		(*UpdateSeqUpdate_UpdateGroupInviteObsolete)(nil),
+		(*UpdateSeqUpdate_UpdateGroupUserInvitedObsolete)(nil),
+		(*UpdateSeqUpdate_UpdateGroupUserLeaveObsolete)(nil),
+		(*UpdateSeqUpdate_UpdateGroupUserKickObsolete)(nil),
+		(*UpdateSeqUpdate_UpdateGroupMembersUpdateObsolete)(nil),
+		(*UpdateSeqUpdate_UpdateGroupTitleChangedObsolete)(nil),
+		(*UpdateSeqUpdate_UpdateGroupTopicChangedObsolete)(nil),
+		(*UpdateSeqUpdate_UpdateGroupAboutChangedObsolete)(nil),
+		(*UpdateSeqUpdate_UpdateGroupAvatarChangedObsolete)(nil),
+		(*UpdateSeqUpdate_UpdateGroupShortnameChanged)(nil),
+		(*UpdateSeqUpdate_UpdateStickerCollectionsChanged)(nil),
+		(*UpdateSeqUpdate_UpdateStickerPackRemoved)(nil),
+		(*UpdateSeqUpdate_UpdateStickerPackAdded)(nil),
+		(*UpdateSeqUpdate_UpdatePauseNotifications)(nil),
+		(*UpdateSeqUpdate_UpdateRestoreNotifications)(nil),
+		(*UpdateSeqUpdate_UpdateTyping)(nil),
+		(*UpdateSeqUpdate_UpdateTypingStop)(nil),
+		(*UpdateSeqUpdate_UpdateUserOnline)(nil),
+		(*UpdateSeqUpdate_UpdateUserOffline)(nil),
+		(*UpdateSeqUpdate_UpdateUserLastSeen)(nil),
+		(*UpdateSeqUpdate_UpdateGroupOnline)(nil),
+		(*UpdateSeqUpdate_UpdateEventBusDeviceConnected)(nil),
+		(*UpdateSeqUpdate_UpdateEventBusDeviceDisconnected)(nil),
+		(*UpdateSeqUpdate_UpdateEventBusMessage)(nil),
+		(*UpdateSeqUpdate_UpdateEventBusDisposed)(nil),
+		(*UpdateSeqUpdate_UpdateIncomingCallDeprecated)(nil),
+		(*UpdateSeqUpdate_UpdateIncomingCall)(nil),
+		(*UpdateSeqUpdate_UpdateCallHandled)(nil),
+		(*UpdateSeqUpdate_UpdateCallDisposed)(nil),
+		(*UpdateSeqUpdate_UpdateParameterChanged)(nil),
+		(*UpdateSeqUpdate_UpdateRawUpdate)(nil),
+		(*UpdateSeqUpdate_UpdateEmptyUpdate)(nil),
+		(*UpdateSeqUpdate_UpdateCountersChanged)(nil),
+		(*UpdateSeqUpdate_UpdateConfig)(nil),
+	}
+}
+
+func _UpdateSeqUpdate_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
+	m := msg.(*UpdateSeqUpdate)
+	// update
+	switch x := m.Update.(type) {
+	case *UpdateSeqUpdate_UpdateForceReloadState:
+		b.EncodeVarint(4<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateForceReloadState); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserAvatarChanged:
+		b.EncodeVarint(5<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserAvatarChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserNameChanged:
+		b.EncodeVarint(6<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserNameChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserLocalNameChanged:
+		b.EncodeVarint(7<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserLocalNameChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserContactsChanged:
+		b.EncodeVarint(8<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserContactsChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserNickChanged:
+		b.EncodeVarint(9<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserNickChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserAboutChanged:
+		b.EncodeVarint(10<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserAboutChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserPreferredLanguagesChanged:
+		b.EncodeVarint(11<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserPreferredLanguagesChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserTimeZoneChanged:
+		b.EncodeVarint(12<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserTimeZoneChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserBotCommandsChanged:
+		b.EncodeVarint(13<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserBotCommandsChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserExtChanged:
+		b.EncodeVarint(14<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserExtChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserFullExtChanged:
+		b.EncodeVarint(15<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserFullExtChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserSexChanged:
+		b.EncodeVarint(16<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserSexChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserCustomProfileChanged:
+		b.EncodeVarint(17<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserCustomProfileChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserStatusChanged:
+		b.EncodeVarint(18<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserStatusChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateContactRegistered:
+		b.EncodeVarint(19<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateContactRegistered); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateContactsAdded:
+		b.EncodeVarint(20<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateContactsAdded); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateContactsAddTaskSuspended:
+		b.EncodeVarint(21<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateContactsAddTaskSuspended); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateContactsRemoved:
+		b.EncodeVarint(22<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateContactsRemoved); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserBlocked:
+		b.EncodeVarint(23<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserBlocked); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserUnblocked:
+		b.EncodeVarint(24<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserUnblocked); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateInteractiveMediaEvent:
+		b.EncodeVarint(25<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateInteractiveMediaEvent); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateMessage:
+		b.EncodeVarint(26<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateMessage); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateMessageContentChanged:
+		b.EncodeVarint(27<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateMessageContentChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateMessageSent:
+		b.EncodeVarint(28<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateMessageSent); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateMessageReceived:
+		b.EncodeVarint(29<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateMessageReceived); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateMessageRead:
+		b.EncodeVarint(30<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateMessageRead); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateMessageReadByMe:
+		b.EncodeVarint(31<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateMessageReadByMe); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateMessageDelete:
+		b.EncodeVarint(32<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateMessageDelete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateChatClear:
+		b.EncodeVarint(33<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateChatClear); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateChatDelete:
+		b.EncodeVarint(34<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateChatDelete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateChatArchive:
+		b.EncodeVarint(35<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateChatArchive); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateChatGroupsChanged:
+		b.EncodeVarint(36<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateChatGroupsChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateReactionsUpdate:
+		b.EncodeVarint(37<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateReactionsUpdate); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateDialogFavouriteChanged:
+		b.EncodeVarint(38<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateDialogFavouriteChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdatePinnedMessagesChanged:
+		b.EncodeVarint(39<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdatePinnedMessagesChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupTitleChanged:
+		b.EncodeVarint(40<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupTitleChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupAvatarChanged:
+		b.EncodeVarint(41<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupAvatarChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupTopicChanged:
+		b.EncodeVarint(42<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupTopicChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupAboutChanged:
+		b.EncodeVarint(43<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupAboutChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupOwnerChanged:
+		b.EncodeVarint(44<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupOwnerChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupHistoryShared:
+		b.EncodeVarint(45<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupHistoryShared); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupCanSendMessagesChanged:
+		b.EncodeVarint(46<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupCanSendMessagesChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupCanViewMembersChanged:
+		b.EncodeVarint(47<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupCanViewMembersChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupCanInviteMembersChanged:
+		b.EncodeVarint(48<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupCanInviteMembersChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupMemberChanged:
+		b.EncodeVarint(49<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupMemberChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupMembersBecameAsync:
+		b.EncodeVarint(50<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupMembersBecameAsync); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupMembersUpdated:
+		b.EncodeVarint(51<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupMembersUpdated); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupMemberDiff:
+		b.EncodeVarint(52<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupMemberDiff); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupMembersCountChanged:
+		b.EncodeVarint(53<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupMembersCountChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupMemberAdminChanged:
+		b.EncodeVarint(54<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupMemberAdminChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupMemberPermissionsChanged:
+		b.EncodeVarint(55<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupMemberPermissionsChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupInviteObsolete:
+		b.EncodeVarint(56<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupInviteObsolete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupUserInvitedObsolete:
+		b.EncodeVarint(57<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupUserInvitedObsolete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupUserLeaveObsolete:
+		b.EncodeVarint(58<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupUserLeaveObsolete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupUserKickObsolete:
+		b.EncodeVarint(59<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupUserKickObsolete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupMembersUpdateObsolete:
+		b.EncodeVarint(60<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupMembersUpdateObsolete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupTitleChangedObsolete:
+		b.EncodeVarint(61<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupTitleChangedObsolete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupTopicChangedObsolete:
+		b.EncodeVarint(62<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupTopicChangedObsolete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupAboutChangedObsolete:
+		b.EncodeVarint(63<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupAboutChangedObsolete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupAvatarChangedObsolete:
+		b.EncodeVarint(64<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupAvatarChangedObsolete); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupShortnameChanged:
+		b.EncodeVarint(65<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupShortnameChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateStickerCollectionsChanged:
+		b.EncodeVarint(66<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateStickerCollectionsChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateStickerPackRemoved:
+		b.EncodeVarint(67<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateStickerPackRemoved); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateStickerPackAdded:
+		b.EncodeVarint(68<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateStickerPackAdded); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdatePauseNotifications:
+		b.EncodeVarint(69<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdatePauseNotifications); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateRestoreNotifications:
+		b.EncodeVarint(70<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateRestoreNotifications); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateTyping:
+		b.EncodeVarint(71<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateTyping); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateTypingStop:
+		b.EncodeVarint(72<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateTypingStop); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserOnline:
+		b.EncodeVarint(73<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserOnline); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserOffline:
+		b.EncodeVarint(74<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserOffline); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateUserLastSeen:
+		b.EncodeVarint(75<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateUserLastSeen); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateGroupOnline:
+		b.EncodeVarint(76<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateGroupOnline); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateEventBusDeviceConnected:
+		b.EncodeVarint(77<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateEventBusDeviceConnected); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateEventBusDeviceDisconnected:
+		b.EncodeVarint(78<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateEventBusDeviceDisconnected); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateEventBusMessage:
+		b.EncodeVarint(79<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateEventBusMessage); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateEventBusDisposed:
+		b.EncodeVarint(80<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateEventBusDisposed); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateIncomingCallDeprecated:
+		b.EncodeVarint(81<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateIncomingCallDeprecated); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateIncomingCall:
+		b.EncodeVarint(82<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateIncomingCall); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateCallHandled:
+		b.EncodeVarint(83<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateCallHandled); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateCallDisposed:
+		b.EncodeVarint(84<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateCallDisposed); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateParameterChanged:
+		b.EncodeVarint(85<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateParameterChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateRawUpdate:
+		b.EncodeVarint(86<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateRawUpdate); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateEmptyUpdate:
+		b.EncodeVarint(87<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateEmptyUpdate); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateCountersChanged:
+		b.EncodeVarint(88<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateCountersChanged); err != nil {
+			return err
+		}
+	case *UpdateSeqUpdate_UpdateConfig:
+		b.EncodeVarint(89<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.UpdateConfig); err != nil {
+			return err
+		}
+	case nil:
+	default:
+		return fmt.Errorf("UpdateSeqUpdate.Update has unexpected type %T", x)
+	}
+	return nil
+}
+
+func _UpdateSeqUpdate_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
+	m := msg.(*UpdateSeqUpdate)
+	switch tag {
+	case 4: // update.updateForceReloadState
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateForceReloadState)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateForceReloadState{msg}
+		return true, err
+	case 5: // update.updateUserAvatarChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserAvatarChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserAvatarChanged{msg}
+		return true, err
+	case 6: // update.updateUserNameChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserNameChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserNameChanged{msg}
+		return true, err
+	case 7: // update.updateUserLocalNameChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserLocalNameChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserLocalNameChanged{msg}
+		return true, err
+	case 8: // update.updateUserContactsChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserContactsChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserContactsChanged{msg}
+		return true, err
+	case 9: // update.updateUserNickChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserNickChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserNickChanged{msg}
+		return true, err
+	case 10: // update.updateUserAboutChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserAboutChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserAboutChanged{msg}
+		return true, err
+	case 11: // update.updateUserPreferredLanguagesChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserPreferredLanguagesChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserPreferredLanguagesChanged{msg}
+		return true, err
+	case 12: // update.updateUserTimeZoneChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserTimeZoneChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserTimeZoneChanged{msg}
+		return true, err
+	case 13: // update.updateUserBotCommandsChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserBotCommandsChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserBotCommandsChanged{msg}
+		return true, err
+	case 14: // update.updateUserExtChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserExtChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserExtChanged{msg}
+		return true, err
+	case 15: // update.updateUserFullExtChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserFullExtChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserFullExtChanged{msg}
+		return true, err
+	case 16: // update.updateUserSexChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserSexChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserSexChanged{msg}
+		return true, err
+	case 17: // update.updateUserCustomProfileChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserCustomProfileChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserCustomProfileChanged{msg}
+		return true, err
+	case 18: // update.updateUserStatusChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserStatusChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserStatusChanged{msg}
+		return true, err
+	case 19: // update.updateContactRegistered
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateContactRegistered)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateContactRegistered{msg}
+		return true, err
+	case 20: // update.updateContactsAdded
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateContactsAdded)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateContactsAdded{msg}
+		return true, err
+	case 21: // update.updateContactsAddTaskSuspended
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateContactsAddTaskSuspended)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateContactsAddTaskSuspended{msg}
+		return true, err
+	case 22: // update.updateContactsRemoved
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateContactsRemoved)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateContactsRemoved{msg}
+		return true, err
+	case 23: // update.updateUserBlocked
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserBlocked)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserBlocked{msg}
+		return true, err
+	case 24: // update.updateUserUnblocked
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserUnblocked)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserUnblocked{msg}
+		return true, err
+	case 25: // update.updateInteractiveMediaEvent
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateInteractiveMediaEvent)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateInteractiveMediaEvent{msg}
+		return true, err
+	case 26: // update.updateMessage
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateMessage)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateMessage{msg}
+		return true, err
+	case 27: // update.updateMessageContentChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateMessageContentChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateMessageContentChanged{msg}
+		return true, err
+	case 28: // update.updateMessageSent
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateMessageSent)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateMessageSent{msg}
+		return true, err
+	case 29: // update.updateMessageReceived
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateMessageReceived)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateMessageReceived{msg}
+		return true, err
+	case 30: // update.updateMessageRead
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateMessageRead)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateMessageRead{msg}
+		return true, err
+	case 31: // update.updateMessageReadByMe
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateMessageReadByMe)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateMessageReadByMe{msg}
+		return true, err
+	case 32: // update.updateMessageDelete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateMessageDelete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateMessageDelete{msg}
+		return true, err
+	case 33: // update.updateChatClear
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateChatClear)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateChatClear{msg}
+		return true, err
+	case 34: // update.updateChatDelete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateChatDelete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateChatDelete{msg}
+		return true, err
+	case 35: // update.updateChatArchive
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateChatArchive)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateChatArchive{msg}
+		return true, err
+	case 36: // update.updateChatGroupsChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateChatGroupsChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateChatGroupsChanged{msg}
+		return true, err
+	case 37: // update.updateReactionsUpdate
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateReactionsUpdate)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateReactionsUpdate{msg}
+		return true, err
+	case 38: // update.updateDialogFavouriteChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateDialogFavouriteChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateDialogFavouriteChanged{msg}
+		return true, err
+	case 39: // update.updatePinnedMessagesChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdatePinnedMessagesChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdatePinnedMessagesChanged{msg}
+		return true, err
+	case 40: // update.updateGroupTitleChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupTitleChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupTitleChanged{msg}
+		return true, err
+	case 41: // update.updateGroupAvatarChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupAvatarChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupAvatarChanged{msg}
+		return true, err
+	case 42: // update.updateGroupTopicChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupTopicChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupTopicChanged{msg}
+		return true, err
+	case 43: // update.updateGroupAboutChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupAboutChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupAboutChanged{msg}
+		return true, err
+	case 44: // update.updateGroupOwnerChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupOwnerChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupOwnerChanged{msg}
+		return true, err
+	case 45: // update.updateGroupHistoryShared
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupHistoryShared)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupHistoryShared{msg}
+		return true, err
+	case 46: // update.updateGroupCanSendMessagesChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupCanSendMessagesChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupCanSendMessagesChanged{msg}
+		return true, err
+	case 47: // update.updateGroupCanViewMembersChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupCanViewMembersChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupCanViewMembersChanged{msg}
+		return true, err
+	case 48: // update.updateGroupCanInviteMembersChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupCanInviteMembersChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupCanInviteMembersChanged{msg}
+		return true, err
+	case 49: // update.updateGroupMemberChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupMemberChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupMemberChanged{msg}
+		return true, err
+	case 50: // update.updateGroupMembersBecameAsync
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupMembersBecameAsync)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupMembersBecameAsync{msg}
+		return true, err
+	case 51: // update.updateGroupMembersUpdated
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupMembersUpdated)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupMembersUpdated{msg}
+		return true, err
+	case 52: // update.updateGroupMemberDiff
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupMemberDiff)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupMemberDiff{msg}
+		return true, err
+	case 53: // update.updateGroupMembersCountChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupMembersCountChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupMembersCountChanged{msg}
+		return true, err
+	case 54: // update.updateGroupMemberAdminChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupMemberAdminChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupMemberAdminChanged{msg}
+		return true, err
+	case 55: // update.updateGroupMemberPermissionsChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupMemberPermissionsChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupMemberPermissionsChanged{msg}
+		return true, err
+	case 56: // update.updateGroupInviteObsolete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupInviteObsolete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupInviteObsolete{msg}
+		return true, err
+	case 57: // update.updateGroupUserInvitedObsolete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupUserInvitedObsolete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupUserInvitedObsolete{msg}
+		return true, err
+	case 58: // update.updateGroupUserLeaveObsolete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupUserLeaveObsolete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupUserLeaveObsolete{msg}
+		return true, err
+	case 59: // update.updateGroupUserKickObsolete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupUserKickObsolete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupUserKickObsolete{msg}
+		return true, err
+	case 60: // update.updateGroupMembersUpdateObsolete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupMembersUpdateObsolete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupMembersUpdateObsolete{msg}
+		return true, err
+	case 61: // update.updateGroupTitleChangedObsolete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupTitleChangedObsolete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupTitleChangedObsolete{msg}
+		return true, err
+	case 62: // update.updateGroupTopicChangedObsolete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupTopicChangedObsolete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupTopicChangedObsolete{msg}
+		return true, err
+	case 63: // update.updateGroupAboutChangedObsolete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupAboutChangedObsolete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupAboutChangedObsolete{msg}
+		return true, err
+	case 64: // update.updateGroupAvatarChangedObsolete
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupAvatarChangedObsolete)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupAvatarChangedObsolete{msg}
+		return true, err
+	case 65: // update.updateGroupShortnameChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupShortnameChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupShortnameChanged{msg}
+		return true, err
+	case 66: // update.updateStickerCollectionsChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateStickerCollectionsChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateStickerCollectionsChanged{msg}
+		return true, err
+	case 67: // update.updateStickerPackRemoved
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateStickerPackRemoved)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateStickerPackRemoved{msg}
+		return true, err
+	case 68: // update.updateStickerPackAdded
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateStickerPackAdded)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateStickerPackAdded{msg}
+		return true, err
+	case 69: // update.updatePauseNotifications
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdatePauseNotifications)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdatePauseNotifications{msg}
+		return true, err
+	case 70: // update.updateRestoreNotifications
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateRestoreNotifications)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateRestoreNotifications{msg}
+		return true, err
+	case 71: // update.updateTyping
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateTyping)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateTyping{msg}
+		return true, err
+	case 72: // update.updateTypingStop
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateTypingStop)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateTypingStop{msg}
+		return true, err
+	case 73: // update.updateUserOnline
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserOnline)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserOnline{msg}
+		return true, err
+	case 74: // update.updateUserOffline
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserOffline)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserOffline{msg}
+		return true, err
+	case 75: // update.updateUserLastSeen
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateUserLastSeen)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateUserLastSeen{msg}
+		return true, err
+	case 76: // update.updateGroupOnline
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateGroupOnline)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateGroupOnline{msg}
+		return true, err
+	case 77: // update.updateEventBusDeviceConnected
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateEventBusDeviceConnected)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateEventBusDeviceConnected{msg}
+		return true, err
+	case 78: // update.updateEventBusDeviceDisconnected
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateEventBusDeviceDisconnected)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateEventBusDeviceDisconnected{msg}
+		return true, err
+	case 79: // update.updateEventBusMessage
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateEventBusMessage)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateEventBusMessage{msg}
+		return true, err
+	case 80: // update.updateEventBusDisposed
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateEventBusDisposed)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateEventBusDisposed{msg}
+		return true, err
+	case 81: // update.updateIncomingCallDeprecated
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateIncomingCallDeprecated)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateIncomingCallDeprecated{msg}
+		return true, err
+	case 82: // update.updateIncomingCall
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateIncomingCall)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateIncomingCall{msg}
+		return true, err
+	case 83: // update.updateCallHandled
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateCallHandled)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateCallHandled{msg}
+		return true, err
+	case 84: // update.updateCallDisposed
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateCallDisposed)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateCallDisposed{msg}
+		return true, err
+	case 85: // update.updateParameterChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateParameterChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateParameterChanged{msg}
+		return true, err
+	case 86: // update.updateRawUpdate
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateRawUpdate)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateRawUpdate{msg}
+		return true, err
+	case 87: // update.updateEmptyUpdate
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateEmptyUpdate)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateEmptyUpdate{msg}
+		return true, err
+	case 88: // update.updateCountersChanged
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateCountersChanged)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateCountersChanged{msg}
+		return true, err
+	case 89: // update.updateConfig
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(UpdateConfig)
+		err := b.DecodeMessage(msg)
+		m.Update = &UpdateSeqUpdate_UpdateConfig{msg}
+		return true, err
+	default:
+		return false, nil
+	}
+}
+
+func _UpdateSeqUpdate_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*UpdateSeqUpdate)
+	// update
+	switch x := m.Update.(type) {
+	case *UpdateSeqUpdate_UpdateForceReloadState:
+		s := proto.Size(x.UpdateForceReloadState)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserAvatarChanged:
+		s := proto.Size(x.UpdateUserAvatarChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserNameChanged:
+		s := proto.Size(x.UpdateUserNameChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserLocalNameChanged:
+		s := proto.Size(x.UpdateUserLocalNameChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserContactsChanged:
+		s := proto.Size(x.UpdateUserContactsChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserNickChanged:
+		s := proto.Size(x.UpdateUserNickChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserAboutChanged:
+		s := proto.Size(x.UpdateUserAboutChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserPreferredLanguagesChanged:
+		s := proto.Size(x.UpdateUserPreferredLanguagesChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserTimeZoneChanged:
+		s := proto.Size(x.UpdateUserTimeZoneChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserBotCommandsChanged:
+		s := proto.Size(x.UpdateUserBotCommandsChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserExtChanged:
+		s := proto.Size(x.UpdateUserExtChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserFullExtChanged:
+		s := proto.Size(x.UpdateUserFullExtChanged)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserSexChanged:
+		s := proto.Size(x.UpdateUserSexChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserCustomProfileChanged:
+		s := proto.Size(x.UpdateUserCustomProfileChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserStatusChanged:
+		s := proto.Size(x.UpdateUserStatusChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateContactRegistered:
+		s := proto.Size(x.UpdateContactRegistered)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateContactsAdded:
+		s := proto.Size(x.UpdateContactsAdded)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateContactsAddTaskSuspended:
+		s := proto.Size(x.UpdateContactsAddTaskSuspended)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateContactsRemoved:
+		s := proto.Size(x.UpdateContactsRemoved)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserBlocked:
+		s := proto.Size(x.UpdateUserBlocked)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserUnblocked:
+		s := proto.Size(x.UpdateUserUnblocked)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateInteractiveMediaEvent:
+		s := proto.Size(x.UpdateInteractiveMediaEvent)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateMessage:
+		s := proto.Size(x.UpdateMessage)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateMessageContentChanged:
+		s := proto.Size(x.UpdateMessageContentChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateMessageSent:
+		s := proto.Size(x.UpdateMessageSent)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateMessageReceived:
+		s := proto.Size(x.UpdateMessageReceived)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateMessageRead:
+		s := proto.Size(x.UpdateMessageRead)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateMessageReadByMe:
+		s := proto.Size(x.UpdateMessageReadByMe)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateMessageDelete:
+		s := proto.Size(x.UpdateMessageDelete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateChatClear:
+		s := proto.Size(x.UpdateChatClear)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateChatDelete:
+		s := proto.Size(x.UpdateChatDelete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateChatArchive:
+		s := proto.Size(x.UpdateChatArchive)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateChatGroupsChanged:
+		s := proto.Size(x.UpdateChatGroupsChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateReactionsUpdate:
+		s := proto.Size(x.UpdateReactionsUpdate)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateDialogFavouriteChanged:
+		s := proto.Size(x.UpdateDialogFavouriteChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdatePinnedMessagesChanged:
+		s := proto.Size(x.UpdatePinnedMessagesChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupTitleChanged:
+		s := proto.Size(x.UpdateGroupTitleChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupAvatarChanged:
+		s := proto.Size(x.UpdateGroupAvatarChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupTopicChanged:
+		s := proto.Size(x.UpdateGroupTopicChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupAboutChanged:
+		s := proto.Size(x.UpdateGroupAboutChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupOwnerChanged:
+		s := proto.Size(x.UpdateGroupOwnerChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupHistoryShared:
+		s := proto.Size(x.UpdateGroupHistoryShared)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupCanSendMessagesChanged:
+		s := proto.Size(x.UpdateGroupCanSendMessagesChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupCanViewMembersChanged:
+		s := proto.Size(x.UpdateGroupCanViewMembersChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupCanInviteMembersChanged:
+		s := proto.Size(x.UpdateGroupCanInviteMembersChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupMemberChanged:
+		s := proto.Size(x.UpdateGroupMemberChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupMembersBecameAsync:
+		s := proto.Size(x.UpdateGroupMembersBecameAsync)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupMembersUpdated:
+		s := proto.Size(x.UpdateGroupMembersUpdated)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupMemberDiff:
+		s := proto.Size(x.UpdateGroupMemberDiff)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupMembersCountChanged:
+		s := proto.Size(x.UpdateGroupMembersCountChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupMemberAdminChanged:
+		s := proto.Size(x.UpdateGroupMemberAdminChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupMemberPermissionsChanged:
+		s := proto.Size(x.UpdateGroupMemberPermissionsChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupInviteObsolete:
+		s := proto.Size(x.UpdateGroupInviteObsolete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupUserInvitedObsolete:
+		s := proto.Size(x.UpdateGroupUserInvitedObsolete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupUserLeaveObsolete:
+		s := proto.Size(x.UpdateGroupUserLeaveObsolete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupUserKickObsolete:
+		s := proto.Size(x.UpdateGroupUserKickObsolete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupMembersUpdateObsolete:
+		s := proto.Size(x.UpdateGroupMembersUpdateObsolete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupTitleChangedObsolete:
+		s := proto.Size(x.UpdateGroupTitleChangedObsolete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupTopicChangedObsolete:
+		s := proto.Size(x.UpdateGroupTopicChangedObsolete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupAboutChangedObsolete:
+		s := proto.Size(x.UpdateGroupAboutChangedObsolete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupAvatarChangedObsolete:
+		s := proto.Size(x.UpdateGroupAvatarChangedObsolete)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupShortnameChanged:
+		s := proto.Size(x.UpdateGroupShortnameChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateStickerCollectionsChanged:
+		s := proto.Size(x.UpdateStickerCollectionsChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateStickerPackRemoved:
+		s := proto.Size(x.UpdateStickerPackRemoved)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateStickerPackAdded:
+		s := proto.Size(x.UpdateStickerPackAdded)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdatePauseNotifications:
+		s := proto.Size(x.UpdatePauseNotifications)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateRestoreNotifications:
+		s := proto.Size(x.UpdateRestoreNotifications)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateTyping:
+		s := proto.Size(x.UpdateTyping)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateTypingStop:
+		s := proto.Size(x.UpdateTypingStop)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserOnline:
+		s := proto.Size(x.UpdateUserOnline)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserOffline:
+		s := proto.Size(x.UpdateUserOffline)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateUserLastSeen:
+		s := proto.Size(x.UpdateUserLastSeen)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateGroupOnline:
+		s := proto.Size(x.UpdateGroupOnline)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateEventBusDeviceConnected:
+		s := proto.Size(x.UpdateEventBusDeviceConnected)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateEventBusDeviceDisconnected:
+		s := proto.Size(x.UpdateEventBusDeviceDisconnected)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateEventBusMessage:
+		s := proto.Size(x.UpdateEventBusMessage)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateEventBusDisposed:
+		s := proto.Size(x.UpdateEventBusDisposed)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateIncomingCallDeprecated:
+		s := proto.Size(x.UpdateIncomingCallDeprecated)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateIncomingCall:
+		s := proto.Size(x.UpdateIncomingCall)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateCallHandled:
+		s := proto.Size(x.UpdateCallHandled)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateCallDisposed:
+		s := proto.Size(x.UpdateCallDisposed)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateParameterChanged:
+		s := proto.Size(x.UpdateParameterChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateRawUpdate:
+		s := proto.Size(x.UpdateRawUpdate)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateEmptyUpdate:
+		s := proto.Size(x.UpdateEmptyUpdate)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateCountersChanged:
+		s := proto.Size(x.UpdateCountersChanged)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *UpdateSeqUpdate_UpdateConfig:
+		s := proto.Size(x.UpdateConfig)
+		n += 2 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
+}
+
 // Fat sequence update with additional data
 type UpdateFatSeqUpdate struct {
-	Seq                  int32    `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
-	State                []byte   `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	UpdateHeader         int32    `protobuf:"varint,3,opt,name=update_header,json=updateHeader" json:"update_header,omitempty"`
-	Update               []byte   `protobuf:"bytes,4,opt,name=update,proto3" json:"update,omitempty"`
-	Users                []*User  `protobuf:"bytes,5,rep,name=users" json:"users,omitempty"`
-	Groups               []*Group `protobuf:"bytes,6,rep,name=groups" json:"groups,omitempty"`
+	Seq          int32  `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
+	State        []byte `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
+	UpdateHeader int32  `protobuf:"varint,3,opt,name=update_header,json=updateHeader,proto3" json:"update_header,omitempty"`
+	Update       []byte `protobuf:"bytes,4,opt,name=update,proto3" json:"update,omitempty"`
+	// / related users
+	Users []*User `protobuf:"bytes,5,rep,name=users,proto3" json:"users,omitempty"`
+	// / related groups
+	Groups               []*Group `protobuf:"bytes,6,rep,name=groups,proto3" json:"groups,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -107,7 +2988,7 @@ func (m *UpdateFatSeqUpdate) Reset()         { *m = UpdateFatSeqUpdate{} }
 func (m *UpdateFatSeqUpdate) String() string { return proto.CompactTextString(m) }
 func (*UpdateFatSeqUpdate) ProtoMessage()    {}
 func (*UpdateFatSeqUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{1}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{1}
 }
 func (m *UpdateFatSeqUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateFatSeqUpdate.Unmarshal(m, b)
@@ -171,8 +3052,8 @@ func (m *UpdateFatSeqUpdate) GetGroups() []*Group {
 
 // Out of sequence update (for typing and online statuses)
 type UpdateWeakUpdate struct {
-	Date                 int64    `protobuf:"varint,1,opt,name=date" json:"date,omitempty"`
-	UpdateHeader         int32    `protobuf:"varint,2,opt,name=update_header,json=updateHeader" json:"update_header,omitempty"`
+	Date                 int64    `protobuf:"varint,1,opt,name=date,proto3" json:"date,omitempty"`
+	UpdateHeader         int32    `protobuf:"varint,2,opt,name=update_header,json=updateHeader,proto3" json:"update_header,omitempty"`
 	Update               []byte   `protobuf:"bytes,3,opt,name=update,proto3" json:"update,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -183,7 +3064,7 @@ func (m *UpdateWeakUpdate) Reset()         { *m = UpdateWeakUpdate{} }
 func (m *UpdateWeakUpdate) String() string { return proto.CompactTextString(m) }
 func (*UpdateWeakUpdate) ProtoMessage()    {}
 func (*UpdateWeakUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{2}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{2}
 }
 func (m *UpdateWeakUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateWeakUpdate.Unmarshal(m, b)
@@ -226,11 +3107,11 @@ func (m *UpdateWeakUpdate) GetUpdate() []byte {
 
 // Fat Weak Update
 type UpdateWeakFatUpdate struct {
-	Date                 int64    `protobuf:"varint,1,opt,name=date" json:"date,omitempty"`
-	UpdateHeader         int32    `protobuf:"varint,2,opt,name=update_header,json=updateHeader" json:"update_header,omitempty"`
+	Date                 int64    `protobuf:"varint,1,opt,name=date,proto3" json:"date,omitempty"`
+	UpdateHeader         int32    `protobuf:"varint,2,opt,name=update_header,json=updateHeader,proto3" json:"update_header,omitempty"`
 	Update               []byte   `protobuf:"bytes,3,opt,name=update,proto3" json:"update,omitempty"`
-	Users                []*User  `protobuf:"bytes,4,rep,name=users" json:"users,omitempty"`
-	Groups               []*Group `protobuf:"bytes,5,rep,name=groups" json:"groups,omitempty"`
+	Users                []*User  `protobuf:"bytes,4,rep,name=users,proto3" json:"users,omitempty"`
+	Groups               []*Group `protobuf:"bytes,5,rep,name=groups,proto3" json:"groups,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -240,7 +3121,7 @@ func (m *UpdateWeakFatUpdate) Reset()         { *m = UpdateWeakFatUpdate{} }
 func (m *UpdateWeakFatUpdate) String() string { return proto.CompactTextString(m) }
 func (*UpdateWeakFatUpdate) ProtoMessage()    {}
 func (*UpdateWeakFatUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{3}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{3}
 }
 func (m *UpdateWeakFatUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateWeakFatUpdate.Unmarshal(m, b)
@@ -306,7 +3187,7 @@ func (m *UpdateSeqUpdateTooLong) Reset()         { *m = UpdateSeqUpdateTooLong{}
 func (m *UpdateSeqUpdateTooLong) String() string { return proto.CompactTextString(m) }
 func (*UpdateSeqUpdateTooLong) ProtoMessage()    {}
 func (*UpdateSeqUpdateTooLong) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{4}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{4}
 }
 func (m *UpdateSeqUpdateTooLong) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSeqUpdateTooLong.Unmarshal(m, b)
@@ -327,10 +3208,8 @@ func (m *UpdateSeqUpdateTooLong) XXX_DiscardUnknown() {
 var xxx_messageInfo_UpdateSeqUpdateTooLong proto.InternalMessageInfo
 
 // Update container
-// updateHeader Header of update
-// update The updatre
 type UpdateContainer struct {
-	UpdateHeader         int32    `protobuf:"varint,1,opt,name=update_header,json=updateHeader" json:"update_header,omitempty"`
+	UpdateHeader         int32    `protobuf:"varint,1,opt,name=update_header,json=updateHeader,proto3" json:"update_header,omitempty"`
 	Update               []byte   `protobuf:"bytes,2,opt,name=update,proto3" json:"update,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -341,7 +3220,7 @@ func (m *UpdateContainer) Reset()         { *m = UpdateContainer{} }
 func (m *UpdateContainer) String() string { return proto.CompactTextString(m) }
 func (*UpdateContainer) ProtoMessage()    {}
 func (*UpdateContainer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{5}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{5}
 }
 func (m *UpdateContainer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateContainer.Unmarshal(m, b)
@@ -377,23 +3256,28 @@ func (m *UpdateContainer) GetUpdate() []byte {
 
 // Combined update
 type UpdateCombinedUpdate struct {
-	SeqStart             int32              `protobuf:"varint,1,opt,name=seq_start,json=seqStart" json:"seq_start,omitempty"`
-	SeqEnd               int32              `protobuf:"varint,2,opt,name=seq_end,json=seqEnd" json:"seq_end,omitempty"`
-	State                []byte             `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
-	Users                []*User            `protobuf:"bytes,4,rep,name=users" json:"users,omitempty"`
-	Groups               []*Group           `protobuf:"bytes,5,rep,name=groups" json:"groups,omitempty"`
-	Updates              []*UpdateContainer `protobuf:"bytes,6,rep,name=updates" json:"updates,omitempty"`
-	Messages             []*HistoryMessage  `protobuf:"bytes,7,rep,name=messages" json:"messages,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	// / start of related sequence intervals
+	SeqStart int32 `protobuf:"varint,1,opt,name=seq_start,json=seqStart,proto3" json:"seq_start,omitempty"`
+	// / end of related sequence intervals
+	SeqEnd int32  `protobuf:"varint,2,opt,name=seq_end,json=seqEnd,proto3" json:"seq_end,omitempty"`
+	State  []byte `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
+	// / related users
+	Users []*User `protobuf:"bytes,4,rep,name=users,proto3" json:"users,omitempty"`
+	// / related groups
+	Groups  []*Group           `protobuf:"bytes,5,rep,name=groups,proto3" json:"groups,omitempty"`
+	Updates []*UpdateContainer `protobuf:"bytes,6,rep,name=updates,proto3" json:"updates,omitempty"`
+	// / related messages
+	Messages             []*HistoryMessage `protobuf:"bytes,7,rep,name=messages,proto3" json:"messages,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
 func (m *UpdateCombinedUpdate) Reset()         { *m = UpdateCombinedUpdate{} }
 func (m *UpdateCombinedUpdate) String() string { return proto.CompactTextString(m) }
 func (*UpdateCombinedUpdate) ProtoMessage()    {}
 func (*UpdateCombinedUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{6}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{6}
 }
 func (m *UpdateCombinedUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateCombinedUpdate.Unmarshal(m, b)
@@ -464,7 +3348,7 @@ func (m *UpdateCombinedUpdate) GetMessages() []*HistoryMessage {
 
 // Get main sequence state
 type RequestGetState struct {
-	Optimizations        []UpdateOptimization `protobuf:"varint,1,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,1,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -474,7 +3358,7 @@ func (m *RequestGetState) Reset()         { *m = RequestGetState{} }
 func (m *RequestGetState) String() string { return proto.CompactTextString(m) }
 func (*RequestGetState) ProtoMessage()    {}
 func (*RequestGetState) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{7}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{7}
 }
 func (m *RequestGetState) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetState.Unmarshal(m, b)
@@ -503,10 +3387,10 @@ func (m *RequestGetState) GetOptimizations() []UpdateOptimization {
 
 // Getting difference of sequence
 type RequestGetDifference struct {
-	Seq                  int32                `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
+	Seq                  int32                `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte               `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,3,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
-	ConfigHash           *wrappers.Int64Value `protobuf:"bytes,4,opt,name=config_hash,json=configHash" json:"config_hash,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,3,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	ConfigHash           *wrappers.Int64Value `protobuf:"bytes,4,opt,name=config_hash,json=configHash,proto3" json:"config_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -516,7 +3400,7 @@ func (m *RequestGetDifference) Reset()         { *m = RequestGetDifference{} }
 func (m *RequestGetDifference) String() string { return proto.CompactTextString(m) }
 func (*RequestGetDifference) ProtoMessage()    {}
 func (*RequestGetDifference) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{8}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{8}
 }
 func (m *RequestGetDifference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetDifference.Unmarshal(m, b)
@@ -564,18 +3448,19 @@ func (m *RequestGetDifference) GetConfigHash() *wrappers.Int64Value {
 	return nil
 }
 
+// / Updates happens after requested seq number + related peers and entities
 type ResponseGetDifference struct {
-	Seq                  int32                `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
+	Seq                  int32                `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte               `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	Users                []*User              `protobuf:"bytes,3,rep,name=users" json:"users,omitempty"`
-	Groups               []*Group             `protobuf:"bytes,6,rep,name=groups" json:"groups,omitempty"`
-	Updates              []*UpdateContainer   `protobuf:"bytes,4,rep,name=updates" json:"updates,omitempty"`
-	Messages             []*HistoryMessage    `protobuf:"bytes,7,rep,name=messages" json:"messages,omitempty"`
-	NeedMore             bool                 `protobuf:"varint,5,opt,name=need_more,json=needMore" json:"need_more,omitempty"`
-	UsersRefs            []*UserOutPeer       `protobuf:"bytes,8,rep,name=users_refs,json=usersRefs" json:"users_refs,omitempty"`
-	GroupsRefs           []*GroupOutPeer      `protobuf:"bytes,9,rep,name=groups_refs,json=groupsRefs" json:"groups_refs,omitempty"`
-	Config               *Config              `protobuf:"bytes,10,opt,name=config" json:"config,omitempty"`
-	ConfigHash           *wrappers.Int64Value `protobuf:"bytes,11,opt,name=config_hash,json=configHash" json:"config_hash,omitempty"`
+	Users                []*User              `protobuf:"bytes,3,rep,name=users,proto3" json:"users,omitempty"`
+	Groups               []*Group             `protobuf:"bytes,6,rep,name=groups,proto3" json:"groups,omitempty"`
+	Updates              []*UpdateContainer   `protobuf:"bytes,4,rep,name=updates,proto3" json:"updates,omitempty"`
+	Messages             []*HistoryMessage    `protobuf:"bytes,7,rep,name=messages,proto3" json:"messages,omitempty"`
+	NeedMore             bool                 `protobuf:"varint,5,opt,name=need_more,json=needMore,proto3" json:"need_more,omitempty"`
+	UsersRefs            []*UserOutPeer       `protobuf:"bytes,8,rep,name=users_refs,json=usersRefs,proto3" json:"users_refs,omitempty"`
+	GroupsRefs           []*GroupOutPeer      `protobuf:"bytes,9,rep,name=groups_refs,json=groupsRefs,proto3" json:"groups_refs,omitempty"`
+	Config               *Config              `protobuf:"bytes,10,opt,name=config,proto3" json:"config,omitempty"`
+	ConfigHash           *wrappers.Int64Value `protobuf:"bytes,11,opt,name=config_hash,json=configHash,proto3" json:"config_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -585,7 +3470,7 @@ func (m *ResponseGetDifference) Reset()         { *m = ResponseGetDifference{} }
 func (m *ResponseGetDifference) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetDifference) ProtoMessage()    {}
 func (*ResponseGetDifference) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{9}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{9}
 }
 func (m *ResponseGetDifference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetDifference.Unmarshal(m, b)
@@ -684,7 +3569,8 @@ func (m *ResponseGetDifference) GetConfigHash() *wrappers.Int64Value {
 
 // Getting difference of dialogs
 type RequestGetDialogsDifference struct {
-	Clock                int64    `protobuf:"varint,1,opt,name=clock" json:"clock,omitempty"`
+	// / max of the last action dates among all user's dialogs
+	Clock                int64    `protobuf:"varint,1,opt,name=clock,proto3" json:"clock,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -694,7 +3580,7 @@ func (m *RequestGetDialogsDifference) Reset()         { *m = RequestGetDialogsDi
 func (m *RequestGetDialogsDifference) String() string { return proto.CompactTextString(m) }
 func (*RequestGetDialogsDifference) ProtoMessage()    {}
 func (*RequestGetDialogsDifference) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{10}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{10}
 }
 func (m *RequestGetDialogsDifference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetDialogsDifference.Unmarshal(m, b)
@@ -721,10 +3607,11 @@ func (m *RequestGetDialogsDifference) GetClock() int64 {
 	return 0
 }
 
+// / Dialogs + peers and entities
 type ResponseGetDialogsDifference struct {
-	Dialogs              []*Dialog       `protobuf:"bytes,1,rep,name=dialogs" json:"dialogs,omitempty"`
-	GroupPeers           []*GroupOutPeer `protobuf:"bytes,2,rep,name=group_peers,json=groupPeers" json:"group_peers,omitempty"`
-	UserPeers            []*UserOutPeer  `protobuf:"bytes,3,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
+	Dialogs              []*Dialog       `protobuf:"bytes,1,rep,name=dialogs,proto3" json:"dialogs,omitempty"`
+	GroupPeers           []*GroupOutPeer `protobuf:"bytes,2,rep,name=group_peers,json=groupPeers,proto3" json:"group_peers,omitempty"`
+	UserPeers            []*UserOutPeer  `protobuf:"bytes,3,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -734,7 +3621,7 @@ func (m *ResponseGetDialogsDifference) Reset()         { *m = ResponseGetDialogs
 func (m *ResponseGetDialogsDifference) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetDialogsDifference) ProtoMessage()    {}
 func (*ResponseGetDialogsDifference) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{11}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{11}
 }
 func (m *ResponseGetDialogsDifference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetDialogsDifference.Unmarshal(m, b)
@@ -776,11 +3663,9 @@ func (m *ResponseGetDialogsDifference) GetUserPeers() []*UserOutPeer {
 }
 
 // Represents subset of group members
-// groupPeer group out peer
-// memberIds group member ids
 type GroupMembersSubset struct {
-	GroupPeer            *GroupOutPeer `protobuf:"bytes,1,opt,name=group_peer,json=groupPeer" json:"group_peer,omitempty"`
-	MemberIds            []int32       `protobuf:"varint,2,rep,packed,name=member_ids,json=memberIds" json:"member_ids,omitempty"`
+	GroupPeer            *GroupOutPeer `protobuf:"bytes,1,opt,name=group_peer,json=groupPeer,proto3" json:"group_peer,omitempty"`
+	MemberIds            []int32       `protobuf:"varint,2,rep,packed,name=member_ids,json=memberIds,proto3" json:"member_ids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -790,7 +3675,7 @@ func (m *GroupMembersSubset) Reset()         { *m = GroupMembersSubset{} }
 func (m *GroupMembersSubset) String() string { return proto.CompactTextString(m) }
 func (*GroupMembersSubset) ProtoMessage()    {}
 func (*GroupMembersSubset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{12}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{12}
 }
 func (m *GroupMembersSubset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GroupMembersSubset.Unmarshal(m, b)
@@ -826,20 +3711,26 @@ func (m *GroupMembersSubset) GetMemberIds() []int32 {
 
 // Loading referenced entities
 type RequestGetReferencedEntitites struct {
-	Users                []*UserOutPeer        `protobuf:"bytes,1,rep,name=users" json:"users,omitempty"`
-	Mids                 []*UUIDValue          `protobuf:"bytes,3,rep,name=mids" json:"mids,omitempty"`
-	GroupMembers         []*GroupMembersSubset `protobuf:"bytes,4,rep,name=group_members,json=groupMembers" json:"group_members,omitempty"`
-	Groups               []*GroupOutPeer       `protobuf:"bytes,5,rep,name=groups" json:"groups,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	// / users needed
+	Users []*UserOutPeer `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	// / messages needed
+	Mids []*UUIDValue `protobuf:"bytes,3,rep,name=mids,proto3" json:"mids,omitempty"`
+	// *
+	// Group + subset of members to return.
+	// For loading members of big groups by chunks.
+	GroupMembers []*GroupMembersSubset `protobuf:"bytes,4,rep,name=group_members,json=groupMembers,proto3" json:"group_members,omitempty"`
+	// / groups needed
+	Groups               []*GroupOutPeer `protobuf:"bytes,5,rep,name=groups,proto3" json:"groups,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *RequestGetReferencedEntitites) Reset()         { *m = RequestGetReferencedEntitites{} }
 func (m *RequestGetReferencedEntitites) String() string { return proto.CompactTextString(m) }
 func (*RequestGetReferencedEntitites) ProtoMessage()    {}
 func (*RequestGetReferencedEntitites) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{13}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{13}
 }
 func (m *RequestGetReferencedEntitites) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestGetReferencedEntitites.Unmarshal(m, b)
@@ -888,9 +3779,9 @@ func (m *RequestGetReferencedEntitites) GetGroups() []*GroupOutPeer {
 }
 
 type ResponseGetReferencedEntitites struct {
-	Users                []*User           `protobuf:"bytes,1,rep,name=users" json:"users,omitempty"`
-	Groups               []*Group          `protobuf:"bytes,2,rep,name=groups" json:"groups,omitempty"`
-	Messages             []*HistoryMessage `protobuf:"bytes,3,rep,name=messages" json:"messages,omitempty"`
+	Users                []*User           `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	Groups               []*Group          `protobuf:"bytes,2,rep,name=groups,proto3" json:"groups,omitempty"`
+	Messages             []*HistoryMessage `protobuf:"bytes,3,rep,name=messages,proto3" json:"messages,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -900,7 +3791,7 @@ func (m *ResponseGetReferencedEntitites) Reset()         { *m = ResponseGetRefer
 func (m *ResponseGetReferencedEntitites) String() string { return proto.CompactTextString(m) }
 func (*ResponseGetReferencedEntitites) ProtoMessage()    {}
 func (*ResponseGetReferencedEntitites) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{14}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{14}
 }
 func (m *ResponseGetReferencedEntitites) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseGetReferencedEntitites.Unmarshal(m, b)
@@ -943,7 +3834,7 @@ func (m *ResponseGetReferencedEntitites) GetMessages() []*HistoryMessage {
 
 // Custom Raw Update
 type UpdateRawUpdate struct {
-	Type                 *wrappers.StringValue `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
+	Type                 *wrappers.StringValue `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	Bytes                []byte                `protobuf:"bytes,2,opt,name=bytes,proto3" json:"bytes,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
@@ -954,7 +3845,7 @@ func (m *UpdateRawUpdate) Reset()         { *m = UpdateRawUpdate{} }
 func (m *UpdateRawUpdate) String() string { return proto.CompactTextString(m) }
 func (*UpdateRawUpdate) ProtoMessage()    {}
 func (*UpdateRawUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{15}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{15}
 }
 func (m *UpdateRawUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateRawUpdate.Unmarshal(m, b)
@@ -999,7 +3890,7 @@ func (m *UpdateEmptyUpdate) Reset()         { *m = UpdateEmptyUpdate{} }
 func (m *UpdateEmptyUpdate) String() string { return proto.CompactTextString(m) }
 func (*UpdateEmptyUpdate) ProtoMessage()    {}
 func (*UpdateEmptyUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{16}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{16}
 }
 func (m *UpdateEmptyUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateEmptyUpdate.Unmarshal(m, b)
@@ -1021,7 +3912,7 @@ var xxx_messageInfo_UpdateEmptyUpdate proto.InternalMessageInfo
 
 // Subscribing for users online
 type RequestSubscribeToOnline struct {
-	Users                []*UserOutPeer `protobuf:"bytes,1,rep,name=users" json:"users,omitempty"`
+	Users                []*UserOutPeer `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -1031,7 +3922,7 @@ func (m *RequestSubscribeToOnline) Reset()         { *m = RequestSubscribeToOnli
 func (m *RequestSubscribeToOnline) String() string { return proto.CompactTextString(m) }
 func (*RequestSubscribeToOnline) ProtoMessage()    {}
 func (*RequestSubscribeToOnline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{17}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{17}
 }
 func (m *RequestSubscribeToOnline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSubscribeToOnline.Unmarshal(m, b)
@@ -1060,7 +3951,7 @@ func (m *RequestSubscribeToOnline) GetUsers() []*UserOutPeer {
 
 // Removing subscription for users online
 type RequestSubscribeFromOnline struct {
-	Users                []*UserOutPeer `protobuf:"bytes,1,rep,name=users" json:"users,omitempty"`
+	Users                []*UserOutPeer `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -1070,7 +3961,7 @@ func (m *RequestSubscribeFromOnline) Reset()         { *m = RequestSubscribeFrom
 func (m *RequestSubscribeFromOnline) String() string { return proto.CompactTextString(m) }
 func (*RequestSubscribeFromOnline) ProtoMessage()    {}
 func (*RequestSubscribeFromOnline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{18}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{18}
 }
 func (m *RequestSubscribeFromOnline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSubscribeFromOnline.Unmarshal(m, b)
@@ -1099,7 +3990,7 @@ func (m *RequestSubscribeFromOnline) GetUsers() []*UserOutPeer {
 
 // Subscribing for groups online
 type RequestSubscribeToGroupOnline struct {
-	Groups               []*GroupOutPeer `protobuf:"bytes,1,rep,name=groups" json:"groups,omitempty"`
+	Groups               []*GroupOutPeer `protobuf:"bytes,1,rep,name=groups,proto3" json:"groups,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -1109,7 +4000,7 @@ func (m *RequestSubscribeToGroupOnline) Reset()         { *m = RequestSubscribeT
 func (m *RequestSubscribeToGroupOnline) String() string { return proto.CompactTextString(m) }
 func (*RequestSubscribeToGroupOnline) ProtoMessage()    {}
 func (*RequestSubscribeToGroupOnline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{19}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{19}
 }
 func (m *RequestSubscribeToGroupOnline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSubscribeToGroupOnline.Unmarshal(m, b)
@@ -1138,7 +4029,7 @@ func (m *RequestSubscribeToGroupOnline) GetGroups() []*GroupOutPeer {
 
 // Removing subscription for groups online
 type RequestSubscribeFromGroupOnline struct {
-	Groups               []*GroupOutPeer `protobuf:"bytes,1,rep,name=groups" json:"groups,omitempty"`
+	Groups               []*GroupOutPeer `protobuf:"bytes,1,rep,name=groups,proto3" json:"groups,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -1148,7 +4039,7 @@ func (m *RequestSubscribeFromGroupOnline) Reset()         { *m = RequestSubscrib
 func (m *RequestSubscribeFromGroupOnline) String() string { return proto.CompactTextString(m) }
 func (*RequestSubscribeFromGroupOnline) ProtoMessage()    {}
 func (*RequestSubscribeFromGroupOnline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{20}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{20}
 }
 func (m *RequestSubscribeFromGroupOnline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSubscribeFromGroupOnline.Unmarshal(m, b)
@@ -1175,10 +4066,11 @@ func (m *RequestSubscribeFromGroupOnline) GetGroups() []*GroupOutPeer {
 	return nil
 }
 
+// / Container which contains UpdateSeqUpdate
 type SeqUpdateBox struct {
-	Seq                  int32                `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
+	Seq                  int32                `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte               `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	Update               *wrappers.BytesValue `protobuf:"bytes,3,opt,name=update" json:"update,omitempty"`
+	Update               *wrappers.BytesValue `protobuf:"bytes,3,opt,name=update,proto3" json:"update,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1188,7 +4080,7 @@ func (m *SeqUpdateBox) Reset()         { *m = SeqUpdateBox{} }
 func (m *SeqUpdateBox) String() string { return proto.CompactTextString(m) }
 func (*SeqUpdateBox) ProtoMessage()    {}
 func (*SeqUpdateBox) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sequence_and_updates_d37ffbd7904da90f, []int{21}
+	return fileDescriptor_sequence_and_updates_6d430482d3a578f1, []int{21}
 }
 func (m *SeqUpdateBox) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SeqUpdateBox.Unmarshal(m, b)
@@ -1266,14 +4158,19 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SequenceAndUpdatesClient interface {
+	// / Get last seq number
 	GetState(ctx context.Context, in *RequestGetState, opts ...grpc.CallOption) (*ResponseSeq, error)
+	// / Get all update that happens after given seq number
 	GetDifference(ctx context.Context, in *RequestGetDifference, opts ...grpc.CallOption) (*ResponseGetDifference, error)
+	// / Load all dialogs that changed after given date
 	GetDialogsDifference(ctx context.Context, in *RequestGetDialogsDifference, opts ...grpc.CallOption) (*ResponseGetDialogsDifference, error)
+	// / Load some required entities
 	GetReferencedEntitites(ctx context.Context, in *RequestGetReferencedEntitites, opts ...grpc.CallOption) (*ResponseGetReferencedEntitites, error)
 	SubscribeToOnline(ctx context.Context, in *RequestSubscribeToOnline, opts ...grpc.CallOption) (*ResponseVoid, error)
 	SubscribeFromOnline(ctx context.Context, in *RequestSubscribeFromOnline, opts ...grpc.CallOption) (*ResponseVoid, error)
 	SubscribeToGroupOnline(ctx context.Context, in *RequestSubscribeToGroupOnline, opts ...grpc.CallOption) (*ResponseVoid, error)
 	SubscribeFromGroupOnline(ctx context.Context, in *RequestSubscribeFromGroupOnline, opts ...grpc.CallOption) (*ResponseVoid, error)
+	// / Get stream of the user's updates
 	SeqUpdates(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (SequenceAndUpdates_SeqUpdatesClient, error)
 }
 
@@ -1391,14 +4288,19 @@ func (x *sequenceAndUpdatesSeqUpdatesClient) Recv() (*SeqUpdateBox, error) {
 
 // SequenceAndUpdatesServer is the server API for SequenceAndUpdates service.
 type SequenceAndUpdatesServer interface {
+	// / Get last seq number
 	GetState(context.Context, *RequestGetState) (*ResponseSeq, error)
+	// / Get all update that happens after given seq number
 	GetDifference(context.Context, *RequestGetDifference) (*ResponseGetDifference, error)
+	// / Load all dialogs that changed after given date
 	GetDialogsDifference(context.Context, *RequestGetDialogsDifference) (*ResponseGetDialogsDifference, error)
+	// / Load some required entities
 	GetReferencedEntitites(context.Context, *RequestGetReferencedEntitites) (*ResponseGetReferencedEntitites, error)
 	SubscribeToOnline(context.Context, *RequestSubscribeToOnline) (*ResponseVoid, error)
 	SubscribeFromOnline(context.Context, *RequestSubscribeFromOnline) (*ResponseVoid, error)
 	SubscribeToGroupOnline(context.Context, *RequestSubscribeToGroupOnline) (*ResponseVoid, error)
 	SubscribeFromGroupOnline(context.Context, *RequestSubscribeFromGroupOnline) (*ResponseVoid, error)
+	// / Get stream of the user's updates
 	SeqUpdates(*empty.Empty, SequenceAndUpdates_SeqUpdatesServer) error
 }
 
@@ -1619,103 +4521,216 @@ var _SequenceAndUpdates_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("sequence_and_updates.proto", fileDescriptor_sequence_and_updates_d37ffbd7904da90f)
+	proto.RegisterFile("sequence_and_updates.proto", fileDescriptor_sequence_and_updates_6d430482d3a578f1)
 }
 
-var fileDescriptor_sequence_and_updates_d37ffbd7904da90f = []byte{
-	// 1501 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x58, 0xdd, 0x6e, 0x1b, 0xc5,
-	0x17, 0xd7, 0xda, 0xb1, 0x13, 0x9f, 0x24, 0x6d, 0xb3, 0x71, 0xd3, 0xad, 0x93, 0xb6, 0xf9, 0x4f,
-	0x9b, 0xfc, 0xd3, 0x02, 0x76, 0xe3, 0xa6, 0x50, 0x52, 0x50, 0x68, 0xfa, 0x2d, 0x28, 0x41, 0x76,
-	0x5b, 0x2e, 0xcd, 0xda, 0x3b, 0x76, 0x46, 0xb5, 0x77, 0xd6, 0x3b, 0xeb, 0x96, 0x54, 0x5c, 0xa0,
-	0x4a, 0x20, 0x01, 0x37, 0x48, 0x70, 0x81, 0xb8, 0xe8, 0x25, 0x0f, 0xc0, 0x25, 0x17, 0x3c, 0x04,
-	0xbc, 0x41, 0xc5, 0x15, 0xcf, 0x00, 0x08, 0xcd, 0xcc, 0xae, 0xf7, 0xd3, 0x5e, 0x97, 0x4f, 0x71,
-	0x15, 0x7b, 0xce, 0x39, 0x73, 0x7e, 0xe7, 0x77, 0xbe, 0xc6, 0x81, 0x12, 0xc3, 0xfd, 0x01, 0x36,
-	0x5b, 0xb8, 0xa1, 0x9b, 0x46, 0x63, 0x60, 0x19, 0xba, 0x83, 0x59, 0xd9, 0xb2, 0xa9, 0x43, 0xd5,
-	0xbc, 0x41, 0xf4, 0x2e, 0xed, 0x94, 0x4e, 0x76, 0x28, 0xed, 0x74, 0x71, 0x45, 0x9c, 0x36, 0x07,
-	0xed, 0xca, 0x23, 0x5b, 0xb7, 0x2c, 0x6c, 0xbb, 0x7a, 0xa5, 0xe5, 0xa8, 0x1c, 0xf7, 0x2c, 0xe7,
-	0xc0, 0x15, 0xae, 0xb8, 0x42, 0xdd, 0x22, 0x15, 0xdd, 0x34, 0xa9, 0xa3, 0x3b, 0x84, 0x9a, 0x9e,
-	0xe9, 0x82, 0x81, 0xdb, 0xc4, 0x24, 0xc1, 0xa3, 0xc5, 0x1e, 0x61, 0x2d, 0xdc, 0xed, 0xea, 0x26,
-	0xa6, 0x03, 0xef, 0x70, 0xae, 0x63, 0xd3, 0x81, 0xe5, 0x7d, 0x9b, 0xb5, 0xb0, 0xef, 0xfd, 0x70,
-	0x0f, 0x33, 0xa6, 0x77, 0x88, 0xd9, 0xf1, 0xa4, 0x03, 0xe6, 0x4b, 0x8f, 0xb2, 0x96, 0xde, 0xd5,
-	0xad, 0x66, 0xc5, 0xfd, 0x2b, 0x8f, 0xd1, 0xb7, 0x0a, 0x1c, 0xbe, 0x27, 0x82, 0xad, 0xe3, 0xbe,
-	0xfc, 0xa0, 0x9e, 0x82, 0x2c, 0xc3, 0x7d, 0x4d, 0x59, 0x55, 0x36, 0x72, 0xbb, 0xf3, 0x9f, 0xfe,
-	0x7c, 0xbe, 0x00, 0xd3, 0x0f, 0x09, 0x23, 0xcd, 0x2e, 0xae, 0x71, 0x89, 0x7a, 0x1a, 0x72, 0xcc,
-	0xd1, 0x1d, 0xac, 0x65, 0x56, 0x95, 0x8d, 0x39, 0x4f, 0xa5, 0x45, 0x7b, 0x96, 0xde, 0x72, 0x6a,
-	0x52, 0xa6, 0x56, 0x61, 0x5e, 0xb2, 0xd8, 0xd8, 0xc7, 0xba, 0x81, 0x6d, 0x2d, 0x9b, 0x74, 0xdf,
-	0x9c, 0xd4, 0xb9, 0x25, 0x54, 0xd4, 0x35, 0xc8, 0xcb, 0xef, 0xda, 0x54, 0xd2, 0xcd, 0xae, 0x10,
-	0x3d, 0xcd, 0x80, 0x2a, 0xb1, 0xde, 0xd0, 0x9d, 0xff, 0x0e, 0x6e, 0x75, 0x13, 0x72, 0x22, 0x25,
-	0x5a, 0x6e, 0x35, 0xbb, 0x31, 0x5b, 0x9d, 0x2b, 0xcb, 0xba, 0x2a, 0xdf, 0x63, 0xd8, 0x8e, 0xa1,
-	0x11, 0x9a, 0xea, 0x16, 0xe4, 0x65, 0xc6, 0xb5, 0xbc, 0xb0, 0x99, 0xf7, 0x6c, 0x6e, 0xf2, 0xd3,
-	0x98, 0x23, 0xa9, 0x8b, 0x3e, 0x57, 0xe0, 0x88, 0x24, 0xe5, 0x5d, 0xac, 0x3f, 0x70, 0xe9, 0xf9,
-	0x1f, 0x4c, 0x09, 0x88, 0x9c, 0x9f, 0x6c, 0x34, 0x1e, 0x21, 0x8a, 0xc7, 0x9e, 0x79, 0x9e, 0xd8,
-	0xb3, 0xe3, 0x72, 0xf6, 0x8b, 0x02, 0x8b, 0x3e, 0xa4, 0x1b, 0xba, 0xf3, 0xaf, 0xa0, 0xf2, 0x94,
-	0x63, 0x19, 0x99, 0x1a, 0x9d, 0x11, 0xcf, 0x26, 0x96, 0x91, 0xdc, 0x98, 0x8c, 0x0c, 0x1d, 0xb9,
-	0x19, 0xd1, 0x60, 0x29, 0xd2, 0x66, 0x77, 0x29, 0x7d, 0x8b, 0x9a, 0x1d, 0xd4, 0xf5, 0x1a, 0xf0,
-	0x2a, 0x35, 0x1d, 0x9d, 0x98, 0xd8, 0x8e, 0x07, 0xac, 0x3c, 0x4f, 0xc0, 0x99, 0x71, 0x69, 0xf8,
-	0x35, 0x03, 0x45, 0xcf, 0x5d, 0xaf, 0x49, 0x4c, 0x6c, 0xb8, 0x79, 0x38, 0x07, 0x05, 0x86, 0xfb,
-	0x0d, 0xe6, 0xe8, 0xb6, 0x93, 0xec, 0x6f, 0x86, 0xe1, 0x7e, 0x9d, 0x8b, 0xd5, 0x75, 0x98, 0xe6,
-	0xba, 0xd8, 0x34, 0x92, 0x53, 0x91, 0x67, 0xb8, 0x7f, 0xdd, 0x34, 0xfc, 0x7e, 0x4b, 0xcc, 0x81,
-	0xdb, 0x6f, 0x93, 0xa4, 0x60, 0x64, 0x53, 0xe4, 0x26, 0x6f, 0x0a, 0xf5, 0x0d, 0x98, 0x76, 0xc7,
-	0xba, 0xdb, 0x4b, 0xc7, 0x86, 0xae, 0xc2, 0xfc, 0x47, 0x81, 0x7a, 0x66, 0xea, 0x15, 0x98, 0x91,
-	0x33, 0x16, 0x33, 0x6d, 0x5a, 0x5c, 0xb1, 0xe4, 0x5d, 0x71, 0x8b, 0x30, 0x87, 0xda, 0x07, 0x77,
-	0xa4, 0x38, 0x46, 0x9d, 0x67, 0x86, 0x3e, 0x54, 0xe0, 0x70, 0x8d, 0x6f, 0x1a, 0xe6, 0xdc, 0xc4,
-	0x4e, 0x5d, 0x30, 0xb0, 0x07, 0xf3, 0xd4, 0x72, 0x48, 0x8f, 0x3c, 0x96, 0x2b, 0x41, 0x53, 0x56,
-	0xb3, 0x1b, 0x87, 0xaa, 0xa5, 0x30, 0xbc, 0xbd, 0x80, 0x4a, 0xf4, 0xfe, 0xb0, 0xfd, 0xf6, 0xca,
-	0xb3, 0x9d, 0xe3, 0x70, 0x8c, 0xf4, 0xca, 0x46, 0xb7, 0x53, 0xee, 0xd8, 0x56, 0xab, 0x7c, 0xd3,
-	0xb6, 0x5a, 0xae, 0x5b, 0xf4, 0x55, 0x06, 0x8a, 0x3e, 0x84, 0x6b, 0xa4, 0xdd, 0xc6, 0x36, 0x5f,
-	0x7c, 0x7f, 0xd1, 0xfc, 0x8c, 0x45, 0x93, 0xfd, 0x73, 0xd1, 0xa8, 0x6f, 0xc2, 0x6c, 0x8b, 0x9a,
-	0x6d, 0xd2, 0x69, 0xec, 0xeb, 0x6c, 0x5f, 0x4c, 0xd8, 0xd9, 0xea, 0x72, 0x59, 0xae, 0xd3, 0xb2,
-	0xb7, 0x6b, 0xcb, 0xb7, 0x4d, 0xe7, 0xe5, 0xad, 0xfb, 0x7a, 0x77, 0x10, 0x63, 0x1f, 0xa4, 0xf9,
-	0x2d, 0x9d, 0xed, 0xa7, 0x50, 0xf3, 0x5b, 0x16, 0x8e, 0xd6, 0x30, 0xb3, 0xa8, 0xc9, 0x70, 0x98,
-	0x9b, 0x23, 0x01, 0x6e, 0x24, 0x19, 0xc5, 0x10, 0x19, 0x5e, 0xf4, 0xc8, 0xab, 0xe6, 0x6c, 0xbc,
-	0x9a, 0xbd, 0xf2, 0x5d, 0x1b, 0x3b, 0xd3, 0x87, 0xf5, 0xba, 0xe9, 0xd7, 0xeb, 0xd4, 0xd8, 0x7a,
-	0xf5, 0x0b, 0xb4, 0x3a, 0x69, 0x81, 0xfa, 0x15, 0xa9, 0x2e, 0x43, 0xc1, 0xc4, 0xd8, 0x68, 0xf4,
-	0xa8, 0x8d, 0xb5, 0xdc, 0xaa, 0xb2, 0x31, 0x53, 0x9b, 0xe1, 0x07, 0x77, 0xa8, 0xcd, 0x47, 0x2f,
-	0x08, 0xcc, 0x0d, 0x1b, 0xb7, 0x99, 0x36, 0x23, 0xae, 0x5c, 0x0c, 0xc6, 0xb4, 0x37, 0x70, 0xde,
-	0xc1, 0xd8, 0xae, 0x15, 0x84, 0x5a, 0x0d, 0xb7, 0x99, 0x7a, 0x11, 0x66, 0x65, 0x04, 0xd2, 0xa8,
-	0x20, 0x8c, 0x8a, 0xa1, 0x18, 0x3d, 0x2b, 0x90, 0x8a, 0xc2, 0x6c, 0x1d, 0xf2, 0x32, 0x4f, 0x1a,
-	0x88, 0x0c, 0x1f, 0xf2, 0x2c, 0xae, 0x8a, 0xd3, 0x9a, 0x2b, 0x55, 0x5f, 0x0b, 0x97, 0xc3, 0x6c,
-	0x6a, 0x39, 0x84, 0xf2, 0x7f, 0xe2, 0xd9, 0x4e, 0x09, 0xb4, 0x78, 0xfe, 0x65, 0xce, 0xd1, 0x7b,
-	0xb0, 0x1c, 0x6c, 0x0d, 0xee, 0x9f, 0x05, 0xaa, 0xe0, 0x34, 0xe4, 0x5a, 0x5d, 0xda, 0x7a, 0x90,
-	0xbc, 0xad, 0xa4, 0x2c, 0xa5, 0xc4, 0x7e, 0x50, 0x60, 0x25, 0x54, 0x62, 0x51, 0x1f, 0x1b, 0x30,
-	0x2d, 0x03, 0x97, 0x73, 0x20, 0x40, 0x84, 0xd4, 0xad, 0x79, 0xe2, 0x21, 0xd1, 0x0d, 0xf1, 0x0a,
-	0xd4, 0x32, 0xa9, 0x44, 0xf3, 0x8f, 0xcc, 0xcb, 0xa9, 0x6b, 0x95, 0x4d, 0xc9, 0xa9, 0xb0, 0x49,
-	0xa3, 0xed, 0x63, 0x05, 0x54, 0xe1, 0xef, 0x0e, 0xee, 0x35, 0xb1, 0xcd, 0xea, 0x83, 0x26, 0xc3,
-	0x8e, 0xba, 0x0b, 0xe0, 0x03, 0x14, 0x9c, 0x8d, 0xc0, 0x17, 0x65, 0xb2, 0x30, 0x84, 0xab, 0xbe,
-	0x08, 0xd0, 0x13, 0x97, 0x36, 0x88, 0x21, 0x63, 0x8c, 0xcd, 0xa6, 0x82, 0x54, 0xb8, 0x6d, 0x30,
-	0xf4, 0x5d, 0x06, 0x4e, 0xf8, 0x09, 0xac, 0x61, 0x97, 0x54, 0xe3, 0xba, 0xe9, 0x10, 0x87, 0xf0,
-	0x16, 0xb9, 0xe4, 0x35, 0xa8, 0x32, 0x32, 0xf0, 0x91, 0x5b, 0x67, 0xaa, 0xc7, 0x31, 0x48, 0xc6,
-	0x16, 0x86, 0x86, 0xf7, 0x6e, 0x5f, 0x4b, 0x1c, 0x3b, 0x42, 0x5b, 0x7d, 0x1b, 0xe6, 0x25, 0x07,
-	0x12, 0xa4, 0xd7, 0xcb, 0xa5, 0x10, 0x0d, 0x21, 0xda, 0x62, 0x7b, 0xbe, 0x13, 0x50, 0x51, 0x2f,
-	0x47, 0x76, 0xdf, 0x44, 0x7c, 0xba, 0x26, 0x29, 0xa5, 0xf9, 0xbd, 0x02, 0x27, 0x03, 0xa5, 0x99,
-	0xc4, 0x1e, 0x0a, 0xb3, 0x97, 0x32, 0xde, 0x32, 0xe3, 0xc6, 0x5b, 0x70, 0x56, 0x65, 0x27, 0x9b,
-	0x55, 0x69, 0x65, 0xf8, 0xc8, 0x7b, 0x4a, 0xd5, 0xf4, 0x47, 0xee, 0xb3, 0x66, 0x07, 0xa6, 0x9c,
-	0x03, 0x0b, 0xbb, 0xc5, 0xb7, 0x12, 0x1b, 0x13, 0x75, 0xc7, 0x26, 0x66, 0x27, 0x39, 0x7f, 0xdc,
-	0x90, 0xb7, 0x7c, 0xf3, 0x80, 0xcf, 0xe0, 0x4c, 0xe2, 0x1b, 0x46, 0xc8, 0xd0, 0x22, 0x2c, 0x48,
-	0x7f, 0xd7, 0xf9, 0x0f, 0x3e, 0xf9, 0x11, 0xd9, 0xa0, 0xb9, 0xcc, 0xf2, 0xbc, 0xb6, 0x6c, 0xd2,
-	0xc4, 0x77, 0xe9, 0x9e, 0xd9, 0x25, 0x26, 0xfe, 0xe3, 0x55, 0x98, 0x92, 0x42, 0x07, 0x4a, 0x51,
-	0x9f, 0x37, 0x6c, 0xda, 0xfb, 0x9b, 0xbd, 0x3e, 0x1e, 0x36, 0x5d, 0x20, 0x52, 0x59, 0x8f, 0xd2,
-	0xb1, 0x5f, 0xb4, 0x4a, 0x7a, 0xd1, 0x46, 0xde, 0x6d, 0x29, 0xbe, 0x3f, 0x80, 0x53, 0x49, 0x11,
-	0xff, 0x43, 0xde, 0x1f, 0xc0, 0xdc, 0xf0, 0x41, 0xbf, 0x4b, 0xdf, 0x9f, 0xf8, 0x99, 0x70, 0x21,
-	0xf4, 0xf3, 0x24, 0x69, 0x7f, 0xed, 0xf2, 0xc2, 0x92, 0xfb, 0xcb, 0x55, 0xad, 0x7e, 0x02, 0xa0,
-	0xd6, 0xdd, 0xff, 0x52, 0x5c, 0x31, 0xdd, 0x87, 0x3b, 0x53, 0x09, 0xcc, 0x0c, 0x9f, 0x92, 0xc3,
-	0x27, 0x42, 0xe4, 0x8d, 0x59, 0x5a, 0xf4, 0x05, 0xb2, 0x59, 0xea, 0xb8, 0x8f, 0x2a, 0x4f, 0x7e,
-	0xfc, 0xe9, 0x8b, 0xcc, 0x59, 0x74, 0xa6, 0xf2, 0x70, 0xb3, 0xc2, 0x63, 0xab, 0xc4, 0xaf, 0xaf,
-	0x78, 0x57, 0x6c, 0x2b, 0xe7, 0xd4, 0x27, 0x0a, 0xcc, 0x87, 0xdf, 0x45, 0x2b, 0x71, 0x87, 0xbe,
-	0xb4, 0x74, 0x22, 0xea, 0x35, 0x24, 0x46, 0x5b, 0xc2, 0x7f, 0x19, 0x9d, 0x4d, 0xf1, 0xef, 0x9b,
-	0x70, 0x10, 0x4f, 0x15, 0x28, 0x26, 0x6f, 0xe7, 0x24, 0x2c, 0x11, 0xa5, 0xd2, 0x99, 0x44, 0x48,
-	0x11, 0x2d, 0x74, 0x59, 0x20, 0xbb, 0x88, 0xce, 0xa7, 0x22, 0x8b, 0x58, 0x72, 0x80, 0xdf, 0x28,
-	0xb0, 0x34, 0x62, 0x7e, 0xae, 0xc5, 0x21, 0x26, 0xa8, 0x95, 0xd6, 0x13, 0x40, 0x26, 0xe8, 0xa1,
-	0xd7, 0x05, 0xcc, 0x57, 0x50, 0x35, 0x05, 0x66, 0x82, 0x2d, 0x07, 0xfa, 0x91, 0x02, 0x0b, 0xf1,
-	0xd9, 0xb4, 0x1a, 0xc1, 0x18, 0xd3, 0x28, 0x15, 0xa3, 0xf0, 0xee, 0x53, 0x62, 0xa0, 0x4b, 0x02,
-	0x4c, 0x15, 0xbd, 0x34, 0x0e, 0x4c, 0xec, 0x32, 0x8e, 0xe3, 0x33, 0x05, 0x16, 0x93, 0xe6, 0x15,
-	0x1a, 0x85, 0xc4, 0xd7, 0x19, 0x81, 0x65, 0x5b, 0x60, 0xd9, 0x42, 0x95, 0x89, 0xb0, 0xf8, 0xd7,
-	0x71, 0x34, 0x5f, 0x2a, 0xb0, 0x34, 0x62, 0x8e, 0xad, 0x8d, 0xa6, 0x26, 0xa0, 0x36, 0x02, 0xd3,
-	0x44, 0xc9, 0x4a, 0xbe, 0x91, 0xc3, 0xfa, 0x5a, 0x01, 0x6d, 0xe4, 0x88, 0xfb, 0xff, 0x38, 0xa6,
-	0xd2, 0xa1, 0xed, 0x08, 0x68, 0xaf, 0xa2, 0xad, 0x89, 0xe9, 0x8a, 0x80, 0xa3, 0x00, 0xc3, 0x39,
-	0xc8, 0xd4, 0xa5, 0xd8, 0x34, 0x13, 0x7b, 0xd1, 0x77, 0x1e, 0x9c, 0x99, 0x68, 0x53, 0x38, 0x7f,
-	0x01, 0xad, 0x8f, 0x75, 0x3e, 0xbc, 0x7d, 0x5b, 0x39, 0x77, 0x5e, 0xd9, 0x3d, 0xfe, 0x6c, 0x67,
-	0x09, 0x8a, 0xc1, 0xb1, 0xcc, 0xb0, 0xfd, 0x90, 0xb4, 0x30, 0x6b, 0xe6, 0x85, 0xd7, 0x0b, 0xbf,
-	0x07, 0x00, 0x00, 0xff, 0xff, 0x35, 0xc9, 0x7e, 0x04, 0xd2, 0x15, 0x00, 0x00,
+var fileDescriptor_sequence_and_updates_6d430482d3a578f1 = []byte{
+	// 3312 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x5b, 0x4b, 0x73, 0xdc, 0xc6,
+	0x11, 0xde, 0x25, 0x45, 0x8a, 0x1c, 0x89, 0x7a, 0x80, 0x14, 0x05, 0x51, 0x94, 0x44, 0x41, 0x0f,
+	0x53, 0xb2, 0x4d, 0x4a, 0xb4, 0xfc, 0x92, 0xed, 0xc8, 0x7c, 0x48, 0x5a, 0xc6, 0x92, 0xc8, 0x60,
+	0x45, 0xd9, 0x49, 0xaa, 0xc2, 0xcc, 0x02, 0xbd, 0x4b, 0x84, 0xbb, 0xc0, 0x12, 0xc0, 0xae, 0x4c,
+	0x97, 0xab, 0x92, 0x72, 0x55, 0x52, 0x95, 0xe4, 0x92, 0xaa, 0xe4, 0x90, 0xca, 0xc1, 0xc7, 0xfc,
+	0x88, 0x1c, 0xf2, 0x23, 0x92, 0x73, 0x2e, 0xae, 0x9c, 0xf2, 0x1b, 0x92, 0x54, 0x0a, 0x83, 0x47,
+	0x0f, 0x06, 0x8d, 0x5d, 0x3a, 0xef, 0x93, 0xb8, 0xf3, 0x7d, 0xd3, 0xdd, 0xd3, 0xdd, 0xd3, 0xd3,
+	0x18, 0x40, 0x6c, 0x2e, 0x80, 0x83, 0x1e, 0xb8, 0x16, 0xec, 0x72, 0xd7, 0xde, 0xed, 0x75, 0x6d,
+	0x1e, 0x42, 0xb0, 0xd4, 0xf5, 0xbd, 0xd0, 0xd3, 0xc6, 0x6d, 0x87, 0xb7, 0xbd, 0xd6, 0xdc, 0xe5,
+	0x96, 0xe7, 0xb5, 0xda, 0xb0, 0x2c, 0x46, 0x1b, 0xbd, 0xe6, 0xf2, 0x4b, 0x9f, 0x77, 0xbb, 0xe0,
+	0x27, 0xbc, 0xb9, 0x8b, 0x2a, 0x0e, 0x9d, 0x6e, 0x78, 0x98, 0x80, 0xf3, 0x09, 0xc8, 0xbb, 0xce,
+	0x32, 0x77, 0x5d, 0x2f, 0xe4, 0xa1, 0xe3, 0xb9, 0xe9, 0xd4, 0xb3, 0x36, 0x34, 0x1d, 0xd7, 0x91,
+	0x87, 0xa6, 0x3b, 0x4e, 0x60, 0x41, 0xbb, 0xcd, 0x5d, 0xf0, 0x7a, 0xe9, 0xe0, 0x0c, 0xef, 0x85,
+	0x7b, 0xe0, 0x86, 0x8e, 0x25, 0xa6, 0x27, 0xa3, 0x27, 0x5b, 0xbe, 0xd7, 0xeb, 0xa6, 0x9c, 0x53,
+	0x41, 0xe8, 0x58, 0xfb, 0x68, 0xd6, 0xf9, 0xf0, 0xb0, 0xeb, 0xb8, 0x2d, 0xb1, 0x30, 0xcf, 0x6d,
+	0x3b, 0x2e, 0x24, 0xc0, 0x69, 0xe8, 0x83, 0x1b, 0xee, 0x36, 0x32, 0xe9, 0x53, 0x2f, 0xa1, 0xb1,
+	0xeb, 0x87, 0x56, 0x6a, 0x94, 0xe5, 0xb9, 0x4d, 0xa7, 0xb5, 0x1b, 0x1c, 0xba, 0xe9, 0xd0, 0x29,
+	0xcb, 0xeb, 0xb9, 0x21, 0xca, 0x3e, 0x65, 0x79, 0x6e, 0xc8, 0xad, 0x30, 0x93, 0xd0, 0xf5, 0x9d,
+	0x3e, 0xb7, 0xd2, 0x45, 0x9f, 0xe8, 0x02, 0x72, 0x4f, 0x77, 0x20, 0x08, 0x78, 0xcb, 0x71, 0x5b,
+	0x29, 0xda, 0x0b, 0x10, 0x3d, 0x17, 0x58, 0xbc, 0xcd, 0xbb, 0x8d, 0xe5, 0xe4, 0xdf, 0x78, 0xd8,
+	0xf8, 0xd3, 0x87, 0xec, 0xf4, 0x8e, 0x88, 0x46, 0x1d, 0x0e, 0xe2, 0x3f, 0xb4, 0x2b, 0x6c, 0x34,
+	0x80, 0x03, 0xbd, 0xba, 0x50, 0x5d, 0x1c, 0x5b, 0x9b, 0xfa, 0xd9, 0x5f, 0xee, 0x4c, 0xb2, 0xe3,
+	0x7d, 0x27, 0x70, 0x1a, 0x6d, 0x30, 0x23, 0x44, 0xbb, 0xc6, 0xc6, 0x82, 0x90, 0x87, 0xa0, 0x8f,
+	0x2c, 0x54, 0x17, 0x4f, 0xa6, 0x14, 0xcb, 0xeb, 0x74, 0xb9, 0x15, 0x9a, 0x31, 0xa6, 0xad, 0xb0,
+	0xa9, 0x38, 0xcc, 0xbb, 0x7b, 0xc0, 0x6d, 0xf0, 0xf5, 0x51, 0x4a, 0xde, 0xc9, 0x98, 0x53, 0x13,
+	0x14, 0xed, 0x13, 0x36, 0x1b, 0xff, 0x7e, 0xe4, 0xf9, 0x16, 0x98, 0xd0, 0xf6, 0xb8, 0x5d, 0x17,
+	0x9a, 0x8e, 0x2d, 0x54, 0x17, 0x4f, 0xac, 0x5c, 0x5e, 0x8a, 0x53, 0x65, 0x69, 0x87, 0x64, 0xd5,
+	0x2a, 0x66, 0xc9, 0x7c, 0xed, 0xbb, 0xec, 0x7c, 0x8c, 0xec, 0x04, 0xe0, 0xaf, 0xf6, 0x79, 0xc8,
+	0xfd, 0xf5, 0x3d, 0xee, 0xb6, 0xc0, 0xd6, 0xc7, 0x84, 0xe8, 0x2b, 0x79, 0xd1, 0x05, 0x5a, 0xad,
+	0x62, 0x96, 0x49, 0xd0, 0x76, 0xd8, 0x39, 0x84, 0x9e, 0xf1, 0x0e, 0xa4, 0xa2, 0xc7, 0x85, 0xe8,
+	0x4b, 0x45, 0xd1, 0x12, 0xa9, 0x56, 0x31, 0xe9, 0xd9, 0x9a, 0xcd, 0xe6, 0x10, 0x78, 0xe2, 0x59,
+	0xbc, 0x2d, 0xcb, 0x3e, 0x2e, 0x64, 0x1b, 0x45, 0xd9, 0x2a, 0xb3, 0x56, 0x31, 0x07, 0xc8, 0xd1,
+	0x38, 0xbb, 0x80, 0xe8, 0x7a, 0x92, 0x6e, 0xa9, 0x92, 0x09, 0xa1, 0xe4, 0x6a, 0x51, 0x89, 0x42,
+	0xac, 0x55, 0xcc, 0x72, 0x29, 0x8a, 0x7f, 0x1c, 0x6b, 0x3f, 0x15, 0x3f, 0x59, 0xea, 0x1f, 0x24,
+	0x29, 0xfe, 0x41, 0x00, 0xb3, 0x45, 0x44, 0xa4, 0xe1, 0xf5, 0xc2, 0x54, 0x2e, 0xa3, 0xb2, 0x45,
+	0x65, 0x61, 0xb6, 0xa8, 0x88, 0xf6, 0x43, 0x76, 0x0d, 0x91, 0x6d, 0x1f, 0x9a, 0xe0, 0xfb, 0x60,
+	0x3f, 0xe1, 0x6e, 0xab, 0xc7, 0x5b, 0x90, 0x79, 0xe7, 0x84, 0x50, 0xf3, 0x6a, 0x51, 0x4d, 0xe9,
+	0x94, 0x5a, 0xc5, 0x3c, 0x8a, 0xe4, 0x7c, 0x50, 0x9e, 0x3b, 0x1d, 0xf8, 0x8e, 0xe7, 0x66, 0x91,
+	0x3f, 0x59, 0x16, 0x14, 0x85, 0x98, 0x0f, 0x8a, 0x02, 0x6a, 0x3f, 0x60, 0xf3, 0x08, 0xae, 0x79,
+	0xe1, 0xba, 0xd7, 0xe9, 0x70, 0xd7, 0xce, 0x16, 0x37, 0x25, 0xb4, 0x5c, 0x2f, 0x6a, 0x29, 0x72,
+	0x6b, 0x15, 0x73, 0xa0, 0x2c, 0xcd, 0x64, 0x33, 0x88, 0x3f, 0xfc, 0x34, 0x8b, 0xd3, 0x29, 0xa1,
+	0x63, 0xbe, 0xa8, 0x03, 0x39, 0xb5, 0x8a, 0x49, 0xce, 0xd5, 0xbe, 0xc7, 0x74, 0x1c, 0x7f, 0xd4,
+	0x6b, 0xb7, 0x25, 0xb9, 0xa7, 0x85, 0xdc, 0x85, 0xa2, 0xdc, 0x3c, 0xaf, 0x56, 0x31, 0x4b, 0x65,
+	0xe4, 0x6d, 0xae, 0xc3, 0xa7, 0xa9, 0xec, 0x33, 0x65, 0x36, 0x23, 0x27, 0x6f, 0x33, 0x8e, 0x6b,
+	0x5d, 0x76, 0x59, 0xda, 0x25, 0xbd, 0x20, 0xf4, 0x3a, 0xdb, 0xbe, 0xd7, 0x74, 0xda, 0x59, 0x6c,
+	0xcf, 0x0a, 0xe9, 0x37, 0x89, 0x0d, 0x47, 0xb0, 0x6b, 0x15, 0x73, 0x88, 0xbc, 0x7c, 0xdd, 0x8b,
+	0x4a, 0x61, 0x2f, 0x0b, 0xb0, 0x56, 0x56, 0xf7, 0x72, 0xb4, 0x7c, 0xdd, 0xcb, 0x41, 0x28, 0x3c,
+	0xd9, 0xf0, 0x26, 0xb4, 0x9c, 0x20, 0x04, 0x1f, 0x6c, 0x7d, 0x9a, 0x12, 0x5e, 0xa0, 0xa1, 0xf0,
+	0x02, 0xa4, 0x6d, 0xb1, 0xe9, 0x1c, 0x14, 0xac, 0xda, 0x36, 0xd8, 0xfa, 0x8c, 0x10, 0x7c, 0x91,
+	0x14, 0x1c, 0x53, 0x6a, 0x15, 0x93, 0x9a, 0x89, 0xce, 0x97, 0x86, 0x9f, 0xf3, 0x60, 0xbf, 0xde,
+	0x0b, 0xba, 0xe0, 0x46, 0xb2, 0xcf, 0x51, 0xce, 0x2f, 0x63, 0xa3, 0xf3, 0xcb, 0x18, 0x58, 0xf7,
+	0x52, 0x86, 0x09, 0x1d, 0xaf, 0x0f, 0xb6, 0x3e, 0x4b, 0xd5, 0x3d, 0x85, 0x84, 0x75, 0x4f, 0x01,
+	0xb4, 0x4d, 0x76, 0x56, 0xda, 0x6d, 0x6d, 0xcf, 0xda, 0x07, 0x5b, 0x3f, 0x2f, 0x44, 0x5e, 0x20,
+	0xb6, 0x6b, 0x4c, 0xa8, 0x55, 0xcc, 0xe2, 0x2c, 0x74, 0x72, 0x34, 0xb8, 0xe3, 0x36, 0x12, 0x61,
+	0x3a, 0xe5, 0xe4, 0x1c, 0x05, 0x9d, 0x9c, 0x1b, 0xd6, 0x5a, 0xec, 0x62, 0x3c, 0xbc, 0x19, 0xb5,
+	0x31, 0xdc, 0x0a, 0x9d, 0x3e, 0x3c, 0x05, 0xdb, 0xe1, 0x0f, 0xa3, 0x5e, 0x48, 0xbf, 0x20, 0x04,
+	0x5f, 0xcb, 0x0b, 0x26, 0xa9, 0xb5, 0x8a, 0x39, 0x48, 0x92, 0xf6, 0x41, 0xda, 0x5e, 0x3c, 0x15,
+	0x5d, 0x0f, 0xe8, 0x73, 0x42, 0xf4, 0xb9, 0xbc, 0xe8, 0x04, 0xac, 0x55, 0xcc, 0x3c, 0x1b, 0xed,
+	0x4c, 0x06, 0x22, 0x1f, 0x83, 0x9b, 0x15, 0x90, 0x8b, 0x94, 0x9d, 0x24, 0x15, 0xed, 0x24, 0x61,
+	0x0c, 0x56, 0x02, 0xd7, 0x23, 0x37, 0xcc, 0x53, 0xc1, 0x92, 0x08, 0x18, 0x2c, 0x69, 0x10, 0xd3,
+	0x29, 0x19, 0x34, 0xc1, 0x02, 0x27, 0x4a, 0xa7, 0x4b, 0x54, 0x3a, 0x29, 0x24, 0x4c, 0x27, 0x05,
+	0x28, 0x58, 0x68, 0x02, 0xb7, 0xf5, 0xcb, 0x03, 0x2c, 0x8c, 0x08, 0x05, 0x0b, 0xa3, 0x41, 0xc2,
+	0x42, 0x6e, 0xaf, 0x1d, 0x3e, 0x05, 0xfd, 0xca, 0x40, 0x0b, 0x63, 0x12, 0x61, 0x61, 0x0c, 0x60,
+	0x96, 0x26, 0xc0, 0x06, 0xb4, 0x21, 0x04, 0x7d, 0x81, 0xca, 0xd2, 0x1c, 0x05, 0xb3, 0x34, 0x37,
+	0xac, 0xad, 0xb3, 0xd3, 0xc9, 0xd6, 0xda, 0xe3, 0xe1, 0x7a, 0x1b, 0xb8, 0xaf, 0x5f, 0x15, 0xc2,
+	0xce, 0x2b, 0x5b, 0x32, 0x85, 0x6b, 0x15, 0x53, 0x9d, 0xa1, 0x3d, 0x62, 0x67, 0x70, 0x28, 0x31,
+	0xc9, 0x10, 0x52, 0xf4, 0xa2, 0x94, 0xcc, 0x9e, 0xc2, 0x1c, 0xf4, 0x7f, 0x34, 0xb6, 0xea, 0x5b,
+	0x7b, 0x4e, 0x1f, 0xf4, 0x6b, 0x94, 0xff, 0x25, 0x02, 0xfa, 0x5f, 0x1a, 0x94, 0x0a, 0xf2, 0x1e,
+	0x0f, 0x1f, 0x8b, 0x87, 0x96, 0x34, 0xa3, 0xaf, 0x93, 0x05, 0x59, 0xa5, 0x49, 0x05, 0x59, 0x85,
+	0x30, 0xb8, 0x26, 0x44, 0xbb, 0xd1, 0x73, 0x83, 0x58, 0x88, 0x7e, 0x83, 0x0a, 0xae, 0x42, 0xc2,
+	0xe0, 0x2a, 0x00, 0xf6, 0x21, 0x1b, 0x62, 0xfa, 0x23, 0xde, 0xf7, 0x7a, 0xbe, 0x13, 0x66, 0x27,
+	0xe2, 0x4d, 0xaa, 0x0f, 0xa1, 0xb9, 0xd8, 0x87, 0xd0, 0x38, 0xee, 0xfa, 0x6d, 0xc7, 0x75, 0xc1,
+	0x4e, 0x92, 0x22, 0xf3, 0xd1, 0x2b, 0xd4, 0xae, 0x27, 0xa9, 0xb8, 0xeb, 0x49, 0x18, 0x03, 0x21,
+	0x5c, 0xf8, 0xdc, 0x09, 0xf1, 0x84, 0x5f, 0xa4, 0x02, 0x51, 0xa0, 0x61, 0x20, 0x0a, 0x10, 0x76,
+	0x3e, 0x02, 0xca, 0x3f, 0xcc, 0xdc, 0xa2, 0x3a, 0x9f, 0x22, 0x0f, 0x3b, 0x9f, 0x22, 0xa6, 0x1a,
+	0xef, 0x75, 0x1d, 0x2b, 0x15, 0x7f, 0xbb, 0xdc, 0x78, 0x89, 0xa6, 0x1a, 0x2f, 0x41, 0x8a, 0xf0,
+	0x5c, 0xd7, 0xfe, 0x6a, 0xa9, 0x70, 0xa5, 0x6d, 0x2f, 0x93, 0xa0, 0x08, 0xdf, 0x7a, 0xe9, 0x42,
+	0xe6, 0x98, 0xd7, 0x4a, 0x85, 0xcb, 0x34, 0x45, 0xb8, 0x0c, 0x29, 0x6e, 0xaf, 0x39, 0x41, 0xe8,
+	0xf9, 0x87, 0xf5, 0x3d, 0x1e, 0xb5, 0x3b, 0xaf, 0x97, 0xba, 0x3d, 0xc7, 0x53, 0xdc, 0x9e, 0xc3,
+	0xb4, 0x43, 0x76, 0x55, 0xc2, 0xd6, 0xb9, 0x5b, 0x07, 0xb7, 0x90, 0xa2, 0x4b, 0x42, 0xd1, 0x2d,
+	0x42, 0x11, 0x3d, 0xa1, 0x56, 0x31, 0x87, 0x4b, 0xd5, 0xfa, 0x6c, 0x21, 0x4f, 0x7a, 0xe1, 0xc0,
+	0xcb, 0xa7, 0xd0, 0x69, 0x80, 0x9f, 0x69, 0x5e, 0x16, 0x9a, 0x17, 0x69, 0xcd, 0x45, 0x7e, 0xad,
+	0x62, 0x0e, 0x95, 0xa9, 0x7d, 0xce, 0x8c, 0x3c, 0x67, 0xd3, 0xed, 0x3b, 0x51, 0xb1, 0xce, 0x69,
+	0xbe, 0x23, 0x34, 0xdf, 0xa6, 0x35, 0x53, 0x33, 0x6a, 0x15, 0xf3, 0x08, 0x72, 0x95, 0x80, 0xc6,
+	0x60, 0xaa, 0xf3, 0x6e, 0x69, 0x40, 0x73, 0x3c, 0x25, 0xa0, 0x39, 0x4c, 0xeb, 0xb0, 0x4b, 0x05,
+	0x2c, 0x58, 0x03, 0x8b, 0x77, 0x60, 0x35, 0x38, 0x74, 0x2d, 0x7d, 0x45, 0x28, 0xb9, 0x51, 0xaa,
+	0x44, 0x26, 0xd7, 0x2a, 0xe6, 0x60, 0x69, 0xf8, 0xcc, 0x28, 0x13, 0x62, 0x99, 0xb6, 0xfe, 0x06,
+	0xf5, 0xcc, 0x48, 0x10, 0xf1, 0x99, 0x91, 0x00, 0xf1, 0x08, 0x90, 0xc0, 0x0d, 0xa7, 0xd9, 0xd4,
+	0xef, 0x51, 0x47, 0x80, 0x42, 0xc2, 0x23, 0x40, 0x01, 0xb0, 0x33, 0x97, 0x75, 0xae, 0x7b, 0x3d,
+	0xec, 0xc7, 0xde, 0xa4, 0x3a, 0xf3, 0x32, 0x36, 0x76, 0xe6, 0x65, 0x0c, 0x32, 0x34, 0xab, 0x76,
+	0xc7, 0x71, 0x53, 0x85, 0x6f, 0x0d, 0x09, 0x8d, 0x4c, 0x26, 0x43, 0x23, 0x13, 0xf0, 0x3e, 0x41,
+	0x22, 0x6c, 0x83, 0xdf, 0x71, 0x82, 0x20, 0x3a, 0x09, 0x53, 0xa5, 0x6f, 0x53, 0xf7, 0x09, 0x03,
+	0xa7, 0xe0, 0x7d, 0xc2, 0x40, 0x9a, 0x92, 0x1b, 0xf1, 0x6e, 0xd8, 0x6a, 0x04, 0x9e, 0x68, 0x5a,
+	0xde, 0x29, 0xcd, 0x8d, 0x3c, 0x51, 0xc9, 0x8d, 0x3c, 0xa8, 0x04, 0x31, 0x7a, 0x2a, 0x88, 0x09,
+	0x76, 0xa6, 0xe7, 0xdd, 0xd2, 0x20, 0x12, 0x6c, 0x25, 0x88, 0x04, 0x03, 0x3b, 0x87, 0x8c, 0xf1,
+	0x04, 0x78, 0x1f, 0xd7, 0x75, 0x9f, 0xea, 0x1c, 0x68, 0x2e, 0x76, 0x0e, 0x34, 0x8e, 0x9d, 0x43,
+	0x86, 0x7f, 0xe4, 0x58, 0xfb, 0x99, 0xaa, 0xf7, 0xa8, 0xce, 0x81, 0xa4, 0x62, 0xe7, 0x40, 0xc2,
+	0x4a, 0x29, 0xce, 0xed, 0xbf, 0x4c, 0xdb, 0xfb, 0xa5, 0xa5, 0x98, 0xe4, 0x2b, 0xa5, 0x98, 0xe4,
+	0x68, 0x01, 0xbb, 0x52, 0xd2, 0x6f, 0x64, 0x6a, 0x3f, 0x10, 0x6a, 0x5f, 0x19, 0xd2, 0xb9, 0x48,
+	0x5a, 0x87, 0x49, 0x54, 0x95, 0x4a, 0x7d, 0x42, 0xa6, 0xf4, 0x1b, 0xe5, 0x4a, 0x09, 0xba, 0xaa,
+	0x94, 0xa0, 0x28, 0x4a, 0xe5, 0xfe, 0x21, 0x53, 0xfa, 0xa0, 0x54, 0x29, 0x45, 0x57, 0x94, 0x52,
+	0x14, 0x25, 0xac, 0xb9, 0x7e, 0x2b, 0xd3, 0xfa, 0x61, 0x69, 0x58, 0x49, 0xbe, 0x12, 0x56, 0x92,
+	0xa3, 0xe4, 0x6d, 0x7d, 0xcf, 0xf3, 0x43, 0x57, 0xba, 0x44, 0x5e, 0x2d, 0xcd, 0x5b, 0x95, 0xaa,
+	0xe4, 0xad, 0x0a, 0xa3, 0x57, 0xeb, 0xf1, 0xdb, 0x91, 0x75, 0xaf, 0xdd, 0x86, 0xb8, 0xd1, 0x4f,
+	0x95, 0xad, 0x51, 0x5e, 0x2d, 0xa5, 0xa3, 0x57, 0x4b, 0x29, 0x78, 0x82, 0x27, 0x94, 0x6d, 0x6e,
+	0xed, 0xa7, 0x77, 0x2c, 0xeb, 0xd4, 0x09, 0x5e, 0xe4, 0xe1, 0x09, 0x5e, 0xc4, 0xf0, 0x86, 0x59,
+	0xc2, 0xe2, 0x6b, 0xa8, 0x0d, 0xea, 0x86, 0x59, 0x65, 0xe1, 0x0d, 0xb3, 0x8a, 0xa0, 0xe5, 0xdb,
+	0xbc, 0x17, 0xc0, 0x33, 0x2f, 0x74, 0x9a, 0xc9, 0x3b, 0xa7, 0x40, 0x7f, 0x48, 0x59, 0x5e, 0xe4,
+	0xa1, 0xe5, 0x45, 0x0c, 0xdf, 0x1d, 0x98, 0x10, 0xf5, 0x98, 0x8a, 0x86, 0x47, 0xd4, 0xbb, 0x03,
+	0x8a, 0x89, 0xef, 0x0e, 0x28, 0x54, 0xbb, 0xcf, 0x92, 0xf7, 0x37, 0xcf, 0xc5, 0x2b, 0x30, 0xfd,
+	0xb1, 0x90, 0x3b, 0x93, 0x97, 0x1b, 0x63, 0xb5, 0x8a, 0x99, 0xe3, 0xe2, 0xe3, 0x73, 0xfc, 0xbb,
+	0x1e, 0x7a, 0x5d, 0xbd, 0x46, 0x3d, 0x3e, 0x23, 0x8e, 0x8f, 0xcf, 0x38, 0x86, 0x72, 0xa2, 0x52,
+	0xba, 0x25, 0xde, 0xbf, 0xe9, 0x9b, 0x94, 0x1c, 0xc4, 0x51, 0x0e, 0x8e, 0xe5, 0x6f, 0xd5, 0xb6,
+	0x9a, 0x4d, 0x21, 0xe8, 0x9b, 0x65, 0xb7, 0x6a, 0x09, 0x21, 0x7f, 0xab, 0x96, 0x0c, 0x6a, 0x4f,
+	0x98, 0x26, 0xbd, 0x70, 0xe1, 0x41, 0x58, 0x07, 0x70, 0xf5, 0x8f, 0x84, 0xac, 0x39, 0xe2, 0x85,
+	0x4d, 0xc2, 0xa8, 0x55, 0x4c, 0x62, 0x1e, 0x1a, 0x16, 0x3f, 0x92, 0xc4, 0x2b, 0x7c, 0x42, 0x19,
+	0x26, 0x11, 0xd0, 0x30, 0x69, 0x10, 0xdb, 0x1e, 0x71, 0x87, 0xb6, 0xd6, 0x0b, 0x36, 0xa0, 0xef,
+	0x58, 0xb0, 0xee, 0xb9, 0x2e, 0x58, 0x51, 0x9b, 0xf8, 0x94, 0x6a, 0x7b, 0x4a, 0xc8, 0xd8, 0xf6,
+	0x94, 0x10, 0xb0, 0xe8, 0xe5, 0x09, 0x1b, 0x4e, 0x60, 0x65, 0x1a, 0x9f, 0x51, 0x45, 0xaf, 0x9c,
+	0x8f, 0x45, 0xaf, 0x9c, 0x83, 0x6d, 0x6a, 0xca, 0x49, 0xef, 0x08, 0xb7, 0xa8, 0x36, 0x55, 0x21,
+	0x61, 0x9b, 0xaa, 0x00, 0x58, 0x0d, 0x32, 0xd5, 0x4e, 0xd0, 0xf5, 0x02, 0xb0, 0xf5, 0x6d, 0xaa,
+	0x1a, 0xa8, 0x2c, 0xac, 0x06, 0x2a, 0x82, 0x9d, 0xcc, 0xa6, 0x6b, 0x79, 0x1d, 0xc7, 0x6d, 0xad,
+	0xf3, 0x76, 0x7b, 0x03, 0xba, 0x3e, 0x58, 0xa2, 0x7b, 0xff, 0x16, 0xd5, 0xc9, 0xd0, 0x5c, 0xec,
+	0x64, 0x68, 0x1c, 0x93, 0x53, 0xc6, 0x75, 0x93, 0x4a, 0x4e, 0x99, 0x81, 0xc9, 0x29, 0x8f, 0x4a,
+	0x97, 0x57, 0x11, 0x87, 0xbb, 0x76, 0x1b, 0x6c, 0xbd, 0x4e, 0x5e, 0x5e, 0x21, 0x41, 0xba, 0xbc,
+	0xc2, 0x41, 0x34, 0x4c, 0x18, 0x9c, 0xba, 0xf6, 0x39, 0x65, 0x98, 0xcc, 0x40, 0xc3, 0xe4, 0x51,
+	0x0c, 0xd6, 0x36, 0xf7, 0x79, 0x07, 0x42, 0x7c, 0xb4, 0xdb, 0xa1, 0x82, 0xa5, 0xb2, 0x30, 0x58,
+	0x2a, 0x82, 0x97, 0x87, 0x26, 0x7f, 0x99, 0xdc, 0x80, 0xbd, 0xa0, 0x2e, 0x0f, 0x33, 0x18, 0x2f,
+	0x0f, 0xb3, 0x21, 0xf4, 0xdb, 0xc3, 0x4e, 0x37, 0x3c, 0x4c, 0xc4, 0x7c, 0x4c, 0xf9, 0x4d, 0x22,
+	0xa0, 0xdf, 0xa4, 0x41, 0xf9, 0x2d, 0x43, 0xfc, 0xed, 0x40, 0xba, 0xd0, 0x4f, 0xe8, 0xb7, 0x0c,
+	0x39, 0x92, 0xfc, 0x96, 0x21, 0x07, 0x60, 0x6d, 0x5f, 0x17, 0x5f, 0x29, 0xe8, 0xdf, 0xa6, 0x6a,
+	0x7b, 0x8c, 0x61, 0x6d, 0x8f, 0x7f, 0xaf, 0x4d, 0xb0, 0xf1, 0xf8, 0xb7, 0xf1, 0xe5, 0x08, 0xd3,
+	0x92, 0x97, 0xf5, 0x3c, 0xfc, 0x7f, 0xf8, 0xc4, 0xe0, 0x46, 0x6a, 0x9a, 0xf8, 0xa4, 0xa0, 0x20,
+	0x39, 0x01, 0xb5, 0xbb, 0x6c, 0x4c, 0x7c, 0x3d, 0xa1, 0x8f, 0x2d, 0x8c, 0x2e, 0x9e, 0x58, 0x39,
+	0x99, 0x2d, 0x3b, 0x00, 0xbf, 0x60, 0x8d, 0x60, 0x6a, 0xf7, 0xd8, 0x78, 0xfc, 0x9d, 0x88, 0x3e,
+	0x2e, 0xe6, 0x4c, 0xa5, 0x73, 0x44, 0x05, 0x2e, 0x28, 0x8a, 0xb9, 0xc6, 0x2f, 0xaa, 0xec, 0x4c,
+	0xec, 0x94, 0x8f, 0x81, 0xef, 0x27, 0xee, 0xb9, 0xca, 0x8e, 0x09, 0x13, 0x23, 0xff, 0x8c, 0xaa,
+	0xeb, 0x11, 0x50, 0x71, 0xed, 0x23, 0x5f, 0x67, 0xed, 0xa3, 0x03, 0xd6, 0x6e, 0xfc, 0xb5, 0xca,
+	0xa6, 0xd1, 0xa4, 0x47, 0x3c, 0xfc, 0x9f, 0x58, 0x95, 0x92, 0x0b, 0x11, 0x39, 0x56, 0x1e, 0x91,
+	0x74, 0x4e, 0x21, 0x22, 0x63, 0x03, 0x22, 0x92, 0x29, 0x4a, 0x22, 0xa2, 0xb3, 0x59, 0xe5, 0x8b,
+	0x98, 0xe7, 0x9e, 0xf7, 0xc4, 0x73, 0x5b, 0x46, 0x3b, 0xfd, 0x56, 0x46, 0xbc, 0x91, 0x73, 0x5c,
+	0xf0, 0x8b, 0x0b, 0xae, 0x7e, 0x9d, 0x05, 0x8f, 0x0c, 0x0a, 0xc3, 0xdf, 0x46, 0xd8, 0x4c, 0xaa,
+	0xae, 0xd3, 0x70, 0x5c, 0xb0, 0x93, 0x38, 0xdc, 0x66, 0x93, 0x01, 0x1c, 0xec, 0x06, 0x21, 0xf7,
+	0x43, 0x5a, 0xdf, 0x44, 0x00, 0x07, 0xf5, 0x08, 0xd6, 0x6e, 0xb2, 0xe3, 0x11, 0x17, 0x5c, 0x9b,
+	0x0e, 0xc5, 0x78, 0x00, 0x07, 0x0f, 0x5d, 0x1b, 0xf7, 0x1b, 0x19, 0x83, 0x64, 0xbf, 0x1d, 0x25,
+	0x04, 0xa5, 0x9b, 0x62, 0xec, 0xe8, 0x9b, 0x42, 0xfb, 0x90, 0x1d, 0x4f, 0x3e, 0x11, 0x4b, 0xf6,
+	0xd2, 0x79, 0xe2, 0x55, 0x69, 0xe4, 0x7f, 0xd5, 0xd0, 0x74, 0x9a, 0xb6, 0xca, 0x26, 0x3a, 0xc9,
+	0x25, 0xa7, 0x7e, 0x5c, 0x88, 0x98, 0x4d, 0x45, 0x24, 0xb7, 0xae, 0xc9, 0xa9, 0x5e, 0x70, 0x5d,
+	0x3a, 0xcd, 0xf8, 0x51, 0x95, 0x9d, 0x36, 0xe1, 0xa0, 0x07, 0x41, 0xf8, 0x18, 0xc2, 0xf8, 0x33,
+	0xa2, 0x2d, 0x36, 0xe5, 0x75, 0x43, 0xa7, 0xe3, 0x7c, 0x96, 0x74, 0xd2, 0xd5, 0x85, 0xd1, 0xc5,
+	0x53, 0xea, 0xf1, 0xb4, 0x25, 0x51, 0x54, 0xf9, 0xf9, 0xf9, 0xf7, 0xe7, 0xbf, 0x7a, 0x70, 0x81,
+	0x9d, 0x77, 0x3a, 0x4b, 0x76, 0xbb, 0xb5, 0xd4, 0xf2, 0xbb, 0xd6, 0xd2, 0x63, 0xbf, 0x6b, 0x25,
+	0x6a, 0x8d, 0x5f, 0x8f, 0xb0, 0x19, 0x34, 0x61, 0xc3, 0x69, 0x36, 0xc1, 0x07, 0xd7, 0xfa, 0x77,
+	0xd5, 0xcf, 0xc2, 0x6a, 0x46, 0xff, 0xb5, 0xd5, 0x68, 0x1f, 0xb1, 0x13, 0xc9, 0x37, 0x6d, 0x7b,
+	0x3c, 0xd8, 0x4b, 0x3e, 0xda, 0xba, 0xb8, 0x14, 0x7f, 0x9a, 0xb7, 0x94, 0x7e, 0xb7, 0xb7, 0xb4,
+	0xe9, 0x86, 0x6f, 0xdd, 0x7b, 0xc1, 0xdb, 0xbd, 0x82, 0xf7, 0x59, 0x3c, 0xbd, 0xc6, 0x83, 0xbd,
+	0x21, 0xae, 0xf9, 0xfb, 0x28, 0x3b, 0x67, 0x42, 0xd0, 0xf5, 0xdc, 0x00, 0xf2, 0xbe, 0x39, 0x23,
+	0xf9, 0x26, 0x76, 0xc6, 0x4c, 0xce, 0x19, 0xe9, 0xea, 0x8d, 0x34, 0x9b, 0x47, 0x8b, 0xd9, 0x9c,
+	0xa6, 0xef, 0x8d, 0x81, 0x35, 0x3d, 0xcb, 0xd7, 0xbb, 0x98, 0xaf, 0xc7, 0x06, 0xe6, 0x2b, 0x26,
+	0xe8, 0xca, 0x51, 0x13, 0x14, 0x33, 0x52, 0xbb, 0xc8, 0x26, 0x5d, 0x00, 0x7b, 0xb7, 0xe3, 0xf9,
+	0x20, 0x3e, 0x5b, 0x9b, 0x30, 0x27, 0xa2, 0x81, 0xa7, 0x9e, 0x1f, 0x95, 0x5e, 0x26, 0x6c, 0xde,
+	0xf5, 0xa1, 0x19, 0xe8, 0x13, 0x42, 0xe4, 0xb4, 0xbc, 0xa6, 0xad, 0x5e, 0xb8, 0x0d, 0xe0, 0x9b,
+	0x93, 0x82, 0x66, 0x42, 0x33, 0xd0, 0xde, 0x64, 0x27, 0xe2, 0x15, 0xc4, 0x93, 0x26, 0xc5, 0xa4,
+	0x99, 0xdc, 0x1a, 0xd3, 0x59, 0x2c, 0x26, 0x8a, 0x69, 0x37, 0xd9, 0x78, 0x1c, 0xa7, 0xe4, 0x43,
+	0xab, 0x53, 0xe9, 0x8c, 0xf8, 0xf8, 0x37, 0x13, 0x54, 0x7b, 0x3f, 0x9f, 0x0e, 0x27, 0x86, 0xa6,
+	0x43, 0x2e, 0xfe, 0x97, 0xbe, 0x7a, 0x30, 0xc7, 0xf4, 0x62, 0xfc, 0xe3, 0x98, 0x1b, 0xdf, 0x67,
+	0x17, 0xe5, 0xad, 0x11, 0xe9, 0x0f, 0xa4, 0x2c, 0xb8, 0xc6, 0xc6, 0xac, 0xb6, 0x67, 0xed, 0xd3,
+	0xa7, 0x55, 0x8c, 0x0d, 0x49, 0xb1, 0x3f, 0x54, 0xd9, 0x7c, 0x2e, 0xc5, 0x54, 0x1d, 0x8b, 0xec,
+	0x78, 0xbc, 0xf0, 0xb8, 0x0e, 0x48, 0x8e, 0x88, 0xb9, 0x66, 0x0a, 0x67, 0x8e, 0xde, 0x15, 0x1f,
+	0x6c, 0xea, 0x23, 0x43, 0x1d, 0x1d, 0xfd, 0x19, 0xa4, 0x31, 0x4d, 0x66, 0x8d, 0x0e, 0x89, 0xa9,
+	0x98, 0x33, 0xcc, 0x6d, 0x3f, 0xa9, 0x32, 0x4d, 0xbe, 0x06, 0xac, 0xf7, 0x1a, 0x01, 0x84, 0xda,
+	0x1a, 0x63, 0x68, 0xa0, 0xf0, 0x59, 0x89, 0x7d, 0xaa, 0x27, 0x27, 0x33, 0x73, 0xb5, 0xd7, 0x18,
+	0xeb, 0x08, 0xa1, 0xbb, 0x8e, 0x1d, 0xaf, 0xb1, 0x50, 0x9b, 0x26, 0x63, 0xc2, 0xa6, 0x1d, 0x18,
+	0xbf, 0x1b, 0x61, 0x97, 0x30, 0x80, 0x26, 0x24, 0x4e, 0xb5, 0x1f, 0xba, 0xa1, 0x13, 0x3a, 0xd1,
+	0x16, 0x79, 0x27, 0xdd, 0xa0, 0xd5, 0xd2, 0x85, 0x97, 0x9e, 0x3a, 0xc7, 0x3a, 0x91, 0x0d, 0xb1,
+	0xc7, 0xce, 0x66, 0x13, 0x77, 0x36, 0x37, 0xc8, 0xb2, 0x23, 0xd8, 0xda, 0x33, 0x36, 0x15, 0xfb,
+	0x20, 0x36, 0x32, 0xdd, 0xcb, 0x73, 0x39, 0x37, 0xe4, 0xdc, 0x56, 0x38, 0xe7, 0x5b, 0x12, 0x45,
+	0x7b, 0x4f, 0x39, 0xfb, 0x8e, 0xe4, 0xcf, 0x64, 0xca, 0x90, 0xd4, 0xfc, 0x7d, 0x95, 0x5d, 0x96,
+	0x52, 0x93, 0xf2, 0x9e, 0x91, 0xf7, 0xde, 0x90, 0xf2, 0x36, 0x32, 0xa8, 0xbc, 0xc9, 0xb5, 0x6a,
+	0xf4, 0x68, 0xb5, 0x6a, 0x58, 0x1a, 0xbe, 0x4c, 0x5b, 0x29, 0x7c, 0x24, 0x7a, 0xc0, 0x8e, 0x85,
+	0x87, 0x5d, 0x48, 0x92, 0x6f, 0xbe, 0x50, 0x26, 0xea, 0xa1, 0xef, 0xb8, 0x2d, 0x3a, 0x7e, 0xd1,
+	0xc4, 0x68, 0xcb, 0x37, 0x0e, 0xa3, 0x1a, 0x3c, 0x42, 0xf6, 0x30, 0x02, 0x33, 0xa6, 0xd9, 0xd9,
+	0xc2, 0x73, 0x95, 0xe1, 0x33, 0x3d, 0xf1, 0x6c, 0x14, 0x57, 0xcb, 0x77, 0x1a, 0xf0, 0xdc, 0x4b,
+	0xee, 0x4c, 0xfe, 0xe9, 0x2c, 0x1c, 0x12, 0xc2, 0x90, 0xcd, 0xa9, 0x3a, 0x1f, 0xf9, 0x5e, 0xe7,
+	0x3f, 0xac, 0xf5, 0xb3, 0x6c, 0xd3, 0x49, 0x2b, 0x95, 0xaf, 0x88, 0x30, 0x69, 0xab, 0xc3, 0x93,
+	0x56, 0xe9, 0xdb, 0x86, 0xe8, 0xfe, 0x9c, 0x5d, 0xa1, 0x56, 0xfc, 0x5f, 0xd2, 0xbe, 0xcf, 0x4e,
+	0x66, 0x0d, 0xfd, 0x9a, 0xf7, 0xe9, 0x91, 0xdb, 0x84, 0x37, 0x72, 0x8f, 0x27, 0xd4, 0xf9, 0xb5,
+	0x16, 0x25, 0x56, 0x7c, 0x7e, 0x25, 0xd4, 0x95, 0x9f, 0x32, 0xa6, 0xd5, 0x93, 0xff, 0xf1, 0xb0,
+	0xea, 0x26, 0x8d, 0x7b, 0xa0, 0x39, 0x6c, 0x22, 0x6b, 0x25, 0xb3, 0x16, 0x41, 0xe9, 0x31, 0xe7,
+	0xa6, 0x11, 0x88, 0x37, 0x4b, 0x1d, 0x0e, 0x8c, 0xe5, 0x2f, 0xfe, 0xf8, 0xe7, 0x5f, 0x8e, 0xdc,
+	0x32, 0xae, 0x2f, 0xf7, 0xef, 0x2e, 0x47, 0x6b, 0x5b, 0x2e, 0x8a, 0x5f, 0x4e, 0x45, 0xdc, 0xaf,
+	0xde, 0xd6, 0xbe, 0xa8, 0xb2, 0xa9, 0x7c, 0x5f, 0x34, 0x5f, 0x54, 0x88, 0xe8, 0xdc, 0x25, 0x55,
+	0x6b, 0x0e, 0x36, 0xee, 0x09, 0xfd, 0x4b, 0xc6, 0xad, 0x21, 0xfa, 0x71, 0x4a, 0x64, 0xc4, 0x97,
+	0x55, 0x36, 0x43, 0x9f, 0xce, 0x94, 0x2d, 0x0a, 0x69, 0xee, 0x3a, 0x69, 0x92, 0xc2, 0x32, 0xde,
+	0x13, 0x96, 0xbd, 0x69, 0xdc, 0x19, 0x6a, 0x99, 0x32, 0x33, 0x32, 0xf0, 0xb7, 0x55, 0x36, 0x5b,
+	0x52, 0x3f, 0x6f, 0x14, 0x4d, 0x24, 0x68, 0x73, 0x37, 0x09, 0x23, 0x09, 0x9e, 0xf1, 0x81, 0x30,
+	0xf3, 0x6d, 0x63, 0x65, 0x88, 0x99, 0xc4, 0xdc, 0xc8, 0xd0, 0x1f, 0x57, 0xd9, 0xd9, 0x62, 0x6d,
+	0x5a, 0x50, 0x6c, 0x2c, 0x30, 0xe6, 0x66, 0x54, 0xf3, 0x5e, 0x78, 0x8e, 0x6d, 0xbc, 0x23, 0x8c,
+	0x59, 0x31, 0x5e, 0x1f, 0x64, 0x4c, 0x41, 0x58, 0x64, 0xc7, 0xcf, 0xab, 0x6c, 0x9a, 0xaa, 0x57,
+	0x46, 0x99, 0x25, 0xc8, 0x29, 0xb1, 0xe5, 0xbe, 0xb0, 0xe5, 0x9e, 0xb1, 0x7c, 0x24, 0x5b, 0x50,
+	0x5c, 0x64, 0xcd, 0xaf, 0xaa, 0x6c, 0xb6, 0xa4, 0x8e, 0xdd, 0x28, 0x77, 0x8d, 0x44, 0x2b, 0xb1,
+	0xe9, 0x48, 0xc1, 0xa2, 0x25, 0x46, 0x66, 0xfd, 0xa6, 0xca, 0xf4, 0xd2, 0x12, 0xf7, 0xca, 0x20,
+	0x4f, 0x0d, 0x37, 0xed, 0x81, 0x30, 0xed, 0x5d, 0xe3, 0xde, 0x91, 0xdd, 0xa5, 0x18, 0xe7, 0x31,
+	0x96, 0xd5, 0xc1, 0x40, 0x9b, 0x2d, 0x54, 0x33, 0x71, 0x2e, 0xa2, 0x72, 0xb9, 0x66, 0x1a, 0x77,
+	0x85, 0xf2, 0x57, 0x8d, 0x9b, 0x03, 0x95, 0x67, 0xd2, 0xef, 0x57, 0x6f, 0xdf, 0xa9, 0xae, 0x5d,
+	0xf8, 0xea, 0xc1, 0x2c, 0x9b, 0x91, 0xcb, 0x72, 0x00, 0x7e, 0xdf, 0xb1, 0x20, 0x68, 0x8c, 0x0b,
+	0xad, 0x6f, 0xfc, 0x23, 0x00, 0x00, 0xff, 0xff, 0x9a, 0xe4, 0xb5, 0x69, 0x1e, 0x36, 0x00, 0x00,
 }

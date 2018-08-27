@@ -28,7 +28,7 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // Exchange public keys
 type RequestKeyExchange struct {
-	ClientKey            *wrappers.BytesValue `protobuf:"bytes,1,opt,name=client_key,json=clientKey" json:"client_key,omitempty"`
+	ClientKey            *wrappers.BytesValue `protobuf:"bytes,1,opt,name=client_key,json=clientKey,proto3" json:"client_key,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -38,7 +38,7 @@ func (m *RequestKeyExchange) Reset()         { *m = RequestKeyExchange{} }
 func (m *RequestKeyExchange) String() string { return proto.CompactTextString(m) }
 func (*RequestKeyExchange) ProtoMessage()    {}
 func (*RequestKeyExchange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_crypto_83859a71cb52c6fd, []int{0}
+	return fileDescriptor_crypto_760579c7adc31f76, []int{0}
 }
 func (m *RequestKeyExchange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestKeyExchange.Unmarshal(m, b)
@@ -66,7 +66,7 @@ func (m *RequestKeyExchange) GetClientKey() *wrappers.BytesValue {
 }
 
 type ResponseKeyExchange struct {
-	ServerKey            *wrappers.BytesValue `protobuf:"bytes,1,opt,name=server_key,json=serverKey" json:"server_key,omitempty"`
+	ServerKey            *wrappers.BytesValue `protobuf:"bytes,1,opt,name=server_key,json=serverKey,proto3" json:"server_key,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -76,7 +76,7 @@ func (m *ResponseKeyExchange) Reset()         { *m = ResponseKeyExchange{} }
 func (m *ResponseKeyExchange) String() string { return proto.CompactTextString(m) }
 func (*ResponseKeyExchange) ProtoMessage()    {}
 func (*ResponseKeyExchange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_crypto_83859a71cb52c6fd, []int{1}
+	return fileDescriptor_crypto_760579c7adc31f76, []int{1}
 }
 func (m *ResponseKeyExchange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseKeyExchange.Unmarshal(m, b)
@@ -180,9 +180,9 @@ var _Crypto_serviceDesc = grpc.ServiceDesc{
 	Metadata: "crypto.proto",
 }
 
-func init() { proto.RegisterFile("crypto.proto", fileDescriptor_crypto_83859a71cb52c6fd) }
+func init() { proto.RegisterFile("crypto.proto", fileDescriptor_crypto_760579c7adc31f76) }
 
-var fileDescriptor_crypto_83859a71cb52c6fd = []byte{
+var fileDescriptor_crypto_760579c7adc31f76 = []byte{
 	// 324 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x90, 0xbf, 0x4e, 0x42, 0x31,
 	0x18, 0xc5, 0x83, 0x03, 0x86, 0x0f, 0x1d, 0xbc, 0xfe, 0x83, 0x0b, 0x1a, 0x72, 0x07, 0x63, 0x1c,

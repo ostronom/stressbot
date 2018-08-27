@@ -44,7 +44,7 @@ func (x RtcpMuxPolicy) String() string {
 	return proto.EnumName(RtcpMuxPolicy_name, int32(x))
 }
 func (RtcpMuxPolicy) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{0}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{0}
 }
 
 type UpdateOptimization int32
@@ -88,7 +88,7 @@ func (x UpdateOptimization) String() string {
 	return proto.EnumName(UpdateOptimization_name, int32(x))
 }
 func (UpdateOptimization) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{1}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{1}
 }
 
 // Empty response
@@ -102,7 +102,7 @@ func (m *ResponseVoid) Reset()         { *m = ResponseVoid{} }
 func (m *ResponseVoid) String() string { return proto.CompactTextString(m) }
 func (*ResponseVoid) ProtoMessage()    {}
 func (*ResponseVoid) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{0}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{0}
 }
 func (m *ResponseVoid) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseVoid.Unmarshal(m, b)
@@ -124,9 +124,9 @@ var xxx_messageInfo_ResponseVoid proto.InternalMessageInfo
 
 // Sequence response. Methods that return this value must process response in particular order
 type ResponseSeq struct {
-	Seq                  int32    `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
+	Seq                  int32    `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte   `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	Date                 int64    `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
+	Date                 int64    `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -136,7 +136,7 @@ func (m *ResponseSeq) Reset()         { *m = ResponseSeq{} }
 func (m *ResponseSeq) String() string { return proto.CompactTextString(m) }
 func (*ResponseSeq) ProtoMessage()    {}
 func (*ResponseSeq) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{1}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{1}
 }
 func (m *ResponseSeq) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseSeq.Unmarshal(m, b)
@@ -179,10 +179,10 @@ func (m *ResponseSeq) GetDate() int64 {
 
 // Sequence response with date. Methods that return this value must process response in particular order
 type ResponseSeqDate struct {
-	Seq                  int32      `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
+	Seq                  int32      `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte     `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	Date                 int64      `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
-	Mid                  *UUIDValue `protobuf:"bytes,4,opt,name=mid" json:"mid,omitempty"`
+	Date                 int64      `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
+	Mid                  *UUIDValue `protobuf:"bytes,4,opt,name=mid,proto3" json:"mid,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -192,7 +192,7 @@ func (m *ResponseSeqDate) Reset()         { *m = ResponseSeqDate{} }
 func (m *ResponseSeqDate) String() string { return proto.CompactTextString(m) }
 func (*ResponseSeqDate) ProtoMessage()    {}
 func (*ResponseSeqDate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{2}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{2}
 }
 func (m *ResponseSeqDate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseSeqDate.Unmarshal(m, b)
@@ -242,10 +242,10 @@ func (m *ResponseSeqDate) GetMid() *UUIDValue {
 
 // Response with seq, date and messageId
 type ResponseSeqDateMid struct {
-	Seq                  int32      `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
+	Seq                  int32      `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte     `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	Date                 int64      `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
-	Mid                  *UUIDValue `protobuf:"bytes,4,opt,name=mid" json:"mid,omitempty"`
+	Date                 int64      `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
+	Mid                  *UUIDValue `protobuf:"bytes,4,opt,name=mid,proto3" json:"mid,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -255,7 +255,7 @@ func (m *ResponseSeqDateMid) Reset()         { *m = ResponseSeqDateMid{} }
 func (m *ResponseSeqDateMid) String() string { return proto.CompactTextString(m) }
 func (*ResponseSeqDateMid) ProtoMessage()    {}
 func (*ResponseSeqDateMid) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{3}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{3}
 }
 func (m *ResponseSeqDateMid) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseSeqDateMid.Unmarshal(m, b)
@@ -305,7 +305,7 @@ func (m *ResponseSeqDateMid) GetMid() *UUIDValue {
 
 // Boolean response
 type ResponseBool struct {
-	Value                bool     `protobuf:"varint,1,opt,name=value" json:"value,omitempty"`
+	Value                bool     `protobuf:"varint,1,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -315,7 +315,7 @@ func (m *ResponseBool) Reset()         { *m = ResponseBool{} }
 func (m *ResponseBool) String() string { return proto.CompactTextString(m) }
 func (*ResponseBool) ProtoMessage()    {}
 func (*ResponseBool) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{4}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{4}
 }
 func (m *ResponseBool) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseBool.Unmarshal(m, b)
@@ -352,15 +352,15 @@ func (m *ResponseBool) GetValue() bool {
 // customProfileSchema Custom profile JSON Schema
 // servicePeers Service peers supported interpreted by the client
 type Config struct {
-	MaxGroupSize         int32                 `protobuf:"varint,1,opt,name=max_group_size,json=maxGroupSize" json:"max_group_size,omitempty"`
-	Discover             *Discover             `protobuf:"bytes,2,opt,name=discover" json:"discover,omitempty"`
-	ShareEndpoint        *wrappers.StringValue `protobuf:"bytes,4,opt,name=share_endpoint,json=shareEndpoint" json:"share_endpoint,omitempty"`
-	CallsConfig          *CallsConfig          `protobuf:"bytes,5,opt,name=calls_config,json=callsConfig" json:"calls_config,omitempty"`
-	GroupInviteConfig    *InvitesConfig        `protobuf:"bytes,6,opt,name=group_invite_config,json=groupInviteConfig" json:"group_invite_config,omitempty"`
-	ServerMetaInfo       *ServerMetaInfo       `protobuf:"bytes,7,opt,name=server_meta_info,json=serverMetaInfo" json:"server_meta_info,omitempty"`
-	CustomProfileSchema  string                `protobuf:"bytes,8,opt,name=custom_profile_schema,json=customProfileSchema" json:"custom_profile_schema,omitempty"`
-	ServicePeers         *ServicePeers         `protobuf:"bytes,9,opt,name=service_peers,json=servicePeers" json:"service_peers,omitempty"`
-	Extensions           []*Any                `protobuf:"bytes,3,rep,name=extensions" json:"extensions,omitempty"`
+	MaxGroupSize         int32                 `protobuf:"varint,1,opt,name=max_group_size,json=maxGroupSize,proto3" json:"max_group_size,omitempty"`
+	Discover             *Discover             `protobuf:"bytes,2,opt,name=discover,proto3" json:"discover,omitempty"`
+	ShareEndpoint        *wrappers.StringValue `protobuf:"bytes,4,opt,name=share_endpoint,json=shareEndpoint,proto3" json:"share_endpoint,omitempty"`
+	CallsConfig          *CallsConfig          `protobuf:"bytes,5,opt,name=calls_config,json=callsConfig,proto3" json:"calls_config,omitempty"`
+	GroupInviteConfig    *InvitesConfig        `protobuf:"bytes,6,opt,name=group_invite_config,json=groupInviteConfig,proto3" json:"group_invite_config,omitempty"`
+	ServerMetaInfo       *ServerMetaInfo       `protobuf:"bytes,7,opt,name=server_meta_info,json=serverMetaInfo,proto3" json:"server_meta_info,omitempty"`
+	CustomProfileSchema  string                `protobuf:"bytes,8,opt,name=custom_profile_schema,json=customProfileSchema,proto3" json:"custom_profile_schema,omitempty"`
+	ServicePeers         *ServicePeers         `protobuf:"bytes,9,opt,name=service_peers,json=servicePeers,proto3" json:"service_peers,omitempty"`
+	Extensions           []*Any                `protobuf:"bytes,3,rep,name=extensions,proto3" json:"extensions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -370,7 +370,7 @@ func (m *Config) Reset()         { *m = Config{} }
 func (m *Config) String() string { return proto.CompactTextString(m) }
 func (*Config) ProtoMessage()    {}
 func (*Config) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{5}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{5}
 }
 func (m *Config) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Config.Unmarshal(m, b)
@@ -455,9 +455,9 @@ func (m *Config) GetExtensions() []*Any {
 
 // Service peers
 type ServicePeers struct {
-	Security             *OutPeer `protobuf:"bytes,1,opt,name=security" json:"security,omitempty"`
-	Support              *OutPeer `protobuf:"bytes,2,opt,name=support" json:"support,omitempty"`
-	Stash                *OutPeer `protobuf:"bytes,3,opt,name=stash" json:"stash,omitempty"`
+	Security             *OutPeer `protobuf:"bytes,1,opt,name=security,proto3" json:"security,omitempty"`
+	Support              *OutPeer `protobuf:"bytes,2,opt,name=support,proto3" json:"support,omitempty"`
+	Stash                *OutPeer `protobuf:"bytes,3,opt,name=stash,proto3" json:"stash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -467,7 +467,7 @@ func (m *ServicePeers) Reset()         { *m = ServicePeers{} }
 func (m *ServicePeers) String() string { return proto.CompactTextString(m) }
 func (*ServicePeers) ProtoMessage()    {}
 func (*ServicePeers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{6}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{6}
 }
 func (m *ServicePeers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServicePeers.Unmarshal(m, b)
@@ -512,8 +512,8 @@ func (m *ServicePeers) GetStash() *OutPeer {
 // releaseDate Server release date in milliseconds
 // apiVersion Server api version
 type ServerMetaInfo struct {
-	ReleaseDate          int64                `protobuf:"varint,1,opt,name=release_date,json=releaseDate" json:"release_date,omitempty"`
-	ApiVersion           *wrappers.Int64Value `protobuf:"bytes,2,opt,name=api_version,json=apiVersion" json:"api_version,omitempty"`
+	ReleaseDate          int64                `protobuf:"varint,1,opt,name=release_date,json=releaseDate,proto3" json:"release_date,omitempty"`
+	ApiVersion           *wrappers.Int64Value `protobuf:"bytes,2,opt,name=api_version,json=apiVersion,proto3" json:"api_version,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -523,7 +523,7 @@ func (m *ServerMetaInfo) Reset()         { *m = ServerMetaInfo{} }
 func (m *ServerMetaInfo) String() string { return proto.CompactTextString(m) }
 func (*ServerMetaInfo) ProtoMessage()    {}
 func (*ServerMetaInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{7}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{7}
 }
 func (m *ServerMetaInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServerMetaInfo.Unmarshal(m, b)
@@ -566,13 +566,13 @@ func (m *ServerMetaInfo) GetApiVersion() *wrappers.Int64Value {
 // emojiSecurityEnabled If true then client should send and render emoji security
 // screenSharingEnabled If true then client should enable screen sharing
 type CallsConfig struct {
-	CallsEnabled         *wrappers.BoolValue  `protobuf:"bytes,1,opt,name=calls_enabled,json=callsEnabled" json:"calls_enabled,omitempty"`
-	VideoCallsEnabled    *wrappers.BoolValue  `protobuf:"bytes,2,opt,name=video_calls_enabled,json=videoCallsEnabled" json:"video_calls_enabled,omitempty"`
-	GroupCallsEnabled    *wrappers.BoolValue  `protobuf:"bytes,3,opt,name=group_calls_enabled,json=groupCallsEnabled" json:"group_calls_enabled,omitempty"`
-	GroupCallsMaxMembers *wrappers.Int32Value `protobuf:"bytes,4,opt,name=group_calls_max_members,json=groupCallsMaxMembers" json:"group_calls_max_members,omitempty"`
-	RtcpMuxPolicy        RtcpMuxPolicy        `protobuf:"varint,5,opt,name=rtcp_mux_policy,json=rtcpMuxPolicy,enum=dialog.RtcpMuxPolicy" json:"rtcp_mux_policy,omitempty"`
-	EmojiSecurityEnabled *wrappers.BoolValue  `protobuf:"bytes,6,opt,name=emoji_security_enabled,json=emojiSecurityEnabled" json:"emoji_security_enabled,omitempty"`
-	ScreenSharingEnabled *wrappers.BoolValue  `protobuf:"bytes,7,opt,name=screen_sharing_enabled,json=screenSharingEnabled" json:"screen_sharing_enabled,omitempty"`
+	CallsEnabled         *wrappers.BoolValue  `protobuf:"bytes,1,opt,name=calls_enabled,json=callsEnabled,proto3" json:"calls_enabled,omitempty"`
+	VideoCallsEnabled    *wrappers.BoolValue  `protobuf:"bytes,2,opt,name=video_calls_enabled,json=videoCallsEnabled,proto3" json:"video_calls_enabled,omitempty"`
+	GroupCallsEnabled    *wrappers.BoolValue  `protobuf:"bytes,3,opt,name=group_calls_enabled,json=groupCallsEnabled,proto3" json:"group_calls_enabled,omitempty"`
+	GroupCallsMaxMembers *wrappers.Int32Value `protobuf:"bytes,4,opt,name=group_calls_max_members,json=groupCallsMaxMembers,proto3" json:"group_calls_max_members,omitempty"`
+	RtcpMuxPolicy        RtcpMuxPolicy        `protobuf:"varint,5,opt,name=rtcp_mux_policy,json=rtcpMuxPolicy,proto3,enum=dialog.RtcpMuxPolicy" json:"rtcp_mux_policy,omitempty"`
+	EmojiSecurityEnabled *wrappers.BoolValue  `protobuf:"bytes,6,opt,name=emoji_security_enabled,json=emojiSecurityEnabled,proto3" json:"emoji_security_enabled,omitempty"`
+	ScreenSharingEnabled *wrappers.BoolValue  `protobuf:"bytes,7,opt,name=screen_sharing_enabled,json=screenSharingEnabled,proto3" json:"screen_sharing_enabled,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -582,7 +582,7 @@ func (m *CallsConfig) Reset()         { *m = CallsConfig{} }
 func (m *CallsConfig) String() string { return proto.CompactTextString(m) }
 func (*CallsConfig) ProtoMessage()    {}
 func (*CallsConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{8}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{8}
 }
 func (m *CallsConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CallsConfig.Unmarshal(m, b)
@@ -657,10 +657,10 @@ func (m *CallsConfig) GetScreenSharingEnabled() *wrappers.BoolValue {
 // resolveUrlPrefix Prefix for public groups and users link detection
 // shareInviteUrl Independent URL for external app sharing
 type InvitesConfig struct {
-	BaseUrl              *wrappers.StringValue `protobuf:"bytes,1,opt,name=base_url,json=baseUrl" json:"base_url,omitempty"`
-	GroupInviteUrlPrefix *wrappers.StringValue `protobuf:"bytes,2,opt,name=group_invite_url_prefix,json=groupInviteUrlPrefix" json:"group_invite_url_prefix,omitempty"`
-	ResolveUrlPrefix     *wrappers.StringValue `protobuf:"bytes,3,opt,name=resolve_url_prefix,json=resolveUrlPrefix" json:"resolve_url_prefix,omitempty"`
-	ShareInviteUrl       *wrappers.StringValue `protobuf:"bytes,4,opt,name=share_invite_url,json=shareInviteUrl" json:"share_invite_url,omitempty"`
+	BaseUrl              *wrappers.StringValue `protobuf:"bytes,1,opt,name=base_url,json=baseUrl,proto3" json:"base_url,omitempty"`
+	GroupInviteUrlPrefix *wrappers.StringValue `protobuf:"bytes,2,opt,name=group_invite_url_prefix,json=groupInviteUrlPrefix,proto3" json:"group_invite_url_prefix,omitempty"`
+	ResolveUrlPrefix     *wrappers.StringValue `protobuf:"bytes,3,opt,name=resolve_url_prefix,json=resolveUrlPrefix,proto3" json:"resolve_url_prefix,omitempty"`
+	ShareInviteUrl       *wrappers.StringValue `protobuf:"bytes,4,opt,name=share_invite_url,json=shareInviteUrl,proto3" json:"share_invite_url,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -670,7 +670,7 @@ func (m *InvitesConfig) Reset()         { *m = InvitesConfig{} }
 func (m *InvitesConfig) String() string { return proto.CompactTextString(m) }
 func (*InvitesConfig) ProtoMessage()    {}
 func (*InvitesConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{9}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{9}
 }
 func (m *InvitesConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InvitesConfig.Unmarshal(m, b)
@@ -721,7 +721,7 @@ func (m *InvitesConfig) GetShareInviteUrl() *wrappers.StringValue {
 // Discover description
 // peers peers
 type Discover struct {
-	Peers                []*OutPeer `protobuf:"bytes,1,rep,name=peers" json:"peers,omitempty"`
+	Peers                []*OutPeer `protobuf:"bytes,1,rep,name=peers,proto3" json:"peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -731,7 +731,7 @@ func (m *Discover) Reset()         { *m = Discover{} }
 func (m *Discover) String() string { return proto.CompactTextString(m) }
 func (*Discover) ProtoMessage()    {}
 func (*Discover) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{10}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{10}
 }
 func (m *Discover) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Discover.Unmarshal(m, b)
@@ -762,7 +762,7 @@ func (m *Discover) GetPeers() []*OutPeer {
 // id Extension id
 // data Extension data
 type Extension struct {
-	Id                   int32    `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Data                 []byte   `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -773,7 +773,7 @@ func (m *Extension) Reset()         { *m = Extension{} }
 func (m *Extension) String() string { return proto.CompactTextString(m) }
 func (*Extension) ProtoMessage()    {}
 func (*Extension) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{11}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{11}
 }
 func (m *Extension) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Extension.Unmarshal(m, b)
@@ -811,7 +811,7 @@ func (m *Extension) GetData() []byte {
 // typeUrl type url
 // data data
 type Any struct {
-	TypeUrl              string   `protobuf:"bytes,1,opt,name=type_url,json=typeUrl" json:"type_url,omitempty"`
+	TypeUrl              string   `protobuf:"bytes,1,opt,name=type_url,json=typeUrl,proto3" json:"type_url,omitempty"`
 	Data                 []byte   `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -822,7 +822,7 @@ func (m *Any) Reset()         { *m = Any{} }
 func (m *Any) String() string { return proto.CompactTextString(m) }
 func (*Any) ProtoMessage()    {}
 func (*Any) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{12}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{12}
 }
 func (m *Any) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Any.Unmarshal(m, b)
@@ -858,8 +858,8 @@ func (m *Any) GetData() []byte {
 
 // Update about config change
 type UpdateConfig struct {
-	Config               *Config              `protobuf:"bytes,1,opt,name=config" json:"config,omitempty"`
-	ConfigHash           *wrappers.Int64Value `protobuf:"bytes,2,opt,name=config_hash,json=configHash" json:"config_hash,omitempty"`
+	Config               *Config              `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
+	ConfigHash           *wrappers.Int64Value `protobuf:"bytes,2,opt,name=config_hash,json=configHash,proto3" json:"config_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -869,7 +869,7 @@ func (m *UpdateConfig) Reset()         { *m = UpdateConfig{} }
 func (m *UpdateConfig) String() string { return proto.CompactTextString(m) }
 func (*UpdateConfig) ProtoMessage()    {}
 func (*UpdateConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{13}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{13}
 }
 func (m *UpdateConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateConfig.Unmarshal(m, b)
@@ -904,7 +904,7 @@ func (m *UpdateConfig) GetConfigHash() *wrappers.Int64Value {
 }
 
 type RecursiveMapValue struct {
-	Items                []*RecursiveMapValue_Item `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	Items                []*RecursiveMapValue_Item `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
 	XXX_unrecognized     []byte                    `json:"-"`
 	XXX_sizecache        int32                     `json:"-"`
@@ -914,7 +914,7 @@ func (m *RecursiveMapValue) Reset()         { *m = RecursiveMapValue{} }
 func (m *RecursiveMapValue) String() string { return proto.CompactTextString(m) }
 func (*RecursiveMapValue) ProtoMessage()    {}
 func (*RecursiveMapValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{14}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{14}
 }
 func (m *RecursiveMapValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RecursiveMapValue.Unmarshal(m, b)
@@ -959,7 +959,7 @@ func (m *RecursiveMapValue_Value) Reset()         { *m = RecursiveMapValue_Value
 func (m *RecursiveMapValue_Value) String() string { return proto.CompactTextString(m) }
 func (*RecursiveMapValue_Value) ProtoMessage()    {}
 func (*RecursiveMapValue_Value) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{14, 0}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{14, 0}
 }
 func (m *RecursiveMapValue_Value) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RecursiveMapValue_Value.Unmarshal(m, b)
@@ -984,29 +984,39 @@ type isRecursiveMapValue_Value_Value interface {
 }
 
 type RecursiveMapValue_Value_D struct {
-	D *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=d,oneof"`
-}
-type RecursiveMapValue_Value_I32 struct {
-	I32 *wrappers.Int32Value `protobuf:"bytes,3,opt,name=i32,oneof"`
-}
-type RecursiveMapValue_Value_I64 struct {
-	I64 *wrappers.Int64Value `protobuf:"bytes,4,opt,name=i64,oneof"`
-}
-type RecursiveMapValue_Value_Str struct {
-	Str *wrappers.StringValue `protobuf:"bytes,5,opt,name=str,oneof"`
-}
-type RecursiveMapValue_Value_Rec struct {
-	Rec *RecursiveMapValue `protobuf:"bytes,6,opt,name=rec,oneof"`
-}
-type RecursiveMapValue_Value_ArrayRec struct {
-	ArrayRec *RecursiveMapValue_Array `protobuf:"bytes,7,opt,name=array_rec,json=arrayRec,oneof"`
+	D *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=d,proto3,oneof"`
 }
 
-func (*RecursiveMapValue_Value_D) isRecursiveMapValue_Value_Value()        {}
-func (*RecursiveMapValue_Value_I32) isRecursiveMapValue_Value_Value()      {}
-func (*RecursiveMapValue_Value_I64) isRecursiveMapValue_Value_Value()      {}
-func (*RecursiveMapValue_Value_Str) isRecursiveMapValue_Value_Value()      {}
-func (*RecursiveMapValue_Value_Rec) isRecursiveMapValue_Value_Value()      {}
+type RecursiveMapValue_Value_I32 struct {
+	I32 *wrappers.Int32Value `protobuf:"bytes,3,opt,name=i32,proto3,oneof"`
+}
+
+type RecursiveMapValue_Value_I64 struct {
+	I64 *wrappers.Int64Value `protobuf:"bytes,4,opt,name=i64,proto3,oneof"`
+}
+
+type RecursiveMapValue_Value_Str struct {
+	Str *wrappers.StringValue `protobuf:"bytes,5,opt,name=str,proto3,oneof"`
+}
+
+type RecursiveMapValue_Value_Rec struct {
+	Rec *RecursiveMapValue `protobuf:"bytes,6,opt,name=rec,proto3,oneof"`
+}
+
+type RecursiveMapValue_Value_ArrayRec struct {
+	ArrayRec *RecursiveMapValue_Array `protobuf:"bytes,7,opt,name=array_rec,json=arrayRec,proto3,oneof"`
+}
+
+func (*RecursiveMapValue_Value_D) isRecursiveMapValue_Value_Value() {}
+
+func (*RecursiveMapValue_Value_I32) isRecursiveMapValue_Value_Value() {}
+
+func (*RecursiveMapValue_Value_I64) isRecursiveMapValue_Value_Value() {}
+
+func (*RecursiveMapValue_Value_Str) isRecursiveMapValue_Value_Value() {}
+
+func (*RecursiveMapValue_Value_Rec) isRecursiveMapValue_Value_Value() {}
+
 func (*RecursiveMapValue_Value_ArrayRec) isRecursiveMapValue_Value_Value() {}
 
 func (m *RecursiveMapValue_Value) GetValue() isRecursiveMapValue_Value_Value {
@@ -1209,7 +1219,7 @@ func _RecursiveMapValue_Value_OneofSizer(msg proto.Message) (n int) {
 }
 
 type RecursiveMapValue_Array struct {
-	Values               []*RecursiveMapValue_Value `protobuf:"bytes,1,rep,name=values" json:"values,omitempty"`
+	Values               []*RecursiveMapValue_Value `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
 	XXX_unrecognized     []byte                     `json:"-"`
 	XXX_sizecache        int32                      `json:"-"`
@@ -1219,7 +1229,7 @@ func (m *RecursiveMapValue_Array) Reset()         { *m = RecursiveMapValue_Array
 func (m *RecursiveMapValue_Array) String() string { return proto.CompactTextString(m) }
 func (*RecursiveMapValue_Array) ProtoMessage()    {}
 func (*RecursiveMapValue_Array) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{14, 1}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{14, 1}
 }
 func (m *RecursiveMapValue_Array) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RecursiveMapValue_Array.Unmarshal(m, b)
@@ -1247,8 +1257,8 @@ func (m *RecursiveMapValue_Array) GetValues() []*RecursiveMapValue_Value {
 }
 
 type RecursiveMapValue_Item struct {
-	Key                  string                   `protobuf:"bytes,1,opt,name=key" json:"key,omitempty"`
-	Value                *RecursiveMapValue_Value `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
+	Key                  string                   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value                *RecursiveMapValue_Value `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
 	XXX_unrecognized     []byte                   `json:"-"`
 	XXX_sizecache        int32                    `json:"-"`
@@ -1258,7 +1268,7 @@ func (m *RecursiveMapValue_Item) Reset()         { *m = RecursiveMapValue_Item{}
 func (m *RecursiveMapValue_Item) String() string { return proto.CompactTextString(m) }
 func (*RecursiveMapValue_Item) ProtoMessage()    {}
 func (*RecursiveMapValue_Item) Descriptor() ([]byte, []int) {
-	return fileDescriptor_miscellaneous_4be2cf02acbe51b6, []int{14, 2}
+	return fileDescriptor_miscellaneous_6d02c003e7e4314a, []int{14, 2}
 }
 func (m *RecursiveMapValue_Item) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RecursiveMapValue_Item.Unmarshal(m, b)
@@ -1315,9 +1325,9 @@ func init() {
 	proto.RegisterEnum("dialog.UpdateOptimization", UpdateOptimization_name, UpdateOptimization_value)
 }
 
-func init() { proto.RegisterFile("miscellaneous.proto", fileDescriptor_miscellaneous_4be2cf02acbe51b6) }
+func init() { proto.RegisterFile("miscellaneous.proto", fileDescriptor_miscellaneous_6d02c003e7e4314a) }
 
-var fileDescriptor_miscellaneous_4be2cf02acbe51b6 = []byte{
+var fileDescriptor_miscellaneous_6d02c003e7e4314a = []byte{
 	// 1517 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x57, 0x4b, 0x6f, 0xdb, 0xc6,
 	0x16, 0x36, 0x25, 0xeb, 0xe1, 0x23, 0xd9, 0x91, 0xc7, 0x8f, 0x28, 0xca, 0x4b, 0xd1, 0x4d, 0x2e,

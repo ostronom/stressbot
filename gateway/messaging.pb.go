@@ -52,7 +52,7 @@ func (x InteractiveMediaStyle) String() string {
 	return proto.EnumName(InteractiveMediaStyle_name, int32(x))
 }
 func (InteractiveMediaStyle) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{0}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{0}
 }
 
 type MessageState int32
@@ -81,7 +81,7 @@ func (x MessageState) String() string {
 	return proto.EnumName(MessageState_name, int32(x))
 }
 func (MessageState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{1}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{1}
 }
 
 type ListLoadMode int32
@@ -110,7 +110,7 @@ func (x ListLoadMode) String() string {
 	return proto.EnumName(ListLoadMode_name, int32(x))
 }
 func (ListLoadMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{2}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{2}
 }
 
 type DialogsFilter int32
@@ -136,19 +136,19 @@ func (x DialogsFilter) String() string {
 	return proto.EnumName(DialogsFilter_name, int32(x))
 }
 func (DialogsFilter) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{3}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{3}
 }
 
 // Message Attributes
-// isMentioned Is mentioned. If set overrides built-in value.
-// isHighlighted Is message highlighted. Default is false.
-// isNotified Is notified. If set overrides built-in settings.
-// isOnlyForYou If this message is only for you. Default is false
 type MessageAttributes struct {
-	IsMentioned          *wrappers.BoolValue `protobuf:"bytes,1,opt,name=is_mentioned,json=isMentioned" json:"is_mentioned,omitempty"`
-	IsHighlighted        *wrappers.BoolValue `protobuf:"bytes,2,opt,name=is_highlighted,json=isHighlighted" json:"is_highlighted,omitempty"`
-	IsNotified           *wrappers.BoolValue `protobuf:"bytes,3,opt,name=is_notified,json=isNotified" json:"is_notified,omitempty"`
-	IsOnlyForYou         *wrappers.BoolValue `protobuf:"bytes,4,opt,name=is_only_for_you,json=isOnlyForYou" json:"is_only_for_you,omitempty"`
+	// / Is mentioned. If set overrides built-in value.
+	IsMentioned *wrappers.BoolValue `protobuf:"bytes,1,opt,name=is_mentioned,json=isMentioned,proto3" json:"is_mentioned,omitempty"`
+	// / Is message highlighted. Default is false.
+	IsHighlighted *wrappers.BoolValue `protobuf:"bytes,2,opt,name=is_highlighted,json=isHighlighted,proto3" json:"is_highlighted,omitempty"`
+	// / Is notified. If set overrides built-in settings.
+	IsNotified *wrappers.BoolValue `protobuf:"bytes,3,opt,name=is_notified,json=isNotified,proto3" json:"is_notified,omitempty"`
+	// / If this message is only for you. Default is false
+	IsOnlyForYou         *wrappers.BoolValue `protobuf:"bytes,4,opt,name=is_only_for_you,json=isOnlyForYou,proto3" json:"is_only_for_you,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -158,7 +158,7 @@ func (m *MessageAttributes) Reset()         { *m = MessageAttributes{} }
 func (m *MessageAttributes) String() string { return proto.CompactTextString(m) }
 func (*MessageAttributes) ProtoMessage()    {}
 func (*MessageAttributes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{0}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{0}
 }
 func (m *MessageAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MessageAttributes.Unmarshal(m, b)
@@ -207,17 +207,22 @@ func (m *MessageAttributes) GetIsOnlyForYou() *wrappers.BoolValue {
 }
 
 // Quoted Message
-// messageId Message Id if present
-// publicGroupId Public Group id if present
-// senderUserId Sender of message
-// messageDate Date of message
-// quotedMessageContent Optional Quoted Message Content. Can be empty if messageId is present and message is in current peer.
+// messageId
+// publicGroupId
+// senderUserId
+// messageDate
+// quotedMessageContent
 type QuotedMessage struct {
-	MessageId            int64           `protobuf:"varint,1,opt,name=message_id,json=messageId" json:"message_id,omitempty"`
-	PublicGroupId        int32           `protobuf:"varint,2,opt,name=public_group_id,json=publicGroupId" json:"public_group_id,omitempty"`
-	SenderUserId         int32           `protobuf:"varint,3,opt,name=sender_user_id,json=senderUserId" json:"sender_user_id,omitempty"`
-	MessageDate          int64           `protobuf:"varint,4,opt,name=message_date,json=messageDate" json:"message_date,omitempty"`
-	QuotedMessageContent *MessageContent `protobuf:"bytes,5,opt,name=quoted_message_content,json=quotedMessageContent" json:"quoted_message_content,omitempty"`
+	// / Message Id if present
+	MessageId int64 `protobuf:"varint,1,opt,name=message_id,json=messageId,proto3" json:"message_id,omitempty"`
+	// / Public Group id if present
+	PublicGroupId int32 `protobuf:"varint,2,opt,name=public_group_id,json=publicGroupId,proto3" json:"public_group_id,omitempty"`
+	SenderUserId  int32 `protobuf:"varint,3,opt,name=sender_user_id,json=senderUserId,proto3" json:"sender_user_id,omitempty"`
+	MessageDate   int64 `protobuf:"varint,4,opt,name=message_date,json=messageDate,proto3" json:"message_date,omitempty"`
+	// *
+	// Optional Quoted Message Content.
+	// Can be empty if messageId is present and message is in current peer.
+	QuotedMessageContent *MessageContent `protobuf:"bytes,5,opt,name=quoted_message_content,json=quotedMessageContent,proto3" json:"quoted_message_content,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -227,7 +232,7 @@ func (m *QuotedMessage) Reset()         { *m = QuotedMessage{} }
 func (m *QuotedMessage) String() string { return proto.CompactTextString(m) }
 func (*QuotedMessage) ProtoMessage()    {}
 func (*QuotedMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{1}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{1}
 }
 func (m *QuotedMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QuotedMessage.Unmarshal(m, b)
@@ -283,15 +288,11 @@ func (m *QuotedMessage) GetQuotedMessageContent() *MessageContent {
 }
 
 // Message media
-// webpage webpage
-// image image
-// audio audio
-// actions bot api actions
 type MessageMedia struct {
-	Webpage              *WebpageMedia            `protobuf:"bytes,1,opt,name=webpage" json:"webpage,omitempty"`
-	Image                *ImageMedia              `protobuf:"bytes,2,opt,name=image" json:"image,omitempty"`
-	Audio                *AudioMedia              `protobuf:"bytes,3,opt,name=audio" json:"audio,omitempty"`
-	Actions              []*InteractiveMediaGroup `protobuf:"bytes,6,rep,name=actions" json:"actions,omitempty"`
+	Webpage              *WebpageMedia            `protobuf:"bytes,1,opt,name=webpage,proto3" json:"webpage,omitempty"`
+	Image                *ImageMedia              `protobuf:"bytes,2,opt,name=image,proto3" json:"image,omitempty"`
+	Audio                *AudioMedia              `protobuf:"bytes,3,opt,name=audio,proto3" json:"audio,omitempty"`
+	Actions              []*InteractiveMediaGroup `protobuf:"bytes,6,rep,name=actions,proto3" json:"actions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
 	XXX_unrecognized     []byte                   `json:"-"`
 	XXX_sizecache        int32                    `json:"-"`
@@ -301,7 +302,7 @@ func (m *MessageMedia) Reset()         { *m = MessageMedia{} }
 func (m *MessageMedia) String() string { return proto.CompactTextString(m) }
 func (*MessageMedia) ProtoMessage()    {}
 func (*MessageMedia) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{2}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{2}
 }
 func (m *MessageMedia) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MessageMedia.Unmarshal(m, b)
@@ -350,15 +351,11 @@ func (m *MessageMedia) GetActions() []*InteractiveMediaGroup {
 }
 
 // Webpage media
-// url url
-// title title
-// description description
-// image image file location
 type WebpageMedia struct {
-	Url                  *wrappers.StringValue `protobuf:"bytes,1,opt,name=url" json:"url,omitempty"`
-	Title                *wrappers.StringValue `protobuf:"bytes,2,opt,name=title" json:"title,omitempty"`
-	Description          *wrappers.StringValue `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
-	Image                *ImageLocation        `protobuf:"bytes,4,opt,name=image" json:"image,omitempty"`
+	Url                  *wrappers.StringValue `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	Title                *wrappers.StringValue `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Description          *wrappers.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Image                *ImageLocation        `protobuf:"bytes,4,opt,name=image,proto3" json:"image,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -368,7 +365,7 @@ func (m *WebpageMedia) Reset()         { *m = WebpageMedia{} }
 func (m *WebpageMedia) String() string { return proto.CompactTextString(m) }
 func (*WebpageMedia) ProtoMessage()    {}
 func (*WebpageMedia) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{3}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{3}
 }
 func (m *WebpageMedia) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebpageMedia.Unmarshal(m, b)
@@ -419,7 +416,7 @@ func (m *WebpageMedia) GetImage() *ImageLocation {
 // Image media
 // image image
 type ImageMedia struct {
-	Image                *ImageLocation `protobuf:"bytes,1,opt,name=image" json:"image,omitempty"`
+	Image                *ImageLocation `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -429,7 +426,7 @@ func (m *ImageMedia) Reset()         { *m = ImageMedia{} }
 func (m *ImageMedia) String() string { return proto.CompactTextString(m) }
 func (*ImageMedia) ProtoMessage()    {}
 func (*ImageMedia) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{4}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{4}
 }
 func (m *ImageMedia) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageMedia.Unmarshal(m, b)
@@ -457,9 +454,8 @@ func (m *ImageMedia) GetImage() *ImageLocation {
 }
 
 // Audio media
-// audio audio
 type AudioMedia struct {
-	Audio                *AudioLocation `protobuf:"bytes,1,opt,name=audio" json:"audio,omitempty"`
+	Audio                *AudioLocation `protobuf:"bytes,1,opt,name=audio,proto3" json:"audio,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -469,7 +465,7 @@ func (m *AudioMedia) Reset()         { *m = AudioMedia{} }
 func (m *AudioMedia) String() string { return proto.CompactTextString(m) }
 func (*AudioMedia) ProtoMessage()    {}
 func (*AudioMedia) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{5}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{5}
 }
 func (m *AudioMedia) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioMedia.Unmarshal(m, b)
@@ -496,6 +492,7 @@ func (m *AudioMedia) GetAudio() *AudioLocation {
 	return nil
 }
 
+// / Some interactive element inside a message
 type InteractiveMediaWidget struct {
 	// Types that are valid to be assigned to Body:
 	//	*InteractiveMediaWidget_InteractiveMediaButton
@@ -510,7 +507,7 @@ func (m *InteractiveMediaWidget) Reset()         { *m = InteractiveMediaWidget{}
 func (m *InteractiveMediaWidget) String() string { return proto.CompactTextString(m) }
 func (*InteractiveMediaWidget) ProtoMessage()    {}
 func (*InteractiveMediaWidget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{6}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{6}
 }
 func (m *InteractiveMediaWidget) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractiveMediaWidget.Unmarshal(m, b)
@@ -535,13 +532,15 @@ type isInteractiveMediaWidget_Body interface {
 }
 
 type InteractiveMediaWidget_InteractiveMediaButton struct {
-	InteractiveMediaButton *InteractiveMediaButton `protobuf:"bytes,1,opt,name=interactiveMediaButton,oneof"`
+	InteractiveMediaButton *InteractiveMediaButton `protobuf:"bytes,1,opt,name=interactiveMediaButton,proto3,oneof"`
 }
+
 type InteractiveMediaWidget_InteractiveMediaSelect struct {
-	InteractiveMediaSelect *InteractiveMediaSelect `protobuf:"bytes,2,opt,name=interactiveMediaSelect,oneof"`
+	InteractiveMediaSelect *InteractiveMediaSelect `protobuf:"bytes,2,opt,name=interactiveMediaSelect,proto3,oneof"`
 }
 
 func (*InteractiveMediaWidget_InteractiveMediaButton) isInteractiveMediaWidget_Body() {}
+
 func (*InteractiveMediaWidget_InteractiveMediaSelect) isInteractiveMediaWidget_Body() {}
 
 func (m *InteractiveMediaWidget) GetBody() isInteractiveMediaWidget_Body {
@@ -640,11 +639,10 @@ func _InteractiveMediaWidget_OneofSizer(msg proto.Message) (n int) {
 }
 
 // A 'Button' widget
-// value A value for this button
-// label A user-visible description of this button
 type InteractiveMediaButton struct {
-	Value                string                `protobuf:"bytes,1,opt,name=value" json:"value,omitempty"`
-	Label                *wrappers.StringValue `protobuf:"bytes,2,opt,name=label" json:"label,omitempty"`
+	Value string `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	// / A user-visible description of this button
+	Label                *wrappers.StringValue `protobuf:"bytes,2,opt,name=label,proto3" json:"label,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -654,7 +652,7 @@ func (m *InteractiveMediaButton) Reset()         { *m = InteractiveMediaButton{}
 func (m *InteractiveMediaButton) String() string { return proto.CompactTextString(m) }
 func (*InteractiveMediaButton) ProtoMessage()    {}
 func (*InteractiveMediaButton) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{7}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{7}
 }
 func (m *InteractiveMediaButton) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractiveMediaButton.Unmarshal(m, b)
@@ -689,23 +687,23 @@ func (m *InteractiveMediaButton) GetLabel() *wrappers.StringValue {
 }
 
 // A select from multiple values widget
-// options list of values to present to user
-// label A user-visible descripton of this select
-// defaultValue A value that will be selected by default
 type InteractiveMediaSelect struct {
-	Options              []*InteractiveMediaSelectOption `protobuf:"bytes,1,rep,name=options" json:"options,omitempty"`
-	Label                *wrappers.StringValue           `protobuf:"bytes,2,opt,name=label" json:"label,omitempty"`
-	DefaultValue         *wrappers.StringValue           `protobuf:"bytes,3,opt,name=default_value,json=defaultValue" json:"default_value,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	// / list of values to present to user
+	Options []*InteractiveMediaSelectOption `protobuf:"bytes,1,rep,name=options,proto3" json:"options,omitempty"`
+	// / A user-visible descripton of this select
+	Label *wrappers.StringValue `protobuf:"bytes,2,opt,name=label,proto3" json:"label,omitempty"`
+	// / A value that will be selected by default
+	DefaultValue         *wrappers.StringValue `protobuf:"bytes,3,opt,name=default_value,json=defaultValue,proto3" json:"default_value,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
 }
 
 func (m *InteractiveMediaSelect) Reset()         { *m = InteractiveMediaSelect{} }
 func (m *InteractiveMediaSelect) String() string { return proto.CompactTextString(m) }
 func (*InteractiveMediaSelect) ProtoMessage()    {}
 func (*InteractiveMediaSelect) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{8}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{8}
 }
 func (m *InteractiveMediaSelect) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractiveMediaSelect.Unmarshal(m, b)
@@ -747,11 +745,9 @@ func (m *InteractiveMediaSelect) GetDefaultValue() *wrappers.StringValue {
 }
 
 // A row in the select widget
-// value id of the row
-// label a user visible text for this row
 type InteractiveMediaSelectOption struct {
-	Value                string   `protobuf:"bytes,1,opt,name=value" json:"value,omitempty"`
-	Label                string   `protobuf:"bytes,2,opt,name=label" json:"label,omitempty"`
+	Value                string   `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	Label                string   `protobuf:"bytes,2,opt,name=label,proto3" json:"label,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -761,7 +757,7 @@ func (m *InteractiveMediaSelectOption) Reset()         { *m = InteractiveMediaSe
 func (m *InteractiveMediaSelectOption) String() string { return proto.CompactTextString(m) }
 func (*InteractiveMediaSelectOption) ProtoMessage()    {}
 func (*InteractiveMediaSelectOption) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{9}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{9}
 }
 func (m *InteractiveMediaSelectOption) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractiveMediaSelectOption.Unmarshal(m, b)
@@ -797,15 +793,16 @@ func (m *InteractiveMediaSelectOption) GetLabel() string {
 
 // A text message extension representing an interactive action.
 // Can be used to add widgets (such as buttons, selects, etc) to messages.
-// id identifier of the media action
-// widget a widget to be shown to user
-// style a style of the widget, which is interpreted by the client
-// confirm a content of the alert dialog that will be show to user when they perform the media action
 type InteractiveMedia struct {
-	Id                   string                   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	Widget               *InteractiveMediaWidget  `protobuf:"bytes,2,opt,name=widget" json:"widget,omitempty"`
-	Style                InteractiveMediaStyle    `protobuf:"varint,3,opt,name=style,enum=dialog.InteractiveMediaStyle" json:"style,omitempty"`
-	Confirm              *InteractiveMediaConfirm `protobuf:"bytes,4,opt,name=confirm" json:"confirm,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// / a widget to be shown to user
+	Widget *InteractiveMediaWidget `protobuf:"bytes,2,opt,name=widget,proto3" json:"widget,omitempty"`
+	// / a style of the widget, which is interpreted by the client
+	Style InteractiveMediaStyle `protobuf:"varint,3,opt,name=style,proto3,enum=dialog.InteractiveMediaStyle" json:"style,omitempty"`
+	// *
+	// A content of the alert dialog that will be show to user
+	// when they perform the media action
+	Confirm              *InteractiveMediaConfirm `protobuf:"bytes,4,opt,name=confirm,proto3" json:"confirm,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
 	XXX_unrecognized     []byte                   `json:"-"`
 	XXX_sizecache        int32                    `json:"-"`
@@ -815,7 +812,7 @@ func (m *InteractiveMedia) Reset()         { *m = InteractiveMedia{} }
 func (m *InteractiveMedia) String() string { return proto.CompactTextString(m) }
 func (*InteractiveMedia) ProtoMessage()    {}
 func (*InteractiveMedia) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{10}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{10}
 }
 func (m *InteractiveMedia) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractiveMedia.Unmarshal(m, b)
@@ -863,11 +860,9 @@ func (m *InteractiveMedia) GetConfirm() *InteractiveMediaConfirm {
 	return nil
 }
 
-// id a translation id
-// value a translation value
 type InteractiveMediaTranslation struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	Value                string   `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Value                string   `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -877,7 +872,7 @@ func (m *InteractiveMediaTranslation) Reset()         { *m = InteractiveMediaTra
 func (m *InteractiveMediaTranslation) String() string { return proto.CompactTextString(m) }
 func (*InteractiveMediaTranslation) ProtoMessage()    {}
 func (*InteractiveMediaTranslation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{11}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{11}
 }
 func (m *InteractiveMediaTranslation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractiveMediaTranslation.Unmarshal(m, b)
@@ -911,11 +906,11 @@ func (m *InteractiveMediaTranslation) GetValue() string {
 	return ""
 }
 
-// language a translation group language
-// messages a list of translation mesages
 type InteractiveMediaTranslationGroup struct {
-	Language             string                         `protobuf:"bytes,1,opt,name=language" json:"language,omitempty"`
-	Messages             []*InteractiveMediaTranslation `protobuf:"bytes,2,rep,name=messages" json:"messages,omitempty"`
+	// / a translation group language
+	Language string `protobuf:"bytes,1,opt,name=language,proto3" json:"language,omitempty"`
+	// / a list of translation mesages
+	Messages             []*InteractiveMediaTranslation `protobuf:"bytes,2,rep,name=messages,proto3" json:"messages,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
 	XXX_unrecognized     []byte                         `json:"-"`
 	XXX_sizecache        int32                          `json:"-"`
@@ -925,7 +920,7 @@ func (m *InteractiveMediaTranslationGroup) Reset()         { *m = InteractiveMed
 func (m *InteractiveMediaTranslationGroup) String() string { return proto.CompactTextString(m) }
 func (*InteractiveMediaTranslationGroup) ProtoMessage()    {}
 func (*InteractiveMediaTranslationGroup) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{12}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{12}
 }
 func (m *InteractiveMediaTranslationGroup) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractiveMediaTranslationGroup.Unmarshal(m, b)
@@ -960,15 +955,15 @@ func (m *InteractiveMediaTranslationGroup) GetMessages() []*InteractiveMediaTran
 }
 
 // A group of interactive media actions
-// actions the list of actions
-// title an optional title of the group
-// description an optional description of the group
-// translations a media content translations
 type InteractiveMediaGroup struct {
-	Actions              []*InteractiveMedia                 `protobuf:"bytes,1,rep,name=actions" json:"actions,omitempty"`
-	Title                *wrappers.StringValue               `protobuf:"bytes,2,opt,name=title" json:"title,omitempty"`
-	Description          *wrappers.StringValue               `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
-	Translations         []*InteractiveMediaTranslationGroup `protobuf:"bytes,4,rep,name=translations" json:"translations,omitempty"`
+	// / the list of actions
+	Actions []*InteractiveMedia `protobuf:"bytes,1,rep,name=actions,proto3" json:"actions,omitempty"`
+	// / an optional title of the group
+	Title *wrappers.StringValue `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	// / an optional description of the group
+	Description *wrappers.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	// / a media content translations
+	Translations         []*InteractiveMediaTranslationGroup `protobuf:"bytes,4,rep,name=translations,proto3" json:"translations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
 	XXX_unrecognized     []byte                              `json:"-"`
 	XXX_sizecache        int32                               `json:"-"`
@@ -978,7 +973,7 @@ func (m *InteractiveMediaGroup) Reset()         { *m = InteractiveMediaGroup{} }
 func (m *InteractiveMediaGroup) String() string { return proto.CompactTextString(m) }
 func (*InteractiveMediaGroup) ProtoMessage()    {}
 func (*InteractiveMediaGroup) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{13}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{13}
 }
 func (m *InteractiveMediaGroup) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractiveMediaGroup.Unmarshal(m, b)
@@ -1027,15 +1022,15 @@ func (m *InteractiveMediaGroup) GetTranslations() []*InteractiveMediaTranslation
 }
 
 // An alert dialog content to show to user
-// text the optional alert dialog prompt
-// title the optional alert dialog title
-// ok the optional confirm button text
-// dismiss the optional cancel button text
 type InteractiveMediaConfirm struct {
-	Text                 *wrappers.StringValue `protobuf:"bytes,1,opt,name=text" json:"text,omitempty"`
-	Title                *wrappers.StringValue `protobuf:"bytes,2,opt,name=title" json:"title,omitempty"`
-	Ok                   *wrappers.StringValue `protobuf:"bytes,3,opt,name=ok" json:"ok,omitempty"`
-	Dismiss              *wrappers.StringValue `protobuf:"bytes,4,opt,name=dismiss" json:"dismiss,omitempty"`
+	// / the optional alert dialog prompt
+	Text *wrappers.StringValue `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	// / the optional alert dialog title
+	Title *wrappers.StringValue `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	// / the optional confirm button text
+	Ok *wrappers.StringValue `protobuf:"bytes,3,opt,name=ok,proto3" json:"ok,omitempty"`
+	// / the optional cancel button text
+	Dismiss              *wrappers.StringValue `protobuf:"bytes,4,opt,name=dismiss,proto3" json:"dismiss,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -1045,7 +1040,7 @@ func (m *InteractiveMediaConfirm) Reset()         { *m = InteractiveMediaConfirm
 func (m *InteractiveMediaConfirm) String() string { return proto.CompactTextString(m) }
 func (*InteractiveMediaConfirm) ProtoMessage()    {}
 func (*InteractiveMediaConfirm) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{14}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{14}
 }
 func (m *InteractiveMediaConfirm) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractiveMediaConfirm.Unmarshal(m, b)
@@ -1095,20 +1090,24 @@ func (m *InteractiveMediaConfirm) GetDismiss() *wrappers.StringValue {
 
 // The update which will be received when the action is performed. Duplicated on all clients.
 type UpdateInteractiveMediaEvent struct {
-	Mid                  *UUIDValue `protobuf:"bytes,1,opt,name=mid" json:"mid,omitempty"`
-	Id                   string     `protobuf:"bytes,2,opt,name=id" json:"id,omitempty"`
-	Value                string     `protobuf:"bytes,3,opt,name=value" json:"value,omitempty"`
-	Uid                  int32      `protobuf:"varint,4,opt,name=uid" json:"uid,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	// / Message id of the message that contains interactive media
+	Mid *UUIDValue `protobuf:"bytes,1,opt,name=mid,proto3" json:"mid,omitempty"`
+	// / identifier of the media action
+	Id string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	// / selected value of that action
+	Value string `protobuf:"bytes,3,opt,name=value,proto3" json:"value,omitempty"`
+	// / who interacted with that media
+	Uid                  int32    `protobuf:"varint,4,opt,name=uid,proto3" json:"uid,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *UpdateInteractiveMediaEvent) Reset()         { *m = UpdateInteractiveMediaEvent{} }
 func (m *UpdateInteractiveMediaEvent) String() string { return proto.CompactTextString(m) }
 func (*UpdateInteractiveMediaEvent) ProtoMessage()    {}
 func (*UpdateInteractiveMediaEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{15}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{15}
 }
 func (m *UpdateInteractiveMediaEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateInteractiveMediaEvent.Unmarshal(m, b)
@@ -1158,9 +1157,10 @@ func (m *UpdateInteractiveMediaEvent) GetUid() int32 {
 
 // Sends a request to do interactive media message
 type RequestDoInteractiveMediaAction struct {
-	Mid                  *UUIDValue `protobuf:"bytes,1,opt,name=mid" json:"mid,omitempty"`
-	Id                   string     `protobuf:"bytes,2,opt,name=id" json:"id,omitempty"`
-	Value                string     `protobuf:"bytes,3,opt,name=value" json:"value,omitempty"`
+	// / Message id of the enclosed message
+	Mid                  *UUIDValue `protobuf:"bytes,1,opt,name=mid,proto3" json:"mid,omitempty"`
+	Id                   string     `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Value                string     `protobuf:"bytes,3,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -1170,7 +1170,7 @@ func (m *RequestDoInteractiveMediaAction) Reset()         { *m = RequestDoIntera
 func (m *RequestDoInteractiveMediaAction) String() string { return proto.CompactTextString(m) }
 func (*RequestDoInteractiveMediaAction) ProtoMessage()    {}
 func (*RequestDoInteractiveMediaAction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{16}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{16}
 }
 func (m *RequestDoInteractiveMediaAction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestDoInteractiveMediaAction.Unmarshal(m, b)
@@ -1232,7 +1232,7 @@ func (m *MessageContent) Reset()         { *m = MessageContent{} }
 func (m *MessageContent) String() string { return proto.CompactTextString(m) }
 func (*MessageContent) ProtoMessage()    {}
 func (*MessageContent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{17}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{17}
 }
 func (m *MessageContent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MessageContent.Unmarshal(m, b)
@@ -1257,42 +1257,58 @@ type isMessageContent_Body interface {
 }
 
 type MessageContent_TextMessage struct {
-	TextMessage *TextMessage `protobuf:"bytes,1,opt,name=textMessage,oneof"`
-}
-type MessageContent_ServiceMessage struct {
-	ServiceMessage *ServiceMessage `protobuf:"bytes,2,opt,name=serviceMessage,oneof"`
-}
-type MessageContent_DocumentMessage struct {
-	DocumentMessage *DocumentMessage `protobuf:"bytes,3,opt,name=documentMessage,oneof"`
-}
-type MessageContent_JsonMessage struct {
-	JsonMessage *JsonMessage `protobuf:"bytes,4,opt,name=jsonMessage,oneof"`
-}
-type MessageContent_UnsupportedMessage struct {
-	UnsupportedMessage *UnsupportedMessage `protobuf:"bytes,5,opt,name=unsupportedMessage,oneof"`
-}
-type MessageContent_StickerMessage struct {
-	StickerMessage *StickerMessage `protobuf:"bytes,6,opt,name=stickerMessage,oneof"`
-}
-type MessageContent_BinaryMessage struct {
-	BinaryMessage *BinaryMessage `protobuf:"bytes,7,opt,name=binaryMessage,oneof"`
-}
-type MessageContent_EmptyMessage struct {
-	EmptyMessage *EmptyMessage `protobuf:"bytes,8,opt,name=emptyMessage,oneof"`
-}
-type MessageContent_DeletedMessage struct {
-	DeletedMessage *DeletedMessage `protobuf:"bytes,9,opt,name=deletedMessage,oneof"`
+	TextMessage *TextMessage `protobuf:"bytes,1,opt,name=textMessage,proto3,oneof"`
 }
 
-func (*MessageContent_TextMessage) isMessageContent_Body()        {}
-func (*MessageContent_ServiceMessage) isMessageContent_Body()     {}
-func (*MessageContent_DocumentMessage) isMessageContent_Body()    {}
-func (*MessageContent_JsonMessage) isMessageContent_Body()        {}
+type MessageContent_ServiceMessage struct {
+	ServiceMessage *ServiceMessage `protobuf:"bytes,2,opt,name=serviceMessage,proto3,oneof"`
+}
+
+type MessageContent_DocumentMessage struct {
+	DocumentMessage *DocumentMessage `protobuf:"bytes,3,opt,name=documentMessage,proto3,oneof"`
+}
+
+type MessageContent_JsonMessage struct {
+	JsonMessage *JsonMessage `protobuf:"bytes,4,opt,name=jsonMessage,proto3,oneof"`
+}
+
+type MessageContent_UnsupportedMessage struct {
+	UnsupportedMessage *UnsupportedMessage `protobuf:"bytes,5,opt,name=unsupportedMessage,proto3,oneof"`
+}
+
+type MessageContent_StickerMessage struct {
+	StickerMessage *StickerMessage `protobuf:"bytes,6,opt,name=stickerMessage,proto3,oneof"`
+}
+
+type MessageContent_BinaryMessage struct {
+	BinaryMessage *BinaryMessage `protobuf:"bytes,7,opt,name=binaryMessage,proto3,oneof"`
+}
+
+type MessageContent_EmptyMessage struct {
+	EmptyMessage *EmptyMessage `protobuf:"bytes,8,opt,name=emptyMessage,proto3,oneof"`
+}
+
+type MessageContent_DeletedMessage struct {
+	DeletedMessage *DeletedMessage `protobuf:"bytes,9,opt,name=deletedMessage,proto3,oneof"`
+}
+
+func (*MessageContent_TextMessage) isMessageContent_Body() {}
+
+func (*MessageContent_ServiceMessage) isMessageContent_Body() {}
+
+func (*MessageContent_DocumentMessage) isMessageContent_Body() {}
+
+func (*MessageContent_JsonMessage) isMessageContent_Body() {}
+
 func (*MessageContent_UnsupportedMessage) isMessageContent_Body() {}
-func (*MessageContent_StickerMessage) isMessageContent_Body()     {}
-func (*MessageContent_BinaryMessage) isMessageContent_Body()      {}
-func (*MessageContent_EmptyMessage) isMessageContent_Body()       {}
-func (*MessageContent_DeletedMessage) isMessageContent_Body()     {}
+
+func (*MessageContent_StickerMessage) isMessageContent_Body() {}
+
+func (*MessageContent_BinaryMessage) isMessageContent_Body() {}
+
+func (*MessageContent_EmptyMessage) isMessageContent_Body() {}
+
+func (*MessageContent_DeletedMessage) isMessageContent_Body() {}
 
 func (m *MessageContent) GetBody() isMessageContent_Body {
 	if m != nil {
@@ -1572,17 +1588,14 @@ func _MessageContent_OneofSizer(msg proto.Message) (n int) {
 }
 
 // Text message
-// text the text
-// mentions User mentions in message
-// ext Optional bytes of extension
-// media Message media
-// extensions Extensions
 type TextMessage struct {
-	Text                 string          `protobuf:"bytes,1,opt,name=text" json:"text,omitempty"`
-	Mentions             []int32         `protobuf:"varint,2,rep,packed,name=mentions" json:"mentions,omitempty"`
-	Ext                  *TextMessageEx  `protobuf:"bytes,3,opt,name=ext" json:"ext,omitempty"`
-	Media                []*MessageMedia `protobuf:"bytes,4,rep,name=media" json:"media,omitempty"`
-	Extensions           []*Any          `protobuf:"bytes,5,rep,name=extensions" json:"extensions,omitempty"`
+	Text string `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	// / User mentions in message
+	Mentions []int32 `protobuf:"varint,2,rep,packed,name=mentions,proto3" json:"mentions,omitempty"`
+	// / Optional bytes of extension
+	Ext                  *TextMessageEx  `protobuf:"bytes,3,opt,name=ext,proto3" json:"ext,omitempty"`
+	Media                []*MessageMedia `protobuf:"bytes,4,rep,name=media,proto3" json:"media,omitempty"`
+	Extensions           []*Any          `protobuf:"bytes,5,rep,name=extensions,proto3" json:"extensions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -1592,7 +1605,7 @@ func (m *TextMessage) Reset()         { *m = TextMessage{} }
 func (m *TextMessage) String() string { return proto.CompactTextString(m) }
 func (*TextMessage) ProtoMessage()    {}
 func (*TextMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{18}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{18}
 }
 func (m *TextMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextMessage.Unmarshal(m, b)
@@ -1662,7 +1675,7 @@ func (m *TextMessageEx) Reset()         { *m = TextMessageEx{} }
 func (m *TextMessageEx) String() string { return proto.CompactTextString(m) }
 func (*TextMessageEx) ProtoMessage()    {}
 func (*TextMessageEx) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{19}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{19}
 }
 func (m *TextMessageEx) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextMessageEx.Unmarshal(m, b)
@@ -1687,18 +1700,22 @@ type isTextMessageEx_Body interface {
 }
 
 type TextMessageEx_TextExMarkdown struct {
-	TextExMarkdown *TextExMarkdown `protobuf:"bytes,1,opt,name=textExMarkdown,oneof"`
-}
-type TextMessageEx_TextModernMessage struct {
-	TextModernMessage *TextModernMessage `protobuf:"bytes,2,opt,name=textModernMessage,oneof"`
-}
-type TextMessageEx_TextCommand struct {
-	TextCommand *TextCommand `protobuf:"bytes,3,opt,name=textCommand,oneof"`
+	TextExMarkdown *TextExMarkdown `protobuf:"bytes,1,opt,name=textExMarkdown,proto3,oneof"`
 }
 
-func (*TextMessageEx_TextExMarkdown) isTextMessageEx_Body()    {}
+type TextMessageEx_TextModernMessage struct {
+	TextModernMessage *TextModernMessage `protobuf:"bytes,2,opt,name=textModernMessage,proto3,oneof"`
+}
+
+type TextMessageEx_TextCommand struct {
+	TextCommand *TextCommand `protobuf:"bytes,3,opt,name=textCommand,proto3,oneof"`
+}
+
+func (*TextMessageEx_TextExMarkdown) isTextMessageEx_Body() {}
+
 func (*TextMessageEx_TextModernMessage) isTextMessageEx_Body() {}
-func (*TextMessageEx_TextCommand) isTextMessageEx_Body()       {}
+
+func (*TextMessageEx_TextCommand) isTextMessageEx_Body() {}
 
 func (m *TextMessageEx) GetBody() isTextMessageEx_Body {
 	if m != nil {
@@ -1822,9 +1839,8 @@ func _TextMessageEx_OneofSizer(msg proto.Message) (n int) {
 }
 
 // Markdown extension
-// markdown Markdown text
 type TextExMarkdown struct {
-	Markdown             string   `protobuf:"bytes,2,opt,name=markdown" json:"markdown,omitempty"`
+	Markdown             string   `protobuf:"bytes,2,opt,name=markdown,proto3" json:"markdown,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1834,7 +1850,7 @@ func (m *TextExMarkdown) Reset()         { *m = TextExMarkdown{} }
 func (m *TextExMarkdown) String() string { return proto.CompactTextString(m) }
 func (*TextExMarkdown) ProtoMessage()    {}
 func (*TextExMarkdown) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{20}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{20}
 }
 func (m *TextExMarkdown) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextExMarkdown.Unmarshal(m, b)
@@ -1862,17 +1878,12 @@ func (m *TextExMarkdown) GetMarkdown() string {
 }
 
 // Modern text message
-// text optional text of message
-// senderNameOverride optional overriding of sender
-// senderPhotoOverride optional overriding sender's photo
-// style optional paragraph style
-// attaches optional Attaches of message
 type TextModernMessage struct {
-	Text                 *wrappers.StringValue `protobuf:"bytes,1,opt,name=text" json:"text,omitempty"`
-	SenderNameOverride   *wrappers.StringValue `protobuf:"bytes,2,opt,name=sender_name_override,json=senderNameOverride" json:"sender_name_override,omitempty"`
-	SenderPhotoOverride  *Avatar               `protobuf:"bytes,3,opt,name=sender_photo_override,json=senderPhotoOverride" json:"sender_photo_override,omitempty"`
-	Style                *ParagraphStyle       `protobuf:"bytes,4,opt,name=style" json:"style,omitempty"`
-	Attaches             []*TextModernAttach   `protobuf:"bytes,5,rep,name=attaches" json:"attaches,omitempty"`
+	Text                 *wrappers.StringValue `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	SenderNameOverride   *wrappers.StringValue `protobuf:"bytes,2,opt,name=sender_name_override,json=senderNameOverride,proto3" json:"sender_name_override,omitempty"`
+	SenderPhotoOverride  *Avatar               `protobuf:"bytes,3,opt,name=sender_photo_override,json=senderPhotoOverride,proto3" json:"sender_photo_override,omitempty"`
+	Style                *ParagraphStyle       `protobuf:"bytes,4,opt,name=style,proto3" json:"style,omitempty"`
+	Attaches             []*TextModernAttach   `protobuf:"bytes,5,rep,name=attaches,proto3" json:"attaches,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -1882,7 +1893,7 @@ func (m *TextModernMessage) Reset()         { *m = TextModernMessage{} }
 func (m *TextModernMessage) String() string { return proto.CompactTextString(m) }
 func (*TextModernMessage) ProtoMessage()    {}
 func (*TextModernMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{21}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{21}
 }
 func (m *TextModernMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextModernMessage.Unmarshal(m, b)
@@ -1938,23 +1949,23 @@ func (m *TextModernMessage) GetAttaches() []*TextModernAttach {
 }
 
 // Paragraph style
-// showParagraph Show quote-like paragraph?
-// paragraphColor Override paragraph color
-// bgColor Override background color
 type ParagraphStyle struct {
-	ShowParagraph        *wrappers.BoolValue `protobuf:"bytes,1,opt,name=show_paragraph,json=showParagraph" json:"show_paragraph,omitempty"`
-	ParagraphColor       *Color              `protobuf:"bytes,2,opt,name=paragraph_color,json=paragraphColor" json:"paragraph_color,omitempty"`
-	BgColor              *Color              `protobuf:"bytes,3,opt,name=bg_color,json=bgColor" json:"bg_color,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	// / Show quote-like paragraph?
+	ShowParagraph *wrappers.BoolValue `protobuf:"bytes,1,opt,name=show_paragraph,json=showParagraph,proto3" json:"show_paragraph,omitempty"`
+	// / Override paragraph color
+	ParagraphColor *Color `protobuf:"bytes,2,opt,name=paragraph_color,json=paragraphColor,proto3" json:"paragraph_color,omitempty"`
+	// / Override background color
+	BgColor              *Color   `protobuf:"bytes,3,opt,name=bg_color,json=bgColor,proto3" json:"bg_color,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *ParagraphStyle) Reset()         { *m = ParagraphStyle{} }
 func (m *ParagraphStyle) String() string { return proto.CompactTextString(m) }
 func (*ParagraphStyle) ProtoMessage()    {}
 func (*ParagraphStyle) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{22}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{22}
 }
 func (m *ParagraphStyle) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ParagraphStyle.Unmarshal(m, b)
@@ -1996,18 +2007,13 @@ func (m *ParagraphStyle) GetBgColor() *Color {
 }
 
 // Attaches to message
-// title Attach of message
-// titleUrl Attach title url
-// titleIcon Attach title icon
-// text Attach text
-// style Attach style
 type TextModernAttach struct {
-	Title                *wrappers.StringValue `protobuf:"bytes,1,opt,name=title" json:"title,omitempty"`
-	TitleUrl             *wrappers.StringValue `protobuf:"bytes,2,opt,name=title_url,json=titleUrl" json:"title_url,omitempty"`
-	TitleIcon            *ImageLocation        `protobuf:"bytes,3,opt,name=title_icon,json=titleIcon" json:"title_icon,omitempty"`
-	Text                 *wrappers.StringValue `protobuf:"bytes,4,opt,name=text" json:"text,omitempty"`
-	Style                *ParagraphStyle       `protobuf:"bytes,5,opt,name=style" json:"style,omitempty"`
-	Fields               []*TextModernField    `protobuf:"bytes,6,rep,name=fields" json:"fields,omitempty"`
+	Title                *wrappers.StringValue `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	TitleUrl             *wrappers.StringValue `protobuf:"bytes,2,opt,name=title_url,json=titleUrl,proto3" json:"title_url,omitempty"`
+	TitleIcon            *ImageLocation        `protobuf:"bytes,3,opt,name=title_icon,json=titleIcon,proto3" json:"title_icon,omitempty"`
+	Text                 *wrappers.StringValue `protobuf:"bytes,4,opt,name=text,proto3" json:"text,omitempty"`
+	Style                *ParagraphStyle       `protobuf:"bytes,5,opt,name=style,proto3" json:"style,omitempty"`
+	Fields               []*TextModernField    `protobuf:"bytes,6,rep,name=fields,proto3" json:"fields,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -2017,7 +2023,7 @@ func (m *TextModernAttach) Reset()         { *m = TextModernAttach{} }
 func (m *TextModernAttach) String() string { return proto.CompactTextString(m) }
 func (*TextModernAttach) ProtoMessage()    {}
 func (*TextModernAttach) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{23}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{23}
 }
 func (m *TextModernAttach) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextModernAttach.Unmarshal(m, b)
@@ -2080,13 +2086,11 @@ func (m *TextModernAttach) GetFields() []*TextModernField {
 }
 
 // Modern message fields
-// title Field title
-// value Field value
-// isShort Is field can be shown in compact way (default is TRUE)
 type TextModernField struct {
-	Title                string              `protobuf:"bytes,1,opt,name=title" json:"title,omitempty"`
-	Value                string              `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
-	IsShort              *wrappers.BoolValue `protobuf:"bytes,3,opt,name=is_short,json=isShort" json:"is_short,omitempty"`
+	Title string `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	// / Is field can be shown in compact way (default is TRUE)
+	IsShort              *wrappers.BoolValue `protobuf:"bytes,3,opt,name=is_short,json=isShort,proto3" json:"is_short,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -2096,7 +2100,7 @@ func (m *TextModernField) Reset()         { *m = TextModernField{} }
 func (m *TextModernField) String() string { return proto.CompactTextString(m) }
 func (*TextModernField) ProtoMessage()    {}
 func (*TextModernField) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{24}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{24}
 }
 func (m *TextModernField) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextModernField.Unmarshal(m, b)
@@ -2138,11 +2142,10 @@ func (m *TextModernField) GetIsShort() *wrappers.BoolValue {
 }
 
 // Text Command Message for bots
-// command Slash-Command For execution
-// args Arguments of slash command
 type TextCommand struct {
-	Command              string   `protobuf:"bytes,1,opt,name=command" json:"command,omitempty"`
-	Args                 string   `protobuf:"bytes,2,opt,name=args" json:"args,omitempty"`
+	// / Slash-Command For execution
+	Command              string   `protobuf:"bytes,1,opt,name=command,proto3" json:"command,omitempty"`
+	Args                 string   `protobuf:"bytes,2,opt,name=args,proto3" json:"args,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2152,7 +2155,7 @@ func (m *TextCommand) Reset()         { *m = TextCommand{} }
 func (m *TextCommand) String() string { return proto.CompactTextString(m) }
 func (*TextCommand) ProtoMessage()    {}
 func (*TextCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{25}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{25}
 }
 func (m *TextCommand) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextCommand.Unmarshal(m, b)
@@ -2187,11 +2190,9 @@ func (m *TextCommand) GetArgs() string {
 }
 
 // Service message
-// text service message text
-// ext Extension
 type ServiceMessage struct {
-	Text                 string     `protobuf:"bytes,1,opt,name=text" json:"text,omitempty"`
-	Ext                  *ServiceEx `protobuf:"bytes,3,opt,name=ext" json:"ext,omitempty"`
+	Text                 string     `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	Ext                  *ServiceEx `protobuf:"bytes,3,opt,name=ext,proto3" json:"ext,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -2201,7 +2202,7 @@ func (m *ServiceMessage) Reset()         { *m = ServiceMessage{} }
 func (m *ServiceMessage) String() string { return proto.CompactTextString(m) }
 func (*ServiceMessage) ProtoMessage()    {}
 func (*ServiceMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{26}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{26}
 }
 func (m *ServiceMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceMessage.Unmarshal(m, b)
@@ -2262,7 +2263,7 @@ func (m *ServiceEx) Reset()         { *m = ServiceEx{} }
 func (m *ServiceEx) String() string { return proto.CompactTextString(m) }
 func (*ServiceEx) ProtoMessage()    {}
 func (*ServiceEx) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{27}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{27}
 }
 func (m *ServiceEx) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceEx.Unmarshal(m, b)
@@ -2287,66 +2288,94 @@ type isServiceEx_Body interface {
 }
 
 type ServiceEx_UserInvited struct {
-	UserInvited *ServiceExUserInvited `protobuf:"bytes,1,opt,name=userInvited,oneof"`
-}
-type ServiceEx_UserJoined struct {
-	UserJoined *ServiceExUserJoined `protobuf:"bytes,2,opt,name=userJoined,oneof"`
-}
-type ServiceEx_UserKicked struct {
-	UserKicked *ServiceExUserKicked `protobuf:"bytes,3,opt,name=userKicked,oneof"`
-}
-type ServiceEx_UserLeft struct {
-	UserLeft *ServiceExUserLeft `protobuf:"bytes,4,opt,name=userLeft,oneof"`
-}
-type ServiceEx_GroupCreated struct {
-	GroupCreated *ServiceExGroupCreated `protobuf:"bytes,5,opt,name=groupCreated,oneof"`
-}
-type ServiceEx_ChangedTitle struct {
-	ChangedTitle *ServiceExChangedTitle `protobuf:"bytes,6,opt,name=changedTitle,oneof"`
-}
-type ServiceEx_ChangedTopic struct {
-	ChangedTopic *ServiceExChangedTopic `protobuf:"bytes,7,opt,name=changedTopic,oneof"`
-}
-type ServiceEx_ChangedAbout struct {
-	ChangedAbout *ServiceExChangedAbout `protobuf:"bytes,8,opt,name=changedAbout,oneof"`
-}
-type ServiceEx_ChangedAvatar struct {
-	ChangedAvatar *ServiceExChangedAvatar `protobuf:"bytes,9,opt,name=changedAvatar,oneof"`
-}
-type ServiceEx_ContactRegistered struct {
-	ContactRegistered *ServiceExContactRegistered `protobuf:"bytes,10,opt,name=contactRegistered,oneof"`
-}
-type ServiceEx_PhoneMissed struct {
-	PhoneMissed *ServiceExPhoneMissed `protobuf:"bytes,11,opt,name=phoneMissed,oneof"`
-}
-type ServiceEx_PhoneCall struct {
-	PhoneCall *ServiceExPhoneCall `protobuf:"bytes,12,opt,name=phoneCall,oneof"`
-}
-type ServiceEx_PhoneRejected struct {
-	PhoneRejected *ServiceExPhoneRejected `protobuf:"bytes,13,opt,name=phoneRejected,oneof"`
-}
-type ServiceEx_ChatArchived struct {
-	ChatArchived *ServiceExChatArchived `protobuf:"bytes,14,opt,name=chatArchived,oneof"`
-}
-type ServiceEx_ChatRestored struct {
-	ChatRestored *ServiceExChatRestored `protobuf:"bytes,15,opt,name=chatRestored,oneof"`
+	UserInvited *ServiceExUserInvited `protobuf:"bytes,1,opt,name=userInvited,proto3,oneof"`
 }
 
-func (*ServiceEx_UserInvited) isServiceEx_Body()       {}
-func (*ServiceEx_UserJoined) isServiceEx_Body()        {}
-func (*ServiceEx_UserKicked) isServiceEx_Body()        {}
-func (*ServiceEx_UserLeft) isServiceEx_Body()          {}
-func (*ServiceEx_GroupCreated) isServiceEx_Body()      {}
-func (*ServiceEx_ChangedTitle) isServiceEx_Body()      {}
-func (*ServiceEx_ChangedTopic) isServiceEx_Body()      {}
-func (*ServiceEx_ChangedAbout) isServiceEx_Body()      {}
-func (*ServiceEx_ChangedAvatar) isServiceEx_Body()     {}
+type ServiceEx_UserJoined struct {
+	UserJoined *ServiceExUserJoined `protobuf:"bytes,2,opt,name=userJoined,proto3,oneof"`
+}
+
+type ServiceEx_UserKicked struct {
+	UserKicked *ServiceExUserKicked `protobuf:"bytes,3,opt,name=userKicked,proto3,oneof"`
+}
+
+type ServiceEx_UserLeft struct {
+	UserLeft *ServiceExUserLeft `protobuf:"bytes,4,opt,name=userLeft,proto3,oneof"`
+}
+
+type ServiceEx_GroupCreated struct {
+	GroupCreated *ServiceExGroupCreated `protobuf:"bytes,5,opt,name=groupCreated,proto3,oneof"`
+}
+
+type ServiceEx_ChangedTitle struct {
+	ChangedTitle *ServiceExChangedTitle `protobuf:"bytes,6,opt,name=changedTitle,proto3,oneof"`
+}
+
+type ServiceEx_ChangedTopic struct {
+	ChangedTopic *ServiceExChangedTopic `protobuf:"bytes,7,opt,name=changedTopic,proto3,oneof"`
+}
+
+type ServiceEx_ChangedAbout struct {
+	ChangedAbout *ServiceExChangedAbout `protobuf:"bytes,8,opt,name=changedAbout,proto3,oneof"`
+}
+
+type ServiceEx_ChangedAvatar struct {
+	ChangedAvatar *ServiceExChangedAvatar `protobuf:"bytes,9,opt,name=changedAvatar,proto3,oneof"`
+}
+
+type ServiceEx_ContactRegistered struct {
+	ContactRegistered *ServiceExContactRegistered `protobuf:"bytes,10,opt,name=contactRegistered,proto3,oneof"`
+}
+
+type ServiceEx_PhoneMissed struct {
+	PhoneMissed *ServiceExPhoneMissed `protobuf:"bytes,11,opt,name=phoneMissed,proto3,oneof"`
+}
+
+type ServiceEx_PhoneCall struct {
+	PhoneCall *ServiceExPhoneCall `protobuf:"bytes,12,opt,name=phoneCall,proto3,oneof"`
+}
+
+type ServiceEx_PhoneRejected struct {
+	PhoneRejected *ServiceExPhoneRejected `protobuf:"bytes,13,opt,name=phoneRejected,proto3,oneof"`
+}
+
+type ServiceEx_ChatArchived struct {
+	ChatArchived *ServiceExChatArchived `protobuf:"bytes,14,opt,name=chatArchived,proto3,oneof"`
+}
+
+type ServiceEx_ChatRestored struct {
+	ChatRestored *ServiceExChatRestored `protobuf:"bytes,15,opt,name=chatRestored,proto3,oneof"`
+}
+
+func (*ServiceEx_UserInvited) isServiceEx_Body() {}
+
+func (*ServiceEx_UserJoined) isServiceEx_Body() {}
+
+func (*ServiceEx_UserKicked) isServiceEx_Body() {}
+
+func (*ServiceEx_UserLeft) isServiceEx_Body() {}
+
+func (*ServiceEx_GroupCreated) isServiceEx_Body() {}
+
+func (*ServiceEx_ChangedTitle) isServiceEx_Body() {}
+
+func (*ServiceEx_ChangedTopic) isServiceEx_Body() {}
+
+func (*ServiceEx_ChangedAbout) isServiceEx_Body() {}
+
+func (*ServiceEx_ChangedAvatar) isServiceEx_Body() {}
+
 func (*ServiceEx_ContactRegistered) isServiceEx_Body() {}
-func (*ServiceEx_PhoneMissed) isServiceEx_Body()       {}
-func (*ServiceEx_PhoneCall) isServiceEx_Body()         {}
-func (*ServiceEx_PhoneRejected) isServiceEx_Body()     {}
-func (*ServiceEx_ChatArchived) isServiceEx_Body()      {}
-func (*ServiceEx_ChatRestored) isServiceEx_Body()      {}
+
+func (*ServiceEx_PhoneMissed) isServiceEx_Body() {}
+
+func (*ServiceEx_PhoneCall) isServiceEx_Body() {}
+
+func (*ServiceEx_PhoneRejected) isServiceEx_Body() {}
+
+func (*ServiceEx_ChatArchived) isServiceEx_Body() {}
+
+func (*ServiceEx_ChatRestored) isServiceEx_Body() {}
 
 func (m *ServiceEx) GetBody() isServiceEx_Body {
 	if m != nil {
@@ -2782,9 +2811,8 @@ func _ServiceEx_OneofSizer(msg proto.Message) (n int) {
 }
 
 // Service message about adding user to group
-// invitedUid added user id
 type ServiceExUserInvited struct {
-	InvitedUid           int32    `protobuf:"varint,1,opt,name=invited_uid,json=invitedUid" json:"invited_uid,omitempty"`
+	InvitedUid           int32    `protobuf:"varint,1,opt,name=invited_uid,json=invitedUid,proto3" json:"invited_uid,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2794,7 +2822,7 @@ func (m *ServiceExUserInvited) Reset()         { *m = ServiceExUserInvited{} }
 func (m *ServiceExUserInvited) String() string { return proto.CompactTextString(m) }
 func (*ServiceExUserInvited) ProtoMessage()    {}
 func (*ServiceExUserInvited) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{28}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{28}
 }
 func (m *ServiceExUserInvited) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExUserInvited.Unmarshal(m, b)
@@ -2832,7 +2860,7 @@ func (m *ServiceExUserJoined) Reset()         { *m = ServiceExUserJoined{} }
 func (m *ServiceExUserJoined) String() string { return proto.CompactTextString(m) }
 func (*ServiceExUserJoined) ProtoMessage()    {}
 func (*ServiceExUserJoined) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{29}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{29}
 }
 func (m *ServiceExUserJoined) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExUserJoined.Unmarshal(m, b)
@@ -2853,9 +2881,8 @@ func (m *ServiceExUserJoined) XXX_DiscardUnknown() {
 var xxx_messageInfo_ServiceExUserJoined proto.InternalMessageInfo
 
 // Service message about kicking user from group
-// kickedUid kicked user id
 type ServiceExUserKicked struct {
-	KickedUid            int32    `protobuf:"varint,1,opt,name=kicked_uid,json=kickedUid" json:"kicked_uid,omitempty"`
+	KickedUid            int32    `protobuf:"varint,1,opt,name=kicked_uid,json=kickedUid,proto3" json:"kicked_uid,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2865,7 +2892,7 @@ func (m *ServiceExUserKicked) Reset()         { *m = ServiceExUserKicked{} }
 func (m *ServiceExUserKicked) String() string { return proto.CompactTextString(m) }
 func (*ServiceExUserKicked) ProtoMessage()    {}
 func (*ServiceExUserKicked) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{30}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{30}
 }
 func (m *ServiceExUserKicked) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExUserKicked.Unmarshal(m, b)
@@ -2903,7 +2930,7 @@ func (m *ServiceExUserLeft) Reset()         { *m = ServiceExUserLeft{} }
 func (m *ServiceExUserLeft) String() string { return proto.CompactTextString(m) }
 func (*ServiceExUserLeft) ProtoMessage()    {}
 func (*ServiceExUserLeft) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{31}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{31}
 }
 func (m *ServiceExUserLeft) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExUserLeft.Unmarshal(m, b)
@@ -2934,7 +2961,7 @@ func (m *ServiceExGroupCreated) Reset()         { *m = ServiceExGroupCreated{} }
 func (m *ServiceExGroupCreated) String() string { return proto.CompactTextString(m) }
 func (*ServiceExGroupCreated) ProtoMessage()    {}
 func (*ServiceExGroupCreated) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{32}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{32}
 }
 func (m *ServiceExGroupCreated) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExGroupCreated.Unmarshal(m, b)
@@ -2955,9 +2982,8 @@ func (m *ServiceExGroupCreated) XXX_DiscardUnknown() {
 var xxx_messageInfo_ServiceExGroupCreated proto.InternalMessageInfo
 
 // Service message about group title change
-// title New group title
 type ServiceExChangedTitle struct {
-	Title                string   `protobuf:"bytes,1,opt,name=title" json:"title,omitempty"`
+	Title                string   `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2967,7 +2993,7 @@ func (m *ServiceExChangedTitle) Reset()         { *m = ServiceExChangedTitle{} }
 func (m *ServiceExChangedTitle) String() string { return proto.CompactTextString(m) }
 func (*ServiceExChangedTitle) ProtoMessage()    {}
 func (*ServiceExChangedTitle) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{33}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{33}
 }
 func (m *ServiceExChangedTitle) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExChangedTitle.Unmarshal(m, b)
@@ -2995,9 +3021,9 @@ func (m *ServiceExChangedTitle) GetTitle() string {
 }
 
 // Service message on group topic change
-// topic New group topic
 type ServiceExChangedTopic struct {
-	Topic                *wrappers.StringValue `protobuf:"bytes,1,opt,name=topic" json:"topic,omitempty"`
+	// / New group topic
+	Topic                *wrappers.StringValue `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -3007,7 +3033,7 @@ func (m *ServiceExChangedTopic) Reset()         { *m = ServiceExChangedTopic{} }
 func (m *ServiceExChangedTopic) String() string { return proto.CompactTextString(m) }
 func (*ServiceExChangedTopic) ProtoMessage()    {}
 func (*ServiceExChangedTopic) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{34}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{34}
 }
 func (m *ServiceExChangedTopic) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExChangedTopic.Unmarshal(m, b)
@@ -3035,9 +3061,9 @@ func (m *ServiceExChangedTopic) GetTopic() *wrappers.StringValue {
 }
 
 // Service message on group about change
-// about New group about
 type ServiceExChangedAbout struct {
-	About                *wrappers.StringValue `protobuf:"bytes,1,opt,name=about" json:"about,omitempty"`
+	// / New group about
+	About                *wrappers.StringValue `protobuf:"bytes,1,opt,name=about,proto3" json:"about,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -3047,7 +3073,7 @@ func (m *ServiceExChangedAbout) Reset()         { *m = ServiceExChangedAbout{} }
 func (m *ServiceExChangedAbout) String() string { return proto.CompactTextString(m) }
 func (*ServiceExChangedAbout) ProtoMessage()    {}
 func (*ServiceExChangedAbout) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{35}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{35}
 }
 func (m *ServiceExChangedAbout) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExChangedAbout.Unmarshal(m, b)
@@ -3075,9 +3101,8 @@ func (m *ServiceExChangedAbout) GetAbout() *wrappers.StringValue {
 }
 
 // Service message about avatar change
-// avatar Updated avatar
 type ServiceExChangedAvatar struct {
-	Avatar               *Avatar  `protobuf:"bytes,1,opt,name=avatar" json:"avatar,omitempty"`
+	Avatar               *Avatar  `protobuf:"bytes,1,opt,name=avatar,proto3" json:"avatar,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3087,7 +3112,7 @@ func (m *ServiceExChangedAvatar) Reset()         { *m = ServiceExChangedAvatar{}
 func (m *ServiceExChangedAvatar) String() string { return proto.CompactTextString(m) }
 func (*ServiceExChangedAvatar) ProtoMessage()    {}
 func (*ServiceExChangedAvatar) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{36}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{36}
 }
 func (m *ServiceExChangedAvatar) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExChangedAvatar.Unmarshal(m, b)
@@ -3115,9 +3140,8 @@ func (m *ServiceExChangedAvatar) GetAvatar() *Avatar {
 }
 
 // Service message about user registration
-// uid User Id
 type ServiceExContactRegistered struct {
-	Uid                  int32    `protobuf:"varint,1,opt,name=uid" json:"uid,omitempty"`
+	Uid                  int32    `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3127,7 +3151,7 @@ func (m *ServiceExContactRegistered) Reset()         { *m = ServiceExContactRegi
 func (m *ServiceExContactRegistered) String() string { return proto.CompactTextString(m) }
 func (*ServiceExContactRegistered) ProtoMessage()    {}
 func (*ServiceExContactRegistered) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{37}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{37}
 }
 func (m *ServiceExContactRegistered) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExContactRegistered.Unmarshal(m, b)
@@ -3165,7 +3189,7 @@ func (m *ServiceExPhoneMissed) Reset()         { *m = ServiceExPhoneMissed{} }
 func (m *ServiceExPhoneMissed) String() string { return proto.CompactTextString(m) }
 func (*ServiceExPhoneMissed) ProtoMessage()    {}
 func (*ServiceExPhoneMissed) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{38}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{38}
 }
 func (m *ServiceExPhoneMissed) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExPhoneMissed.Unmarshal(m, b)
@@ -3186,9 +3210,8 @@ func (m *ServiceExPhoneMissed) XXX_DiscardUnknown() {
 var xxx_messageInfo_ServiceExPhoneMissed proto.InternalMessageInfo
 
 // Update about phone call
-// duration Duration of a phone call
 type ServiceExPhoneCall struct {
-	Duration             int32    `protobuf:"varint,1,opt,name=duration" json:"duration,omitempty"`
+	Duration             int32    `protobuf:"varint,1,opt,name=duration,proto3" json:"duration,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3198,7 +3221,7 @@ func (m *ServiceExPhoneCall) Reset()         { *m = ServiceExPhoneCall{} }
 func (m *ServiceExPhoneCall) String() string { return proto.CompactTextString(m) }
 func (*ServiceExPhoneCall) ProtoMessage()    {}
 func (*ServiceExPhoneCall) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{39}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{39}
 }
 func (m *ServiceExPhoneCall) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExPhoneCall.Unmarshal(m, b)
@@ -3236,7 +3259,7 @@ func (m *ServiceExPhoneRejected) Reset()         { *m = ServiceExPhoneRejected{}
 func (m *ServiceExPhoneRejected) String() string { return proto.CompactTextString(m) }
 func (*ServiceExPhoneRejected) ProtoMessage()    {}
 func (*ServiceExPhoneRejected) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{40}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{40}
 }
 func (m *ServiceExPhoneRejected) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExPhoneRejected.Unmarshal(m, b)
@@ -3267,7 +3290,7 @@ func (m *ServiceExChatArchived) Reset()         { *m = ServiceExChatArchived{} }
 func (m *ServiceExChatArchived) String() string { return proto.CompactTextString(m) }
 func (*ServiceExChatArchived) ProtoMessage()    {}
 func (*ServiceExChatArchived) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{41}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{41}
 }
 func (m *ServiceExChatArchived) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExChatArchived.Unmarshal(m, b)
@@ -3298,7 +3321,7 @@ func (m *ServiceExChatRestored) Reset()         { *m = ServiceExChatRestored{} }
 func (m *ServiceExChatRestored) String() string { return proto.CompactTextString(m) }
 func (*ServiceExChatRestored) ProtoMessage()    {}
 func (*ServiceExChatRestored) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{42}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{42}
 }
 func (m *ServiceExChatRestored) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceExChatRestored.Unmarshal(m, b)
@@ -3319,21 +3342,15 @@ func (m *ServiceExChatRestored) XXX_DiscardUnknown() {
 var xxx_messageInfo_ServiceExChatRestored proto.InternalMessageInfo
 
 // File message
-// fileId file id
-// accessHash file access hash
-// fileSize file size
-// name name of file
-// mimeType mimetype of file
-// thumb optional thumb of file. JPEG less that 90x90 with 60-70 quality.
-// ext Extension
 type DocumentMessage struct {
-	FileId               int64       `protobuf:"varint,1,opt,name=file_id,json=fileId" json:"file_id,omitempty"`
-	AccessHash           int64       `protobuf:"varint,2,opt,name=access_hash,json=accessHash" json:"access_hash,omitempty"`
-	FileSize             int32       `protobuf:"varint,3,opt,name=file_size,json=fileSize" json:"file_size,omitempty"`
-	Name                 string      `protobuf:"bytes,4,opt,name=name" json:"name,omitempty"`
-	MimeType             string      `protobuf:"bytes,5,opt,name=mime_type,json=mimeType" json:"mime_type,omitempty"`
-	Thumb                *FastThumb  `protobuf:"bytes,6,opt,name=thumb" json:"thumb,omitempty"`
-	Ext                  *DocumentEx `protobuf:"bytes,8,opt,name=ext" json:"ext,omitempty"`
+	FileId     int64  `protobuf:"varint,1,opt,name=file_id,json=fileId,proto3" json:"file_id,omitempty"`
+	AccessHash int64  `protobuf:"varint,2,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
+	FileSize   int32  `protobuf:"varint,3,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty"`
+	Name       string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	MimeType   string `protobuf:"bytes,5,opt,name=mime_type,json=mimeType,proto3" json:"mime_type,omitempty"`
+	// / optional thumb of file. JPEG less that 90x90 with 60-70 quality.
+	Thumb                *FastThumb  `protobuf:"bytes,6,opt,name=thumb,proto3" json:"thumb,omitempty"`
+	Ext                  *DocumentEx `protobuf:"bytes,8,opt,name=ext,proto3" json:"ext,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
 	XXX_unrecognized     []byte      `json:"-"`
 	XXX_sizecache        int32       `json:"-"`
@@ -3343,7 +3360,7 @@ func (m *DocumentMessage) Reset()         { *m = DocumentMessage{} }
 func (m *DocumentMessage) String() string { return proto.CompactTextString(m) }
 func (*DocumentMessage) ProtoMessage()    {}
 func (*DocumentMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{43}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{43}
 }
 func (m *DocumentMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentMessage.Unmarshal(m, b)
@@ -3427,7 +3444,7 @@ func (m *DocumentEx) Reset()         { *m = DocumentEx{} }
 func (m *DocumentEx) String() string { return proto.CompactTextString(m) }
 func (*DocumentEx) ProtoMessage()    {}
 func (*DocumentEx) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{44}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{44}
 }
 func (m *DocumentEx) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentEx.Unmarshal(m, b)
@@ -3452,17 +3469,21 @@ type isDocumentEx_Body interface {
 }
 
 type DocumentEx_Photo struct {
-	Photo *DocumentExPhoto `protobuf:"bytes,1,opt,name=photo,oneof"`
+	Photo *DocumentExPhoto `protobuf:"bytes,1,opt,name=photo,proto3,oneof"`
 }
+
 type DocumentEx_Video struct {
-	Video *DocumentExVideo `protobuf:"bytes,2,opt,name=video,oneof"`
+	Video *DocumentExVideo `protobuf:"bytes,2,opt,name=video,proto3,oneof"`
 }
+
 type DocumentEx_Voice struct {
-	Voice *DocumentExVoice `protobuf:"bytes,3,opt,name=voice,oneof"`
+	Voice *DocumentExVoice `protobuf:"bytes,3,opt,name=voice,proto3,oneof"`
 }
 
 func (*DocumentEx_Photo) isDocumentEx_Body() {}
+
 func (*DocumentEx_Video) isDocumentEx_Body() {}
+
 func (*DocumentEx_Voice) isDocumentEx_Body() {}
 
 func (m *DocumentEx) GetBody() isDocumentEx_Body {
@@ -3587,11 +3608,9 @@ func _DocumentEx_OneofSizer(msg proto.Message) (n int) {
 }
 
 // File photo extension
-// w image width
-// h image height
 type DocumentExPhoto struct {
-	W                    int32    `protobuf:"varint,1,opt,name=w" json:"w,omitempty"`
-	H                    int32    `protobuf:"varint,2,opt,name=h" json:"h,omitempty"`
+	W                    int32    `protobuf:"varint,1,opt,name=w,proto3" json:"w,omitempty"`
+	H                    int32    `protobuf:"varint,2,opt,name=h,proto3" json:"h,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3601,7 +3620,7 @@ func (m *DocumentExPhoto) Reset()         { *m = DocumentExPhoto{} }
 func (m *DocumentExPhoto) String() string { return proto.CompactTextString(m) }
 func (*DocumentExPhoto) ProtoMessage()    {}
 func (*DocumentExPhoto) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{45}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{45}
 }
 func (m *DocumentExPhoto) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentExPhoto.Unmarshal(m, b)
@@ -3636,13 +3655,10 @@ func (m *DocumentExPhoto) GetH() int32 {
 }
 
 // File video extension
-// w video width
-// h video height
-// duration video duration
 type DocumentExVideo struct {
-	W                    int32    `protobuf:"varint,1,opt,name=w" json:"w,omitempty"`
-	H                    int32    `protobuf:"varint,2,opt,name=h" json:"h,omitempty"`
-	Duration             int32    `protobuf:"varint,3,opt,name=duration" json:"duration,omitempty"`
+	W                    int32    `protobuf:"varint,1,opt,name=w,proto3" json:"w,omitempty"`
+	H                    int32    `protobuf:"varint,2,opt,name=h,proto3" json:"h,omitempty"`
+	Duration             int32    `protobuf:"varint,3,opt,name=duration,proto3" json:"duration,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3652,7 +3668,7 @@ func (m *DocumentExVideo) Reset()         { *m = DocumentExVideo{} }
 func (m *DocumentExVideo) String() string { return proto.CompactTextString(m) }
 func (*DocumentExVideo) ProtoMessage()    {}
 func (*DocumentExVideo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{46}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{46}
 }
 func (m *DocumentExVideo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentExVideo.Unmarshal(m, b)
@@ -3694,9 +3710,8 @@ func (m *DocumentExVideo) GetDuration() int32 {
 }
 
 // File voice extension
-// duration voice duration
 type DocumentExVoice struct {
-	Duration             int32    `protobuf:"varint,1,opt,name=duration" json:"duration,omitempty"`
+	Duration             int32    `protobuf:"varint,1,opt,name=duration,proto3" json:"duration,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3706,7 +3721,7 @@ func (m *DocumentExVoice) Reset()         { *m = DocumentExVoice{} }
 func (m *DocumentExVoice) String() string { return proto.CompactTextString(m) }
 func (*DocumentExVoice) ProtoMessage()    {}
 func (*DocumentExVoice) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{47}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{47}
 }
 func (m *DocumentExVoice) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentExVoice.Unmarshal(m, b)
@@ -3734,9 +3749,8 @@ func (m *DocumentExVoice) GetDuration() int32 {
 }
 
 // Custom-data JsonMessage
-// rawJson JSON object
 type JsonMessage struct {
-	RawJson              string   `protobuf:"bytes,1,opt,name=raw_json,json=rawJson" json:"raw_json,omitempty"`
+	RawJson              string   `protobuf:"bytes,1,opt,name=raw_json,json=rawJson,proto3" json:"raw_json,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3746,7 +3760,7 @@ func (m *JsonMessage) Reset()         { *m = JsonMessage{} }
 func (m *JsonMessage) String() string { return proto.CompactTextString(m) }
 func (*JsonMessage) ProtoMessage()    {}
 func (*JsonMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{48}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{48}
 }
 func (m *JsonMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JsonMessage.Unmarshal(m, b)
@@ -3784,7 +3798,7 @@ func (m *UnsupportedMessage) Reset()         { *m = UnsupportedMessage{} }
 func (m *UnsupportedMessage) String() string { return proto.CompactTextString(m) }
 func (*UnsupportedMessage) ProtoMessage()    {}
 func (*UnsupportedMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{49}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{49}
 }
 func (m *UnsupportedMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UnsupportedMessage.Unmarshal(m, b)
@@ -3805,31 +3819,31 @@ func (m *UnsupportedMessage) XXX_DiscardUnknown() {
 var xxx_messageInfo_UnsupportedMessage proto.InternalMessageInfo
 
 // Sticker message
-// stickerId Optional Unique ID of sticker
-// fastPreview Optional Fast preview of sticker in webp format
-// image512 Optional 512x512 sticker image in webp format
-// image256 Optional 256x256 sticker image in webp format
-// stickerCollectionId Optional Collection ID
-// stickerCollectionAccessHash Optional Collection Access Hash
-// emoji Sticker emoji
 type StickerMessage struct {
-	StickerId                   *wrappers.Int32Value  `protobuf:"bytes,1,opt,name=sticker_id,json=stickerId" json:"sticker_id,omitempty"`
-	FastPreview                 *wrappers.BytesValue  `protobuf:"bytes,2,opt,name=fast_preview,json=fastPreview" json:"fast_preview,omitempty"`
-	Image_512                   *ImageLocation        `protobuf:"bytes,3,opt,name=image_512,json=image512" json:"image_512,omitempty"`
-	Image_256                   *ImageLocation        `protobuf:"bytes,4,opt,name=image_256,json=image256" json:"image_256,omitempty"`
-	StickerCollectionId         *wrappers.Int32Value  `protobuf:"bytes,5,opt,name=sticker_collection_id,json=stickerCollectionId" json:"sticker_collection_id,omitempty"`
-	StickerCollectionAccessHash *wrappers.Int64Value  `protobuf:"bytes,6,opt,name=sticker_collection_access_hash,json=stickerCollectionAccessHash" json:"sticker_collection_access_hash,omitempty"`
-	Emoji                       *wrappers.StringValue `protobuf:"bytes,7,opt,name=emoji" json:"emoji,omitempty"`
-	XXX_NoUnkeyedLiteral        struct{}              `json:"-"`
-	XXX_unrecognized            []byte                `json:"-"`
-	XXX_sizecache               int32                 `json:"-"`
+	// / Optional Unique ID of sticker
+	StickerId *wrappers.Int32Value `protobuf:"bytes,1,opt,name=sticker_id,json=stickerId,proto3" json:"sticker_id,omitempty"`
+	// / Optional Fast preview of sticker in webp format
+	FastPreview *wrappers.BytesValue `protobuf:"bytes,2,opt,name=fast_preview,json=fastPreview,proto3" json:"fast_preview,omitempty"`
+	// / Optional 512x512 sticker image in webp format
+	Image_512 *ImageLocation `protobuf:"bytes,3,opt,name=image_512,json=image512,proto3" json:"image_512,omitempty"`
+	// / Optional 256x256 sticker image in webp format
+	Image_256 *ImageLocation `protobuf:"bytes,4,opt,name=image_256,json=image256,proto3" json:"image_256,omitempty"`
+	// / Optional Collection ID
+	StickerCollectionId *wrappers.Int32Value `protobuf:"bytes,5,opt,name=sticker_collection_id,json=stickerCollectionId,proto3" json:"sticker_collection_id,omitempty"`
+	// / Optional Collection Access Hash
+	StickerCollectionAccessHash *wrappers.Int64Value `protobuf:"bytes,6,opt,name=sticker_collection_access_hash,json=stickerCollectionAccessHash,proto3" json:"sticker_collection_access_hash,omitempty"`
+	// / Sticker emoji
+	Emoji                *wrappers.StringValue `protobuf:"bytes,7,opt,name=emoji,proto3" json:"emoji,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
 }
 
 func (m *StickerMessage) Reset()         { *m = StickerMessage{} }
 func (m *StickerMessage) String() string { return proto.CompactTextString(m) }
 func (*StickerMessage) ProtoMessage()    {}
 func (*StickerMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{50}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{50}
 }
 func (m *StickerMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StickerMessage.Unmarshal(m, b)
@@ -3899,10 +3913,8 @@ func (m *StickerMessage) GetEmoji() *wrappers.StringValue {
 }
 
 // Binary Message. Useful for implementing your own content types
-// contentTag Content Tag
-// msg Message contents
 type BinaryMessage struct {
-	ContentTag           string   `protobuf:"bytes,1,opt,name=content_tag,json=contentTag" json:"content_tag,omitempty"`
+	ContentTag           string   `protobuf:"bytes,1,opt,name=content_tag,json=contentTag,proto3" json:"content_tag,omitempty"`
 	Msg                  []byte   `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3913,7 +3925,7 @@ func (m *BinaryMessage) Reset()         { *m = BinaryMessage{} }
 func (m *BinaryMessage) String() string { return proto.CompactTextString(m) }
 func (*BinaryMessage) ProtoMessage()    {}
 func (*BinaryMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{51}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{51}
 }
 func (m *BinaryMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BinaryMessage.Unmarshal(m, b)
@@ -3958,7 +3970,7 @@ func (m *EmptyMessage) Reset()         { *m = EmptyMessage{} }
 func (m *EmptyMessage) String() string { return proto.CompactTextString(m) }
 func (*EmptyMessage) ProtoMessage()    {}
 func (*EmptyMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{52}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{52}
 }
 func (m *EmptyMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EmptyMessage.Unmarshal(m, b)
@@ -3979,9 +3991,9 @@ func (m *EmptyMessage) XXX_DiscardUnknown() {
 var xxx_messageInfo_EmptyMessage proto.InternalMessageInfo
 
 // Deleted message
-// isLocal Deleted locally message
 type DeletedMessage struct {
-	IsLocal              *wrappers.BoolValue `protobuf:"bytes,1,opt,name=is_local,json=isLocal" json:"is_local,omitempty"`
+	// / Deleted locally message
+	IsLocal              *wrappers.BoolValue `protobuf:"bytes,1,opt,name=is_local,json=isLocal,proto3" json:"is_local,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -3991,7 +4003,7 @@ func (m *DeletedMessage) Reset()         { *m = DeletedMessage{} }
 func (m *DeletedMessage) String() string { return proto.CompactTextString(m) }
 func (*DeletedMessage) ProtoMessage()    {}
 func (*DeletedMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{53}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{53}
 }
 func (m *DeletedMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeletedMessage.Unmarshal(m, b)
@@ -4019,13 +4031,10 @@ func (m *DeletedMessage) GetIsLocal() *wrappers.BoolValue {
 }
 
 // Short Dialog from grouped conversation list
-// peer Peer of conversation
-// counter Conversation unread count
-// date Conversation top message date
 type DialogShort struct {
-	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Counter              int32    `protobuf:"varint,2,opt,name=counter" json:"counter,omitempty"`
-	Date                 int64    `protobuf:"varint,4,opt,name=date" json:"date,omitempty"`
+	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Counter              int32    `protobuf:"varint,2,opt,name=counter,proto3" json:"counter,omitempty"`
+	Date                 int64    `protobuf:"varint,4,opt,name=date,proto3" json:"date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4035,7 +4044,7 @@ func (m *DialogShort) Reset()         { *m = DialogShort{} }
 func (m *DialogShort) String() string { return proto.CompactTextString(m) }
 func (*DialogShort) ProtoMessage()    {}
 func (*DialogShort) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{54}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{54}
 }
 func (m *DialogShort) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DialogShort.Unmarshal(m, b)
@@ -4077,13 +4086,10 @@ func (m *DialogShort) GetDate() int64 {
 }
 
 // Grouped dialog list
-// title Title of group
-// key Key of group
-// dialogs Conversations in group
 type DialogGroup struct {
-	Title                string         `protobuf:"bytes,1,opt,name=title" json:"title,omitempty"`
-	Key                  string         `protobuf:"bytes,2,opt,name=key" json:"key,omitempty"`
-	Dialogs              []*DialogShort `protobuf:"bytes,3,rep,name=dialogs" json:"dialogs,omitempty"`
+	Title                string         `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Key                  string         `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Dialogs              []*DialogShort `protobuf:"bytes,3,rep,name=dialogs,proto3" json:"dialogs,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -4093,7 +4099,7 @@ func (m *DialogGroup) Reset()         { *m = DialogGroup{} }
 func (m *DialogGroup) String() string { return proto.CompactTextString(m) }
 func (*DialogGroup) ProtoMessage()    {}
 func (*DialogGroup) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{55}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{55}
 }
 func (m *DialogGroup) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DialogGroup.Unmarshal(m, b)
@@ -4135,11 +4141,9 @@ func (m *DialogGroup) GetDialogs() []*DialogShort {
 }
 
 // Reaction to message
-// users User's reaction
-// code Reaction EMOJI code
 type MessageReaction struct {
-	Users                []int32  `protobuf:"varint,1,rep,packed,name=users" json:"users,omitempty"`
-	Code                 string   `protobuf:"bytes,2,opt,name=code" json:"code,omitempty"`
+	Users                []int32  `protobuf:"varint,1,rep,packed,name=users,proto3" json:"users,omitempty"`
+	Code                 string   `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4149,7 +4153,7 @@ func (m *MessageReaction) Reset()         { *m = MessageReaction{} }
 func (m *MessageReaction) String() string { return proto.CompactTextString(m) }
 func (*MessageReaction) ProtoMessage()    {}
 func (*MessageReaction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{56}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{56}
 }
 func (m *MessageReaction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MessageReaction.Unmarshal(m, b)
@@ -4185,12 +4189,15 @@ func (m *MessageReaction) GetCode() string {
 
 // Sending plain message
 type RequestSendMessage struct {
-	Peer                 *OutPeer            `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Rid                  int64               `protobuf:"varint,3,opt,name=rid" json:"rid,omitempty"`
-	Message              *MessageContent     `protobuf:"bytes,4,opt,name=message" json:"message,omitempty"`
-	IsOnlyForUser        int32               `protobuf:"varint,5,opt,name=is_only_for_user,json=isOnlyForUser" json:"is_only_for_user,omitempty"`
-	Forward              *ReferencedMessages `protobuf:"bytes,8,opt,name=forward" json:"forward,omitempty"`
-	Reply                *ReferencedMessages `protobuf:"bytes,9,opt,name=reply" json:"reply,omitempty"`
+	Peer    *OutPeer        `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Rid     int64           `protobuf:"varint,3,opt,name=rid,proto3" json:"rid,omitempty"`
+	Message *MessageContent `protobuf:"bytes,4,opt,name=message,proto3" json:"message,omitempty"`
+	// / if not empty, then message will be send to this user only
+	IsOnlyForUser int32 `protobuf:"varint,5,opt,name=is_only_for_user,json=isOnlyForUser,proto3" json:"is_only_for_user,omitempty"`
+	// / If current message forwards some other
+	Forward *ReferencedMessages `protobuf:"bytes,8,opt,name=forward,proto3" json:"forward,omitempty"`
+	// / If current message is a reply on some other
+	Reply                *ReferencedMessages `protobuf:"bytes,9,opt,name=reply,proto3" json:"reply,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -4200,7 +4207,7 @@ func (m *RequestSendMessage) Reset()         { *m = RequestSendMessage{} }
 func (m *RequestSendMessage) String() string { return proto.CompactTextString(m) }
 func (*RequestSendMessage) ProtoMessage()    {}
 func (*RequestSendMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{57}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{57}
 }
 func (m *RequestSendMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSendMessage.Unmarshal(m, b)
@@ -4264,19 +4271,20 @@ func (m *RequestSendMessage) GetReply() *ReferencedMessages {
 
 // Changing Message content
 type RequestUpdateMessage struct {
-	Mid                  *UUIDValue      `protobuf:"bytes,2,opt,name=mid" json:"mid,omitempty"`
-	UpdatedMessage       *MessageContent `protobuf:"bytes,3,opt,name=updated_message,json=updatedMessage" json:"updated_message,omitempty"`
-	LastEditedAt         int64           `protobuf:"varint,4,opt,name=last_edited_at,json=lastEditedAt" json:"last_edited_at,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Mid            *UUIDValue      `protobuf:"bytes,2,opt,name=mid,proto3" json:"mid,omitempty"`
+	UpdatedMessage *MessageContent `protobuf:"bytes,3,opt,name=updated_message,json=updatedMessage,proto3" json:"updated_message,omitempty"`
+	// / Date from this message when it was changed last time
+	LastEditedAt         int64    `protobuf:"varint,4,opt,name=last_edited_at,json=lastEditedAt,proto3" json:"last_edited_at,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *RequestUpdateMessage) Reset()         { *m = RequestUpdateMessage{} }
 func (m *RequestUpdateMessage) String() string { return proto.CompactTextString(m) }
 func (*RequestUpdateMessage) ProtoMessage()    {}
 func (*RequestUpdateMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{58}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{58}
 }
 func (m *RequestUpdateMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestUpdateMessage.Unmarshal(m, b)
@@ -4319,8 +4327,8 @@ func (m *RequestUpdateMessage) GetLastEditedAt() int64 {
 
 // Confirmation of plain message receive by device
 type RequestMessageReceived struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Date                 int64    `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Date                 int64    `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4330,7 +4338,7 @@ func (m *RequestMessageReceived) Reset()         { *m = RequestMessageReceived{}
 func (m *RequestMessageReceived) String() string { return proto.CompactTextString(m) }
 func (*RequestMessageReceived) ProtoMessage()    {}
 func (*RequestMessageReceived) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{59}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{59}
 }
 func (m *RequestMessageReceived) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestMessageReceived.Unmarshal(m, b)
@@ -4366,8 +4374,8 @@ func (m *RequestMessageReceived) GetDate() int64 {
 
 // Marking plain messages as read
 type RequestMessageRead struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Date                 int64    `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Date                 int64    `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4377,7 +4385,7 @@ func (m *RequestMessageRead) Reset()         { *m = RequestMessageRead{} }
 func (m *RequestMessageRead) String() string { return proto.CompactTextString(m) }
 func (*RequestMessageRead) ProtoMessage()    {}
 func (*RequestMessageRead) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{60}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{60}
 }
 func (m *RequestMessageRead) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestMessageRead.Unmarshal(m, b)
@@ -4413,7 +4421,7 @@ func (m *RequestMessageRead) GetDate() int64 {
 
 // Deleting messages
 type RequestDeleteMessageObsolete struct {
-	Mids                 []*UUIDValue `protobuf:"bytes,3,rep,name=mids" json:"mids,omitempty"`
+	Mids                 []*UUIDValue `protobuf:"bytes,3,rep,name=mids,proto3" json:"mids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -4423,7 +4431,7 @@ func (m *RequestDeleteMessageObsolete) Reset()         { *m = RequestDeleteMessa
 func (m *RequestDeleteMessageObsolete) String() string { return proto.CompactTextString(m) }
 func (*RequestDeleteMessageObsolete) ProtoMessage()    {}
 func (*RequestDeleteMessageObsolete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{61}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{61}
 }
 func (m *RequestDeleteMessageObsolete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestDeleteMessageObsolete.Unmarshal(m, b)
@@ -4452,8 +4460,8 @@ func (m *RequestDeleteMessageObsolete) GetMids() []*UUIDValue {
 
 // Clearing of conversation (without removing dialog from dialogs list)
 type RequestClearChat struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	LastMessageDate      int64    `protobuf:"varint,2,opt,name=last_message_date,json=lastMessageDate" json:"last_message_date,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	LastMessageDate      int64    `protobuf:"varint,2,opt,name=last_message_date,json=lastMessageDate,proto3" json:"last_message_date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4463,7 +4471,7 @@ func (m *RequestClearChat) Reset()         { *m = RequestClearChat{} }
 func (m *RequestClearChat) String() string { return proto.CompactTextString(m) }
 func (*RequestClearChat) ProtoMessage()    {}
 func (*RequestClearChat) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{62}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{62}
 }
 func (m *RequestClearChat) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestClearChat.Unmarshal(m, b)
@@ -4499,8 +4507,8 @@ func (m *RequestClearChat) GetLastMessageDate() int64 {
 
 // Deleting of conversation (also leave group for group conversations)
 type RequestDeleteChat struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	LastMessageDate      int64    `protobuf:"varint,2,opt,name=last_message_date,json=lastMessageDate" json:"last_message_date,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	LastMessageDate      int64    `protobuf:"varint,2,opt,name=last_message_date,json=lastMessageDate,proto3" json:"last_message_date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4510,7 +4518,7 @@ func (m *RequestDeleteChat) Reset()         { *m = RequestDeleteChat{} }
 func (m *RequestDeleteChat) String() string { return proto.CompactTextString(m) }
 func (*RequestDeleteChat) ProtoMessage()    {}
 func (*RequestDeleteChat) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{63}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{63}
 }
 func (m *RequestDeleteChat) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestDeleteChat.Unmarshal(m, b)
@@ -4546,7 +4554,7 @@ func (m *RequestDeleteChat) GetLastMessageDate() int64 {
 
 // Archiving chat
 type RequestArchiveChat struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4556,7 +4564,7 @@ func (m *RequestArchiveChat) Reset()         { *m = RequestArchiveChat{} }
 func (m *RequestArchiveChat) String() string { return proto.CompactTextString(m) }
 func (*RequestArchiveChat) ProtoMessage()    {}
 func (*RequestArchiveChat) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{64}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{64}
 }
 func (m *RequestArchiveChat) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestArchiveChat.Unmarshal(m, b)
@@ -4585,9 +4593,9 @@ func (m *RequestArchiveChat) GetPeer() *OutPeer {
 
 // Setting Message reaction
 type RequestMessageSetReaction struct {
-	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Mid                  *UUIDValue `protobuf:"bytes,4,opt,name=mid" json:"mid,omitempty"`
-	Code                 string     `protobuf:"bytes,3,opt,name=code" json:"code,omitempty"`
+	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Mid                  *UUIDValue `protobuf:"bytes,4,opt,name=mid,proto3" json:"mid,omitempty"`
+	Code                 string     `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -4597,7 +4605,7 @@ func (m *RequestMessageSetReaction) Reset()         { *m = RequestMessageSetReac
 func (m *RequestMessageSetReaction) String() string { return proto.CompactTextString(m) }
 func (*RequestMessageSetReaction) ProtoMessage()    {}
 func (*RequestMessageSetReaction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{65}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{65}
 }
 func (m *RequestMessageSetReaction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestMessageSetReaction.Unmarshal(m, b)
@@ -4640,9 +4648,9 @@ func (m *RequestMessageSetReaction) GetCode() string {
 
 // Removing Message reaction
 type RequestMessageRemoveReaction struct {
-	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Mid                  *UUIDValue `protobuf:"bytes,4,opt,name=mid" json:"mid,omitempty"`
-	Code                 string     `protobuf:"bytes,3,opt,name=code" json:"code,omitempty"`
+	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Mid                  *UUIDValue `protobuf:"bytes,4,opt,name=mid,proto3" json:"mid,omitempty"`
+	Code                 string     `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -4652,7 +4660,7 @@ func (m *RequestMessageRemoveReaction) Reset()         { *m = RequestMessageRemo
 func (m *RequestMessageRemoveReaction) String() string { return proto.CompactTextString(m) }
 func (*RequestMessageRemoveReaction) ProtoMessage()    {}
 func (*RequestMessageRemoveReaction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{66}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{66}
 }
 func (m *RequestMessageRemoveReaction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestMessageRemoveReaction.Unmarshal(m, b)
@@ -4695,9 +4703,9 @@ func (m *RequestMessageRemoveReaction) GetCode() string {
 
 // Response for reactions change
 type ResponseReactionsResponse struct {
-	Seq                  int32              `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
+	Seq                  int32              `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte             `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	Reactions            []*MessageReaction `protobuf:"bytes,3,rep,name=reactions" json:"reactions,omitempty"`
+	Reactions            []*MessageReaction `protobuf:"bytes,3,rep,name=reactions,proto3" json:"reactions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -4707,7 +4715,7 @@ func (m *ResponseReactionsResponse) Reset()         { *m = ResponseReactionsResp
 func (m *ResponseReactionsResponse) String() string { return proto.CompactTextString(m) }
 func (*ResponseReactionsResponse) ProtoMessage()    {}
 func (*ResponseReactionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{67}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{67}
 }
 func (m *ResponseReactionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseReactionsResponse.Unmarshal(m, b)
@@ -4750,28 +4758,31 @@ func (m *ResponseReactionsResponse) GetReactions() []*MessageReaction {
 
 // Update about plain message
 type UpdateMessage struct {
-	Peer       *Peer              `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	SenderUid  int32              `protobuf:"varint,2,opt,name=sender_uid,json=senderUid" json:"sender_uid,omitempty"`
-	Date       int64              `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
-	Mid        *UUIDValue         `protobuf:"bytes,8,opt,name=mid" json:"mid,omitempty"`
-	Message    *MessageContent    `protobuf:"bytes,5,opt,name=message" json:"message,omitempty"`
-	Attributes *MessageAttributes `protobuf:"bytes,6,opt,name=attributes" json:"attributes,omitempty"`
+	Peer      *Peer           `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	SenderUid int32           `protobuf:"varint,2,opt,name=sender_uid,json=senderUid,proto3" json:"sender_uid,omitempty"`
+	Date      int64           `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
+	Mid       *UUIDValue      `protobuf:"bytes,8,opt,name=mid,proto3" json:"mid,omitempty"`
+	Message   *MessageContent `protobuf:"bytes,5,opt,name=message,proto3" json:"message,omitempty"`
+	// / attributes to help reasoning about message
+	Attributes *MessageAttributes `protobuf:"bytes,6,opt,name=attributes,proto3" json:"attributes,omitempty"`
 	// Types that are valid to be assigned to Attach:
 	//	*UpdateMessage_Forward
 	//	*UpdateMessage_Reply
-	Attach               isUpdateMessage_Attach `protobuf_oneof:"attach"`
-	PreviousMid          *UUIDValue             `protobuf:"bytes,11,opt,name=previous_mid,json=previousMid" json:"previous_mid,omitempty"`
-	Counter              *wrappers.Int32Value   `protobuf:"bytes,12,opt,name=counter" json:"counter,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
-	XXX_unrecognized     []byte                 `json:"-"`
-	XXX_sizecache        int32                  `json:"-"`
+	Attach isUpdateMessage_Attach `protobuf_oneof:"attach"`
+	// / Message id of previos message from current conversation
+	PreviousMid *UUIDValue `protobuf:"bytes,11,opt,name=previous_mid,json=previousMid,proto3" json:"previous_mid,omitempty"`
+	// / counter of unreads message
+	Counter              *wrappers.Int32Value `protobuf:"bytes,12,opt,name=counter,proto3" json:"counter,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *UpdateMessage) Reset()         { *m = UpdateMessage{} }
 func (m *UpdateMessage) String() string { return proto.CompactTextString(m) }
 func (*UpdateMessage) ProtoMessage()    {}
 func (*UpdateMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{68}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{68}
 }
 func (m *UpdateMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateMessage.Unmarshal(m, b)
@@ -4790,27 +4801,6 @@ func (m *UpdateMessage) XXX_DiscardUnknown() {
 }
 
 var xxx_messageInfo_UpdateMessage proto.InternalMessageInfo
-
-type isUpdateMessage_Attach interface {
-	isUpdateMessage_Attach()
-}
-
-type UpdateMessage_Forward struct {
-	Forward *ReferencedMessages `protobuf:"bytes,9,opt,name=forward,oneof"`
-}
-type UpdateMessage_Reply struct {
-	Reply *ReferencedMessages `protobuf:"bytes,10,opt,name=reply,oneof"`
-}
-
-func (*UpdateMessage_Forward) isUpdateMessage_Attach() {}
-func (*UpdateMessage_Reply) isUpdateMessage_Attach()   {}
-
-func (m *UpdateMessage) GetAttach() isUpdateMessage_Attach {
-	if m != nil {
-		return m.Attach
-	}
-	return nil
-}
 
 func (m *UpdateMessage) GetPeer() *Peer {
 	if m != nil {
@@ -4850,6 +4840,29 @@ func (m *UpdateMessage) GetMessage() *MessageContent {
 func (m *UpdateMessage) GetAttributes() *MessageAttributes {
 	if m != nil {
 		return m.Attributes
+	}
+	return nil
+}
+
+type isUpdateMessage_Attach interface {
+	isUpdateMessage_Attach()
+}
+
+type UpdateMessage_Forward struct {
+	Forward *ReferencedMessages `protobuf:"bytes,9,opt,name=forward,proto3,oneof"`
+}
+
+type UpdateMessage_Reply struct {
+	Reply *ReferencedMessages `protobuf:"bytes,10,opt,name=reply,proto3,oneof"`
+}
+
+func (*UpdateMessage_Forward) isUpdateMessage_Attach() {}
+
+func (*UpdateMessage_Reply) isUpdateMessage_Attach() {}
+
+func (m *UpdateMessage) GetAttach() isUpdateMessage_Attach {
+	if m != nil {
+		return m.Attach
 	}
 	return nil
 }
@@ -4958,10 +4971,10 @@ func _UpdateMessage_OneofSizer(msg proto.Message) (n int) {
 
 // Update about message change
 type UpdateMessageContentChanged struct {
-	Peer                 *Peer           `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Mid                  *UUIDValue      `protobuf:"bytes,4,opt,name=mid" json:"mid,omitempty"`
-	Message              *MessageContent `protobuf:"bytes,3,opt,name=message" json:"message,omitempty"`
-	EditedAt             int64           `protobuf:"varint,5,opt,name=edited_at,json=editedAt" json:"edited_at,omitempty"`
+	Peer                 *Peer           `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Mid                  *UUIDValue      `protobuf:"bytes,4,opt,name=mid,proto3" json:"mid,omitempty"`
+	Message              *MessageContent `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	EditedAt             int64           `protobuf:"varint,5,opt,name=edited_at,json=editedAt,proto3" json:"edited_at,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -4971,7 +4984,7 @@ func (m *UpdateMessageContentChanged) Reset()         { *m = UpdateMessageConten
 func (m *UpdateMessageContentChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateMessageContentChanged) ProtoMessage()    {}
 func (*UpdateMessageContentChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{69}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{69}
 }
 func (m *UpdateMessageContentChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateMessageContentChanged.Unmarshal(m, b)
@@ -5021,12 +5034,15 @@ func (m *UpdateMessageContentChanged) GetEditedAt() int64 {
 
 // Update about message sent
 type UpdateMessageSent struct {
-	Peer                 *Peer                `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Rid                  int64                `protobuf:"varint,2,opt,name=rid" json:"rid,omitempty"`
-	Date                 int64                `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
-	Mid                  *UUIDValue           `protobuf:"bytes,4,opt,name=mid" json:"mid,omitempty"`
-	PrevMid              *UUIDValue           `protobuf:"bytes,5,opt,name=prev_mid,json=prevMid" json:"prev_mid,omitempty"`
-	UnreadCounter        *wrappers.Int32Value `protobuf:"bytes,6,opt,name=unread_counter,json=unreadCounter" json:"unread_counter,omitempty"`
+	Peer *Peer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Rid  int64 `protobuf:"varint,2,opt,name=rid,proto3" json:"rid,omitempty"`
+	Date int64 `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
+	// / Message id
+	Mid *UUIDValue `protobuf:"bytes,4,opt,name=mid,proto3" json:"mid,omitempty"`
+	// / Previous message id in current conversation
+	PrevMid *UUIDValue `protobuf:"bytes,5,opt,name=prev_mid,json=prevMid,proto3" json:"prev_mid,omitempty"`
+	// / counter of unread messages
+	UnreadCounter        *wrappers.Int32Value `protobuf:"bytes,6,opt,name=unread_counter,json=unreadCounter,proto3" json:"unread_counter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -5036,7 +5052,7 @@ func (m *UpdateMessageSent) Reset()         { *m = UpdateMessageSent{} }
 func (m *UpdateMessageSent) String() string { return proto.CompactTextString(m) }
 func (*UpdateMessageSent) ProtoMessage()    {}
 func (*UpdateMessageSent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{70}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{70}
 }
 func (m *UpdateMessageSent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateMessageSent.Unmarshal(m, b)
@@ -5100,9 +5116,10 @@ func (m *UpdateMessageSent) GetUnreadCounter() *wrappers.Int32Value {
 
 // Update about message received
 type UpdateMessageReceived struct {
-	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	StartDate            int64    `protobuf:"varint,2,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
-	ReceivedDate         int64    `protobuf:"varint,3,opt,name=received_date,json=receivedDate" json:"received_date,omitempty"`
+	Peer *Peer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	// / when message was receive
+	StartDate            int64    `protobuf:"varint,2,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	ReceivedDate         int64    `protobuf:"varint,3,opt,name=received_date,json=receivedDate,proto3" json:"received_date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -5112,7 +5129,7 @@ func (m *UpdateMessageReceived) Reset()         { *m = UpdateMessageReceived{} }
 func (m *UpdateMessageReceived) String() string { return proto.CompactTextString(m) }
 func (*UpdateMessageReceived) ProtoMessage()    {}
 func (*UpdateMessageReceived) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{71}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{71}
 }
 func (m *UpdateMessageReceived) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateMessageReceived.Unmarshal(m, b)
@@ -5155,9 +5172,10 @@ func (m *UpdateMessageReceived) GetReceivedDate() int64 {
 
 // Update about message read
 type UpdateMessageRead struct {
-	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	StartDate            int64    `protobuf:"varint,2,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
-	ReadDate             int64    `protobuf:"varint,3,opt,name=read_date,json=readDate" json:"read_date,omitempty"`
+	Peer *Peer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	// / when message was read
+	StartDate            int64    `protobuf:"varint,2,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	ReadDate             int64    `protobuf:"varint,3,opt,name=read_date,json=readDate,proto3" json:"read_date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -5167,7 +5185,7 @@ func (m *UpdateMessageRead) Reset()         { *m = UpdateMessageRead{} }
 func (m *UpdateMessageRead) String() string { return proto.CompactTextString(m) }
 func (*UpdateMessageRead) ProtoMessage()    {}
 func (*UpdateMessageRead) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{72}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{72}
 }
 func (m *UpdateMessageRead) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateMessageRead.Unmarshal(m, b)
@@ -5210,9 +5228,11 @@ func (m *UpdateMessageRead) GetReadDate() int64 {
 
 // Update about message read by me
 type UpdateMessageReadByMe struct {
-	Peer                 *Peer                `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	StartDate            int64                `protobuf:"varint,2,opt,name=start_date,json=startDate" json:"start_date,omitempty"`
-	UnreadCounter        *wrappers.Int32Value `protobuf:"bytes,3,opt,name=unread_counter,json=unreadCounter" json:"unread_counter,omitempty"`
+	Peer *Peer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	// / when message was read
+	StartDate int64 `protobuf:"varint,2,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	// / counter of unread messages
+	UnreadCounter        *wrappers.Int32Value `protobuf:"bytes,3,opt,name=unread_counter,json=unreadCounter,proto3" json:"unread_counter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -5222,7 +5242,7 @@ func (m *UpdateMessageReadByMe) Reset()         { *m = UpdateMessageReadByMe{} }
 func (m *UpdateMessageReadByMe) String() string { return proto.CompactTextString(m) }
 func (*UpdateMessageReadByMe) ProtoMessage()    {}
 func (*UpdateMessageReadByMe) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{73}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{73}
 }
 func (m *UpdateMessageReadByMe) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateMessageReadByMe.Unmarshal(m, b)
@@ -5265,20 +5285,22 @@ func (m *UpdateMessageReadByMe) GetUnreadCounter() *wrappers.Int32Value {
 
 // Update about message delete
 type UpdateMessageDelete struct {
-	Peer                 *Peer                `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Mids                 []*UUIDValue         `protobuf:"bytes,3,rep,name=mids" json:"mids,omitempty"`
-	Counter              *wrappers.Int32Value `protobuf:"bytes,4,opt,name=counter" json:"counter,omitempty"`
-	ActionDate           int64                `protobuf:"varint,5,opt,name=action_date,json=actionDate" json:"action_date,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	Peer *Peer        `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Mids []*UUIDValue `protobuf:"bytes,3,rep,name=mids,proto3" json:"mids,omitempty"`
+	// / counter of unread messages
+	Counter *wrappers.Int32Value `protobuf:"bytes,4,opt,name=counter,proto3" json:"counter,omitempty"`
+	// / date? related for this unread counter
+	ActionDate           int64    `protobuf:"varint,5,opt,name=action_date,json=actionDate,proto3" json:"action_date,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *UpdateMessageDelete) Reset()         { *m = UpdateMessageDelete{} }
 func (m *UpdateMessageDelete) String() string { return proto.CompactTextString(m) }
 func (*UpdateMessageDelete) ProtoMessage()    {}
 func (*UpdateMessageDelete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{74}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{74}
 }
 func (m *UpdateMessageDelete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateMessageDelete.Unmarshal(m, b)
@@ -5328,8 +5350,8 @@ func (m *UpdateMessageDelete) GetActionDate() int64 {
 
 // Update about chat clear
 type UpdateChatClear struct {
-	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	ActionDate           int64    `protobuf:"varint,2,opt,name=action_date,json=actionDate" json:"action_date,omitempty"`
+	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	ActionDate           int64    `protobuf:"varint,2,opt,name=action_date,json=actionDate,proto3" json:"action_date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -5339,7 +5361,7 @@ func (m *UpdateChatClear) Reset()         { *m = UpdateChatClear{} }
 func (m *UpdateChatClear) String() string { return proto.CompactTextString(m) }
 func (*UpdateChatClear) ProtoMessage()    {}
 func (*UpdateChatClear) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{75}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{75}
 }
 func (m *UpdateChatClear) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateChatClear.Unmarshal(m, b)
@@ -5375,8 +5397,8 @@ func (m *UpdateChatClear) GetActionDate() int64 {
 
 // Update about chat delete
 type UpdateChatDelete struct {
-	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	ActionDate           int64    `protobuf:"varint,2,opt,name=action_date,json=actionDate" json:"action_date,omitempty"`
+	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	ActionDate           int64    `protobuf:"varint,2,opt,name=action_date,json=actionDate,proto3" json:"action_date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -5386,7 +5408,7 @@ func (m *UpdateChatDelete) Reset()         { *m = UpdateChatDelete{} }
 func (m *UpdateChatDelete) String() string { return proto.CompactTextString(m) }
 func (*UpdateChatDelete) ProtoMessage()    {}
 func (*UpdateChatDelete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{76}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{76}
 }
 func (m *UpdateChatDelete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateChatDelete.Unmarshal(m, b)
@@ -5422,7 +5444,7 @@ func (m *UpdateChatDelete) GetActionDate() int64 {
 
 // Update about chat archive
 type UpdateChatArchive struct {
-	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -5432,7 +5454,7 @@ func (m *UpdateChatArchive) Reset()         { *m = UpdateChatArchive{} }
 func (m *UpdateChatArchive) String() string { return proto.CompactTextString(m) }
 func (*UpdateChatArchive) ProtoMessage()    {}
 func (*UpdateChatArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{77}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{77}
 }
 func (m *UpdateChatArchive) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateChatArchive.Unmarshal(m, b)
@@ -5461,7 +5483,7 @@ func (m *UpdateChatArchive) GetPeer() *Peer {
 
 // Update about chat groups changed. Called only when adding, removing and reordering of grouped dialog.
 type UpdateChatGroupsChanged struct {
-	Dialogs              []*DialogGroup `protobuf:"bytes,1,rep,name=dialogs" json:"dialogs,omitempty"`
+	Dialogs              []*DialogGroup `protobuf:"bytes,1,rep,name=dialogs,proto3" json:"dialogs,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -5471,7 +5493,7 @@ func (m *UpdateChatGroupsChanged) Reset()         { *m = UpdateChatGroupsChanged
 func (m *UpdateChatGroupsChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateChatGroupsChanged) ProtoMessage()    {}
 func (*UpdateChatGroupsChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{78}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{78}
 }
 func (m *UpdateChatGroupsChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateChatGroupsChanged.Unmarshal(m, b)
@@ -5500,9 +5522,9 @@ func (m *UpdateChatGroupsChanged) GetDialogs() []*DialogGroup {
 
 // Update about reactions change
 type UpdateReactionsUpdate struct {
-	Peer                 *Peer              `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Mid                  *UUIDValue         `protobuf:"bytes,4,opt,name=mid" json:"mid,omitempty"`
-	Reactions            []*MessageReaction `protobuf:"bytes,3,rep,name=reactions" json:"reactions,omitempty"`
+	Peer                 *Peer              `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Mid                  *UUIDValue         `protobuf:"bytes,4,opt,name=mid,proto3" json:"mid,omitempty"`
+	Reactions            []*MessageReaction `protobuf:"bytes,3,rep,name=reactions,proto3" json:"reactions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -5512,7 +5534,7 @@ func (m *UpdateReactionsUpdate) Reset()         { *m = UpdateReactionsUpdate{} }
 func (m *UpdateReactionsUpdate) String() string { return proto.CompactTextString(m) }
 func (*UpdateReactionsUpdate) ProtoMessage()    {}
 func (*UpdateReactionsUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{79}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{79}
 }
 func (m *UpdateReactionsUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateReactionsUpdate.Unmarshal(m, b)
@@ -5555,7 +5577,7 @@ func (m *UpdateReactionsUpdate) GetReactions() []*MessageReaction {
 
 // mids Referenced messge ids
 type ReferencedMessages struct {
-	Mids                 []*UUIDValue `protobuf:"bytes,1,rep,name=mids" json:"mids,omitempty"`
+	Mids                 []*UUIDValue `protobuf:"bytes,1,rep,name=mids,proto3" json:"mids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -5565,7 +5587,7 @@ func (m *ReferencedMessages) Reset()         { *m = ReferencedMessages{} }
 func (m *ReferencedMessages) String() string { return proto.CompactTextString(m) }
 func (*ReferencedMessages) ProtoMessage()    {}
 func (*ReferencedMessages) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{80}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{80}
 }
 func (m *ReferencedMessages) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReferencedMessages.Unmarshal(m, b)
@@ -5593,32 +5615,23 @@ func (m *ReferencedMessages) GetMids() []*UUIDValue {
 }
 
 // Message from history
-// senderUid Sender of mesasge
-// hostPeer Sender peer
-// mid message id generated by server
-// rid Random Id of message
-// date Date of message
-// message Content of message
-// state State of message
-// reactions Message reactions
-// attribute Optional message attributes
-// editedAt The time when message was edited
 type HistoryMessage struct {
-	SenderUid  int32              `protobuf:"varint,1,opt,name=sender_uid,json=senderUid" json:"sender_uid,omitempty"`
-	SenderPeer *OutPeer           `protobuf:"bytes,15,opt,name=sender_peer,json=senderPeer" json:"sender_peer,omitempty"`
-	HostPeer   *OutPeer           `protobuf:"bytes,12,opt,name=host_peer,json=hostPeer" json:"host_peer,omitempty"`
-	Mid        *UUIDValue         `protobuf:"bytes,10,opt,name=mid" json:"mid,omitempty"`
-	PrevMid    *UUIDValue         `protobuf:"bytes,17,opt,name=prev_mid,json=prevMid" json:"prev_mid,omitempty"`
-	Date       int64              `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
-	Message    *MessageContent    `protobuf:"bytes,5,opt,name=message" json:"message,omitempty"`
-	State      MessageState       `protobuf:"varint,6,opt,name=state,enum=dialog.MessageState" json:"state,omitempty"`
-	Reactions  []*MessageReaction `protobuf:"bytes,7,rep,name=reactions" json:"reactions,omitempty"`
-	Attribute  *MessageAttributes `protobuf:"bytes,8,opt,name=attribute" json:"attribute,omitempty"`
+	SenderUid  int32    `protobuf:"varint,1,opt,name=sender_uid,json=senderUid,proto3" json:"sender_uid,omitempty"`
+	SenderPeer *OutPeer `protobuf:"bytes,15,opt,name=sender_peer,json=senderPeer,proto3" json:"sender_peer,omitempty"`
+	HostPeer   *OutPeer `protobuf:"bytes,12,opt,name=host_peer,json=hostPeer,proto3" json:"host_peer,omitempty"`
+	// / Message id generated by server
+	Mid       *UUIDValue         `protobuf:"bytes,10,opt,name=mid,proto3" json:"mid,omitempty"`
+	PrevMid   *UUIDValue         `protobuf:"bytes,17,opt,name=prev_mid,json=prevMid,proto3" json:"prev_mid,omitempty"`
+	Date      int64              `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
+	Message   *MessageContent    `protobuf:"bytes,5,opt,name=message,proto3" json:"message,omitempty"`
+	State     MessageState       `protobuf:"varint,6,opt,name=state,proto3,enum=dialog.MessageState" json:"state,omitempty"`
+	Reactions []*MessageReaction `protobuf:"bytes,7,rep,name=reactions,proto3" json:"reactions,omitempty"`
+	Attribute *MessageAttributes `protobuf:"bytes,8,opt,name=attribute,proto3" json:"attribute,omitempty"`
 	// Types that are valid to be assigned to Attach:
 	//	*HistoryMessage_Forward
 	//	*HistoryMessage_Reply
 	Attach               isHistoryMessage_Attach `protobuf_oneof:"attach"`
-	EditedAt             *wrappers.Int64Value    `protobuf:"bytes,16,opt,name=edited_at,json=editedAt" json:"edited_at,omitempty"`
+	EditedAt             *wrappers.Int64Value    `protobuf:"bytes,16,opt,name=edited_at,json=editedAt,proto3" json:"edited_at,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
 	XXX_unrecognized     []byte                  `json:"-"`
 	XXX_sizecache        int32                   `json:"-"`
@@ -5628,7 +5641,7 @@ func (m *HistoryMessage) Reset()         { *m = HistoryMessage{} }
 func (m *HistoryMessage) String() string { return proto.CompactTextString(m) }
 func (*HistoryMessage) ProtoMessage()    {}
 func (*HistoryMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{81}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{81}
 }
 func (m *HistoryMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HistoryMessage.Unmarshal(m, b)
@@ -5647,27 +5660,6 @@ func (m *HistoryMessage) XXX_DiscardUnknown() {
 }
 
 var xxx_messageInfo_HistoryMessage proto.InternalMessageInfo
-
-type isHistoryMessage_Attach interface {
-	isHistoryMessage_Attach()
-}
-
-type HistoryMessage_Forward struct {
-	Forward *ReferencedMessages `protobuf:"bytes,13,opt,name=forward,oneof"`
-}
-type HistoryMessage_Reply struct {
-	Reply *ReferencedMessages `protobuf:"bytes,14,opt,name=reply,oneof"`
-}
-
-func (*HistoryMessage_Forward) isHistoryMessage_Attach() {}
-func (*HistoryMessage_Reply) isHistoryMessage_Attach()   {}
-
-func (m *HistoryMessage) GetAttach() isHistoryMessage_Attach {
-	if m != nil {
-		return m.Attach
-	}
-	return nil
-}
 
 func (m *HistoryMessage) GetSenderUid() int32 {
 	if m != nil {
@@ -5735,6 +5727,29 @@ func (m *HistoryMessage) GetReactions() []*MessageReaction {
 func (m *HistoryMessage) GetAttribute() *MessageAttributes {
 	if m != nil {
 		return m.Attribute
+	}
+	return nil
+}
+
+type isHistoryMessage_Attach interface {
+	isHistoryMessage_Attach()
+}
+
+type HistoryMessage_Forward struct {
+	Forward *ReferencedMessages `protobuf:"bytes,13,opt,name=forward,proto3,oneof"`
+}
+
+type HistoryMessage_Reply struct {
+	Reply *ReferencedMessages `protobuf:"bytes,14,opt,name=reply,proto3,oneof"`
+}
+
+func (*HistoryMessage_Forward) isHistoryMessage_Attach() {}
+
+func (*HistoryMessage_Reply) isHistoryMessage_Attach() {}
+
+func (m *HistoryMessage) GetAttach() isHistoryMessage_Attach {
+	if m != nil {
+		return m.Attach
 	}
 	return nil
 }
@@ -5836,11 +5851,12 @@ func _HistoryMessage_OneofSizer(msg proto.Message) (n int) {
 
 // Loading history of chat
 type RequestLoadHistory struct {
-	Peer                 *OutPeer             `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Date                 int64                `protobuf:"varint,3,opt,name=date" json:"date,omitempty"`
-	LoadMode             ListLoadMode         `protobuf:"varint,5,opt,name=load_mode,json=loadMode,enum=dialog.ListLoadMode" json:"load_mode,omitempty"`
-	Limit                int32                `protobuf:"varint,4,opt,name=limit" json:"limit,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,6,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Peer *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Date int64    `protobuf:"varint,3,opt,name=date,proto3" json:"date,omitempty"`
+	// / forward, backward or both
+	LoadMode             ListLoadMode         `protobuf:"varint,5,opt,name=load_mode,json=loadMode,proto3,enum=dialog.ListLoadMode" json:"load_mode,omitempty"`
+	Limit                int32                `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,6,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -5850,7 +5866,7 @@ func (m *RequestLoadHistory) Reset()         { *m = RequestLoadHistory{} }
 func (m *RequestLoadHistory) String() string { return proto.CompactTextString(m) }
 func (*RequestLoadHistory) ProtoMessage()    {}
 func (*RequestLoadHistory) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{82}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{82}
 }
 func (m *RequestLoadHistory) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestLoadHistory.Unmarshal(m, b)
@@ -5906,23 +5922,25 @@ func (m *RequestLoadHistory) GetOptimizations() []UpdateOptimization {
 }
 
 type ResponseLoadHistory struct {
-	History              []*HistoryMessage    `protobuf:"bytes,1,rep,name=history" json:"history,omitempty"`
-	Users                []*User              `protobuf:"bytes,2,rep,name=users" json:"users,omitempty"`
-	UserPeers            []*UserOutPeer       `protobuf:"bytes,4,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
-	Groups               []*Group             `protobuf:"bytes,5,rep,name=groups" json:"groups,omitempty"`
-	GroupPeers           []*GroupOutPeer      `protobuf:"bytes,6,rep,name=group_peers,json=groupPeers" json:"group_peers,omitempty"`
-	Counter              *wrappers.Int32Value `protobuf:"bytes,7,opt,name=counter" json:"counter,omitempty"`
-	CounterDate          int64                `protobuf:"varint,8,opt,name=counter_date,json=counterDate" json:"counter_date,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	History    []*HistoryMessage `protobuf:"bytes,1,rep,name=history,proto3" json:"history,omitempty"`
+	Users      []*User           `protobuf:"bytes,2,rep,name=users,proto3" json:"users,omitempty"`
+	UserPeers  []*UserOutPeer    `protobuf:"bytes,4,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
+	Groups     []*Group          `protobuf:"bytes,5,rep,name=groups,proto3" json:"groups,omitempty"`
+	GroupPeers []*GroupOutPeer   `protobuf:"bytes,6,rep,name=group_peers,json=groupPeers,proto3" json:"group_peers,omitempty"`
+	// / counter of unread messages
+	Counter *wrappers.Int32Value `protobuf:"bytes,7,opt,name=counter,proto3" json:"counter,omitempty"`
+	// / date, related to this unread counter
+	CounterDate          int64    `protobuf:"varint,8,opt,name=counter_date,json=counterDate,proto3" json:"counter_date,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *ResponseLoadHistory) Reset()         { *m = ResponseLoadHistory{} }
 func (m *ResponseLoadHistory) String() string { return proto.CompactTextString(m) }
 func (*ResponseLoadHistory) ProtoMessage()    {}
 func (*ResponseLoadHistory) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{83}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{83}
 }
 func (m *ResponseLoadHistory) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseLoadHistory.Unmarshal(m, b)
@@ -5992,8 +6010,8 @@ func (m *ResponseLoadHistory) GetCounterDate() int64 {
 }
 
 // Conversation from history
-// peer Peer of conversation
-// unreadCount plain messages unread messages count
+// peer
+// unreadCount
 // sortDate date of conversation for sorting
 // senderUid Sender of top message (may be zero)
 // isFavourite Is dialog favourite
@@ -6006,29 +6024,34 @@ func (m *ResponseLoadHistory) GetCounterDate() int64 {
 // pinnedMessages Optional pinned messages
 // historyMessage Optional last messages
 type Dialog struct {
-	Peer                 *Peer               `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	UnreadCount          int32               `protobuf:"varint,3,opt,name=unread_count,json=unreadCount" json:"unread_count,omitempty"`
-	SortDate             int64               `protobuf:"varint,4,opt,name=sort_date,json=sortDate" json:"sort_date,omitempty"`
-	SenderUid            int32               `protobuf:"varint,5,opt,name=sender_uid,json=senderUid" json:"sender_uid,omitempty"`
-	IsFavourite          *wrappers.BoolValue `protobuf:"bytes,13,opt,name=is_favourite,json=isFavourite" json:"is_favourite,omitempty"`
-	Mid                  *UUIDValue          `protobuf:"bytes,12,opt,name=mid" json:"mid,omitempty"`
-	Date                 int64               `protobuf:"varint,7,opt,name=date" json:"date,omitempty"`
-	Message              *MessageContent     `protobuf:"bytes,8,opt,name=message" json:"message,omitempty"`
-	State                MessageState        `protobuf:"varint,9,opt,name=state,enum=dialog.MessageState" json:"state,omitempty"`
-	FirstUnreadDate      int64               `protobuf:"varint,10,opt,name=first_unread_date,json=firstUnreadDate" json:"first_unread_date,omitempty"`
-	Attributes           *MessageAttributes  `protobuf:"bytes,11,opt,name=attributes" json:"attributes,omitempty"`
-	PinnedMessages       *PinnedMessages     `protobuf:"bytes,14,opt,name=pinned_messages,json=pinnedMessages" json:"pinned_messages,omitempty"`
-	HistoryMessage       *HistoryMessage     `protobuf:"bytes,15,opt,name=history_message,json=historyMessage" json:"history_message,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Peer *Peer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	// / counter of unread messages
+	UnreadCount int32               `protobuf:"varint,3,opt,name=unread_count,json=unreadCount,proto3" json:"unread_count,omitempty"`
+	SortDate    int64               `protobuf:"varint,4,opt,name=sort_date,json=sortDate,proto3" json:"sort_date,omitempty"`
+	SenderUid   int32               `protobuf:"varint,5,opt,name=sender_uid,json=senderUid,proto3" json:"sender_uid,omitempty"`
+	IsFavourite *wrappers.BoolValue `protobuf:"bytes,13,opt,name=is_favourite,json=isFavourite,proto3" json:"is_favourite,omitempty"`
+	// / Message id
+	Mid *UUIDValue `protobuf:"bytes,12,opt,name=mid,proto3" json:"mid,omitempty"`
+	// / last action date
+	Date int64 `protobuf:"varint,7,opt,name=date,proto3" json:"date,omitempty"`
+	// / last message content
+	Message         *MessageContent    `protobuf:"bytes,8,opt,name=message,proto3" json:"message,omitempty"`
+	State           MessageState       `protobuf:"varint,9,opt,name=state,proto3,enum=dialog.MessageState" json:"state,omitempty"`
+	FirstUnreadDate int64              `protobuf:"varint,10,opt,name=first_unread_date,json=firstUnreadDate,proto3" json:"first_unread_date,omitempty"`
+	Attributes      *MessageAttributes `protobuf:"bytes,11,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	PinnedMessages  *PinnedMessages    `protobuf:"bytes,14,opt,name=pinned_messages,json=pinnedMessages,proto3" json:"pinned_messages,omitempty"`
+	// / last message in this dialog
+	HistoryMessage       *HistoryMessage `protobuf:"bytes,15,opt,name=history_message,json=historyMessage,proto3" json:"history_message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *Dialog) Reset()         { *m = Dialog{} }
 func (m *Dialog) String() string { return proto.CompactTextString(m) }
 func (*Dialog) ProtoMessage()    {}
 func (*Dialog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{84}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{84}
 }
 func (m *Dialog) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Dialog.Unmarshal(m, b)
@@ -6141,11 +6164,11 @@ func (m *Dialog) GetHistoryMessage() *HistoryMessage {
 
 // Loading conversation history
 type RequestLoadDialogs struct {
-	MinDate              int64                `protobuf:"varint,1,opt,name=min_date,json=minDate" json:"min_date,omitempty"`
-	Limit                int32                `protobuf:"varint,2,opt,name=limit" json:"limit,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,3,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
-	Filters              []DialogsFilter      `protobuf:"varint,4,rep,packed,name=filters,enum=dialog.DialogsFilter" json:"filters,omitempty"`
-	PeersToLoad          []*Peer              `protobuf:"bytes,5,rep,name=peers_to_load,json=peersToLoad" json:"peers_to_load,omitempty"`
+	MinDate              int64                `protobuf:"varint,1,opt,name=min_date,json=minDate,proto3" json:"min_date,omitempty"`
+	Limit                int32                `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,3,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Filters              []DialogsFilter      `protobuf:"varint,4,rep,packed,name=filters,proto3,enum=dialog.DialogsFilter" json:"filters,omitempty"`
+	PeersToLoad          []*Peer              `protobuf:"bytes,5,rep,name=peers_to_load,json=peersToLoad,proto3" json:"peers_to_load,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -6155,7 +6178,7 @@ func (m *RequestLoadDialogs) Reset()         { *m = RequestLoadDialogs{} }
 func (m *RequestLoadDialogs) String() string { return proto.CompactTextString(m) }
 func (*RequestLoadDialogs) ProtoMessage()    {}
 func (*RequestLoadDialogs) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{85}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{85}
 }
 func (m *RequestLoadDialogs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestLoadDialogs.Unmarshal(m, b)
@@ -6210,12 +6233,13 @@ func (m *RequestLoadDialogs) GetPeersToLoad() []*Peer {
 	return nil
 }
 
+// / Contains dialogs and related peers and entities
 type ResponseLoadDialogs struct {
-	Groups               []*Group        `protobuf:"bytes,1,rep,name=groups" json:"groups,omitempty"`
-	Users                []*User         `protobuf:"bytes,2,rep,name=users" json:"users,omitempty"`
-	Dialogs              []*Dialog       `protobuf:"bytes,3,rep,name=dialogs" json:"dialogs,omitempty"`
-	UserPeers            []*UserOutPeer  `protobuf:"bytes,4,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
-	GroupPeers           []*GroupOutPeer `protobuf:"bytes,5,rep,name=group_peers,json=groupPeers" json:"group_peers,omitempty"`
+	Groups               []*Group        `protobuf:"bytes,1,rep,name=groups,proto3" json:"groups,omitempty"`
+	Users                []*User         `protobuf:"bytes,2,rep,name=users,proto3" json:"users,omitempty"`
+	Dialogs              []*Dialog       `protobuf:"bytes,3,rep,name=dialogs,proto3" json:"dialogs,omitempty"`
+	UserPeers            []*UserOutPeer  `protobuf:"bytes,4,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
+	GroupPeers           []*GroupOutPeer `protobuf:"bytes,5,rep,name=group_peers,json=groupPeers,proto3" json:"group_peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -6225,7 +6249,7 @@ func (m *ResponseLoadDialogs) Reset()         { *m = ResponseLoadDialogs{} }
 func (m *ResponseLoadDialogs) String() string { return proto.CompactTextString(m) }
 func (*ResponseLoadDialogs) ProtoMessage()    {}
 func (*ResponseLoadDialogs) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{86}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{86}
 }
 func (m *ResponseLoadDialogs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseLoadDialogs.Unmarshal(m, b)
@@ -6281,11 +6305,11 @@ func (m *ResponseLoadDialogs) GetGroupPeers() []*GroupOutPeer {
 }
 
 // Dialog index from history. Used in client side pagination
-// peer The peer for the conversation
-// timestamp The timestamp for the top message
 type DialogIndex struct {
-	Peer                 *Peer    `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Timestamp            int64    `protobuf:"varint,2,opt,name=timestamp" json:"timestamp,omitempty"`
+	// / The peer for the conversation
+	Peer *Peer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	// / The timestamp for the top message
+	Timestamp            int64    `protobuf:"varint,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -6295,7 +6319,7 @@ func (m *DialogIndex) Reset()         { *m = DialogIndex{} }
 func (m *DialogIndex) String() string { return proto.CompactTextString(m) }
 func (*DialogIndex) ProtoMessage()    {}
 func (*DialogIndex) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{87}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{87}
 }
 func (m *DialogIndex) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DialogIndex.Unmarshal(m, b)
@@ -6329,7 +6353,9 @@ func (m *DialogIndex) GetTimestamp() int64 {
 	return 0
 }
 
-// Fetches dialog index. Used in client side pagination.
+// *
+// Fetches dialog index (short info about all user's dialogs).
+// Used in client side pagination.
 type RequestFetchDialogIndex struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -6340,7 +6366,7 @@ func (m *RequestFetchDialogIndex) Reset()         { *m = RequestFetchDialogIndex
 func (m *RequestFetchDialogIndex) String() string { return proto.CompactTextString(m) }
 func (*RequestFetchDialogIndex) ProtoMessage()    {}
 func (*RequestFetchDialogIndex) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{88}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{88}
 }
 func (m *RequestFetchDialogIndex) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestFetchDialogIndex.Unmarshal(m, b)
@@ -6361,7 +6387,7 @@ func (m *RequestFetchDialogIndex) XXX_DiscardUnknown() {
 var xxx_messageInfo_RequestFetchDialogIndex proto.InternalMessageInfo
 
 type ResponseFetchDialogIndex struct {
-	DialogIndices        []*DialogIndex `protobuf:"bytes,1,rep,name=dialog_indices,json=dialogIndices" json:"dialog_indices,omitempty"`
+	DialogIndices        []*DialogIndex `protobuf:"bytes,1,rep,name=dialog_indices,json=dialogIndices,proto3" json:"dialog_indices,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -6371,7 +6397,7 @@ func (m *ResponseFetchDialogIndex) Reset()         { *m = ResponseFetchDialogInd
 func (m *ResponseFetchDialogIndex) String() string { return proto.CompactTextString(m) }
 func (*ResponseFetchDialogIndex) ProtoMessage()    {}
 func (*ResponseFetchDialogIndex) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{89}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{89}
 }
 func (m *ResponseFetchDialogIndex) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseFetchDialogIndex.Unmarshal(m, b)
@@ -6398,11 +6424,11 @@ func (m *ResponseFetchDialogIndex) GetDialogIndices() []*DialogIndex {
 	return nil
 }
 
-// Loading archived messages
+// Loading archived messages - deprecated
 type RequestLoadArchived struct {
-	NextOffset           *wrappers.BytesValue `protobuf:"bytes,1,opt,name=next_offset,json=nextOffset" json:"next_offset,omitempty"`
-	Limit                int32                `protobuf:"varint,2,opt,name=limit" json:"limit,omitempty"`
-	Optimizations        []UpdateOptimization `protobuf:"varint,3,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	NextOffset           *wrappers.BytesValue `protobuf:"bytes,1,opt,name=next_offset,json=nextOffset,proto3" json:"next_offset,omitempty"`
+	Limit                int32                `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,3,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -6412,7 +6438,7 @@ func (m *RequestLoadArchived) Reset()         { *m = RequestLoadArchived{} }
 func (m *RequestLoadArchived) String() string { return proto.CompactTextString(m) }
 func (*RequestLoadArchived) ProtoMessage()    {}
 func (*RequestLoadArchived) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{90}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{90}
 }
 func (m *RequestLoadArchived) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestLoadArchived.Unmarshal(m, b)
@@ -6453,13 +6479,14 @@ func (m *RequestLoadArchived) GetOptimizations() []UpdateOptimization {
 	return nil
 }
 
+// / deprecated
 type ResponseLoadArchived struct {
-	Groups               []*Group             `protobuf:"bytes,1,rep,name=groups" json:"groups,omitempty"`
-	Users                []*User              `protobuf:"bytes,2,rep,name=users" json:"users,omitempty"`
-	Dialogs              []*Dialog            `protobuf:"bytes,3,rep,name=dialogs" json:"dialogs,omitempty"`
-	UserPeers            []*UserOutPeer       `protobuf:"bytes,5,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
-	GroupPeers           []*GroupOutPeer      `protobuf:"bytes,6,rep,name=group_peers,json=groupPeers" json:"group_peers,omitempty"`
-	NextOffset           *wrappers.BytesValue `protobuf:"bytes,4,opt,name=next_offset,json=nextOffset" json:"next_offset,omitempty"`
+	Groups               []*Group             `protobuf:"bytes,1,rep,name=groups,proto3" json:"groups,omitempty"`
+	Users                []*User              `protobuf:"bytes,2,rep,name=users,proto3" json:"users,omitempty"`
+	Dialogs              []*Dialog            `protobuf:"bytes,3,rep,name=dialogs,proto3" json:"dialogs,omitempty"`
+	UserPeers            []*UserOutPeer       `protobuf:"bytes,5,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
+	GroupPeers           []*GroupOutPeer      `protobuf:"bytes,6,rep,name=group_peers,json=groupPeers,proto3" json:"group_peers,omitempty"`
+	NextOffset           *wrappers.BytesValue `protobuf:"bytes,4,opt,name=next_offset,json=nextOffset,proto3" json:"next_offset,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -6469,7 +6496,7 @@ func (m *ResponseLoadArchived) Reset()         { *m = ResponseLoadArchived{} }
 func (m *ResponseLoadArchived) String() string { return proto.CompactTextString(m) }
 func (*ResponseLoadArchived) ProtoMessage()    {}
 func (*ResponseLoadArchived) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{91}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{91}
 }
 func (m *ResponseLoadArchived) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseLoadArchived.Unmarshal(m, b)
@@ -6531,9 +6558,9 @@ func (m *ResponseLoadArchived) GetNextOffset() *wrappers.BytesValue {
 	return nil
 }
 
-// Load all dialogs from grouped list
+// Load all dialogs from grouped list - deprecated
 type RequestLoadGroupedDialogs struct {
-	Optimizations        []UpdateOptimization `protobuf:"varint,1,rep,packed,name=optimizations,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
+	Optimizations        []UpdateOptimization `protobuf:"varint,1,rep,packed,name=optimizations,proto3,enum=dialog.UpdateOptimization" json:"optimizations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -6543,7 +6570,7 @@ func (m *RequestLoadGroupedDialogs) Reset()         { *m = RequestLoadGroupedDia
 func (m *RequestLoadGroupedDialogs) String() string { return proto.CompactTextString(m) }
 func (*RequestLoadGroupedDialogs) ProtoMessage()    {}
 func (*RequestLoadGroupedDialogs) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{92}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{92}
 }
 func (m *RequestLoadGroupedDialogs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestLoadGroupedDialogs.Unmarshal(m, b)
@@ -6570,14 +6597,15 @@ func (m *RequestLoadGroupedDialogs) GetOptimizations() []UpdateOptimization {
 	return nil
 }
 
+// / deprecated
 type ResponseLoadGroupedDialogs struct {
-	Dialogs              []*DialogGroup      `protobuf:"bytes,1,rep,name=dialogs" json:"dialogs,omitempty"`
-	Users                []*User             `protobuf:"bytes,2,rep,name=users" json:"users,omitempty"`
-	Groups               []*Group            `protobuf:"bytes,3,rep,name=groups" json:"groups,omitempty"`
-	ShowArchived         *wrappers.BoolValue `protobuf:"bytes,4,opt,name=show_archived,json=showArchived" json:"show_archived,omitempty"`
-	ShowInvite           *wrappers.BoolValue `protobuf:"bytes,5,opt,name=show_invite,json=showInvite" json:"show_invite,omitempty"`
-	UserPeers            []*UserOutPeer      `protobuf:"bytes,6,rep,name=user_peers,json=userPeers" json:"user_peers,omitempty"`
-	GroupPeers           []*GroupOutPeer     `protobuf:"bytes,7,rep,name=group_peers,json=groupPeers" json:"group_peers,omitempty"`
+	Dialogs              []*DialogGroup      `protobuf:"bytes,1,rep,name=dialogs,proto3" json:"dialogs,omitempty"`
+	Users                []*User             `protobuf:"bytes,2,rep,name=users,proto3" json:"users,omitempty"`
+	Groups               []*Group            `protobuf:"bytes,3,rep,name=groups,proto3" json:"groups,omitempty"`
+	ShowArchived         *wrappers.BoolValue `protobuf:"bytes,4,opt,name=show_archived,json=showArchived,proto3" json:"show_archived,omitempty"`
+	ShowInvite           *wrappers.BoolValue `protobuf:"bytes,5,opt,name=show_invite,json=showInvite,proto3" json:"show_invite,omitempty"`
+	UserPeers            []*UserOutPeer      `protobuf:"bytes,6,rep,name=user_peers,json=userPeers,proto3" json:"user_peers,omitempty"`
+	GroupPeers           []*GroupOutPeer     `protobuf:"bytes,7,rep,name=group_peers,json=groupPeers,proto3" json:"group_peers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -6587,7 +6615,7 @@ func (m *ResponseLoadGroupedDialogs) Reset()         { *m = ResponseLoadGroupedD
 func (m *ResponseLoadGroupedDialogs) String() string { return proto.CompactTextString(m) }
 func (*ResponseLoadGroupedDialogs) ProtoMessage()    {}
 func (*ResponseLoadGroupedDialogs) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{93}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{93}
 }
 func (m *ResponseLoadGroupedDialogs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseLoadGroupedDialogs.Unmarshal(m, b)
@@ -6656,11 +6684,11 @@ func (m *ResponseLoadGroupedDialogs) GetGroupPeers() []*GroupOutPeer {
 	return nil
 }
 
-// Dialogs order response
+// Dialogs order response - deprecated
 type ResponseDialogsOrder struct {
-	Seq                  int32          `protobuf:"varint,1,opt,name=seq" json:"seq,omitempty"`
+	Seq                  int32          `protobuf:"varint,1,opt,name=seq,proto3" json:"seq,omitempty"`
 	State                []byte         `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
-	Groups               []*DialogGroup `protobuf:"bytes,3,rep,name=groups" json:"groups,omitempty"`
+	Groups               []*DialogGroup `protobuf:"bytes,3,rep,name=groups,proto3" json:"groups,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -6670,7 +6698,7 @@ func (m *ResponseDialogsOrder) Reset()         { *m = ResponseDialogsOrder{} }
 func (m *ResponseDialogsOrder) String() string { return proto.CompactTextString(m) }
 func (*ResponseDialogsOrder) ProtoMessage()    {}
 func (*ResponseDialogsOrder) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{94}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{94}
 }
 func (m *ResponseDialogsOrder) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseDialogsOrder.Unmarshal(m, b)
@@ -6713,7 +6741,7 @@ func (m *ResponseDialogsOrder) GetGroups() []*DialogGroup {
 
 // Hide Dialog from grouped list
 type RequestHideDialog struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -6723,7 +6751,7 @@ func (m *RequestHideDialog) Reset()         { *m = RequestHideDialog{} }
 func (m *RequestHideDialog) String() string { return proto.CompactTextString(m) }
 func (*RequestHideDialog) ProtoMessage()    {}
 func (*RequestHideDialog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{95}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{95}
 }
 func (m *RequestHideDialog) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestHideDialog.Unmarshal(m, b)
@@ -6752,7 +6780,7 @@ func (m *RequestHideDialog) GetPeer() *OutPeer {
 
 // Show Dialog in grouped list
 type RequestShowDialog struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -6762,7 +6790,7 @@ func (m *RequestShowDialog) Reset()         { *m = RequestShowDialog{} }
 func (m *RequestShowDialog) String() string { return proto.CompactTextString(m) }
 func (*RequestShowDialog) ProtoMessage()    {}
 func (*RequestShowDialog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{96}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{96}
 }
 func (m *RequestShowDialog) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestShowDialog.Unmarshal(m, b)
@@ -6791,7 +6819,7 @@ func (m *RequestShowDialog) GetPeer() *OutPeer {
 
 // Marking dialog as favourite
 type RequestFavouriteDialog struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -6801,7 +6829,7 @@ func (m *RequestFavouriteDialog) Reset()         { *m = RequestFavouriteDialog{}
 func (m *RequestFavouriteDialog) String() string { return proto.CompactTextString(m) }
 func (*RequestFavouriteDialog) ProtoMessage()    {}
 func (*RequestFavouriteDialog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{97}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{97}
 }
 func (m *RequestFavouriteDialog) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestFavouriteDialog.Unmarshal(m, b)
@@ -6830,7 +6858,7 @@ func (m *RequestFavouriteDialog) GetPeer() *OutPeer {
 
 // Making dialog as unfavourite
 type RequestUnfavouriteDialog struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -6840,7 +6868,7 @@ func (m *RequestUnfavouriteDialog) Reset()         { *m = RequestUnfavouriteDial
 func (m *RequestUnfavouriteDialog) String() string { return proto.CompactTextString(m) }
 func (*RequestUnfavouriteDialog) ProtoMessage()    {}
 func (*RequestUnfavouriteDialog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{98}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{98}
 }
 func (m *RequestUnfavouriteDialog) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestUnfavouriteDialog.Unmarshal(m, b)
@@ -6869,8 +6897,8 @@ func (m *RequestUnfavouriteDialog) GetPeer() *OutPeer {
 
 // Update about dialog favourite changed
 type UpdateDialogFavouriteChanged struct {
-	Peer                 *Peer               `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	IsFavourite          *wrappers.BoolValue `protobuf:"bytes,2,opt,name=is_favourite,json=isFavourite" json:"is_favourite,omitempty"`
+	Peer                 *Peer               `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	IsFavourite          *wrappers.BoolValue `protobuf:"bytes,2,opt,name=is_favourite,json=isFavourite,proto3" json:"is_favourite,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -6880,7 +6908,7 @@ func (m *UpdateDialogFavouriteChanged) Reset()         { *m = UpdateDialogFavour
 func (m *UpdateDialogFavouriteChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdateDialogFavouriteChanged) ProtoMessage()    {}
 func (*UpdateDialogFavouriteChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{99}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{99}
 }
 func (m *UpdateDialogFavouriteChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDialogFavouriteChanged.Unmarshal(m, b)
@@ -6916,7 +6944,7 @@ func (m *UpdateDialogFavouriteChanged) GetIsFavourite() *wrappers.BoolValue {
 
 // Notifying about dialog open
 type RequestNotifyDialogOpened struct {
-	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
+	Peer                 *OutPeer `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -6926,7 +6954,7 @@ func (m *RequestNotifyDialogOpened) Reset()         { *m = RequestNotifyDialogOp
 func (m *RequestNotifyDialogOpened) String() string { return proto.CompactTextString(m) }
 func (*RequestNotifyDialogOpened) ProtoMessage()    {}
 func (*RequestNotifyDialogOpened) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{100}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{100}
 }
 func (m *RequestNotifyDialogOpened) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestNotifyDialogOpened.Unmarshal(m, b)
@@ -6954,9 +6982,9 @@ func (m *RequestNotifyDialogOpened) GetPeer() *OutPeer {
 }
 
 // Pinned messages
-// mids Messages ids
 type PinnedMessages struct {
-	Mids                 []*UUIDValue `protobuf:"bytes,1,rep,name=mids" json:"mids,omitempty"`
+	// / Messages ids
+	Mids                 []*UUIDValue `protobuf:"bytes,1,rep,name=mids,proto3" json:"mids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -6966,7 +6994,7 @@ func (m *PinnedMessages) Reset()         { *m = PinnedMessages{} }
 func (m *PinnedMessages) String() string { return proto.CompactTextString(m) }
 func (*PinnedMessages) ProtoMessage()    {}
 func (*PinnedMessages) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{101}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{101}
 }
 func (m *PinnedMessages) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PinnedMessages.Unmarshal(m, b)
@@ -6995,9 +7023,9 @@ func (m *PinnedMessages) GetMids() []*UUIDValue {
 
 // Pin message in conversation
 type RequestPinMessage struct {
-	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Mid                  *UUIDValue `protobuf:"bytes,2,opt,name=mid" json:"mid,omitempty"`
-	LastPinDate          int64      `protobuf:"varint,3,opt,name=last_pin_date,json=lastPinDate" json:"last_pin_date,omitempty"`
+	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Mid                  *UUIDValue `protobuf:"bytes,2,opt,name=mid,proto3" json:"mid,omitempty"`
+	LastPinDate          int64      `protobuf:"varint,3,opt,name=last_pin_date,json=lastPinDate,proto3" json:"last_pin_date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -7007,7 +7035,7 @@ func (m *RequestPinMessage) Reset()         { *m = RequestPinMessage{} }
 func (m *RequestPinMessage) String() string { return proto.CompactTextString(m) }
 func (*RequestPinMessage) ProtoMessage()    {}
 func (*RequestPinMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{102}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{102}
 }
 func (m *RequestPinMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestPinMessage.Unmarshal(m, b)
@@ -7050,9 +7078,9 @@ func (m *RequestPinMessage) GetLastPinDate() int64 {
 
 // Unpin message in conversation
 type RequestUnpinMessage struct {
-	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	Mid                  *UUIDValue `protobuf:"bytes,2,opt,name=mid" json:"mid,omitempty"`
-	LastPinDate          int64      `protobuf:"varint,3,opt,name=last_pin_date,json=lastPinDate" json:"last_pin_date,omitempty"`
+	Peer                 *OutPeer   `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	Mid                  *UUIDValue `protobuf:"bytes,2,opt,name=mid,proto3" json:"mid,omitempty"`
+	LastPinDate          int64      `protobuf:"varint,3,opt,name=last_pin_date,json=lastPinDate,proto3" json:"last_pin_date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -7062,7 +7090,7 @@ func (m *RequestUnpinMessage) Reset()         { *m = RequestUnpinMessage{} }
 func (m *RequestUnpinMessage) String() string { return proto.CompactTextString(m) }
 func (*RequestUnpinMessage) ProtoMessage()    {}
 func (*RequestUnpinMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{103}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{103}
 }
 func (m *RequestUnpinMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestUnpinMessage.Unmarshal(m, b)
@@ -7105,9 +7133,9 @@ func (m *RequestUnpinMessage) GetLastPinDate() int64 {
 
 // Update about pinned messages changed in conversation
 type UpdatePinnedMessagesChanged struct {
-	Peer                 *Peer           `protobuf:"bytes,1,opt,name=peer" json:"peer,omitempty"`
-	PinnedMessages       *PinnedMessages `protobuf:"bytes,2,opt,name=pinned_messages,json=pinnedMessages" json:"pinned_messages,omitempty"`
-	ActionDate           int64           `protobuf:"varint,3,opt,name=action_date,json=actionDate" json:"action_date,omitempty"`
+	Peer                 *Peer           `protobuf:"bytes,1,opt,name=peer,proto3" json:"peer,omitempty"`
+	PinnedMessages       *PinnedMessages `protobuf:"bytes,2,opt,name=pinned_messages,json=pinnedMessages,proto3" json:"pinned_messages,omitempty"`
+	ActionDate           int64           `protobuf:"varint,3,opt,name=action_date,json=actionDate,proto3" json:"action_date,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -7117,7 +7145,7 @@ func (m *UpdatePinnedMessagesChanged) Reset()         { *m = UpdatePinnedMessage
 func (m *UpdatePinnedMessagesChanged) String() string { return proto.CompactTextString(m) }
 func (*UpdatePinnedMessagesChanged) ProtoMessage()    {}
 func (*UpdatePinnedMessagesChanged) Descriptor() ([]byte, []int) {
-	return fileDescriptor_messaging_5b9bca9ff02f29e8, []int{104}
+	return fileDescriptor_messaging_8c36d22f69125374, []int{104}
 }
 func (m *UpdatePinnedMessagesChanged) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePinnedMessagesChanged.Unmarshal(m, b)
@@ -7282,23 +7310,37 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MessagingClient interface {
+	// / Interact with a message media (click on button for example)
 	DoInteractiveMediaAction(ctx context.Context, in *RequestDoInteractiveMediaAction, opts ...grpc.CallOption) (*ResponseVoid, error)
 	SendMessage(ctx context.Context, in *RequestSendMessage, opts ...grpc.CallOption) (*ResponseSeqDate, error)
 	UpdateMessage(ctx context.Context, in *RequestUpdateMessage, opts ...grpc.CallOption) (*ResponseSeqDate, error)
+	// / Mark message as received by self
 	MessageReceived(ctx context.Context, in *RequestMessageReceived, opts ...grpc.CallOption) (*ResponseVoid, error)
+	// / Mark message as read by self
 	MessageRead(ctx context.Context, in *RequestMessageRead, opts ...grpc.CallOption) (*ResponseVoid, error)
+	// / deprecated
 	DeleteMessageObsolete(ctx context.Context, in *RequestDeleteMessageObsolete, opts ...grpc.CallOption) (*ResponseSeq, error)
+	// / Clear chat history
 	ClearChat(ctx context.Context, in *RequestClearChat, opts ...grpc.CallOption) (*ResponseSeq, error)
 	DeleteChat(ctx context.Context, in *RequestDeleteChat, opts ...grpc.CallOption) (*ResponseSeq, error)
+	// / deprecated
 	ArchiveChat(ctx context.Context, in *RequestArchiveChat, opts ...grpc.CallOption) (*ResponseSeq, error)
+	// / Add reaction on message (emoji)
 	MessageSetReaction(ctx context.Context, in *RequestMessageSetReaction, opts ...grpc.CallOption) (*ResponseReactionsResponse, error)
 	MessageRemoveReaction(ctx context.Context, in *RequestMessageRemoveReaction, opts ...grpc.CallOption) (*ResponseReactionsResponse, error)
+	// / Load conversation history
 	LoadHistory(ctx context.Context, in *RequestLoadHistory, opts ...grpc.CallOption) (*ResponseLoadHistory, error)
+	// / Load user's dialogs
 	LoadDialogs(ctx context.Context, in *RequestLoadDialogs, opts ...grpc.CallOption) (*ResponseLoadDialogs, error)
+	// / Load short info about all user's dialogs
 	FetchDialogIndex(ctx context.Context, in *RequestFetchDialogIndex, opts ...grpc.CallOption) (*ResponseFetchDialogIndex, error)
+	// / deprecated
 	LoadArchived(ctx context.Context, in *RequestLoadArchived, opts ...grpc.CallOption) (*ResponseLoadArchived, error)
+	// / deprecated
 	LoadGroupedDialogs(ctx context.Context, in *RequestLoadGroupedDialogs, opts ...grpc.CallOption) (*ResponseLoadGroupedDialogs, error)
+	// / deprecated
 	HideDialog(ctx context.Context, in *RequestHideDialog, opts ...grpc.CallOption) (*ResponseDialogsOrder, error)
+	// / deprecated
 	ShowDialog(ctx context.Context, in *RequestShowDialog, opts ...grpc.CallOption) (*ResponseDialogsOrder, error)
 	FavouriteDialog(ctx context.Context, in *RequestFavouriteDialog, opts ...grpc.CallOption) (*ResponseDialogsOrder, error)
 	UnfavouriteDialog(ctx context.Context, in *RequestUnfavouriteDialog, opts ...grpc.CallOption) (*ResponseDialogsOrder, error)
@@ -7524,23 +7566,37 @@ func (c *messagingClient) UnpinMessage(ctx context.Context, in *RequestUnpinMess
 
 // MessagingServer is the server API for Messaging service.
 type MessagingServer interface {
+	// / Interact with a message media (click on button for example)
 	DoInteractiveMediaAction(context.Context, *RequestDoInteractiveMediaAction) (*ResponseVoid, error)
 	SendMessage(context.Context, *RequestSendMessage) (*ResponseSeqDate, error)
 	UpdateMessage(context.Context, *RequestUpdateMessage) (*ResponseSeqDate, error)
+	// / Mark message as received by self
 	MessageReceived(context.Context, *RequestMessageReceived) (*ResponseVoid, error)
+	// / Mark message as read by self
 	MessageRead(context.Context, *RequestMessageRead) (*ResponseVoid, error)
+	// / deprecated
 	DeleteMessageObsolete(context.Context, *RequestDeleteMessageObsolete) (*ResponseSeq, error)
+	// / Clear chat history
 	ClearChat(context.Context, *RequestClearChat) (*ResponseSeq, error)
 	DeleteChat(context.Context, *RequestDeleteChat) (*ResponseSeq, error)
+	// / deprecated
 	ArchiveChat(context.Context, *RequestArchiveChat) (*ResponseSeq, error)
+	// / Add reaction on message (emoji)
 	MessageSetReaction(context.Context, *RequestMessageSetReaction) (*ResponseReactionsResponse, error)
 	MessageRemoveReaction(context.Context, *RequestMessageRemoveReaction) (*ResponseReactionsResponse, error)
+	// / Load conversation history
 	LoadHistory(context.Context, *RequestLoadHistory) (*ResponseLoadHistory, error)
+	// / Load user's dialogs
 	LoadDialogs(context.Context, *RequestLoadDialogs) (*ResponseLoadDialogs, error)
+	// / Load short info about all user's dialogs
 	FetchDialogIndex(context.Context, *RequestFetchDialogIndex) (*ResponseFetchDialogIndex, error)
+	// / deprecated
 	LoadArchived(context.Context, *RequestLoadArchived) (*ResponseLoadArchived, error)
+	// / deprecated
 	LoadGroupedDialogs(context.Context, *RequestLoadGroupedDialogs) (*ResponseLoadGroupedDialogs, error)
+	// / deprecated
 	HideDialog(context.Context, *RequestHideDialog) (*ResponseDialogsOrder, error)
+	// / deprecated
 	ShowDialog(context.Context, *RequestShowDialog) (*ResponseDialogsOrder, error)
 	FavouriteDialog(context.Context, *RequestFavouriteDialog) (*ResponseDialogsOrder, error)
 	UnfavouriteDialog(context.Context, *RequestUnfavouriteDialog) (*ResponseDialogsOrder, error)
@@ -8068,9 +8124,9 @@ var _Messaging_serviceDesc = grpc.ServiceDesc{
 	Metadata: "messaging.proto",
 }
 
-func init() { proto.RegisterFile("messaging.proto", fileDescriptor_messaging_5b9bca9ff02f29e8) }
+func init() { proto.RegisterFile("messaging.proto", fileDescriptor_messaging_8c36d22f69125374) }
 
-var fileDescriptor_messaging_5b9bca9ff02f29e8 = []byte{
+var fileDescriptor_messaging_8c36d22f69125374 = []byte{
 	// 5568 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x7c, 0xdd, 0x6f, 0x1b, 0x57,
 	0x76, 0xb8, 0x86, 0x14, 0x25, 0xf1, 0x90, 0xa2, 0xa4, 0x6b, 0xc9, 0x96, 0xe5, 0xef, 0x71, 0xf2,
