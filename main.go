@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bufio"
+	"crypto/tls"
 	b "dialog-stress-bots/bot"
 	"dialog-stress-bots/utils"
 	"fmt"
+	"google.golang.org/grpc/credentials"
 	"io"
 	"net/http"
 	"os"
@@ -19,15 +22,15 @@ import (
 	"google.golang.org/grpc"
 )
 
-var phonePool = make([]int64, 0)
+var emailsPool = make([]string, 0)
 
-func getRandomContacts(amount int) []int64 {
-	var toReturn []int64
+func getRandomContacts(amount int) []string {
+	var toReturn []string
 
-	poolSize := len(phonePool)
+	poolSize := len(emailsPool)
 
 	for i := 0; i < amount; i++ {
-		toReturn = append(toReturn, phonePool[utils.RandomInt(poolSize-1)])
+		toReturn = append(toReturn, emailsPool[utils.RandomInt(poolSize-1)])
 	}
 	return toReturn
 }
@@ -43,7 +46,7 @@ func init() {
 
 	logFile, err := os.OpenFile("./log", os.O_WRONLY|os.O_CREATE, 0755)
 	if err != nil {
-		fmt.Errorf("failed to open log file")
+		log.Error(fmt.Errorf("failed to open log file"))
 	}
 
 	mw := io.MultiWriter(os.Stdout, logFile)
@@ -72,6 +75,9 @@ func main() {
 	sendMessageEachNSec := flag.Int("sendeach", 12, "send message each n seconds")
 	readMessageEachNSec := flag.Int("readeach", 8, "read message each n seconds")
 
+	certsDirectory := "/Users/ademin/tmp/fuuuu"//flag.String("certs", "certs", "directory of certificates")
+	usersList := "/Users/ademin/tmp/fuuuu/accounts.txt" //flag.String("users", "users.txt", "file with list of users ")
+
 	flag.Parse()
 
 	log.Infof("server: %s", *server)
@@ -85,9 +91,15 @@ func main() {
 	log.Infof("sendeach: %d", *sendMessageEachNSec)
 	log.Infof("readeach: %d", *readMessageEachNSec)
 
-	for i := 0; i < *botsAmount; i++ {
-		phonePool = append(phonePool, utils.Random(700000000, 800000000))
-	}
+	users, _ := readLines(usersList)
+	emailsPool = append(emailsPool, users...)
+
+	//print(users)
+	//
+	//return
+	//for i := 0; i < *botsAmount; i++ {
+	//	phonePool = append(phonePool, utils.Random(700000000, 800000000))
+	//}
 
 	newGroupEvent := make(chan *b.Group, *creationParallelism)
 
@@ -96,7 +108,7 @@ func main() {
 		bc.AddBot(&newBot)
 
 		// adding phones into contacts of new bot
-		newBot.ImportContacts(getRandomContacts(*contactsAmount))
+		//newBot.ImportContacts(getRandomContacts(*contactsAmount))
 
 		// joining existing groups
 		existingGroups := gc.Groups()
@@ -144,11 +156,11 @@ func main() {
 	}()
 
 	go func() {
-		botsToLaunch := make(chan int64, *botsAmount)
+		botsToLaunch := make(chan string, *botsAmount)
 		go func() {
 			defer close(botsToLaunch)
-			for _, phone := range phonePool {
-				botsToLaunch <- phone
+			for _, mail := range emailsPool {
+				botsToLaunch <- mail
 			}
 		}()
 		var launchedBots int32 = 0
@@ -157,13 +169,13 @@ func main() {
 		for w := 1; w <= *creationParallelism; w++ {
 			go func() {
 				defer botCreationLock.Done()
-				for phone := range botsToLaunch {
+				for email := range botsToLaunch {
 					botCreationStart := time.Now()
-					clientConn, err := initCliencConnection(server, serverPort)
+					clientConn, err := initCertConnection(server, serverPort, email, certsDirectory)
 					if err != nil {
 						log.Errorf("client did not connect: %s", err)
 					}
-					bot, err := b.CreateBot(phone, clientConn)
+					bot, err := b.CreateCertBot(clientConn)
 
 					log.Infof("Bot created in %fs", time.Since(botCreationStart).Seconds())
 
@@ -192,7 +204,7 @@ func main() {
 	waitForExit()
 }
 
-func initCliencConnection(host *string, port *string) (*grpc.ClientConn, error) {
+func initClientConnection(host *string, port *string) (*grpc.ClientConn, error) {
 	address := fmt.Sprintf("%s:%s", *host, *port)
 	clientConn, err := grpc.Dial(
 		address,
@@ -201,6 +213,55 @@ func initCliencConnection(host *string, port *string) (*grpc.ClientConn, error) 
 		grpc.WithInsecure(),
 	)
 	return clientConn, err
+}
+
+func initCertConnection(host *string, port *string, user string, certsFolder string) (*grpc.ClientConn, error) {
+	// load user cert/key
+	cert, err := tls.LoadX509KeyPair(certsFolder+"/"+user+".pem", certsFolder+"/"+user+".key")
+	if err != nil {
+		panic(err)
+	}
+
+	// load CA cert
+	//caCert, err := ioutil.ReadFile("certs/ca2.pem")
+	//if err != nil {
+	//	panic(err)
+	//}
+
+	//caCertPool := x509.NewCertPool()
+	//if !caCertPool.AppendCertsFromPEM(caCert) {
+	//	panic("Failed to append caCert to certs pool")
+	//}
+
+	config := &tls.Config{
+		Certificates: []tls.Certificate{cert},
+	}
+
+	config.BuildNameToCertificate()
+	creds := credentials.NewTLS(config)
+	address := "sbrf.transmit.im:8443"//fmt.Sprintf("%s:%s", *host, *port)
+	//address := fmt.Sprintf("%s:%s", *host, *port)
+
+	conn, err := grpc.Dial(address, grpc.WithTransportCredentials(creds), grpc.WithTimeout(15*time.Second), grpc.WithBlock())
+	if err != nil {
+		panic(err)
+	}
+	return conn, err
+}
+
+func readLines(path string) ([]string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	var lines []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+	return lines, scanner.Err()
 }
 
 // Wait for process to be terminated.

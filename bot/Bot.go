@@ -105,6 +105,70 @@ func CreateBot(phone int64, conn *grpc.ClientConn) (*Bot, error) {
 	return bot, nil
 }
 
+func CreateCertBot(conn *grpc.ClientConn) (*Bot, error) {
+	reg := pb.NewRegistrationClient(conn)
+
+	res, err := reg.RegisterDevice(context.Background(), &pb.RequestRegisterDevice{
+		AppId:    125,
+		AppTitle: "blabla",
+	})
+	if err != nil {
+		log.Errorf("Can't register device: %s", err)
+		return nil, err
+	}
+	log.Printf("Register response: %d, %s", res.GetAuthId(), res.GetToken())
+
+	ctx := metadata.AppendToOutgoingContext(context.Background(), "x-auth-ticket", res.GetToken())
+
+	auth := pb.NewAuthenticationClient(conn)
+
+	responseAuth, e := auth.StartAnonymousAuth(ctx, &pb.RequestStartAnonymousAuth{
+		Name: "dumb",
+	})
+
+	if e != nil {
+		log.Errorf("Can't start auth: %s", e)
+		return nil, err
+	}
+
+	contacts := pb.NewContactsClient(conn)
+	messaging := pb.NewMessagingClient(conn)
+	groups := pb.NewGroupsClient(conn)
+	dlgs := make(map[int32]struct {
+		*pb.OutPeer
+		int64
+	})
+
+	seqUpdatesClient := pb.NewSequenceAndUpdatesClient(conn)
+	seqUpdates, errSeqUpd := seqUpdatesClient.SeqUpdates(ctx, &empty.Empty{})
+	if errSeqUpd != nil {
+		log.Fatalf("Can't subscribe on seq updates: %v", errSeqUpd)
+		return nil, errSeqUpd
+	}
+
+	bot := &Bot{
+		Peer: pb.OutPeer{
+			Type:       pb.PeerType(1),
+			Id:         responseAuth.GetUser().Id,
+			AccessHash: responseAuth.GetUser().AccessHash,
+			StrId:      &wrappers.StringValue{Value: ""},
+		},
+		phone:        100,
+		user:         responseAuth.GetUser(),
+		contacts:     make([]*pb.OutPeer, 0),
+		dialogs:      dlgs,
+		contactsSrv:  &contacts,
+		messagingSrv: &messaging,
+		groupsSrv:    &groups,
+		seqUpdates:   &seqUpdates,
+		conn:         conn,
+		ctx:          &ctx,
+	}
+	return bot, nil
+}
+
+
+
 func (bot *Bot) ImportContacts(importBots []int64) error {
 	toImport := make([]*pb.PhoneToImport, len(importBots))
 	for i, phone := range importBots {
