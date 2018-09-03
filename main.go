@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"google.golang.org/grpc/credentials"
 	"io"
+	"math/rand"
 	"net/http"
 	"os"
 	"os/signal"
@@ -75,8 +76,11 @@ func main() {
 	sendMessageEachNSec := flag.Int("sendeach", 12, "send message each n seconds")
 	readMessageEachNSec := flag.Int("readeach", 8, "read message each n seconds")
 
-	certsDirectory := "/Users/ademin/tmp/fuuuu"//flag.String("certs", "certs", "directory of certificates")
-	usersList := "/Users/ademin/tmp/fuuuu/accounts.txt" //flag.String("users", "users.txt", "file with list of users ")
+	sendFileEachNSec := flag.Int("fileeach", 30, "send file each n seconds")
+	sendFilePath := flag.String("filepath", "", "file path for sending")
+
+	certsDirectory := flag.String("certs", "", "directory of certificates")
+	usersListPath := flag.String("users", "", "file with list of users ")
 
 	flag.Parse()
 
@@ -90,16 +94,22 @@ func main() {
 	log.Infof("grmax: %d", *membersMax)
 	log.Infof("sendeach: %d", *sendMessageEachNSec)
 	log.Infof("readeach: %d", *readMessageEachNSec)
+	log.Infof("fileeach: %d", *sendFileEachNSec)
+	log.Infof("filepath: %s", *sendFilePath)
+	log.Infof("certs: %s", *certsDirectory)
+	log.Infof("users: %s", *usersListPath)
 
-	users, _ := readLines(usersList)
+	if len(*usersListPath) < 1 {
+		panic("usersListPath is not defined")
+	}
+
+	if len(*certsDirectory) < 1 {
+		panic("certs directory is not defined")
+	}
+
+	users, _ := readLines(*usersListPath)
 	emailsPool = append(emailsPool, users...)
-
-	//print(users)
-	//
-	//return
-	//for i := 0; i < *botsAmount; i++ {
-	//	phonePool = append(phonePool, utils.Random(700000000, 800000000))
-	//}
+	rand.Seed(time.Now().Unix())
 
 	newGroupEvent := make(chan *b.Group, *creationParallelism)
 
@@ -107,8 +117,9 @@ func main() {
 		addContactStart := time.Now()
 		bc.AddBot(&newBot)
 
-		// adding phones into contacts of new bot
-		//newBot.ImportContacts(getRandomContacts(*contactsAmount))
+		// find some contact
+		n := rand.Int() % len(emailsPool)
+		newBot.FindContacts(emailsPool[n])
 
 		// joining existing groups
 		existingGroups := gc.Groups()
@@ -171,7 +182,7 @@ func main() {
 				defer botCreationLock.Done()
 				for email := range botsToLaunch {
 					botCreationStart := time.Now()
-					clientConn, err := initCertConnection(server, serverPort, email, certsDirectory)
+					clientConn, err := initCertConnection(server, serverPort, email, *certsDirectory)
 					if err != nil {
 						log.Errorf("client did not connect: %s", err)
 					}
@@ -183,7 +194,7 @@ func main() {
 						log.Errorf("failed to create bot: %s", err)
 					} else {
 						botStart := time.Now()
-						bot.Start(*sendMessageEachNSec, *readMessageEachNSec)
+						bot.Start(*sendMessageEachNSec, *readMessageEachNSec, *sendFileEachNSec, *sendFilePath)
 						initBot(*bot)
 						log.Infof("Bot started in: %fs", time.Since(botStart).Seconds())
 						atomic.AddInt32(&launchedBots, 1)
@@ -222,25 +233,14 @@ func initCertConnection(host *string, port *string, user string, certsFolder str
 		panic(err)
 	}
 
-	// load CA cert
-	//caCert, err := ioutil.ReadFile("certs/ca2.pem")
-	//if err != nil {
-	//	panic(err)
-	//}
-
-	//caCertPool := x509.NewCertPool()
-	//if !caCertPool.AppendCertsFromPEM(caCert) {
-	//	panic("Failed to append caCert to certs pool")
-	//}
-
 	config := &tls.Config{
 		Certificates: []tls.Certificate{cert},
 	}
 
 	config.BuildNameToCertificate()
 	creds := credentials.NewTLS(config)
-	address := "sbrf.transmit.im:8443"//fmt.Sprintf("%s:%s", *host, *port)
-	//address := fmt.Sprintf("%s:%s", *host, *port)
+	//address := "sbrf.transmit.im:8443" //fmt.Sprintf("%s:%s", *host, *port)
+	address := fmt.Sprintf("%s:%s", *host, *port)
 
 	conn, err := grpc.Dial(address, grpc.WithTransportCredentials(creds), grpc.WithTimeout(15*time.Second), grpc.WithBlock())
 	if err != nil {

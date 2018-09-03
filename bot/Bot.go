@@ -139,6 +139,7 @@ func CreateCertBot(conn *grpc.ClientConn) (*Bot, error) {
 	contacts := pb.NewContactsClient(conn)
 	messaging := pb.NewMessagingClient(conn)
 	groups := pb.NewGroupsClient(conn)
+	files := pb.NewMediaAndFilesClient(conn)
 	dlgs := make(map[int32]struct {
 		*pb.OutPeer
 		int64
@@ -166,13 +167,12 @@ func CreateCertBot(conn *grpc.ClientConn) (*Bot, error) {
 		messagingSrv: &messaging,
 		groupsSrv:    &groups,
 		seqUpdates:   &seqUpdates,
+		filesSrv:     &files,
 		conn:         conn,
 		ctx:          &ctx,
 	}
 	return bot, nil
 }
-
-
 
 func (bot *Bot) ImportContacts(importBots []int64) error {
 	toImport := make([]*pb.PhoneToImport, len(importBots))
@@ -265,6 +265,76 @@ func (bot *Bot) SendMessage(dest *pb.OutPeer) (*pb.ResponseSeqDate, error) {
 		},
 	}
 
+	sendResult, err := PerformSend(bot, dest, message)
+	return sendResult, err
+}
+
+func (bot *Bot) SendFile(dest *pb.OutPeer, filePath string) (*pb.ResponseSeqDate, error) {
+
+	// Reading file and stats
+	file, err := os.Open(filePath)
+
+	if err != nil {
+		log.Errorf("Error on open file %s with error %v", filePath, err)
+		return nil, err
+	}
+	defer file.Close()
+
+	info, err := file.Stat()
+
+	if err != nil {
+		return nil, err
+	}
+	size := int32(info.Size())
+	// Obtain file upload url
+	resUrl, err := (*bot.filesSrv).GetFileUploadUrl(*bot.ctx, &pb.RequestGetFileUploadUrl{
+		ExpectedSize: size,
+	})
+
+	if err != nil {
+		log.Errorf("Error on GetFileUploadUrl %v", err)
+		return nil, err
+	}
+
+	// Upload the url
+	res, err := http.NewRequest("PUT", resUrl.Url, file)
+
+	if err != nil {
+		log.Errorf("Error on perform PUT request %v", err)
+		return nil, err
+	}
+
+	defer res.Body.Close()
+
+	// Commit file
+	commitRes, commitErr := (*bot.filesSrv).CommitFileUpload(*bot.ctx, &pb.RequestCommitFileUpload{
+		UploadKey: resUrl.UploadKey,
+		FileName:  info.Name(),
+	})
+
+	if commitErr != nil {
+		log.Errorf("Error on commit file %v", err)
+		return nil, err
+	}
+
+	message := pb.MessageContent{
+		Body: &pb.MessageContent_DocumentMessage{
+			DocumentMessage: &pb.DocumentMessage{
+				FileId:     commitRes.UploadedFileLocation.FileId,
+				AccessHash: commitRes.UploadedFileLocation.AccessHash,
+				FileSize:   size,
+				Name:       info.Name(),
+				MimeType:   "application/octet-stream",
+			},
+		},
+	}
+
+	sendResult, err := PerformSend(bot, dest, message)
+	return sendResult, err
+}
+
+func PerformSend(bot *Bot, dest *pb.OutPeer, message pb.MessageContent) (*pb.ResponseSeqDate, error) {
+
 	sendMessageStart := time.Now()
 	randomId := utils.RandomId()
 	res, err := (*bot.messagingSrv).SendMessage(*bot.ctx, &pb.RequestSendMessage{
@@ -291,57 +361,6 @@ func (bot *Bot) SendMessage(dest *pb.OutPeer) (*pb.ResponseSeqDate, error) {
 		bot.lock.Unlock()
 	}
 	return res, err
-}
-
-func (bot *Bot) SendFile(filePath string) error {
-
-	// Reading file and stats
-	file, err := os.Open(filePath)
-
-	if err != nil {
-		log.Errorf("Error on open file %s with error %v", filePath, err)
-		return nil
-	}
-	defer file.Close()
-
-	info, err := file.Stat()
-
-	if err != nil {
-		return nil
-	}
-
-	// Obtain file upload url
-	resUrl, err := (*bot.filesSrv).GetFileUploadUrl(*bot.ctx, &pb.RequestGetFileUploadUrl{
-		ExpectedSize: int32(info.Size()),
-	})
-
-	if err != nil {
-		log.Errorf("Error on GetFileUploadUrl %v", err)
-		return nil
-	}
-
-	// Upload the url
-	res, err := http.NewRequest("PUT", resUrl.Url, file)
-
-	if err != nil {
-		log.Errorf("Error on perform PUT request %v", err)
-		return nil
-	}
-
-	defer res.Body.Close()
-
-	// Commit file
-	_, commitErr := (*bot.filesSrv).CommitFileUpload(*bot.ctx, &pb.RequestCommitFileUpload{
-		UploadKey: resUrl.UploadKey,
-		FileName:  info.Name(),
-	})
-
-	if commitErr != nil {
-		log.Errorf("Error on commit file %v", err)
-		return nil
-	}
-
-	return nil
 }
 
 func (bot *Bot) CreateGroup() (*Group, error) {
@@ -459,7 +478,7 @@ type Bot struct {
 	messagingSrv *pb.MessagingClient
 	groupsSrv    *pb.GroupsClient
 	seqUpdates   *pb.SequenceAndUpdates_SeqUpdatesClient
-	filesSrv	 *pb.MediaAndFilesClient
+	filesSrv     *pb.MediaAndFilesClient
 	conn         *grpc.ClientConn
 	ctx          *context.Context
 }
@@ -495,12 +514,15 @@ func (bot *Bot) choosePeer() *pb.OutPeer {
 	}
 	return nil
 }
-func (bot *Bot) Start(msgEachS int, readEachS int) chan<- KillBot {
+func (bot *Bot) Start(msgEachS int, readEachS int, fileEachS int, filePath string) chan<- KillBot {
 	go bot.seqUpdatesReceive(bot.seqUpdates)
 
 	msgTicker := randomTick(msgEachS)
 	readTicker := randomTick(readEachS)
-	//fileTick := randomTick(msgEachS)
+	fileTicker := make(<-chan struct{})
+	if len(filePath) > 0 && fileEachS > 0 {
+		fileTicker = randomTick(fileEachS)
+	}
 
 	quit := make(chan KillBot)
 	go func() {
@@ -510,6 +532,11 @@ func (bot *Bot) Start(msgEachS int, readEachS int) chan<- KillBot {
 				peer := bot.choosePeer()
 				if peer != nil {
 					bot.SendMessage(peer)
+				}
+			case <-fileTicker:
+				peer := bot.choosePeer()
+				if peer != nil {
+					bot.SendFile(peer, filePath)
 				}
 			case <-readTicker:
 				peer := bot.choosePeer()
