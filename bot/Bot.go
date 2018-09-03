@@ -3,10 +3,12 @@ package bot
 import (
 	pb "dialog-stress-bots/gateway"
 	"dialog-stress-bots/utils"
+	"net/http"
+	"os"
+	"strings"
 
 	"io"
 	"math"
-	"strings"
 	"sync"
 	"time"
 
@@ -72,6 +74,8 @@ func CreateBot(phone int64, conn *grpc.ClientConn) (*Bot, error) {
 	contacts := pb.NewContactsClient(conn)
 	messaging := pb.NewMessagingClient(conn)
 	groups := pb.NewGroupsClient(conn)
+	files := pb.NewMediaAndFilesClient(conn)
+
 	dlgs := make(map[int32]struct {
 		*pb.OutPeer
 		int64
@@ -99,6 +103,7 @@ func CreateBot(phone int64, conn *grpc.ClientConn) (*Bot, error) {
 		messagingSrv: &messaging,
 		groupsSrv:    &groups,
 		seqUpdates:   &seqUpdates,
+		filesSrv:     &files,
 		conn:         conn,
 		ctx:          &ctx,
 	}
@@ -211,12 +216,47 @@ func (bot *Bot) ImportContacts(importBots []int64) error {
 	return nil
 }
 
+func (bot *Bot) FindContacts(searchString string) error {
+
+	res, err := (*bot.contactsSrv).SearchContacts(*bot.ctx, &pb.RequestSearchContacts{
+		Request: searchString,
+	})
+
+	if err != nil {
+		log.Errorf("Error while FindContacts: %s", err.Error())
+		return err
+	}
+
+	userOutPeers := res.GetUserPeers()
+	var peers []*pb.OutPeer
+
+	bot.lock.Lock()
+	for _, p := range userOutPeers {
+		peer := &pb.OutPeer{
+			Type:       pb.PeerType(1),
+			Id:         p.Uid,
+			AccessHash: p.AccessHash,
+			StrId:      &wrappers.StringValue{Value: ""},
+		}
+		peers = append(peers, peer)
+
+		bot.dialogs[p.Uid] = struct {
+			*pb.OutPeer
+			int64
+		}{peer, 0}
+	}
+	bot.contacts = append(bot.contacts, peers...)
+
+	bot.lock.Unlock()
+	return nil
+}
+
 func (bot *Bot) SendMessage(dest *pb.OutPeer) (*pb.ResponseSeqDate, error) {
 
 	message := pb.MessageContent{
 		Body: &pb.MessageContent_TextMessage{
 			TextMessage: &pb.TextMessage{
-				Text:       ("Message from bot " + strconv.Itoa(int(bot.user.Id))),
+				Text:       "Message from bot " + strconv.Itoa(int(bot.user.Id)),
 				Mentions:   make([]int32, 0),
 				Ext:        nil,
 				Media:      make([]*pb.MessageMedia, 0),
@@ -251,6 +291,57 @@ func (bot *Bot) SendMessage(dest *pb.OutPeer) (*pb.ResponseSeqDate, error) {
 		bot.lock.Unlock()
 	}
 	return res, err
+}
+
+func (bot *Bot) SendFile(filePath string) error {
+
+	// Reading file and stats
+	file, err := os.Open(filePath)
+
+	if err != nil {
+		log.Errorf("Error on open file %s with error %v", filePath, err)
+		return nil
+	}
+	defer file.Close()
+
+	info, err := file.Stat()
+
+	if err != nil {
+		return nil
+	}
+
+	// Obtain file upload url
+	resUrl, err := (*bot.filesSrv).GetFileUploadUrl(*bot.ctx, &pb.RequestGetFileUploadUrl{
+		ExpectedSize: int32(info.Size()),
+	})
+
+	if err != nil {
+		log.Errorf("Error on GetFileUploadUrl %v", err)
+		return nil
+	}
+
+	// Upload the url
+	res, err := http.NewRequest("PUT", resUrl.Url, file)
+
+	if err != nil {
+		log.Errorf("Error on perform PUT request %v", err)
+		return nil
+	}
+
+	defer res.Body.Close()
+
+	// Commit file
+	_, commitErr := (*bot.filesSrv).CommitFileUpload(*bot.ctx, &pb.RequestCommitFileUpload{
+		UploadKey: resUrl.UploadKey,
+		FileName:  info.Name(),
+	})
+
+	if commitErr != nil {
+		log.Errorf("Error on commit file %v", err)
+		return nil
+	}
+
+	return nil
 }
 
 func (bot *Bot) CreateGroup() (*Group, error) {
@@ -368,6 +459,7 @@ type Bot struct {
 	messagingSrv *pb.MessagingClient
 	groupsSrv    *pb.GroupsClient
 	seqUpdates   *pb.SequenceAndUpdates_SeqUpdatesClient
+	filesSrv	 *pb.MediaAndFilesClient
 	conn         *grpc.ClientConn
 	ctx          *context.Context
 }
@@ -408,6 +500,8 @@ func (bot *Bot) Start(msgEachS int, readEachS int) chan<- KillBot {
 
 	msgTicker := randomTick(msgEachS)
 	readTicker := randomTick(readEachS)
+	//fileTick := randomTick(msgEachS)
+
 	quit := make(chan KillBot)
 	go func() {
 		for {
