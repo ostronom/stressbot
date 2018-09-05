@@ -531,7 +531,12 @@ func (bot *Bot) Start(msgEachS int, readEachS int, fileEachS int, filePath strin
 			case <-msgTicker:
 				peer := bot.choosePeer()
 				if peer != nil {
-					bot.SendMessage(peer)
+					date, err := bot.SendMessage(peer)
+					if err != nil {
+						log.Errorf("SendMessage error: %s", err.Error())
+					} else {
+						log.Infof("Message sent: %s", date.String())
+					}
 				}
 			case <-fileTicker:
 				peer := bot.choosePeer()

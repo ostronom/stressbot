@@ -235,6 +235,7 @@ func initCertConnection(host *string, port *string, user string, certsFolder str
 
 	config := &tls.Config{
 		Certificates: []tls.Certificate{cert},
+		InsecureSkipVerify: true,
 	}
 
 	config.BuildNameToCertificate()
