@@ -3,6 +3,9 @@ package bot
 import (
 	pb "dialog-stress-bots/gateway"
 	"dialog-stress-bots/utils"
+	"fmt"
+	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"os"
 	"strings"
@@ -285,6 +288,19 @@ func (bot *Bot) SendFile(dest *pb.OutPeer, filePath string) (*pb.ResponseSeqDate
 	if err != nil {
 		return nil, err
 	}
+
+	if info.IsDir() {
+		// Send random file from dir
+		infos, err := ioutil.ReadDir(filePath)
+		if err != nil {
+			log.Errorf("Error on when reading dir infos %v", err)
+			return nil, err
+		}
+
+		n := rand.Int() % len(infos)
+		return bot.SendFile(dest, fmt.Sprintf("%s/%s", filePath, infos[n].Name()))
+	}
+
 	size := int32(info.Size())
 	// Obtain file upload url
 	resUrl, err := (*bot.filesSrv).GetFileUploadUrl(*bot.ctx, &pb.RequestGetFileUploadUrl{
