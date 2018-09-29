@@ -164,14 +164,14 @@ func (s *stress) createLoop(createCh chan string, output chan *bot.Bot, doneCh c
 		//_, err = b.AnonymousAuth()
 		for {
 			_, err = b.AuthorizeByPhone(genPhone(), "12345")
-			if err != bot.ErrRetry {
+			if err == nil {
 				break
 			}
 		}
-		if err != nil {
-			fmt.Printf("Failed to authenticate a new bot: %s\n", err.Error())
-			os.Exit(1)
-		}
+		//if err != nil {
+		//	fmt.Printf("Failed to authenticate a new bot: %s\n", err.Error())
+		//	os.Exit(1)
+		//}
 		output <- b
 		<- time.After(2 * time.Second)
 	}
