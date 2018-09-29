@@ -72,6 +72,7 @@ type stress struct {
 	ctx         context.Context
 	bots        []*wrappedBot
 	serverUrl   string
+	serverPort  int64
 	dialTimeout time.Duration
 }
 
@@ -129,8 +130,12 @@ func (s *stress) createLoop(createCh chan string, output chan *bot.Bot, doneCh c
 		//}
 		//
 		//conn := s.createConn(cert)
-		creds := grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "gprc-test.transmit.im"))
-		conn, err := grpc.Dial("grpc-test.transmit.im:9443", grpc.WithBlock(), creds)
+		creds := grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, s.serverUrl))
+
+		address := fmt.Sprintf("%s:%d", s.serverUrl, s.serverPort)
+		fmt.Printf("Failed to instantiate a new bot: %s\n", err.Error())
+
+		conn, err := grpc.Dial(address, grpc.WithBlock(), creds)
 		retries := 0
 		var b *bot.Bot
 		for {
@@ -261,10 +266,11 @@ func (s *stress) botLoop(b *wrappedBot, ticker <-chan time.Time, sFreq, rFreq in
 	}
 }
 
-func Stress(serverUrl, certsPath, usersFile string, cPar, bQty, grQty, grMin, grMax, sFreq, rFreq int64) {
+func Stress(serverUrl, certsPath, usersFile string, serverPort, cPar, bQty, grQty, grMin, grMax, sFreq, rFreq int64) {
 	s := &stress{
 		ctx:         context.Background(),
 		serverUrl:   serverUrl,
+		serverPort:  serverPort,
 		bots:        make([]*wrappedBot, 0),
 		dialTimeout: 15 * time.Second,
 	}

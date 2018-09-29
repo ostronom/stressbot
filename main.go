@@ -6,10 +6,9 @@ import (
 	"os"
 )
 
-
 func main() {
 	var serverUrl, certsPath, usersFile string
-	var botsNum, cPar, grQty, grMin, grMax, sFreq, rFreq int64
+	var serverPort, botsNum, cPar, grQty, grMin, grMax, sFreq, rFreq int64
 
 	app := cli.NewApp()
 	app.Name = "streesbot"
@@ -17,6 +16,7 @@ func main() {
 		Name: "start",
 		Flags: []cli.Flag{
 			cli.StringFlag{Name: "server-url", Destination: &serverUrl},
+			cli.Int64Flag{Name: "server-port", Destination: &serverPort},
 			cli.Int64Flag{Name: "bots-num", Value: 100, Destination: &botsNum},
 			cli.Int64Flag{Name: "creation-parallelism", Value: 5, Destination: &cPar},
 			cli.Int64Flag{Name: "groups-amount", Value: 10, Destination: &grQty},
