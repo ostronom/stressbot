@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/dialogs/stressbot/stress"
+	"dialog-stress-bots/stress"
 	"github.com/urfave/cli"
 	"os"
 )
@@ -28,7 +28,7 @@ func main() {
 			cli.StringFlag{Name: "users-file", Destination: &usersFile},
 		},
 		Action: func(c *cli.Context) error {
-			stress.Stress(serverUrl, certsPath, usersFile, cPar, botsNum, grQty, grMin, grMax, sFreq, rFreq)
+			stress.Stress(serverUrl, certsPath, usersFile, serverPort, cPar, botsNum, grQty, grMin, grMax, sFreq, rFreq)
 			return nil
 		},
 	}}

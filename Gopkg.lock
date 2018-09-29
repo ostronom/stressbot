@@ -16,7 +16,6 @@
   packages = [
     "bot",
     "gateway",
-    "stress",
   ]
   pruneopts = "T"
   revision = "38ab52343676cbd4fa97bf9da422f04d19c3f931"
@@ -149,7 +148,6 @@
     "github.com/VividCortex/multitick",
     "github.com/dialogs/stressbot/bot",
     "github.com/dialogs/stressbot/gateway",
-    "github.com/dialogs/stressbot/stress",
     "github.com/gogo/protobuf/types",
     "github.com/golang/protobuf/proto",
     "github.com/golang/protobuf/protoc-gen-go/descriptor",

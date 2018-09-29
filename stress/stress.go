@@ -133,9 +133,13 @@ func (s *stress) createLoop(createCh chan string, output chan *bot.Bot, doneCh c
 		creds := grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, s.serverUrl))
 
 		address := fmt.Sprintf("%s:%d", s.serverUrl, s.serverPort)
-		fmt.Printf("Failed to instantiate a new bot: %s\n", err.Error())
+		//fmt.Printf("Failed to instantiate a new bot: %s\n", err.Error())
 
 		conn, err := grpc.Dial(address, grpc.WithBlock(), creds)
+		if err != nil {
+			fmt.Printf("Failed to instantiate a new bot:")
+		}
+
 		retries := 0
 		var b *bot.Bot
 		for {
