@@ -271,12 +271,16 @@ func (s *stress) botLoop(b *wrappedBot, ticker <-chan time.Time, sFreq, rFreq in
 }
 
 func Stress(serverUrl, certsPath, usersFile string, serverPort, cPar, bQty, grQty, grMin, grMax, sFreq, rFreq int64) {
+
+	//clientDeadline := time.Now().Add(time.Duration(100) * time.Hour)
+	ctx, _ := context.WithTimeout(context.Background(), time.Duration(500) * time.Second)
+
 	s := &stress{
-		ctx:         context.Background(),
+		ctx:         ctx,
 		serverUrl:   serverUrl,
 		serverPort:  serverPort,
 		bots:        make([]*wrappedBot, 0),
-		dialTimeout: 15 * time.Second,
+		dialTimeout: 55 * time.Second,
 	}
 	//uf, err := ioutil.ReadFile(usersFile)
 	//if err != nil {
