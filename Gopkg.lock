@@ -10,6 +10,17 @@
   revision = "093e689081f93f076729cda83517a5379dd9895d"
 
 [[projects]]
+  branch = "feature/newbots"
+  digest = "1:2d36404c8585f827aa4f8f06dc228f79b531e7a9f6ac099bc1c082841e89242b"
+  name = "github.com/dialogs/stressbot"
+  packages = [
+    "bot",
+    "gateway",
+  ]
+  pruneopts = "T"
+  revision = "38ab52343676cbd4fa97bf9da422f04d19c3f931"
+
+[[projects]]
   digest = "1:aba848b77ff362b03db51ac06379c36a120bc05b4cc6c5c74f6e6fa310454fa5"
   name = "github.com/gogo/protobuf"
   packages = [
@@ -135,6 +146,8 @@
   analyzer-version = 1
   input-imports = [
     "github.com/VividCortex/multitick",
+    "github.com/dialogs/stressbot/bot",
+    "github.com/dialogs/stressbot/gateway",
     "github.com/gogo/protobuf/types",
     "github.com/golang/protobuf/proto",
     "github.com/golang/protobuf/protoc-gen-go/descriptor",

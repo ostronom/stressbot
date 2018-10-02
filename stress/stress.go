@@ -74,6 +74,7 @@ type stress struct {
 	ctx         context.Context
 	bots        []*wrappedBot
 	serverUrl   string
+	serverPort  int64
 	dialTimeout time.Duration
 }
 
@@ -87,7 +88,7 @@ func (s *stress) createConn(cert tls.Certificate) *grpc.ClientConn {
 		Certificates:       []tls.Certificate{cert},
 		InsecureSkipVerify: true,
 	})
-	conn, err := grpc.Dial(s.serverUrl, grpc.WithTransportCredentials(creds), grpc.WithTimeout(s.dialTimeout), grpc.WithKeepaliveParams(keepalive.ClientParameters{
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", s.serverUrl, s.serverPort), grpc.WithTransportCredentials(creds), grpc.WithTimeout(s.dialTimeout), grpc.WithKeepaliveParams(keepalive.ClientParameters{
 		PermitWithoutStream: true,
 	}))
 	if err != nil {
@@ -131,8 +132,10 @@ func (s *stress) createLoop(createCh chan string, output chan *bot.Bot, doneCh c
 		}
 
 		conn := s.createConn(cert)
-		//creds := grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "gprc-test.transmit.im"))
-		//conn, err := grpc.Dial("grpc-test.transmit.im:9443", grpc.WithBlock(), creds)
+
+		if err != nil {
+			fmt.Printf("Failed to instantiate a new bot:")
+		}
 		retries := 0
 		var b *bot.Bot
 		for {
@@ -157,14 +160,14 @@ func (s *stress) createLoop(createCh chan string, output chan *bot.Bot, doneCh c
 		//_, err = b.AnonymousAuth()
 		for {
 			_, err = b.AuthorizeByPhone(genPhone(), "12345")
-			if err != bot.ErrRetry {
+			if err == nil {
 				break
 			}
 		}
-		if err != nil {
-			fmt.Printf("Failed to authenticate a new bot: %s\n", err.Error())
-			os.Exit(1)
-		}
+		//if err != nil {
+		//	fmt.Printf("Failed to authenticate a new bot: %s\n", err.Error())
+		//	os.Exit(1)
+		//}
 		output <- b
 		<- time.After(2 * time.Second)
 	}
@@ -263,12 +266,17 @@ func (s *stress) botLoop(b *wrappedBot, ticker <-chan time.Time, sFreq, rFreq in
 	}
 }
 
-func Stress(serverUrl, certsPath, usersFile string, cPar, bQty, grQty, grMin, grMax, sFreq, rFreq int64) {
+func Stress(serverUrl, certsPath, usersFile string, serverPort, cPar, bQty, grQty, grMin, grMax, sFreq, rFreq int64) {
+
+	//clientDeadline := time.Now().Add(time.Duration(100) * time.Hour)
+	ctx, _ := context.WithTimeout(context.Background(), time.Duration(500) * time.Second)
+
 	s := &stress{
-		ctx:         context.Background(),
+		ctx:         ctx,
 		serverUrl:   serverUrl,
+		serverPort:  serverPort,
 		bots:        make([]*wrappedBot, 0),
-		dialTimeout: 15 * time.Second,
+		dialTimeout: 55 * time.Second,
 	}
 	uf, err := ioutil.ReadFile(usersFile)
 	if err != nil {
