@@ -10,10 +10,12 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/keepalive"
+	"io/ioutil"
 	"math/rand"
 	"os"
 	"os/signal"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -44,11 +46,11 @@ func (w *wrappedBot) befriend(bots []*wrappedBot, minQty int64) {
 		if friend.bot == w.bot {
 			continue
 		}
-		//outpeers, err := w.bot.SearchContact(friend.bot.Self.Nick.Value)
-		if len(friend.bot.Phones) == 0 {
-			continue
-		}
-		outpeers, err := w.bot.SearchContact(strconv.Itoa(int(friend.bot.Phones[0])))
+		outpeers, err := w.bot.SearchContact(friend.bot.Self.Nick.Value)
+		//if len(friend.bot.Phones) == 0 {
+		//	continue
+		//}
+		//outpeers, err := w.bot.SearchContact(strconv.Itoa(int(friend.bot.Phones[0])))
 		if err != nil {
 			fmt.Printf("Failed to import contacts: %s\n", err.Error())
 			os.Exit(1)
@@ -121,16 +123,16 @@ func genPhone() int64 {
 // TODO: add retry logic
 func (s *stress) createLoop(createCh chan string, output chan *bot.Bot, doneCh chan struct{}, certsPath string) {
 	for name := range createCh {
-		//botFile := certsPath + "/" + name
-		//cert, err := tls.LoadX509KeyPair(botFile+".crt", botFile+".key")
-		//if err != nil {
-		//	fmt.Printf("Unable to load X509 keypair: %s\n", err.Error())
-		//	os.Exit(1)
-		//}
-		//
-		//conn := s.createConn(cert)
-		creds := grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "gprc-test.transmit.im"))
-		conn, err := grpc.Dial("grpc-test.transmit.im:9443", grpc.WithBlock(), creds)
+		botFile := certsPath + "/" + name
+		cert, err := tls.LoadX509KeyPair(botFile+".crt", botFile+".key")
+		if err != nil {
+			fmt.Printf("Unable to load X509 keypair: %s\n", err.Error())
+			os.Exit(1)
+		}
+
+		conn := s.createConn(cert)
+		//creds := grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "gprc-test.transmit.im"))
+		//conn, err := grpc.Dial("grpc-test.transmit.im:9443", grpc.WithBlock(), creds)
 		retries := 0
 		var b *bot.Bot
 		for {
@@ -268,15 +270,15 @@ func Stress(serverUrl, certsPath, usersFile string, cPar, bQty, grQty, grMin, gr
 		bots:        make([]*wrappedBot, 0),
 		dialTimeout: 15 * time.Second,
 	}
-	//uf, err := ioutil.ReadFile(usersFile)
-	//if err != nil {
-	//	fmt.Printf("Failed to read uesrs file: %s\n", err.Error())
-	//	os.Exit(1)
-	//}
+	uf, err := ioutil.ReadFile(usersFile)
+	if err != nil {
+		fmt.Printf("Failed to read uesrs file: %s\n", err.Error())
+		os.Exit(1)
+	}
 	users := make([]string, 0)
-	//for _, email := range strings.Split(string(uf), "\n") {
-	//	users = append(users, strings.Split(email, "@")[0])
-	//}
+	for _, email := range strings.Split(string(uf), "\n") {
+		users = append(users, strings.Split(email, "@")[0])
+	}
 	for i := 0; i < int(bQty); i++ {
 		users = append(users, "BOTUS_"+strconv.Itoa(i))
 	}
