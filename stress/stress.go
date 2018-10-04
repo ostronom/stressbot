@@ -161,17 +161,17 @@ func (s *stress) createLoop(createCh chan string, output chan *bot.Bot, doneCh c
 			//}
 		}
 		fmt.Printf("Created bot: %s\n", b.Name)
-		//_, err = b.AnonymousAuth()
-		for {
-			_, err = b.AuthorizeByPhone(genPhone(), "12345")
-			if err == nil {
-				break
-			}
-		}
-		//if err != nil {
-		//	fmt.Printf("Failed to authenticate a new bot: %s\n", err.Error())
-		//	os.Exit(1)
+		_, err = b.AnonymousAuth()
+		//for {
+		//	_, err = b.AuthorizeByPhone(genPhone(), "12345")
+		//	if err == nil {
+		//		break
+		//	}
 		//}
+		if err != nil {
+			fmt.Printf("Failed to authenticate a new bot: %s\n", err.Error())
+			os.Exit(1)
+		}
 		output <- b
 		<-time.After(2 * time.Second)
 	}
