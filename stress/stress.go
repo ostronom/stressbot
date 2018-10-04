@@ -86,13 +86,17 @@ func (s *stress) chooseBot() *wrappedBot {
 func (s *stress) createConn(cert tls.Certificate) *grpc.ClientConn {
 	creds := credentials.NewTLS(&tls.Config{
 		Certificates:       []tls.Certificate{cert},
+		ServerName:         s.serverUrl,
 		InsecureSkipVerify: true,
 	})
-	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", s.serverUrl, s.serverPort), grpc.WithTransportCredentials(creds), grpc.WithTimeout(s.dialTimeout), grpc.WithKeepaliveParams(keepalive.ClientParameters{
+	url := fmt.Sprintf("%s:%d", s.serverUrl, s.serverPort)
+	fmt.Printf("Starting connection to %s\n", url)
+	conn, err := grpc.Dial(url, grpc.WithTransportCredentials(creds), grpc.WithBlock(), grpc.WithTimeout(s.dialTimeout), grpc.WithKeepaliveParams(keepalive.ClientParameters{
 		PermitWithoutStream: true,
 	}))
+	fmt.Println("After start")
 	if err != nil {
-		fmt.Printf("Failed to establish connection: %s\n", err.Error())
+		fmt.Printf("Failed to establish connection to %s: %s\n", url, err.Error())
 		os.Exit(1)
 	}
 	return conn
@@ -169,7 +173,7 @@ func (s *stress) createLoop(createCh chan string, output chan *bot.Bot, doneCh c
 		//	os.Exit(1)
 		//}
 		output <- b
-		<- time.After(2 * time.Second)
+		<-time.After(2 * time.Second)
 	}
 	doneCh <- struct{}{}
 }
@@ -269,14 +273,14 @@ func (s *stress) botLoop(b *wrappedBot, ticker <-chan time.Time, sFreq, rFreq in
 func Stress(serverUrl, certsPath, usersFile string, serverPort, cPar, bQty, grQty, grMin, grMax, sFreq, rFreq int64) {
 
 	//clientDeadline := time.Now().Add(time.Duration(100) * time.Hour)
-	ctx, _ := context.WithTimeout(context.Background(), time.Duration(500) * time.Second)
+	ctx, _ := context.WithTimeout(context.Background(), time.Duration(500)*time.Second)
 
 	s := &stress{
 		ctx:         ctx,
 		serverUrl:   serverUrl,
 		serverPort:  serverPort,
 		bots:        make([]*wrappedBot, 0),
-		dialTimeout: 55 * time.Second,
+		dialTimeout: 30 * time.Second,
 	}
 	uf, err := ioutil.ReadFile(usersFile)
 	if err != nil {
