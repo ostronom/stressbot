@@ -229,12 +229,16 @@ func randIntN(r rand.Source, n int64) int64 {
 
 }
 
-func (s *stress) botLoop(b *wrappedBot, ticker <-chan time.Time, sFreq, rFreq int64) {
+func (s *stress) botLoop(b *wrappedBot, ticker <-chan time.Time, sFreq, rFreq, fFreq int64, filesPath string) {
 	rs := rand.NewSource(time.Now().Unix())
 	sendTick := int64(0)
 	readTick := int64(0)
+	fileTick := int64(0)
+
 	nextSendTick := sFreq
 	nextReadTick := rFreq
+	nextFileTick := fFreq
+
 	for range ticker {
 		sendTick++
 		readTick++
@@ -267,10 +271,27 @@ func (s *stress) botLoop(b *wrappedBot, ticker <-chan time.Time, sFreq, rFreq in
 			b.reads[peer] = time.Now().Unix()
 			fmt.Printf("Bot %s read messages of %d:%s\n", b.bot.Name, peer.Id, peer.Type.String())
 		}
+
+		if fileTick >= nextFileTick {
+			fileTick = 0
+			nextFileTick = randIntN(rs, fFreq)
+			peer, ok := b.choosePeer()
+			if !ok {
+				continue
+			}
+			//dt := b.reads[peer]
+			if err := b.bot.SendFile(&peer, filesPath); err != nil {
+				//panic(err) // inc error count
+				fmt.Printf("Bot %s failed to send file of %d:%s: %s\n", b.bot.Name, peer.Id, peer.Type.String(), err.Error())
+				continue
+			}
+			b.reads[peer] = time.Now().Unix()
+			fmt.Printf("Bot %s sent a file %d:%s\n", b.bot.Name, peer.Id, peer.Type.String())
+		}
 	}
 }
 
-func Stress(serverUrl, certsPath, usersFile string, serverPort, cPar, bQty, grQty, grMin, grMax, sFreq, rFreq int64) {
+func Stress(serverUrl, certsPath, usersFile, filesPath string, serverPort, cPar, bQty, grQty, grMin, grMax, sFreq, rFreq, filesFreq int64) {
 
 	//clientDeadline := time.Now().Add(time.Duration(100) * time.Hour)
 	ctx, _ := context.WithTimeout(context.Background(), time.Duration(500)*time.Second)
@@ -344,7 +365,7 @@ func Stress(serverUrl, certsPath, usersFile string, serverPort, cPar, bQty, grQt
 	ticker := multitick.NewTicker(time.Second, 0)
 	for _, b := range s.bots {
 		<-time.After(time.Duration(rand.Intn(int(sFreq))) * time.Second)
-		go s.botLoop(b, ticker.Subscribe(), sFreq, rFreq)
+		go s.botLoop(b, ticker.Subscribe(), sFreq, rFreq, filesFreq, filesPath)
 	}
 	stopS := make(chan os.Signal, 1)
 	signal.Notify(stopS, os.Interrupt, os.Kill)

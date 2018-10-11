@@ -7,9 +7,10 @@ import (
 )
 
 func main() {
-	var serverUrl, certsPath, usersFile string
-	var serverPort, botsNum, cPar, grQty, grMin, grMax, sFreq, rFreq int64
+	var serverUrl, certsPath, usersFile, sendFilePath string
+	var serverPort, botsNum, cPar, grQty, grMin, grMax, sFreq, rFreq, filesFreq int64
 
+	//sendFilePath := flag.String("filepath", "", "file path for sending")
 	app := cli.NewApp()
 	app.Name = "streesbot"
 	app.Commands = []cli.Command{cli.Command{
@@ -26,9 +27,12 @@ func main() {
 			cli.Int64Flag{Name: "reads-frequency", Usage: "Mean interval in seconds between readMessage requests", Value: 5, Destination: &rFreq},
 			cli.StringFlag{Name: "certs-path", Destination: &certsPath},
 			cli.StringFlag{Name: "users-file", Destination: &usersFile},
+
+			cli.StringFlag{Name: "files-path", Destination: &sendFilePath},
+			cli.Int64Flag{Name: "file-send-frequency", Usage: "Mean interval in seconds between sending files requests", Value: 5, Destination: &filesFreq},
 		},
 		Action: func(c *cli.Context) error {
-			stress.Stress(serverUrl, certsPath, usersFile, serverPort, cPar, botsNum, grQty, grMin, grMax, sFreq, rFreq)
+			stress.Stress(serverUrl, certsPath, usersFile, sendFilePath, serverPort, cPar, botsNum, grQty, grMin, grMax, sFreq, rFreq, filesFreq)
 			return nil
 		},
 	}}
