@@ -45,6 +45,7 @@ func (bot *Bot) SendFile(dest *pb.OutPeer, filePath string)  error {
 	info, err := file.Stat()
 
 	if err != nil {
+		fmt.Printf("Failed to get stats for file: %s", filePath)
 		return err
 	}
 
