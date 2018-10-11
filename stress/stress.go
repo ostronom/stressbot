@@ -242,6 +242,8 @@ func (s *stress) botLoop(b *wrappedBot, ticker <-chan time.Time, sFreq, rFreq, f
 	for range ticker {
 		sendTick++
 		readTick++
+		fileTick++
+
 		if sendTick >= nextSendTick {
 			sendTick = 0
 			nextSendTick = randIntN(rs, rFreq)
