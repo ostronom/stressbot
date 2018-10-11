@@ -71,6 +71,8 @@ func (bot *Bot) SendFile(dest *pb.OutPeer, filePath string)  error {
 		return err
 	}
 
+	fmt.Printf("Url to upload file %s", resUrl.Url)
+
 	// Upload the url
 	res, err := http.NewRequest("PUT", resUrl.Url, file)
 
