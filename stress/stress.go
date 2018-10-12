@@ -296,7 +296,7 @@ func (s *stress) botLoop(b *wrappedBot, ticker <-chan time.Time, sFreq, rFreq, f
 func Stress(serverUrl, certsPath, usersFile, filesPath string, serverPort, cPar, bQty, grQty, grMin, grMax, sFreq, rFreq, filesFreq int64) {
 
 	//clientDeadline := time.Now().Add(time.Duration(100) * time.Hour)
-	ctx, _ := context.WithTimeout(context.Background(), time.Duration(500)*time.Second)
+	ctx, _ := context.WithTimeout(context.Background(), time.Duration(2)*time.Hour)
 
 	s := &stress{
 		ctx:         ctx,
