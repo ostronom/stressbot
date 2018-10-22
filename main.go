@@ -3,18 +3,20 @@ package main
 import (
 	"bufio"
 	"crypto/tls"
-	b "dialog-stress-bots/bot"
-	"dialog-stress-bots/utils"
 	"fmt"
-	"google.golang.org/grpc/credentials"
 	"io"
 	"math/rand"
 	"net/http"
 	"os"
 	"os/signal"
+	"stressbot/utils"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	b "stressbot/bot"
+
+	"google.golang.org/grpc/credentials"
 
 	"github.com/grpc-ecosystem/go-grpc-prometheus"
 	"github.com/namsral/flag"
@@ -234,7 +236,7 @@ func initCertConnection(host *string, port *string, user string, certsFolder str
 	}
 
 	config := &tls.Config{
-		Certificates: []tls.Certificate{cert},
+		Certificates:       []tls.Certificate{cert},
 		InsecureSkipVerify: true,
 	}
 

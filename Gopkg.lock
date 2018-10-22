@@ -20,14 +20,12 @@
 [[projects]]
   name = "github.com/golang/protobuf"
   packages = [
-    "jsonpb",
     "proto",
     "protoc-gen-go/descriptor",
     "ptypes",
     "ptypes/any",
     "ptypes/duration",
     "ptypes/empty",
-    "ptypes/struct",
     "ptypes/timestamp",
     "ptypes/wrappers"
   ]
@@ -39,16 +37,6 @@
   packages = ["."]
   revision = "c225b8c3b01faf2899099b768856a9e916e5087b"
   version = "v1.2.0"
-
-[[projects]]
-  name = "github.com/grpc-ecosystem/grpc-gateway"
-  packages = [
-    "runtime",
-    "runtime/internal",
-    "utilities"
-  ]
-  revision = "92583770e3f01b09a0d3e9bdf64321d8bebd48f2"
-  version = "v1.4.1"
 
 [[projects]]
   name = "github.com/matttproud/golang_protobuf_extensions"
@@ -198,6 +186,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "32143e2659023f09be03cd3702d2677c5c832a76e89cfb83ba1b774b28c7b26d"
+  inputs-digest = "5e86d47694f26a953e25eb78dd20c709bb58715cc4f99825f32accabc1503c4d"
   solver-name = "gps-cdcl"
   solver-version = 1

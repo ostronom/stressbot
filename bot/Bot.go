@@ -1,13 +1,13 @@
 package bot
 
 import (
-	pb "dialog-stress-bots/gateway"
-	"dialog-stress-bots/utils"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
 	"os"
+	pb "stressbot/gateway"
+	"stressbot/utils"
 	"strings"
 
 	"io"
