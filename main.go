@@ -1,13 +1,13 @@
 package main
 
 import (
-	b "dialog-stress-bots/bot"
-	"dialog-stress-bots/utils"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 	"os/signal"
+	b "stressbot/bot"
+	"stressbot/utils"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -17,6 +17,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 )
 
 var phonePool = make([]int64, 0)
@@ -59,6 +60,7 @@ var gc = b.NewGroupsCollection()
 func main() {
 	server := flag.String("server", "127.0.0.1", "server host")
 	serverPort := flag.String("serverport", "8080", "server port")
+	serverRoots := flag.String("root_certs", "", "Server root certs")
 	metricsPort := flag.String("metricsport", "8081", "prometheus metrics endpoint port")
 
 	creationParallelism := flag.Int("cpar", 5, "creation parallelism")
@@ -159,7 +161,7 @@ func main() {
 				defer botCreationLock.Done()
 				for phone := range botsToLaunch {
 					botCreationStart := time.Now()
-					clientConn, err := initCliencConnection(server, serverPort)
+					clientConn, err := initCliencConnection(server, serverPort, serverRoots)
 					if err != nil {
 						log.Errorf("client did not connect: %s", err)
 					}
@@ -192,14 +194,29 @@ func main() {
 	waitForExit()
 }
 
-func initCliencConnection(host *string, port *string) (*grpc.ClientConn, error) {
+func initCliencConnection(host *string, port *string, roots *string) (*grpc.ClientConn, error) {
 	address := fmt.Sprintf("%s:%s", *host, *port)
+
+	var secureOption grpc.DialOption
+
+	if *roots == "" {
+		secureOption = grpc.WithInsecure()
+	} else {
+		creds, err := credentials.NewClientTLSFromFile(*roots, "")
+		if err != nil {
+			log.Fatal("Credentials are invalid %e", err)
+		}
+		secureOption = grpc.WithTransportCredentials(creds)
+	}
+
 	clientConn, err := grpc.Dial(
 		address,
+		secureOption,
 		grpc.WithUnaryInterceptor(grpc_prometheus.UnaryClientInterceptor),
 		//grpc.WithStreamInterceptor(grpc_prometheus.StreamClientInterceptor),
-		grpc.WithInsecure(),
+		// grpc.WithInsecure(),
 	)
+
 	return clientConn, err
 }
 

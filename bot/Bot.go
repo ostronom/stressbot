@@ -1,10 +1,10 @@
 package bot
 
 import (
-	pb "dialog-stress-bots/gateway"
-	"dialog-stress-bots/utils"
 	"net/http"
 	"os"
+	pb "stressbot/gateway"
+	"stressbot/utils"
 	"strings"
 
 	"io"
@@ -36,7 +36,7 @@ func CreateBot(phone int64, conn *grpc.ClientConn) (*Bot, error) {
 	}
 	log.Printf("Register response: %d, %s", res.GetAuthId(), res.GetToken())
 
-	ctx := metadata.AppendToOutgoingContext(context.Background(), "x-auth-ticket", res.GetToken())
+	ctx := metadata.AppendToOutgoingContext(context.Background(), "x-auth-ticket", res.GetToken(), "x-auth-id", string(res.GetAuthId()))
 
 	auth := pb.NewAuthenticationClient(conn)
 
@@ -395,7 +395,7 @@ type Bot struct {
 	messagingSrv *pb.MessagingClient
 	groupsSrv    *pb.GroupsClient
 	seqUpdates   *pb.SequenceAndUpdates_SeqUpdatesClient
-	filesSrv	 *pb.MediaAndFilesClient
+	filesSrv     *pb.MediaAndFilesClient
 	conn         *grpc.ClientConn
 	ctx          *context.Context
 }
